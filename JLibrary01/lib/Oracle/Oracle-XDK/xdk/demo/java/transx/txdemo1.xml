@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+
+<table name="i18n_messages" >
+  <lookup-key>
+    <column name="message_code" />
+  </lookup-key>
+
+  <columns>
+    <column name="message_id"          type="number" sequence="i18n_message_seq" useforupdate="no"/>
+    <column name="message_code"        type="number" />
+    <column name="message_name"        type="string" translate="yes" />
+    <column name="message_description" type="string" translate="yes" />
+    <column name="version_created"     type="number" constant="0" />
+    <column name="version_updated"     type="number" constant="0" />
+    <column name="message_type_code"   type="string" virtual="yes" />
+    <column name="message_type_id"     type="number" >
+      <query text="select message_type_id from i18n_message_types where message_type_code = :1" >
+        <parameter id="1" col="message_type_code" />
+      </query>
+    </column>
+  </columns>
+
+  <dataset>
+
+    <row>
+      <col name="message_code" >100</col>
+      <col name="message_name" >Continue</col>
+      <col name="message_description" >
+        The client should continue with its request.</col>
+      <col name="message_type_code" >INFO</col>
+    </row>
+
+    <row>
+      <col name="message_code" >101</col>
+      <col name="message_name" >Switching Protocols</col>
+      <col name="message_description" >
+        The server understands and is willing to comply with the client''s
+        request (via the Upgrade message header field) for a change in the
+        application protocol being used on this connection.</col>
+      <col name="message_type_code" >INFO</col>
+    </row>
+
+    <row>
+      <col name="message_code" >200</col>
+      <col name="message_name" >OK</col>
+      <col name="message_description" >
+        The request has succeeded.</col>
+      <col name="message_type_code" >SUCCESS</col>
+    </row>
+
+    <row>
+      <col name="message_code" >201</col>
+      <col name="message_name" >Created</col>
+      <col name="message_description" >
+        The request has been fulfilled and resulted in a new resource being
+        created.</col>
+      <col name="message_type_code" >SUCCESS</col>
+    </row>
+
+    <row>
+      <col name="message_code" >202</col>
+      <col name="message_name" >Accepted</col>
+      <col name="message_description" >
+        The request has been accepted for processing, but the processing has
+        not been completed.</col>
+      <col name="message_type_code" >SUCCESS</col>
+    </row>
+
+    <row>
+      <col name="message_code" >203</col>
+      <col name="message_name" >Non-Authoritative Information</col>
+      <col name="message_description" >
+        The returned metainformation in the entity-header is not the
+        definitive set as available from the origin server, but is gathered
+        from a local or a third-party copy.</col>
+      <col name="message_type_code" >SUCCESS</col>
+    </row>
+
+    <row>
+      <col name="message_code" >204</col>
+      <col name="message_name" >No Content</col>
+      <col name="message_description" >
+        The server has fulfilled the request but does not need to return an
+        entity-body, and might want to return updated metainformation.</col>
+      <col name="message_type_code" >SUCCESS</col>
+    </row>
+
+    <!-- ... -->
+
+  </dataset>
+</table>

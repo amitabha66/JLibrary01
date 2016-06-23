@@ -1,0 +1,55 @@
+This directory contains a sample C++ Class Generator application.  Components:
+
+    CG.cpp	Sample program
+    CG.xml	XML file contains DTD and dummy document
+    AQ.cpp		Sample program using Schema-dervied classes
+    AQ.xsd		Sample schema
+    Make.bat	Batch file to generate classes and build program
+    README	This file
+
+An error message file is provided in the mesg subdirectory.  Currently, the
+only message file is in English although message files for other languages
+may be supplied in future releases.  You should set the environment variable 
+ORA_XML_MESG to point to the absolute path of the mesg subdirectory.
+Alternately, if you have an $ORACLE_HOME installed, you may copy the contents
+of the mesg subdirectory to the $ORACLE_HOME\xdk\mesg directory.
+
+In addition, the environment variable ORA_NLS33 must be set to point to the 
+location of the NLS data files.  On Unix systems, this is usually 
+$ORACLE_HOME/ocommon/nls/admin/data.  On Windows NT, this is usually 
+$ORACLE_HOME/nlsrtl/admin/nlsdata.  Starting with version 9.0.1, C and C++ XDK
+releases that are downloaded from OTN contain an nlsdata/ subdirectory.  You 
+must set the environment variable ORA_NLS33 to the absolute path of the 
+nlsdata/ subdirectory if you don't have an Oracle installation.
+
+The batch file will:
+
+    Generate classes based on CG.xml into Sample.h and Sample.cpp
+    Compile the program CG.cpp (using Sample.h), and link with the
+	Sample object into an executable named CG.exe in the ..\bin
+	directory.
+
+    Generate classes based on AQ.xsd  to generate Queue.cpp and Queue.h.  
+    They are compiled along with AQ.cpp into the program AQ.exe in the ..\bin
+    directory. 
+
+The program CG:
+
+    * Initializes the XML parser
+    * Loads the DTD (by parsing the DTD-containing file-- the dummy
+	document part is ignored)
+    * Creates some objects using the generated classes
+    * Invokes the validation function which verifies that the
+	constructed classes match the DTD
+    * Writes the constructed document to Sample.xml
+
+
+The program AQ:
+
+    * Initializes the XML parser
+    * Loads the schema
+    * Creates some objects using the generated classes
+    * Invokes the validation function which verifies that the
+	constructed classes match the schema
+    * Writes the constructed document to Queue.xml
+

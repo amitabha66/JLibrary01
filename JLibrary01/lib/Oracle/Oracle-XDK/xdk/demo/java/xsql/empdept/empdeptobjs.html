@@ -1,0 +1,90 @@
+<html><body><pre>
+drop view department;
+drop type dept_t;
+drop type emp_list;
+drop type emp_t;
+create or replace type emp_t as object (
+  empno number,
+  ename varchar2(80),
+  sal   number
+);
+.
+/
+
+create or replace type emp_list as table of emp_t;
+.
+/
+
+create or replace type dept_t as object (
+  deptno number, 
+  dname varchar2(80),
+  loc   varchar2(80),
+  employees emp_list
+);
+.
+/
+
+create or replace view department of dept_t
+with object OID (deptno)
+as select deptno, dname, loc,
+          cast(multiset(select empno, ename, sal 
+                        from emp 
+                        where emp.deptno = dept.deptno
+                        ) as emp_list ) employees
+     from dept;
+
+create trigger department_ins
+instead of insert on department
+for each row 
+declare
+  emps emp_list;
+  emp  emp_t;
+begin
+  -- Insert the master
+  insert into dept( deptno, dname, loc ) 
+  values (:new.deptno, :new.dname, :new.loc);
+
+  -- Insert the details
+  emps := :new.employees;
+  for i in 1..emps.count loop
+    emp := emps(i);
+    insert into emp(deptno, empno, ename, sal)
+    values (:new.deptno, emp.empno, emp.ename, emp.sal);
+  end loop;
+end;
+.
+/
+
+REM You can post a document like this with the 
+REM department object-view as the insert target
+REM to insert departments and employees. 
+REM 
+REM &lt;ROWSET&gt;
+REM    &lt;ROW&gt;
+REM       &lt;DEPTNO&gt;99&lt;/DEPTNO&gt;
+REM       &lt;DNAME&gt;ACCOUNTING&lt;/DNAME&gt;
+REM       &lt;LOC&gt;NEW YORK&lt;/LOC&gt;
+REM       &lt;EMPLOYEES&gt;
+REM          &lt;EMPLOYEES_ITEM&gt;
+REM             &lt;EMPNO&gt;1111&lt;/EMPNO&gt;
+REM             &lt;ENAME&gt;CLARK&lt;/ENAME&gt;
+REM             &lt;SAL&gt;2450&lt;/SAL&gt;
+REM          &lt;/EMPLOYEES_ITEM&gt;
+REM          &lt;EMPLOYEES_ITEM&gt;
+REM             &lt;EMPNO&gt;2222&lt;/EMPNO&gt;
+REM             &lt;ENAME&gt;KING&lt;/ENAME&gt;
+REM             &lt;SAL&gt;5000&lt;/SAL&gt;
+REM          &lt;/EMPLOYEES_ITEM&gt;
+REM          &lt;EMPLOYEES_ITEM&gt;
+REM             &lt;EMPNO&gt;3333&lt;/EMPNO&gt;
+REM             &lt;ENAME&gt;MILLER&lt;/ENAME&gt;
+REM             &lt;SAL&gt;1300&lt;/SAL&gt;
+REM          &lt;/EMPLOYEES_ITEM&gt;
+REM       &lt;/EMPLOYEES&gt;
+REM    &lt;/ROW&gt;
+REM &lt;/ROWSET&gt;
+</pre></body></html>
+
+
+
+

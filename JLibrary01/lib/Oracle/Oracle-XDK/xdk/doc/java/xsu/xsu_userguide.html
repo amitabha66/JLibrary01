@@ -1,0 +1,3514 @@
+
+<HTML>
+<HEAD>
+
+<META NAME="Generator" CONTENT="Quadralay WebWorks Publisher 5.0.4">
+<META NAME="Page" CONTENT="DefaultSingle">
+<META NAME="Title" CONTENT=" Using XML-SQL Utility (XSU)">
+
+
+<TITLE> Using XML-SQL Utility (XSU)</TITLE>
+	   
+<LINK REL="home" HREF="../../products.htm" TITLE="Library">
+<LINK REL="toc" HREF="adxml_1t.htm" TITLE="Contents">
+<LINK REL="index" HREF="adxml_1i.htm" TITLE="Index">
+<LINK REL="copyright" HREF="../../dcommon/html/cpyr.htm" TITLE="Copyright">
+<LINK REL="up" HREF="adxml_1t.htm" TITLE="Up">
+<LINK REL="next" HREF="adx05xml.htm" TITLE="Next">
+<LINK REL="previous" HREF="partpg2.htm" TITLE="Previous">
+
+
+</HEAD>
+       
+<BODY BGCOLOR="#ffffff">
+<A NAME="top"></A> <FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> 
+<font size="6">XML-SQL Utility (XSU)</font></FONT> 
+<DIV CLASS="IND"><!--/TOC=Title--> 
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006575"></A><A HREF="xsu_userguide.html#1013816">What 
+      is the XML-SQL Utility (XSU)</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014872"></A><A HREF="xsu_userguide.html#1014684">XSU 
+      Dependencies and Installation</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014876"></A><A HREF="xsu_userguide.html#1013918">XML-SQL 
+      Utility and the Bigger Picture</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014880"></A><A HREF="xsu_userguide.html#1014730">SQL-XML 
+      Mapping Primer</a> 
+      <P> 
+      <UL CLASS="LB2">
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1006968"></A><A HREF="xsu_userguide.html#1014886">Default 
+          SQL to XML Mapping</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1006969"></A><A HREF="xsu_userguide.html#1015169">Customizing 
+          the Generated XML</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1006971"></A><A HREF="xsu_userguide.html#1015224">Default 
+          XML to SQL Mapping</a> 
+          <P> 
+      </UL>
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015632"></A><A HREF="xsu_userguide.html#1014897">How 
+      XML-SQL Utility Works</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015639"></A><A HREF="xsu_userguide.html#1014450">Using 
+      the XSU Command Line Front End</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1008144"></A><A HREF="xsu_userguide.html#1005334">XSU 
+      Java API</a> 
+      <P> 
+      <UL CLASS="LB2">
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008149"></A><A HREF="xsu_userguide.html#1008351">Paginating 
+          Results: skipRows and maxRows</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008153"></A><A HREF="xsu_userguide.html#1005542">Generating 
+          XML from ResultSet Objects</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008160"></A><A HREF="xsu_userguide.html#1005656">Raising 
+          No Rows Exception</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1006997"></A><A HREF="xsu_userguide.html#1005680">Storing 
+          XML</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008165"></A><A HREF="xsu_userguide.html#1005684">Insert 
+          Processing</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008166"></A><A HREF="xsu_userguide.html#1005748">Update 
+          Processing</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008167"></A><A HREF="xsu_userguide.html#1005814">Delete 
+          Processing</a> 
+          <P> 
+      </UL>
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006998"></A><A HREF="xsu_userguide.html#1005859">XSU 
+      PL/SQL API</a> 
+      <P> 
+      <UL CLASS="LB2">
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1011686"></A><A HREF="xsu_userguide.html#1005954">Setting 
+          Stylesheets in XSU (PL/SQL)</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1011687"></A><A HREF="xsu_userguide.html#1005957">Binding 
+          Values in XSU (PL/SQL)</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1011688"></A><A HREF="xsu_userguide.html#1005975">Storing 
+          XML in the Database Using DBMS_XMLSave</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008180"></A><A HREF="xsu_userguide.html#1005985">XSU 
+          Insert Processing in PL/SQL</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008181"></A><A HREF="xsu_userguide.html#1006050">Update 
+          Processing</a> 
+          <P> 
+        <LI CLASS="LB2" TYPE="DISC"><A NAME="1008182"></A><A HREF="xsu_userguide.html#1006105">Delete 
+          Processing</a> 
+          <P> 
+      </UL>
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006594"></A><A HREF="xsu_userguide.html#1006189">Advanced 
+      Usage Techniques</a> 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013802"></A><A HREF="xsu_userguide.html#1000489">Frequently 
+      Asked Questions (FAQs): XML-SQL Utility (XSU)</a> 
+      <P> 
+  </UL>
+  <A NAME="1013816"></A> <!--TOC=h1-"1013816"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> What 
+    is the XML-SQL Utility (XSU)</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1013817"></A> 
+  <P CLASS="BP"> XML has rapidly become the format for data interchange; at the 
+    same time, a substantial amount of business data resides in object-relational 
+    databases. It is therefore necessary to have the ability to transform this 
+    "relational" data to XML. </P>
+  <A NAME="1013818"></A> 
+  <P CLASS="BP"> XML-SQL Utility (XSU) enables one to do just this: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014623"></A>The XSU can transform data 
+      retreived from object-relational database tables or views into XML. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014627"></A>The XSU can extract data 
+      from a XML document and using a canonical mapping, insert the data into 
+      the appropriate columns/attributes of a table or a view. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014630"></A>The XSU can extract data 
+      from a XML document and apply this data to updating or deleteing values 
+      of the appropriate columns/attributes. 
+      <P> 
+  </UL>
+  <A NAME="1013819"></A> 
+  <P CLASS="BP"> For example, on the XML generation side, specified the query 
+    "select * from emp", the XSU will query the database and return the query 
+    results in the form of the following XML document: </P>
+  <PRE CLASS="CE">
+<A NAME="1013823"></A>&lt;?xml version='1.0'?&gt;
+<A NAME="1013824"></A>&lt;ROWSET&gt;
+<A NAME="1013825"></A>	 	 &lt;ROW num="1"&gt;
+<A NAME="1013826"></A> 	 	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1013827"></A>    &lt;ENAME&gt;Smith&lt;/ENAME&gt;
+<A NAME="1013828"></A>    &lt;JOB&gt;CLERK&lt;/JOB&gt;
+<A NAME="1013829"></A>    &lt;MGR&gt;7902&lt;/MGR&gt;
+<A NAME="1013830"></A>    &lt;HIREDATE&gt;12/17/1980 0:0:0&lt;/HIREDATE&gt;
+<A NAME="1013831"></A>    &lt;SAL&gt;800&lt;/SAL&gt;
+<A NAME="1013832"></A>    &lt;DEPTNO&gt;20&lt;/DEPTNO&gt;
+<A NAME="1013833"></A>  &lt;/ROW&gt;
+<A NAME="1013834"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1013835"></A>&lt;/ROWSET&gt;
+<A NAME="1013836"></A>
+</PRE>
+  <A NAME="1013837"></A> 
+  <P CLASS="BP"> Going the other way, given the XML document above, the XSU can 
+    extract the data from it and insert it into the <EM CLASS="Italic">scott.emp</EM> 
+    table. </P>
+  <A NAME="1013838"></A> 
+  <P CLASS="BP"> XML-SQL Utility's functionality is accessable through a Java 
+    API, a PL/SQL API, or a java command line front end. </P>
+  <A NAME="1013930"></A> <!--TOC=h2-"1013930"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Features at a Glance</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1015650"></A> 
+  <P CLASS="BP"> XSU has the following features: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013932"></A>Supports generation of XML 
+      documents from any SQL query. It virtually supports all the datatypes supported 
+      in the Oracle9<EM CLASS="Italic">i</EM> database server. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013933"></A>Supports dynamic generation 
+      of DTDs (Document Type Definitions). 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013934"></A>Supports simple transformations 
+      in the generation such as modifying the default tag names for the ROW element 
+      etc. One can also register a XSL transformation which is then applied to 
+      the generated XML documents on the fly. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013935"></A>Supports generation of XML 
+      documents in their string or DOM representations. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013936"></A>Supports insertion of XML 
+      into database tables/views. It also can update records or delete records 
+      from a database object, given an XML document. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013937"></A>Complex nested XML documents 
+      can be easily generated and stored in to relational tables by creating object 
+      views over these flat tables and querying over these views. Object views 
+      can create structured data from existing relational data using Oracle<EM CLASS="Italic">8i</EM> 
+      and Oracle9<EM CLASS="Italic">i</EM>'s object-relational infrastructure. 
+      <P> 
+  </UL>
+  <A NAME="1013938"></A> <!--TOC=h2-"1013938"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    New Features at a Glance</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1015651"></A> 
+  <P CLASS="BP"> XSU has the following new features, offered with Oracle9i: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013939"></A>Ability to generate the 
+      XML Schema given an SQL Query. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1013947"></A>Ability to generate XML 
+      as a stream of SAX2 callbacks. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014668"></A> XML attribute support on 
+      the generation side. This provides an easy way of specifying that a particular 
+      column or group of columns should be mapped to a XML attribute instead of 
+      a XML Element. 
+      <P> 
+  </UL>
+  <A NAME="1014684"></A> <!--TOC=h1-"1014684"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Dependencies and Installation</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1014685"></A> <!--TOC=h2-"1014685"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Dependencies</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1014686"></A> 
+  <P CLASS="BP"> XML-SQL Utility needs the following components in order to function: 
+  </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014687"></A><STRONG CLASS="Bold"><EM CLASS="Italic">Database 
+      connectivity -- JDBC drivers</EM></STRONG>. The utility can work with any 
+      JDBC drivers but is optimized for Oracle's JDBC drivers. Oracle, does not 
+      make any guarantees or provide support for the XSU running against non-Oracle 
+      databases. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014688"></A><STRONG CLASS="Bold"><EM CLASS="Italic">XML 
+      Parser -- Oracle XML Parser, Version2.</EM></STRONG> The Oracle XML Parser, 
+      Version 2 is part of the Oracle8<EM CLASS="Italic">i </EM>and Oracle9<EM CLASS="Italic">i 
+      </EM>install, and is also available as part of the XSU install downloadable 
+      from Oracle Technology Network (OTN) web site. 
+      <P> 
+  </UL>
+  <A NAME="1014689"></A> <!--TOC=h2-"1014689"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Installing 
+    the XSU using the Oracle Installer</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1014690"></A> 
+  <P CLASS="BP"> XML-SQL Utility (XSU) is packaged with Oracle8<EM CLASS="Italic">i</EM> 
+    (8.1.7 and later) and Oracle9<EM CLASS="Italic">i</EM>. </P>
+  <A NAME="1014691"></A> 
+  <P CLASS="BP"> The XML-SQL Utility is made up of three files: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014692"></A>$ORACLE_HOME/rdbms/jlib/xsu12.jar 
+      -- contains all the java classes which make up the XSU. The xsu12 requires 
+      JDK1.2.x and JDBC2.x. This is the version of the xsu loaded into your 9i 
+      database. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014693"></A>$ORACLE_HOME/rdbms/jlib/xsu111.jar 
+      -- contains the same classes as xsu12.jar except that xsu111 requires JDK1.1.x 
+      and JDBC1.x. . 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014694"></A>$ORACLE_HOME/rdbms/admin/dbmsxsu.sql 
+      -- this is the SQL script which builds the XSU's PL/SQL API. xsu12.jar need 
+      to be loaded into the database before dbmsxsu.sql is executed. 
+      <P> 
+  </UL>
+  <A NAME="1014695"></A> 
+  <P CLASS="BP"> By default the Oracle9i installer installs XSU on your hard drive 
+    (in the locations specified above) as well as loads it into the database. 
+  </P>
+  <A NAME="1014696"></A> 
+  <P CLASS="BP"> Now, if during initial installation you choose not to install 
+    the XSU, you can still install it later, but the installation gets a bit trickier... 
+    You start by installing the XSU and its dependent components on your system. 
+    You can accomplish this using the oracle installer. Next you perform the following 
+    steps: </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1014697"></A>If you haven't yet 
+      loaded the xmlparser for java into the database, go to $ORACLE_HOME/xdk/lib. 
+      Here you will find xmlparserv2.jar which you will need to load into the 
+      database. For how to accomplish this see "Loading JAVA Classes" in the <EM CLASS="Italic"><b>Oracle8i 
+      Java Stored Procedures Developer's Guide</b></EM> 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1014703"></A>Next go to $ORACLE_HOME/rdbms/admin 
+      and execute the catxsu.sql script<A NAME="1014709"></A> 
+  </OL>
+  <h3><A NAME="1014710"></A><font color="#330099" face="Arial, Helvetica, sans-serif">Installing 
+    the XSU downloaded from OTN</font></h3>
+  <p>Download the correct XDK for java distribution archive from the Oracle Technology 
+    Network web-site (<a href="http://otn.oracle.com">http://otn.oracle.com</a>). 
+    Expand the downloaded archive. Depending on the usage scenario, perform the 
+    following install tasks: </p>
+</DIV>
+<ul>
+  <li> 
+    <DIV CLASS="IND">To use the XSU's client side front-end or its java API, you 
+      need to: </DIV>
+    <ul>
+      <li> 
+        <DIV CLASS="IND">Setup the environment (i.e. set CLASSPATH ...) using 
+          the env.xxx script (located in the bin directory inside the directory 
+          created by extracting the XDK download archive): </DIV>
+        <ul>
+          <li> 
+            <DIV CLASS="IND"><b>Unix users</b>: make sure that the path names 
+              in env.csh are correct; source the env.csh. If you are using a shell 
+              other than csh or tcsh, you will have to edit the file to use your 
+              shell's syntax. </DIV>
+          </li>
+          <li> 
+            <DIV CLASS="IND"><b>Windows users</b>: make sure that the path names 
+              in env.bat are correct; execute the file. </DIV>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<DIV CLASS="IND"></DIV>
+<ul>
+  <li> 
+    <DIV CLASS="IND">To use the XSU inside the Oracle JSever you will have to 
+      load the XSU into the database. When this step is completed, the XSU (Java 
+      and PL/SQL APIs) will be available from within the Oracle's JServer. To 
+      accomplish this, go into the bin directory located inside the directory 
+      created by the expansion of the downloaded XDK archive. Then on the command 
+      line, type xdkload and hit the enter key. This will produce usage information 
+      for the xdkload script. Follow the simple usage information and the rest 
+      will be done by the xdkload script. </DIV>
+    </li>
+</ul>
+<DIV CLASS="IND"> 
+  <P CLASS="BP"> </P>
+  <A NAME="1013918"></A> <!--TOC=h1-"1013918"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility and the Bigger Picture</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1014279"></A> 
+  <P CLASS="BP"> XML-SQL Utility (XSU) is written in Java,thus can live in any 
+    tier that supports Java. </P>
+  <A NAME="1004869"></A> <!--TOC=h2-"1004869"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility in the Database</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1004870"></A> 
+  <P CLASS="BP"> The Java classes which make up XSU can be loaded into a java 
+    enabled Oracle8i or later; furthermore, the XSU contains a PL/SQL wrapper 
+    which publishes the XSU's Java API to PL/SQL creating a PL/SQL API. This way 
+    one can write new java applications which run inside the database and which 
+    directly access the XSU's Java API; one can write PL/SQL applications which 
+    access XSU through its PL/SQL API; or one can access the XSU's functionality 
+    directly through SQL. Note that to load and run Java code inside the database 
+    you need a java enabled Oracle8i or later Server. </P>
+  <A NAME="1012711"></A> 
+  <P CLASS="BP"> <A HREF="xsu_userguide.html#1006388">Figure&nbsp;4-1</a> shows the 
+    typical architecture for such a system. XML generated from XSU running inside 
+    the database can be placed in advanced queues in the database to be queued 
+    to other systems or clients. The XML can be used from within stored procedures 
+    inside the database or shipped outside via web servers or application servers. 
+  </P>
+  <A NAME="1012700"> 
+  <DIV ALIGN="CENTER"> 
+    <P> 
+    <TABLE CLASS="Note" BORDER="0" WIDTH="80%" CELLPADDING="0" CELLSPACING="0">
+      <TR CLASS="Note"> 
+        <TD CLASS="Note"> 
+          <HR>
+          <A NAME="1013117"></A><FONT FACE="Arial, Helvetica, sans-serif"><STRONG CLASS="NH">Note:</STRONG></FONT> 
+          <A NAME="1013118"></A> 
+          <P CLASS="NB"> In <A HREF="xsu_userguide.html#1006388">Figure&nbsp;4-1</a> 
+            all lines are bi-directional. Since XSU can <EM CLASS="Italic">generate</EM> 
+            as well as <EM CLASS="Italic">save</EM> data, data can come from various 
+            sources to XSU running inside the database and can be put back in 
+            the appropriate database tables.&nbsp; 
+          <HR>
+        </TD>
+      </TR>
+    </TABLE>
+    <TABLE CLASS="TableNote" CELLPADDING="3" >
+      <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+        <TD CLASS="TableNote"> </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  </A> <A NAME="1006388"></A> 
+  <H4 CLASS="FT"><FONT FACE="Arial, Helvetica, sans-serif"><EM>Figure 4-1 &#32;Running 
+    XML-SQL Utility in the Database</EM></FONT></H4>
+  <A NAME="1006389"></A> 
+  <P CLASS="BP"> <img src="images/adxml018.gif" height="317" width="600"alt="Text description of adxml018.gif follows"><A HREF="img_text/adxml018.htm"> 
+    </A></P>
+  <A NAME="1004935"></A> <!--TOC=h2-"1004935"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility in the Middle Tier</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1004936"></A> 
+  <P CLASS="BP"> Your application architecture may force the use of an 'application 
+    server' in the middle tier that is separate from the database. This application 
+    tier could be an Oracle database, an Oracle 'application server', or a third 
+    party application server that supports Java programs. </P>
+  <A NAME="1004937"></A> 
+  <P CLASS="BP"> You may want to generate XML in the middle tier from SQL queries 
+    or ResultSets for various reasons. For example, to integrate different JDBC 
+    data sources in the middle tier. In this case you would install the XSU in 
+    your middle tier and have your Java programs make use of the XSU through its 
+    Java API. </P>
+  <A NAME="1004938"></A> 
+  <P CLASS="BP"> <A HREF="xsu_userguide.html#1006433">Figure&nbsp;4-2</a>, shows how 
+    a typical architecture for running XSU in a middle tier. In the middle tier, 
+    data from JDBC sources is converted by XSU into XML and then sent to web servers 
+    or other systems. Again, the whole process is bi-directional and the data 
+    can be put back into the JDBC sources (database tables or views) using XSU. 
+    If an Oracle database itself is used as the application server, then you can 
+    also use the PL/SQL front-end instead of Java. </P>
+  <A NAME="1006433"></A> 
+  <H4 CLASS="FT"><FONT FACE="Arial, Helvetica, sans-serif"><EM>Figure 4-2 &#32;Running 
+    XML-SQL Utility in the MIddle Tier</EM></FONT></H4>
+  <A NAME="1006432"></A> 
+  <P CLASS="BP"> <img src="images/adxml019.gif" height="306" width="600"alt="Text description of adxml019.gif follows"><A HREF="img_text/adxml019.htm"> 
+    </A></P>
+  <A NAME="1004981"></A> <!--TOC=h2-"1004981"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility in a Web Server</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1004982"></A> 
+  <P CLASS="BP"> XSU can live in the Web Server, as long as the web server supports 
+    Java servlets. This way one can write Java servlets which use the XSU to accomplish 
+    their task. </P>
+  <A NAME="1014303"></A> 
+  <P CLASS="BP"> XSQL servlet does just this. XSQL servlet is a standard servlet 
+    provided by Oracle which is built on top of the XSU providing the user with 
+    a template like interface to the XSU's functionality. If XML processing in 
+    the web server is your goal, you should probably use the XSQL servlet, as 
+    it will spare you from the intricate servlet programming. </P>
+  <A NAME="1006452"></A> 
+  <P CLASS="BP"> <img src="images/adxml020.gif" height="197" width="600"alt="Text description of adxml020.gif follows"><A HREF="img_text/adxml020.htm"><br>
+    </A></P>
+  <A NAME="1005017"></A> <!--TOC=h2-"1005017"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility In The Client Tier</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1014375"></A> 
+  <P CLASS="BP"> XML-SQL Utility can be also installed on a client system. Here 
+    one can write Java programs which can use the XSU. Or, one can directly use 
+    the XSU through its command-line-front-end. </P>
+  <A NAME="1014730"></A> <!--TOC=h1-"1014730"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> SQL-XML 
+    Mapping Primer</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1014832"></A> 
+  <P CLASS="BP"> As described earlier, the XML-SQL Utility transforms data retreived 
+    from object-relational database tables or views into XML. The XSU can also 
+    extract data from an XML document, and using a set mapping, insert the data 
+    into the appropriate columns/attribute of a table or a view. This section 
+    desribes this canonical mapping/transformation used to go from SQL to XML 
+    or vice versa. </P>
+  <A NAME="1014886"></A> <!--TOC=h2-"1014886"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Default 
+    SQL to XML Mapping</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1014846"></A> 
+  <P CLASS="BP"> Consider the table <STRONG CLASS="Bold">emp</STRONG> as follows: 
+  </P>
+  <PRE CLASS="CE1">
+<A NAME="1005115"></A>CREATE TABLE emp 
+<A NAME="1012736"></A>(
+<A NAME="1005116"></A>   EMPNO NUMBER, 
+<A NAME="1005117"></A>   ENAME VARCHAR2(20),
+<A NAME="1005118"></A>   JOB VARCHAR2(20),
+<A NAME="1005119"></A>   MGR  NUMBER,
+<A NAME="1005120"></A>   HIREDATE DATE,
+<A NAME="1005121"></A>   SAL NUMBER,
+<A NAME="1005122"></A>   DEPTNO NUMBER
+<A NAME="1005123"></A>);
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005124"></A>
+</PRE>
+  <A NAME="1005125"></A> 
+  <P CLASS="BP"> Specified the query "select * from emp", the XSU would generate 
+    the following XML document: </P>
+  <PRE CLASS="CE1">
+<A NAME="1013983"></A> &lt;?xml version='1.0'?&gt;
+<A NAME="1013984"></A>&lt;ROWSET&gt;
+<A NAME="1013985"></A>	&lt;ROW num="1"&gt;
+<A NAME="1013986"></A>	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1013987"></A>    &lt;ENAME&gt;Smith&lt;/ENAME&gt;
+<A NAME="1013988"></A>    &lt;JOB&gt;CLERK&lt;/JOB&gt;
+<A NAME="1013989"></A>    &lt;MGR&gt;7902&lt;/MGR&gt;
+<A NAME="1013990"></A>    &lt;HIREDATE&gt;12/17/1980 0:0:0&lt;/HIREDATE&gt;
+<A NAME="1013991"></A>    &lt;SAL&gt;800&lt;/SAL&gt;
+<A NAME="1013992"></A>    &lt;DEPTNO&gt;20&lt;/DEPTNO&gt;
+<A NAME="1013993"></A>  &lt;/ROW&gt;
+<A NAME="1013994"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1013995"></A>&lt;/ROWSET&gt;
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1013996"></A>
+</PRE>
+  <A NAME="1005128"></A> 
+  <P CLASS="BP"> In the generated XML, the rows returned by the SQL query are 
+    enclosed in a <EM CLASS="Italic">ROWSET</EM> tag to make the &lt;<EM CLASS="Italic">ROWSET&gt;</EM> 
+    element, which is also the root element of the generated XML document. </P>
+  <A NAME="1014065"></A> 
+  <P CLASS="BP"> The &lt;<EM CLASS="Italic">ROWSET&gt;</EM> element contains one 
+    or more &lt;<EM CLASS="Italic">ROW&gt; </EM>elements. Each of these &lt;<EM CLASS="Italic">ROW&gt;</EM> 
+    elements contains the data from one of the returned db rows. </P>
+  <A NAME="1014553"></A> 
+  <P CLASS="BP"> Specifically, each &lt;ROW&gt; element contains one or more elements 
+    whose names and content are those of the database columns specified in the 
+    select list of the SQL query. And finally, these elements corresponding to 
+    database columns contain the data from the columns. </P>
+  <A NAME="1014083"></A> 
+  <P CLASS="BP"> Next we describe this mapping but against an object-relational 
+    schema like the following: </P>
+  <A NAME="1005144"></A> 
+  <P CLASS="BP"> The <STRONG CLASS="Bold">AddressType</STRONG> is an object type 
+    whose attributes are all scalar types... </P>
+  <PRE CLASS="CE1">
+<A NAME="1005145"></A>CREATE TYPE AddressType AS OBJECT (
+<A NAME="1005146"></A>   STREET VARCHAR2(20),
+<A NAME="1005147"></A>   CITY   VARCHAR2(20),
+<A NAME="1005148"></A>   STATE  CHAR(2),
+<A NAME="1005149"></A>   ZIP    VARCHAR2(10)
+<A NAME="1005150"></A>);
+<A NAME="1005151"></A>/
+<A NAME="1006630"></A>
+</PRE>
+  <A NAME="1005152"></A> 
+  <P CLASS="BP"> An <STRONG CLASS="Bold">EmplyeeType</STRONG> is also an object 
+    type but whose <STRONG CLASS="Bold">EMPADDR</STRONG> attribute is of an object 
+    type itself, specifically <STRONG CLASS="Bold">AddressType</STRONG>... </P>
+  <PRE CLASS="CE1">
+<A NAME="1005153"></A>CREATE TYPE EmployeeType AS OBJECT
+<A NAME="1005154"></A>(
+<A NAME="1005155"></A>  EMPNO NUMBER,
+<A NAME="1005156"></A>  ENAME VARCHAR2(20),
+<A NAME="1005157"></A>  SALARY NUMBER,
+<A NAME="1005158"></A>  EMPADDR AddressType
+<A NAME="1005159"></A>);
+<A NAME="1005160"></A>/
+<A NAME="1014776"></A>
+</PRE>
+  <A NAME="1005161"></A> 
+  <P CLASS="BP"> <STRONG CLASS="Bold">EmployeeListType</STRONG> is a collection 
+    type whose elements are of <STRONG CLASS="Bold">EmployeeType </STRONG>object 
+    type... </P>
+  <PRE CLASS="CE1">
+<A NAME="1005162"></A>CREATE TYPE EmployeeListType AS TABLE OF EmployeeType;
+<A NAME="1005163"></A>/
+<A NAME="1014156"></A>
+</PRE>
+  <A NAME="1005164"></A> 
+  <P CLASS="BP"> Finally, <STRONG CLASS="Bold">dept</STRONG> is a table with, 
+    among other things, an object type column and a collection type column -- 
+    <STRONG CLASS="Bold">AddressType</STRONG> and <STRONG CLASS="Bold">EmployeeListType</STRONG> 
+    respectively. </P>
+  <PRE CLASS="CE1">
+<A NAME="1005165"></A>CREATE TABLE dept 
+<A NAME="1005166"></A>(
+<A NAME="1005167"></A>  DEPTNO NUMBER,
+<A NAME="1005168"></A>  DEPTNAME VARCHAR2(20),
+<A NAME="1005169"></A>  DEPTADDR AddressType,
+<A NAME="1005170"></A>  EMPLIST  EmployeeListType
+<A NAME="1005171"></A>);
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005172"></A>
+</PRE>
+  <A NAME="1005173"></A> 
+  <P CLASS="BP"> Assuming that valid values are stored in the <STRONG CLASS="Bold">dept</STRONG> 
+    table, given the query "select * from dept", the XSU will generate the following 
+    XML document: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005174"></A>&lt;?xml version='1.0'?&gt;
+<A NAME="1005175"></A>&lt;ROWSET&gt;
+<A NAME="1005176"></A>	&lt;ROW num="1"&gt;
+<A NAME="1005177"></A> 	  &lt;DEPTNO&gt;100&lt;/DEPTNO&gt;
+<A NAME="1005178"></A>    &lt;DEPTNAME&gt;Sports&lt;/DEPTNAME&gt;
+<A NAME="1005179"></A>    &lt;DEPTADDR&gt;
+<A NAME="1005180"></A>      &lt;STREET&gt;100 Redwood Shores Pkwy&lt;/STREET&gt;
+<A NAME="1005181"></A>      &lt;CITY&gt;Redwood Shores&lt;/CITY&gt;
+<A NAME="1005182"></A>      &lt;STATE&gt;CA&lt;/STATE&gt;
+<A NAME="1005183"></A>      &lt;ZIP&gt;94065&lt;/ZIP&gt;
+<A NAME="1005184"></A>    &lt;/DEPTADDR&gt;
+<A NAME="1005185"></A>   <STRONG CLASS="Bold"> </STRONG>&lt;EMPLIST&gt;
+<A NAME="1005186"></A>      &lt;EMPLIST_ITEM num="1"&gt;
+<A NAME="1005187"></A>         &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1005188"></A>         &lt;ENAME&gt;John&lt;/ENAME&gt;
+<A NAME="1005189"></A>         &lt;SALARY&gt;10000&lt;/SALARY&gt;
+<A NAME="1005190"></A>         &lt;EMPADDR&gt;
+<A NAME="1005191"></A>           &lt;STREET&gt;300 Embarcadero&lt;/STREET&gt;
+<A NAME="1005192"></A>           &lt;CITY&gt;Palo Alto&lt;/CITY&gt;
+<A NAME="1005193"></A>           &lt;STATE&gt;CA&lt;/STATE&gt;
+<A NAME="1005194"></A>           &lt;ZIP&gt;94056&lt;/ZIP&gt;
+<A NAME="1005195"></A>         &lt;/EMPADDR&gt;
+<A NAME="1005196"></A>      &lt;/EMPLIST_ITEM&gt;
+<A NAME="1005197"></A>       &lt;!-- additional employee types within the employee list --&gt;
+<A NAME="1005198"></A>    &lt;/EMPLIST&gt;
+<A NAME="1005199"></A>  &lt;/ROW&gt;
+<A NAME="1005200"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1005201"></A>&lt;/ROWSET&gt;
+<A NAME="1007239"></A>
+</PRE>
+  <A NAME="1005203"></A> 
+  <P CLASS="BP"> As in the last example, the mapping is canonical -- &lt;<EM CLASS="Italic">ROWSET&gt;</EM> 
+    contains &lt;<EM CLASS="Italic">ROW&gt;</EM>'s which contain elements corresponding 
+    to columns. And as before, the elements corresponding to scalar type columns 
+    simply contain the data from the column. </P>
+  <A NAME="1014176"></A> 
+  <P CLASS="BP"> Things get a touch more complex with elements corresponding to 
+    a complex type column. For example, the &lt;<EM CLASS="Italic">DEPTADDR&gt;</EM> 
+    corresponds to the DEPTADDR column which is of an object type <STRONG CLASS="Bold">ADDRESS</STRONG>; 
+    consequently, the <EM CLASS="Italic">&lt;DEPTADDR&gt;</EM> contains sub-elements 
+    corresponding to the attributes specified in the type <STRONG CLASS="Bold">ADDRESS</STRONG>. 
+    In turn, these sub-elements can contain the actual data, or they can contain 
+    sub-elements of their own, again depending if the attribute they correspond 
+    to is of a simple type or a complex type. </P>
+  <A NAME="1014168"></A> 
+  <P CLASS="BP"> When dealing with elements corresponding to database collections, 
+    things are yet different. Specifically, the &lt;EMPLIST&gt; element corresponds 
+    to the EMPLIST column which is of a <STRONG CLASS="Bold">EmployeeListType 
+    </STRONG>collection type; consequently, the &lt;EMPLIST&gt; element contains 
+    a list of &lt;EMPLIST_ITEM&gt; elements each corresponding to one of the elements 
+    of the collection. </P>
+  <A NAME="1014920"></A> 
+  <P CLASS="BP"> Other observations to make about the above mapping are: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014921"></A>The &lt;ROW&gt; elements 
+      contains a cardinality attribute "num". 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014922"></A> If a particular column 
+      or attribute value is null, then for that row, the corresponding XML element 
+      is left out alltogether. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015167"></A>If a top level scalar column 
+      name starts with the '@' character, then the particular column is mapped 
+      to an XML attribute instead of an XML element. 
+      <P> 
+  </UL>
+  <A NAME="1015169"></A> <!--TOC=h2-"1015169"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Customizing 
+    the Generated XML</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1015170"></A> 
+  <P CLASS="BP"> Often, one needs to generate XML which has a specific structure. 
+    Since the desired structure might very well differ from the default structure 
+    of the generated XML document, it is extremely desirable to have some flexibility 
+    in this process. </P>
+  <A NAME="1014958"></A> 
+  <P CLASS="BP"> The ways in which one can go about customizing the structure 
+    of a generated XML document fall in one of three categories. </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014959"></A>Source Customization 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014977"></A>Mapping Customization 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1014983"></A>Post-Generation Customization 
+      <P> 
+  </UL>
+  <A NAME="1015035"></A> <!--TOC=h3-"1015035"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Source 
+    Customization</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1015057"></A> 
+  <P CLASS="BP"> This category incompases customizations done by altering the 
+    query or the database schema. Among the simplest and the most powerful source 
+    customizations are: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015058"></A>over the database schema, 
+      create an object-relational view which maps to the desired XML document 
+      structure. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015061"></A>in your query, use cursor 
+      subqueries, or cast-multiset constructs to get nesting in the XML document 
+      which comes from a flat schema. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015084"></A>in your query, alias column/attribute 
+      names to get the desired XML element names. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015092"></A>in your query, alias top 
+      level scalar type columns with identifiers which begin with a '@' to have 
+      them map to an XML attribute instead of an XML element (e.g. 'select empno 
+      as "@empno", ... from emp' will result in an XML document where the &lt;ROW&gt; 
+      element has an attribute EMPNO) 
+      <P> 
+  </UL>
+  <A NAME="1014990"></A> <!--TOC=h3-"1014990"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Mapping 
+    Customization</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1015110"></A> 
+  <P CLASS="BP"> The XML-SQL Utilty allows one to tweak the mapping the XSU uses 
+    to transform SQL data into XML. Following is the list of possible tweaks: 
+  </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015111"></A>change or omit the &lt;ROWSET&gt; 
+      tag. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015115"></A> change or omit the &lt;ROW&gt; 
+      tag. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015116"></A>omit or change the attribue 
+      "num", the cardinality attribute of the &lt;ROW&gt; element. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015117"></A>specify the case for the 
+      generated XML element names. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015123"></A>specify that XML elements 
+      corresponding to the elements of a collection should have a cardinality 
+      attribute. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015124"></A>specify the format for the 
+      dates in the XML document. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015141"></A>specify that null values 
+      in the XML document should be indicated using a nullness attribute, rather 
+      then by omission of the element. 
+      <P> 
+  </UL>
+  <A NAME="1015125"></A> <!--TOC=h3-"1015125"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Post-Generation 
+    Customization</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1015131"></A> 
+  <P CLASS="BP"> Finally, if the desired customization can not be achieved with 
+    the methods described above, one can write an XSL Transformation and register 
+    it with the XSU. While there is an XSLT registered with the XSU, the XSU will 
+    apply the XSLT to any XML it generates </P>
+  <A NAME="1015224"></A> <!--TOC=h2-"1015224"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Default 
+    XML to SQL Mapping</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1015225"></A> 
+  <P CLASS="BP"> XML to SQL mapping is pretty much just the reverse of the SQL 
+    to XML mapping (see: <A HREF="xsu_userguide.html#1014886">Default SQL to XML Mapping</a>). 
+    Following are differences to consider: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015226"></A>When going from XML to SQL 
+      the XML attributes are ignored; thus, there is really no mapping of XML 
+      attributes to SQL. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015227"></A>When going from SQL to XML 
+      we really map from the resultset created by the SQL query to XML. This way 
+      the query can span multiple database tables/views and what gets formed is 
+      a single resultset which is then converted into XML. This, abviously, is 
+      not the case when going from XML to SQL; consequently, in order to insert 
+      one XML document into multiple tables/views, one needs to create an object-relational 
+      view over the target schema. Finally, if the view is not updatable, one 
+      can get around this using instead-of insert triggers. 
+      <P> 
+  </UL>
+  <A NAME="1015243"></A> 
+  <P CLASS="BP"> If the XML document doesn't perfectly map into the target database 
+    schema, there are three things you can do about it: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015323"></A><STRONG CLASS="Bold">Modify 
+      the Target. </STRONG>Create an object-relational view over the target schema, 
+      and make the view the new target. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015456"></A><STRONG CLASS="Bold">Modify 
+      the XML Document.</STRONG> Use XSLT to transform the XML document. The XSLT 
+      can be registered with the XSU so that the incoming XML is automatically 
+      transformed, before any mapping attempts are made. Note that this is not 
+      the most performant solution. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1015260"></A><STRONG CLASS="Bold">Tweak 
+      XSU's XML to SQL Mapping.</STRONG> The XSU can be instructed to do case 
+      insensitive matching of the XML elements to database columns/attributes. 
+      <P> 
+      <UL>
+        <UL CLASS="LA3">
+          <LI CLASS="LA3" TYPE="SQUARE"><A NAME="1015253"></A>If not the default 
+            (ROW), the XSU can be specified the name of the element corresponding 
+            to a database row. 
+            <P> 
+          <LI CLASS="LA3" TYPE="SQUARE"><A NAME="1015493"></A>The XSU can be instructed 
+            what date format to use when parsing dates in the XML document. 
+            <P> 
+        </UL>
+      </UL>
+  </UL>
+  <A NAME="1014897"></A> <!--TOC=h1-"1014897"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> How 
+    XML-SQL Utility Works</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1015516"></A> 
+  <P CLASS="BP"> This section provides you with insight into the way XSU works. 
+  </P>
+  <A NAME="1015523"></A> <!--TOC=h2-"1015523"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Select</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1015527"></A> 
+  <P CLASS="BP"> XSU generation is quite simple. SQL queries are executed and 
+    the resultset is retreived from the database. Metadata about the resultset 
+    is aquired and analized. Then using the mapping described in <A HREF="xsu_userguide.html#1014886">Default 
+    SQL to XML Mapping</a>, the SQL resultset is processed and converted into 
+    an XML Document. </P>
+  <A NAME="1005204"></A> <!--TOC=h2-"1005204"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Insert</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006636"></A> 
+  <P CLASS="BP"> To insert the contents of an XML document into a particular table/view 
+    the XSU first retreives the metadata about the target table/view. Based on 
+    the metadata the XSU generates a SQL insert statement. Next XSU extracts the 
+    data out of the XML document and binds it to the appropriate columns/attributes. 
+    Finally the statement is executed. </P>
+  <A NAME="1015549"></A> 
+  <P CLASS="BP"> For example, assume that the target table is <STRONG CLASS="Bold">dept</STRONG> 
+    and the XML document is the one generated from <STRONG CLASS="Bold">dept</STRONG> 
+    (see: <A HREF="xsu_userguide.html#1014886">Default SQL to XML Mapping</a>). XSU 
+    would generate the following insert statement. </P>
+  <PRE CLASS="CE1">
+<A NAME="1005208"></A>INSERT INTO Dept (DEPTNO, DEPTNAME, DEPTADDR, EMPLIST) VALUES (?,?,?,?)
+<A NAME="1012744"></A>
+</PRE>
+  <A NAME="1012741"></A> 
+  <P CLASS="BP"> Next, the XSU would parse the XML document, and for each record, 
+    it would bind the appropriate values to the appropriate columns/attributes 
+    and execute the statement: </P>
+  <PRE CLASS="CE1">
+<A NAME="1012747"></A>DEPTNO &lt;- 100
+<A NAME="1012748"></A>DEPTNAME &lt;- SPORTS
+<A NAME="1012749"></A>DEPTADDR &lt;- AddressType('100 Redwood Shores Pkwy','Redwood Shores',
+<A NAME="1005212"></A>                        'CA','94065')
+<A NAME="1005213"></A>
+<A NAME="1005214"></A>EMPLIST &lt;- EmployeeListType(EmployeeType(7369,'John',100000,
+<A NAME="1005215"></A>            AddressType('300 Embarcadero','Palo Alto','CA','94056'),...)
+<A NAME="1005216"></A>
+</PRE>
+  <A NAME="1006632"></A> 
+  <P CLASS="BP"> The insert processing can be optimized to insert in batches, 
+    and commit in batches. More detail on batching can be found in the section 
+    on <A HREF="xsu_userguide.html#1005684">"Insert Processing"</a>. </P>
+  <A NAME="1005218"></A> <!--TOC=h2-"1005218"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Update 
+    </FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006635"></A> 
+  <P CLASS="BP"> Updates and deletes differ from insert in that they can affect 
+    more than one row in the database table. In the case of insert, each ROW element 
+    of the XML document can affect at most one row in the table, provided that 
+    there are no triggers or constraints on the table. However, in the case of 
+    updates and deletes, the XML element might match more than one row if the 
+    matching columns are not key columns in the table. </P>
+  <A NAME="1005219"></A> 
+  <P CLASS="BP"> In the case of updates, you are expected to provide a list of 
+    key columns which the XSU will use to identify the row to update. For example, 
+    to update the DEPTNAME to SportsDept instead of Sports, you can have an XML 
+    document such as, </P>
+  <PRE CLASS="CE1">
+<A NAME="1005220"></A>&lt;ROWSET&gt;
+<A NAME="1005221"></A>	&lt;ROW num="1"&gt;
+<A NAME="1005222"></A> 	  &lt;DEPTNO&gt;100&lt;/DEPTNO&gt;
+<A NAME="1005223"></A>    &lt;DEPTNAME&gt;SportsDept&lt;/DEPTNAME&gt;
+<A NAME="1005224"></A>  &lt;/ROW&gt;
+<A NAME="1005225"></A>&lt;/ROWSET&gt;
+<A NAME="1006643"></A>
+</PRE>
+  <A NAME="1005226"></A> 
+  <P CLASS="BP"> and supply the DEPTNO as the key column. This would fire off 
+    the following update statement: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005227"></A>UPDATE DEPT SET DEPTNAME = ? WHERE DEPTNO = ? 
+<A NAME="1012767"></A>
+</PRE>
+  <A NAME="1005228"></A> 
+  <P CLASS="BP"> and bind the values, </P>
+  <PRE CLASS="CE1">
+<A NAME="1005229"></A>DEPTNO &lt;- 100
+<A NAME="1005230"></A>DEPTNAME &lt;- SportsDept
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005231"></A>
+</PRE>
+  <A NAME="1005232"></A> 
+  <P CLASS="BP"> In the update case, you can also choose to update only a set 
+    of columns and not all the elements present in the XML document. See also, 
+    <A HREF="xsu_userguide.html#1005748">"Update Processing"</a> <A HREF="xsu_userguide.html#1005748"></a>. 
+  </P>
+  <A NAME="1005233"></A> <!--TOC=h2-"1005233"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Delete</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006648"></A> 
+  <P CLASS="BP"> In the case of deletes, you can choose to give a set of key columns 
+    for the delete to identify the rows. If the set of key columns are not given, 
+    then the delete statement will try to match all the columns given in the document. 
+    Given a document such as: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005234"></A>&lt;ROWSET&gt;
+<A NAME="1005235"></A>	&lt;ROW num="1"&gt;
+<A NAME="1005236"></A> 	  &lt;DEPTNO&gt;100&lt;/DEPTNO&gt;
+<A NAME="1005237"></A>    &lt;DEPTNAME&gt;Sports&lt;/DEPTNAME&gt;
+<A NAME="1005238"></A>    &lt;DEPTADDR&gt;
+<A NAME="1005239"></A>      &lt;STREET&gt;100 Redwood Shores Pkwy&lt;/STREET&gt;
+<A NAME="1005240"></A>      &lt;CITY&gt;Redwood Shores&lt;/CITY&gt;
+<A NAME="1005241"></A>      &lt;STATE&gt;CA&lt;/STATE&gt;
+<A NAME="1005242"></A>      &lt;ZIP&gt;94065&lt;/ZIP&gt;
+<A NAME="1005243"></A>    &lt;/DEPTADDR&gt;
+<A NAME="1005244"></A>  &lt;/ROW&gt;
+<A NAME="1005245"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1005246"></A>&lt;/ROWSET&gt;
+<A NAME="1006653"></A>
+</PRE>
+  <A NAME="1005247"></A> 
+  <P CLASS="BP"> to delete, the utility will fire off a delete statement (one 
+    per ROW element) which would look like the following: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005248"></A>DELETE FROM Dept WHERE DEPTNO = ? AND DEPTNAME = ? AND DEPTADDR = ?
+<A NAME="1005249"></A>binding,
+<A NAME="1005250"></A>DEPTNO &lt;- 100
+<A NAME="1005251"></A>DEPTNAME &lt;- Sports
+<A NAME="1005252"></A>DEPTADDR &lt;-  AddressType('100 Redwood Shores Pkwy','Redwood 
+City','CA','94065')
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005253"></A>
+</PRE>
+  <A NAME="1014446"></A> 
+  <P CLASS="BP"> See also, <A HREF="xsu_userguide.html#1005814">"Delete Processing"</a> 
+    <A HREF="xsu_userguide.html#1005814"></a>. </P>
+  <A NAME="1014450"></A> <!--TOC=h1-"1014450"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Using 
+    the XSU Command Line Front End</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1014451"></A> 
+  <P CLASS="BP"> XSU comes with a simple command line front-end which gives user 
+    a quick access to XSU's XML generation and XML insertion functionality. At 
+    this point, the XSU front end does not publish the update and delete functionalities 
+    of the XSU. </P>
+  <A NAME="1012784"></A> 
+  <P CLASS="BP"> The command line options are provided through the java class 
+    <CODE>OracleXML</CODE>. Invoke it by calling: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005258"></A>java OracleXML
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005259"></A>
+</PRE>
+  <A NAME="1005260"></A> 
+  <P CLASS="BP"> The above call will result the front-end usage information to 
+    be printed. </P>
+  <A NAME="1012793"></A> 
+  <P CLASS="BP"> To be able to run the XSU front-end, you first need to specify 
+    where is the executable located. To do this add the XSU java library (xsu12.jar 
+    or xsu111.jar) to your CLASSPATH. </P>
+  <A NAME="1012794"></A> 
+  <P CLASS="BP"> Now, since the XSU has a dependency on the Oracle XML Parser 
+    and the JDBC drivers, for the XSU to run, you need to make the location of 
+    these components also known. To do this, your CLASSPATH needs to include the 
+    locations of the Oracle XML Parser java library (xmlparserv2.jar) and the 
+    JDBC library (classes12.jar if using xsu12.jar or classes111.jar if using 
+    xsu111.jar). </P>
+  <A NAME="1005267"></A> <!--TOC=h1-"1005267"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Generating 
+    XML using XSU's Front-End</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005268"></A> 
+  <P CLASS="BP"> To use the generation capabilities, call XSU with the <EM CLASS="Italic">getXML 
+    </EM>parameter. For example, to generate an XML document by querying the <EM CLASS="Italic">emp</EM> 
+    table under <EM CLASS="Italic">scott </EM>schema, </P>
+  <PRE CLASS="CE">
+<A NAME="1005269"></A>java OracleXML getXML -user "scott/tiger" "select * from emp"
+
+<PRE CLASS="CE1">
+<A NAME="1005270"></A>
+</PRE>
+</PRE>
+  <A NAME="1005271"></A> 
+  <P CLASS="BP"> This performs the following tasks: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006733"></A>Connects to the current 
+      default database 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006734"></A>Executes the query "select 
+      * from emp" 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006735"></A>Converts the result to XML 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006741"></A>Displays the result 
+      <P> 
+  </UL>
+  <A NAME="1006740"></A> 
+  <P CLASS="BP"> getXML supports a wide range of options which are explained in 
+    the following section. </P>
+  <A NAME="1005272"></A> <!--TOC=h2-"1005272"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> OracleXML 
+    - getXML Options</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1013289"></A> 
+  <P CLASS="BP"> <A HREF="xsu_userguide.html#1013210">Table&nbsp;4-1</a> lists the OracleXML 
+    -getXML options: </P>
+  <A NAME="1013171"></A> 
+  <P CLASS="BP"> 
+  <H5 CLASS="TTW"><FONT FACE="Helvetica,Arial,sans-serif"><EM> <A NAME="1013210"></A> 
+    <STRONG><FONT FACE="Arial, Helvetica, sans-serif"><EM>Table 4-1 &#32;OracleXML 
+    -getXML Options</EM></FONT></STRONG> </EM></FONT></H5>
+  <TABLE CLASS="HRuleFormalWide" BORDER="1" FRAME="HSIDES" RULES="ROWS" WIDTH="100%" CELLPADDING="3" CELLSPACING="0">
+    <THEAD> 
+    <TR CLASS="Formal"> 
+      <TH CLASS="Formal" align="left" valign="bottom"> <A NAME="1013214"></A> 
+        <FONT FACE="Arial, Helvetica, sans-serif"><STRONG>-getXML Option</STRONG></FONT>&nbsp;</TH>
+      <TH CLASS="Formal" align="left" valign="bottom"> <A NAME="1013216"></A> 
+        <FONT FACE="Arial, Helvetica, sans-serif"><STRONG>Description</STRONG></FONT>&nbsp;</TH>
+    </TR>
+    <TBODY> 
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013218"></A> 
+        <P CLASS="TB"> -user "&lt;username&gt;/&lt;password&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013220"></A> 
+        <P CLASS="TB"> Used to specify the user name and password to connect to 
+          the database. If this is not specified, the user defaults to "scott/tiger". 
+          Note that he connect string is also being specified, the user name and 
+          password can be specified as part of the connect string.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013222"></A> 
+        <P CLASS="TB"> -conn "&lt;JDBC_connect_string&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013224"></A> 
+        <P CLASS="TB"> Used to specify the JDBC database connect string. By default 
+          the connect string is: "jdbc:oracle:oci8:@"):&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013226"></A> 
+        <P CLASS="TB"> -withDTD&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013228"></A> 
+        <P CLASS="TB"> Instructs the XSU to generate the DTD along with the XML 
+          document.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013230"></A> 
+        <P CLASS="TB"> -rowsetTag "&lt;tag_name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013232"></A> 
+        <P CLASS="TB"> Used to specify rowset tag (i.e. the tag that encloses 
+          all the XML elements corresponding to the records returned by the query) 
+          The default rowset tag is ROWSET. Specifying an empty string for the 
+          rowset tells the xsu to completely omit the rowset element. &nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013234"></A> 
+        <P CLASS="TB"> -rowTag "&lt;tag_name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013236"></A> 
+        <P CLASS="TB"> Used to specify the row tag (the tag used to enclose the 
+          data coresponding to a database row). The default row tag is ROW. Specifying 
+          an empty string for the row tag tells the xsu to completely omit the 
+          row tag.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013238"></A> 
+        <P CLASS="TB"> -rowIdAttr "&lt;row_id-attribute-name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013240"></A> 
+        <P CLASS="TB"> Used to name the attribute of the ROW element keeping track 
+          of the cardinality of the rows. By default this attribute is called 
+          "num". Specifying an empty string (i.e. "") as the row id attribute 
+          will tell the XSU to omit the attribute.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013242"></A> 
+        <P CLASS="TB"> -rowIdColumn "&lt;row Id column name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013244"></A> 
+        <P CLASS="TB"> Used to specify that the value of one of the scalar columns 
+          from the query should be used as the value of the row id attribute.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013246"></A> 
+        <P CLASS="TB"> -collectionIdAttr "&lt;collection id attribute name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013248"></A> 
+        <P CLASS="TB"> Used to name the attribute of a XML list element keeping 
+          track of the cardinality of the elements of the list (note: the generated 
+          XML lists correspond to either a cursor query, or collection). Specifying 
+          an empty string (i.e. "") as the row id attribute will tell the XSU 
+          to omit the attribute..&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013250"></A> 
+        <P CLASS="TB"> -useNullAttrId&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013252"></A> 
+        <P CLASS="TB"> Used to tell the XSU to use the attribute "NULL (TRUE/FALSE)" 
+          to indicate the nullness of an element.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013254"></A> 
+        <P CLASS="TB"> -styleSheet "&lt;stylesheet URI&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013256"></A> 
+        <P CLASS="TB"> Used to specify the stylesheet in the XML PI (Processing 
+          Instruction).&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013258"></A> 
+        <P CLASS="TB"> -stylesheetType "&lt;stylesheet type&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013260"></A> 
+        <P CLASS="TB"> Used to specify the stylesheet type in the XML PI (Processing 
+          Instruction).&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013262"></A> 
+        <P CLASS="TB"> -errorTag "&lt;error tag name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013264"></A> 
+        <P CLASS="TB"> Used to specify the error tag -- the tag to enclose error 
+          messages which are formated into XML.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013266"></A> 
+        <P CLASS="TB"> -raiseNoRowsException&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013268"></A> 
+        <P CLASS="TB"> Used to tell the XSU to raise an exception if no rows are 
+          returned.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013270"></A> 
+        <P CLASS="TB"> -maxRows "&lt;maximum number of rows&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013272"></A> 
+        <P CLASS="TB"> Used to specify the maximum number of rows to be retreived 
+          and converted to XML.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013274"></A> 
+        <P CLASS="TB"> -skipRows "&lt;number of rows to skip&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013276"></A> 
+        <P CLASS="TB"> Used to specify the number of rows to be skipped.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013278"></A> 
+        <P CLASS="TB"> -encoding "&lt;encoding name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013280"></A> 
+        <P CLASS="TB"> Used to specify the characterset encoding of the generated 
+          XML.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013282"></A> 
+        <P CLASS="TB"> -dateFormat "&lt;date format&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013284"></A> 
+        <P CLASS="TB"> Used to specify the date format for the date values in 
+          the XML document.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013286"></A> 
+        <P CLASS="TB"> -fileName "&lt;SQL query fileName&gt;" | &lt;sql query&gt;&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013288"></A> 
+        <P CLASS="TB"> Used to specify the file name which contains the query 
+          or specify the query itself.&nbsp; 
+      </TD>
+    </TR>
+  </TABLE>
+  <TABLE CLASS="TableNote" WIDTH="100%" CELLPADDING="3" CELLSPACING="0">
+    <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+      <TD CLASS="TableNote"> </TD>
+    </TR>
+  </TABLE>
+  <p></P>
+  <A NAME="1005308"></A> <!--TOC=h1-"1005308"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Inserting 
+    XML using the XSU Front End</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005309"></A> 
+  <P CLASS="BP"> To put an XML document in to the <EM CLASS="Italic">emp</EM> 
+    table under <EM CLASS="Italic">scott </EM>schema, use the following syntax: 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1005310"></A>java OracleXML putXML -user "scott/tiger" -fileName "/tmp/temp.xml" "emp"
+<A NAME="1005311"></A>
+</PRE>
+  <A NAME="1005312"></A> 
+  <P CLASS="BP"> This performs the following tasks: </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006719"></A>Connects to the current 
+      database 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006720"></A>Reads the XML document from 
+      the given file 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006721"></A>Parses it, matches the tags 
+      with column names 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006722"></A>Inserts the values appropriately 
+      in to the "emp" table 
+      <P> 
+      <A NAME="1005313"> 
+      <DIV ALIGN="CENTER"> 
+        <P> 
+        <TABLE CLASS="Note" BORDER="0" WIDTH="80%" CELLPADDING="0" CELLSPACING="0">
+          <TR CLASS="Note"> 
+            <TD CLASS="Note"> 
+              <HR>
+              <A NAME="1006745"></A><FONT FACE="Arial, Helvetica, sans-serif"><STRONG CLASS="NH">Note:</STRONG></FONT> 
+              <A NAME="1006746"></A> 
+              <P CLASS="NB"> The XSU front end, putXML, currently only publishes 
+                XSU's insert functionality and may be expanded in the future to 
+                also publish XSU's update and delete functionality.&nbsp; 
+              <HR>
+            </TD>
+          </TR>
+        </TABLE>
+        <TABLE CLASS="TableNote" CELLPADDING="3" >
+          <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+            <TD CLASS="TableNote"> </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+      </A> 
+  </UL>
+  <A NAME="1005314"></A> <!--TOC=h2-"1005314"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> OracleXML 
+    - putXML Options</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006726"></A> 
+  <P CLASS="BP"> <A HREF="xsu_userguide.html#1013313">Table&nbsp;4-2</a> lists the putXML 
+    options: </P>
+  <A NAME="1013359"></A> 
+  <P CLASS="BP"> : 
+  <H5 CLASS="TTW"><FONT FACE="Helvetica,Arial,sans-serif"><EM> <A NAME="1013313"></A> 
+    <STRONG><FONT FACE="Arial, Helvetica, sans-serif"><EM>Table 4-2 &#32;OracleXML 
+    -putXML Options</EM></FONT></STRONG> </EM></FONT></H5>
+  <TABLE CLASS="HRuleFormalWide" BORDER="1" FRAME="HSIDES" RULES="ROWS" WIDTH="100%" CELLPADDING="3" CELLSPACING="0">
+    <THEAD> 
+    <TR CLASS="Formal"> 
+      <TH CLASS="Formal" align="left" valign="bottom"> <A NAME="1013317"></A> 
+        <FONT FACE="Arial, Helvetica, sans-serif"><STRONG>-putXML Options</STRONG></FONT>&nbsp;</TH>
+      <TH CLASS="Formal" align="left" valign="bottom"> <A NAME="1013319"></A> 
+        <FONT FACE="Arial, Helvetica, sans-serif"><STRONG>Description</STRONG></FONT>&nbsp;</TH>
+    </TR>
+    <TBODY> 
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013321"></A> 
+        <P CLASS="TB"> -user "&lt;username&gt;/&lt;password&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013323"></A> 
+        <P CLASS="TB"> Used to specify the user name and password to connect to 
+          the database. If this is not specified, the user defaults to "scott/tiger". 
+          Note that he connect string is also being specified, the user name and 
+          password can be specified as part of the connect string.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013325"></A> 
+        <P CLASS="TB"> -conn "&lt;JDBC_connect_string&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013327"></A> 
+        <P CLASS="TB"> Used to specify the JDBC database connect string. By default 
+          the connect string is: "jdbc:oracle:oci8:@"):&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013329"></A> 
+        <P CLASS="TB"> -batchSize "&lt;batching size&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013331"></A> 
+        <P CLASS="TB"> Used to specify the batch size, which control the number 
+          of rows which are batched together and inserted in a single trip to 
+          the database. Batching improves performance.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013333"></A> 
+        <P CLASS="TB"> -commitBatch "&lt;commit size&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013335"></A> 
+        <P CLASS="TB"> Used to specify the number of inserted records after which 
+          a commit is to be executed. Note that if the autocommit is true (default), 
+          then setting the commitBatch has no consequence.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013337"></A> 
+        <P CLASS="TB"> -rowTag "&lt;tag_name&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013339"></A> 
+        <P CLASS="TB"> Used to specify the row tag (the tag used to enclose the 
+          data coresponding to a database row). The default row tag is ROW. Specifying 
+          an empty string for the row tag tells the XSU that no row enclosing 
+          tag is used in the XML document.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013341"></A> 
+        <P CLASS="TB"> -dateFormat "&lt;date format&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013343"></A> 
+        <P CLASS="TB"> Used to specify the date format for the date values in 
+          the XML document.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013345"></A> 
+        <P CLASS="TB"> -ignoreCase&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013347"></A> 
+        <P CLASS="TB"> Used to make the matching of the column names with tag 
+          names case insensitive (e.g. "EmpNo" will match with "EMPNO" if ignoreCase 
+          is on).&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013349"></A> 
+        <P CLASS="TB"> -fileName "&lt;file name&gt;" | -URL "&lt;url&gt;" | -xmlDoc 
+          "&lt;xml document&gt;"&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013351"></A> 
+        <P CLASS="TB"> Used to specify the XML document to insert. The fileName 
+          option specifies a local file, the URL specifies a URL to fetch the 
+          document from and the xmlDoc option inlines the XML document as a string 
+          on the command line.&nbsp; 
+      </TD>
+    </TR>
+    <TR CLASS="Formal" ALIGN="LEFT" VALIGN="TOP"> 
+      <TD CLASS="Formal"> <A NAME="1013353"></A> 
+        <P CLASS="TB"> &lt;tableName&gt;&nbsp; 
+      </TD>
+      <TD CLASS="Formal"> <A NAME="1013355"></A> 
+        <P CLASS="TB"> The name of the table to put the values into.&nbsp; 
+      </TD>
+    </TR>
+  </TABLE>
+  <TABLE CLASS="TableNote" WIDTH="100%" CELLPADDING="3" CELLSPACING="0">
+    <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+      <TD CLASS="TableNote"> </TD>
+    </TR>
+  </TABLE>
+  <p></P>
+  <A NAME="1005334"></A> <!--TOC=h1-"1005334"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Java API</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005335"></A> 
+  <P CLASS="BP"> The following two classes make up the XML-SQL Utility Java API: 
+  </P>
+  <UL CLASS="LB1">
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006676"></A><CODE><a href="../javadoc/oracle/xml/sql/query/OracleXMLQuery.html">oracle.xml.sql.query.OracleXMLQuery</a></CODE> 
+      -- API to the XML generation side of the XSU. 
+      <P> 
+    <LI CLASS="LB1" TYPE="DISC"><A NAME="1006674"></A><a href="../javadoc/oracle/xml/sql/dml/OracleXMLSave.html"><CODE>oracle.xml.sql.dml.OracleXMLSave</CODE></a> 
+      -- API to the save side (insert, update, delete) of the XSU 
+  </UL>
+</DIV>
+<DIV CLASS="IND">
+  <p>You can find the full Java API documentation <a href="../javadoc/index.html">here</a>.</p>
+</DIV>
+<DIV CLASS="IND"> </DIV>
+<DIV CLASS="IND">
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Generating 
+    XML</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005337"></A> 
+  <P CLASS="BP"> The <CODE>OracleXMLQuery</CODE> class makes up the XML generation 
+    part of the XSU's Java API. </P>
+  <A NAME="1006677"></A> 
+  <P CLASS="BP"> <A HREF="xsu_userguide.html#1006678">Figure&nbsp;4-3</a> illustrates 
+    the basic steps in the usage of OracleXMLQuery. </P>
+  <A NAME="1006696"></A> 
+  <P CLASS="BP"> Perform these steps when generating XML: </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1006697"></A>First create a connection 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1006698"></A>Create an <CODE>OracleXMLQuery</CODE> 
+      instance by supplying a SQL string or a <CODE>ResultSet</CODE> object 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="3"><A NAME="1006699"></A>Get the result as 
+      either a DOM tree or as an XML string 
+      <P> 
+  </OL>
+  <A NAME="1006678"></A> 
+  <H4 CLASS="FT"><FONT FACE="Arial, Helvetica, sans-serif"><EM>Figure 4-3 &#32;Generating 
+    XML With XML-SQL Utility for Java: Basic Steps</EM></FONT></H4>
+  <BR>
+  <A NAME="1008202"> <img src="images/adxml032.gif" height="120" width="600"alt="Text description of adxml032.gif follows"><A HREF="img_text/adxml032.htm"><br>
+  </A></A> 
+  <P CLASS="BP"> The following example, shows how a simple XML document can be 
+    generated. </P>
+  <A NAME="1005374"></A> <!--TOC=h2-"1005374"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU: 
+    Basic Generation of XML From SQL Queries</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005376"></A> 
+  <P CLASS="BP"> These examples illustrate how using the XSU you can get a XML 
+    document in its DOM or string representation given a SQL query. See <A HREF="xsu_userguide.html#1006768">Figure&nbsp;4-4</a>. 
+  </P>
+  <A NAME="1006768"></A> 
+  <H4 CLASS="FT"><FONT FACE="Arial, Helvetica, sans-serif"><EM>Figure 4-4 &#32;Generating 
+    XML With the XML-SQL Utility: Process and Options</EM></FONT></H4>
+  <BR>
+  <A NAME="1006772"> <img src="images/adxml014.gif" height="328" width="608"alt="Text description of adxml014.gif follows"><A HREF="img_text/adxml014.htm"><br>
+  </A></A> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 1: Generating a String From emp table</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005378"></A> 
+  <P CLASS="BP"> The first step before getting the XML is to create a connection 
+    to the database. The connection can be obtained by supplying the JDBC connect 
+    string. You have to first <EM CLASS="Italic">register </EM>the Oracle JDBC 
+    class and then create the connection. </P>
+  <PRE CLASS="CE1">
+<A NAME="1005379"></A>// import the Oracle driver..
+<A NAME="1005380"></A>import oracle.jdbc.driver.*;
+<A NAME="1005381"></A>
+<A NAME="1005382"></A>// Load the Oracle JDBC driver
+<A NAME="1005383"></A>DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());     
+<A NAME="1005384"></A>// Create the connection.
+<A NAME="1005385"></A>Connection conn =   
+<A NAME="1005386"></A> DriverManager.getConnection("jdbc:oracle:oci8:@","scott","tiger");
+<A NAME="1006780"></A>
+</PRE>
+  <A NAME="1005387"></A> 
+  <P CLASS="BP"> Here, the connection is done using the OCI8 JDBC driver. You 
+    can connect to the scott schema supplying the password <EM CLASS="Italic">tiger. 
+    </EM>It connects to the current database (identified by the ORA_SID environment 
+    variable). You can also use the JDBC thin driver to connect to the database. 
+    The thin driver is written in pure Java and can be called from within applets 
+    or any other Java program. </P>
+  <A NAME="1012335"> </A> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Connecting 
+    With the Thin Driver</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006782"></A> 
+  <P CLASS="BP"> Here's an example of connecting using the thin driver. </P>
+  <PRE CLASS="CE">
+<A NAME="1005388"></A>// Create the connection.
+<A NAME="1005389"></A>Connection conn =  
+<A NAME="1005390"></A>      DriverManager.getConnection("jdbc:oracle:thin:@dlsun489:1521:ORCL",
+<A NAME="1005391"></A>                                  "scott","tiger");
+
+<PRE CLASS="CE1">
+<A NAME="1007270"></A>
+</PRE>
+</PRE>
+  <A NAME="1005392"></A> 
+  <P CLASS="BP"> The thin driver requires the specification of the host name (<EM CLASS="Italic">dlsun489</EM>), 
+    port number (<EM CLASS="Italic">1521</EM>) and the oracle SID (<EM CLASS="Italic">ORCL)</EM>&nbsp;which 
+    identifies a specific Oracle instance on the machine. </P>
+  <A NAME="1005393"></A> <!--TOC=h3-"1005393"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> No 
+    Connection Needed When Run In the Server</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006785"></A> 
+  <P CLASS="BP"> In the case of writing server side Java code, i.e., code that 
+    will run inside the server, you need not establish a connection using a username 
+    and password, since the server-side internal driver runs within a default 
+    session. You are already "connected". In that case you call the <EM CLASS="Italic">defaultConnection() 
+    </EM>on the <EM CLASS="Italic">oracle.jdbc.driver.OracleDriver() </EM>class 
+    to get the current connection. </P>
+  <PRE CLASS="CE">
+<A NAME="1005394"></A>import oracle.jdbc.driver.*;
+<A NAME="1005395"></A>
+<A NAME="1005396"></A>// Load the Oracle JDBC driver
+<A NAME="1005397"></A>DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());     
+<A NAME="1005398"></A>Connection conn =  new oracle.jdbc.driver.OracleDriver ().defaultConnection ();
+<A NAME="1005399"></A>
+</PRE>
+  <A NAME="1005400"></A> 
+  <P CLASS="BP"> The rest of the notes will either assume the OCI8 connection 
+    from the client or that you already have a connection object created. Use 
+    the appropriate connection creation based on your needs. </P>
+  <A NAME="1005401"></A> <!--TOC=h3-"1005401"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Creating 
+    an OracleXMLQuery Class Instance</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006788"></A> 
+  <P CLASS="BP"> Once you have registered your connection, create an OracleXMLQuery 
+    class instance by supplying a SQL query to execute, </P>
+  <PRE CLASS="CE">
+<A NAME="1005402"></A>// import the query class in to your class
+<A NAME="1005403"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1005404"></A>
+<A NAME="1005405"></A>OracleXMLQuery qry = new OracleXMLQuery (conn, "select * from emp");
+
+<PRE CLASS="CE1">
+<A NAME="1007271"></A>
+</PRE>
+</PRE>
+  <A NAME="1005407"></A> 
+  <P CLASS="BP"> You are now ready to use the query class. </P>
+  <A NAME="1006793"></A> <!--TOC=h4-"1006793"--> 
+  <H5 CLASS="H4"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML 
+    String Output:</FONT></H5>
+  <!--/TOC=h4--> <A NAME="1006794"></A> 
+  <P CLASS="BP"> You can get a XML string for the result by: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005408"></A>String xmlString = qry.getXMLString();
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005409"></A>
+</PRE>
+  <A NAME="1005410"></A> <!--TOC=h4-"1005410"--> 
+  <H5 CLASS="H4"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> DOM 
+    Object Output:</FONT></H5>
+  <!--/TOC=h4--> <A NAME="1006795"></A> 
+  <P CLASS="BP"> If, instead of a string, you wanted a DOM object instead, you 
+    can simply ask for a DOM output, </P>
+  <PRE CLASS="CE1">
+<A NAME="1005411"></A>org.w3c.DOM.Document domDoc = qry.getXMLDOM();
+<A NAME="1006796"></A>
+</PRE>
+  <A NAME="1005412"></A> 
+  <P CLASS="BP"> and use the DOM traversals. </P>
+  <A NAME="1005413"></A> 
+  <P CLASS="BP"> Here's a complete listing of the program to extract the XML string. 
+    This program gets the string and prints it out to the standard output. </P>
+  <PRE CLASS="CE">
+<A NAME="1008217"></A>Import oracle.jdbc.driver.*;
+<A NAME="1008218"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1008219"></A>import java.lang.*;
+<A NAME="1008220"></A>import java.sql.*;
+<A NAME="1008221"></A>
+<A NAME="1008222"></A>// class to test the String generation!
+<A NAME="1008223"></A>class testXMLSQL {
+<A NAME="1008224"></A>
+<A NAME="1008225"></A>   public static void main(String[] argv)
+<A NAME="1008226"></A>   {
+<A NAME="1008227"></A>
+<A NAME="1008228"></A>     try{
+<A NAME="1008229"></A>      // create the connection
+<A NAME="1008230"></A>      Connection conn  = getConnection("scott","tiger");
+<A NAME="1008231"></A>
+<A NAME="1008232"></A>      // Create the query class.
+<A NAME="1008233"></A>      OracleXMLQuery qry = new OracleXMLQuery(conn, "select * from emp");
+<A NAME="1008234"></A>
+<A NAME="1008235"></A>      // Get the XML string
+<A NAME="1008236"></A>      String str = qry.getXMLString();
+<A NAME="1008237"></A>
+<A NAME="1008238"></A>      // Print the XML output
+<A NAME="1008239"></A>      System.out.println(" The XML output is:\n"+str);
+<A NAME="1008240"></A>      // Always close the query to get rid of any resources..
+<A NAME="1008241"></A>     qry.close();
+<A NAME="1008242"></A>     }catch(SQLException e){
+<A NAME="1008243"></A>      System.out.println(e.toString());
+<A NAME="1008244"></A>     }
+<A NAME="1008245"></A>   }
+<A NAME="1008246"></A>
+<A NAME="1008247"></A>   // Get the connection given the user name and password..!
+<A NAME="1008248"></A>   private static Connection getConnection(String username, String password)
+<A NAME="1008249"></A>     throws SQLException
+<A NAME="1008250"></A>   {
+<A NAME="1008251"></A>      // register the JDBC driver..
+<A NAME="1008252"></A>       DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008253"></A>
+<A NAME="1008254"></A>
+<A NAME="1008255"></A>      // Create the connection using the OCI8 driver
+<A NAME="1008256"></A>       Connection conn =
+<A NAME="1008257"></A>        DriverManager.getConnection("jdbc:oracle:oci8:@",username,password);
+<A NAME="1008258"></A>
+<A NAME="1008259"></A>      return conn;
+<A NAME="1008260"></A>   }
+<A NAME="1005452"></A>}
+</PRE>
+  <A NAME="1005453"></A> <!--TOC=h3-"1005453"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> How 
+    to Run This Program?</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006801"></A> 
+  <P CLASS="BP"> To run this program, carry out the following: </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1006797"></A>Store this in a file 
+      called testXMLSQL.java 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1006798"></A>Compile it using 
+      <EM CLASS="Italic">javac</EM>-the Java compiler 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="3"><A NAME="1006799"></A>Eexecute it by specifying 
+      "<EM CLASS="Italic">java testXMLSQL</EM>" 
+      <P> 
+  </OL>
+  <A NAME="1006800"></A> 
+  <P CLASS="BP"> You must have the CLASSPATH pointing to this directory for the 
+    java executable to find the class. Alternatively use various visual Java tools 
+    including Oracle's JDeveloper to compile and run this program. </P>
+  <A NAME="1005454"></A> 
+  <P CLASS="BP"> When run, this program prints out the XML file to the screen. 
+  </P>
+  <A NAME="1005455"></A> <!--TOC=h2-"1005455"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 2: Generating DOM From emp table (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005456"></A> 
+  <P CLASS="BP"> A DOM (Document Object Model) is a standard defined by the W3C 
+    committee which represents an XML document in a parsed-tree like form. Each 
+    XML entity becomes a DOM node. Thus XML elements, attributes become DOM nodes 
+    and their children become child nodes. </P>
+  <A NAME="1005457"></A> 
+  <P CLASS="BP"> To generate a DOM tree from the XML generated by the utility, 
+    it is efficient to directly ask for a DOM Document from the utility, as it 
+    saves the overhead of creating a string representation of the document and 
+    then parse it to generate the DOM tree. </P>
+  <A NAME="1006809"></A> 
+  <P CLASS="BP"> XSU calls the parser to directly construct the DOM tree from 
+    the data values. The example is shown below to get the DOM tree. The example 
+    "walks" through the DOM tree and prints all the nodes one by one. </P>
+  <PRE CLASS="CE1">
+<A NAME="1008355"></A>import org.w3c.dom.*;
+<A NAME="1008356"></A>import oracle.xml.parser.v2.*;
+<A NAME="1008357"></A>import java.sql.*;
+<A NAME="1008358"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1008359"></A>import java.io.*;
+<A NAME="1008360"></A>
+<A NAME="1008361"></A> class domTest{
+<A NAME="1008362"></A>
+<A NAME="1008363"></A>   public static void main(String[] argv)
+<A NAME="1008364"></A>   {
+<A NAME="1008365"></A>      try{
+<A NAME="1008366"></A>      // create the connection
+<A NAME="1008367"></A>      Connection conn  = getConnection("scott","tiger");
+<A NAME="1008368"></A>
+<A NAME="1008369"></A>      // Create the query class.
+<A NAME="1008370"></A>      OracleXMLQuery qry = new OracleXMLQuery(conn, "select * from emp");
+<A NAME="1008371"></A>
+<A NAME="1008372"></A>      // Get the XML DOM object. The actual type is the Oracle Parser's DOM
+<A NAME="1008373"></A>      // representation. (XMLDocument)
+<A NAME="1008374"></A>      XMLDocument domDoc = (XMLDocument)qry.getXMLDOM();
+<A NAME="1008375"></A>
+<A NAME="1008376"></A>      // Print the XML output directly from the DOM
+<A NAME="1008377"></A>      domDoc.print(System.out);
+<A NAME="1008378"></A>
+<A NAME="1008379"></A>      // If you instead want to print it to a string buffer you can do 
+this..!
+<A NAME="1008380"></A>      StringWriter s = new StringWriter(10000);
+<A NAME="1008381"></A>      domDoc.print(new PrintWriter(s));
+<A NAME="1008382"></A>      System.out.println(" The string version ---&gt; "+s.toString());
+<A NAME="1008383"></A>
+<A NAME="1008384"></A>      qry.close(); // You should always close the query!!
+<A NAME="1008385"></A>      }catch(Exception e){
+<A NAME="1008386"></A>        System.out.println(e.toString());
+<A NAME="1008387"></A>      }
+<A NAME="1008388"></A>    }
+<A NAME="1008389"></A>
+<A NAME="1008390"></A>    // Get the connection given the user name and password..!
+<A NAME="1008391"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008392"></A>      throws SQLException
+<A NAME="1008393"></A>    {
+<A NAME="1008394"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008395"></A>      Connection conn =
+<A NAME="1008396"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008397"></A>     return conn;
+<A NAME="1008398"></A>   }
+<A NAME="1008349"></A>}
+<A NAME="1013540"></A>
+</PRE>
+  <A NAME="1008351"></A> <!--TOC=h1-"1008351"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Paginating 
+    Results: skipRows and maxRows</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005498"></A> 
+  <P CLASS="BP"> In the examples shown so far, the XML-SQL Utility (XSU) takes 
+    the ResultSet or the query and generates the whole document from all the rows 
+    of the query. For getting say, 100 rows at a time, the user would then have 
+    to fire off different queries to get the first 100 rows, the next 100 and 
+    so on. Also it is not possible to skip say the first 5 rows of the query and 
+    then generate the Result. For getting these desired results, use XSU's skipRows 
+    and maxRows settings. </P>
+  <A NAME="1005499"></A> 
+  <P CLASS="BP"> The skipRows parameter when set will force the generation to 
+    skip the desired number of rows before starting to generate the result. The 
+    maxRows on the other hand, would limit the number of rows that are converted 
+    to XML. If you set the skipRows to a value of 5 and maxRows to a value of 
+    10, then the utility would skip the first 5 rows, and then generate the XML 
+    for the next 10 rows. </P>
+  <A NAME="1005500"></A> <!--TOC=h3-"1005500"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Keeping 
+    the Object Open</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006812"></A> 
+  <P CLASS="BP"> In web scenarios, you might want to keep the query object open 
+    for the duration of the user's session. For example, take the case of a web 
+    search engine which gives the results of a user's search in a paginated fashion. 
+    The first page lists 10 results, the next page lists 10 more results and so 
+    on. To achieve this, ask the utility to convert 10 rows at a time and to keep 
+    the ResultSet state alive, so that the next time we ask it for more results, 
+    it will start generating from the place the last generation finished. </P>
+  <A NAME="1005501"></A> <!--TOC=h3-"1005501"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> When 
+    the Number of Rows or Columns in a Row Are Too Large</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006815"></A> 
+  <P CLASS="BP"> There is also the case that the number of rows, or the number 
+    of columns in a row may be very large. In this case, you can generate multiple 
+    documents each of a smaller size. </P>
+  <A NAME="1005502"></A> 
+  <P CLASS="BP"> These cases can be handled by using the maxRows parameter and 
+    using the keepObjectOpen functionality. </P>
+  <A NAME="1006818"></A> <!--TOC=h3-"1006818"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> keepObjectOpen 
+    Function</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1005503"></A> 
+  <P CLASS="BP"> Typically, as soon as all results are generated, OracleXMLQuery 
+    internally closes the ResultSet, if it created one using the SQL query string 
+    given, since it assumes you no longer want any more results. However, in the 
+    case described above, we need to maintain that state, so we need to call the 
+    keepObjectOpen function to keep the cursor alive. </P>
+  <A NAME="1005504"></A> <!--TOC=h2-"1005504"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 3. Paginating Results: Generating an XML Page When Called (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1007108"></A> 
+  <P CLASS="BP"> The following example, writes a simple class which maintains 
+    the state and generates the next page every time it is called. </P>
+  <PRE CLASS="CE">
+<A NAME="1008407"></A>import org.w3c.dom.*;
+<A NAME="1008408"></A>import oracle.xml.parser.v2.*;
+<A NAME="1008409"></A>import java.sql.*;
+<A NAME="1008410"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1008411"></A>import java.io.*;
+<A NAME="1008412"></A>public class pageTest
+<A NAME="1008413"></A>{
+<A NAME="1008414"></A>   Connection conn;
+<A NAME="1008415"></A>   OracleXMLQuery qry;
+<A NAME="1008416"></A>   ResultSet rset;
+<A NAME="1008417"></A>   Statement stmt;
+<A NAME="1008418"></A>   int lastRow = 0;
+<A NAME="1008419"></A>
+<A NAME="1008420"></A>   public pageTest(String sqlQuery)
+<A NAME="1008421"></A>   {
+<A NAME="1008422"></A>     try{
+<A NAME="1008423"></A>     conn  = getConnection("scott","tiger");
+<A NAME="1008424"></A>     //stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+<A NAME="1008425"></A>     //              ResultSet.CONCUR_READ_ONLY);// create a scrollable Rset     
+<A NAME="1008426"></A>     //stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+<A NAME="1008427"></A>     //              ResultSet.CONCUR_READ_ONLY);// create a scrollable Rset     
+<A NAME="1008428"></A>     stmt = conn.createStatement();
+<A NAME="1008429"></A>     ResultSet rset = stmt.executeQuery(sqlQuery);  // get the result set..
+<A NAME="1008430"></A>     rset.first();
+<A NAME="1008431"></A>     qry = new OracleXMLQuery(conn,rset);   // create a OracleXMLQuery instance
+<A NAME="1008432"></A>     qry.keepCursorState(true); // Don't lose state after the first fetch
+<A NAME="1008433"></A>     qry.setRaiseNoRowsException(true);
+<A NAME="1008434"></A>     qry.setRaiseException(true);
+<A NAME="1008435"></A>     }catch(SQLException e){
+<A NAME="1008436"></A>      System.out.println(e.toString());
+<A NAME="1008437"></A>     }
+<A NAME="1008438"></A>   }
+<A NAME="1008439"></A>  
+<A NAME="1008440"></A>   // Returns the next XML page..!
+<A NAME="1008441"></A>   public String getResult(int startRow, int endRow)  throws SQLException
+<A NAME="1008442"></A>   {
+<A NAME="1008443"></A>     //rset.relative(lastRow-startRow);  // scroll inside the result set
+<A NAME="1008444"></A>     //rset.absolute(startRow);  // scroll inside the result set
+<A NAME="1008445"></A>     qry.setMaxRows(endRow-startRow); // set the max # of rows to retrieve..!
+<A NAME="1008446"></A>     //System.out.println("before getxml");
+<A NAME="1008447"></A>     return qry.getXMLString();
+<A NAME="1008448"></A>   }
+<A NAME="1008449"></A>
+<A NAME="1008450"></A>   // Function to still perform the next page. 
+<A NAME="1008451"></A>   public String nextPage() throws SQLException
+<A NAME="1008452"></A>   {
+<A NAME="1008453"></A>     String result = getResult(lastRow,lastRow+10);
+<A NAME="1008454"></A>     lastRow+= 10;
+<A NAME="1008455"></A>     return result;
+<A NAME="1008456"></A>   }
+<A NAME="1008457"></A>
+<A NAME="1008458"></A>   public void close() throws SQLException
+<A NAME="1008459"></A>   {
+<A NAME="1008460"></A>     stmt.close();   // close the statement..
+<A NAME="1008461"></A>     conn.close();   // close the connection
+<A NAME="1008462"></A>     qry.close();    // close the query..
+<A NAME="1008463"></A>   }
+<A NAME="1008464"></A>  
+<A NAME="1008465"></A>   public static void main(String[] argv)
+<A NAME="1008466"></A>   {
+<A NAME="1008467"></A>     String str;
+<A NAME="1008468"></A>
+<A NAME="1008469"></A>     try{
+<A NAME="1008470"></A>     pageTest test = new pageTest("select e.* from emp e");
+<A NAME="1008471"></A>
+<A NAME="1008472"></A>     int i = 0;
+<A NAME="1008473"></A>     // Get the data one page at a time..!!!!!
+<A NAME="1008474"></A>     while ((str = test.getResult(i,i+10))!= null)
+<A NAME="1008475"></A>     {
+<A NAME="1008476"></A>         System.out.println(str);
+<A NAME="1008477"></A>         i+= 10;
+<A NAME="1008478"></A>     }
+<A NAME="1008479"></A>     test.close();
+<A NAME="1008480"></A>    }catch(Exception e){
+<A NAME="1008481"></A>     e.printStackTrace(System.out);
+<A NAME="1008482"></A>    }
+<A NAME="1008483"></A>   }
+<A NAME="1008484"></A> // Get the connection given the user name and password..!
+<A NAME="1008485"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008486"></A>      throws SQLException
+<A NAME="1008487"></A>    {
+<A NAME="1008488"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008489"></A>      Connection conn =
+<A NAME="1008490"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008491"></A>     return conn;
+<A NAME="1008492"></A>   }
+<A NAME="1008493"></A>
+<A NAME="1008494"></A>}
+<A NAME="1008495"></A>
+</PRE>
+  <A NAME="1005542"></A> <!--TOC=h1-"1005542"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Generating 
+    XML from ResultSet Objects</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005544"></A> 
+  <P CLASS="BP"> We saw how we can supply a SQL query and get the results as XML. 
+    In the last example, we saw how we can retrieve results in a paginated fashion. 
+    However in web cases, we might want to retrieve the previous page and not 
+    just the next page of results. To provide this scrollable functionality, we 
+    can use the Scrollable ResultSet. Use the ResultSet object to move back and 
+    forth within the result set and use the utility to generate the XML everytime. 
+  </P>
+  <A NAME="1005545"></A> <!--TOC=h2-"1005545"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 4: Generating XML from JDBC ResultSets (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005546"></A> 
+  <P CLASS="BP"> We will show how to use the JDBC ResultSet and generate XML from 
+    that. Note that using the ResultSet might be necessary in cases which are 
+    not handled directly by the utility (for example, setting the batch size, 
+    binding values,...) We will extend the previously defined pageTest class so 
+    that we handle any page. </P>
+  <PRE CLASS="CE1">
+<A NAME="1005547"></A>public class pageTest()
+<A NAME="1005548"></A>{
+<A NAME="1005549"></A>   Connection conn;
+<A NAME="1005550"></A>   OracleXMLQuery qry;
+<A NAME="1005551"></A>   ResultSet rset;
+<A NAME="1005552"></A>   int lastRow = 0;
+<A NAME="1005553"></A>
+<A NAME="1005554"></A>   public pageTest(String sqlQuery)
+<A NAME="1005555"></A>   {
+<A NAME="1005556"></A>     conn  = getConnection("scott","tiger");
+<A NAME="1005557"></A>     Statement stmt = conn.createStatement(sqlQuery);// create a scrollable 
+Rset
+<A NAME="1005558"></A>
+<A NAME="1005559"></A>     ResultSet rset = stmt.executeQuery();  // get the result set..
+<A NAME="1005560"></A>     qry = new OracleXMLQuery(conn,rset);   // create a OracleXMLQuery 
+instance
+<A NAME="1005561"></A>     qry.keepObjectOpen(true); // Don't lose state after the first fetch
+<A NAME="1005562"></A>   }
+<A NAME="1005563"></A>  
+<A NAME="1005564"></A>   // Returns the next XML page..!
+<A NAME="1005565"></A>   public String getResult(int startRow, int endRow)
+<A NAME="1005566"></A>   {
+<A NAME="1005567"></A>     rset.scroll(lastRow-startRow);  // scroll inside the result set
+<A NAME="1005568"></A>     qry.setMaxRows(endRow-startRow); // set the max # of rows to 
+retrieve..!
+<A NAME="1005569"></A>     return qry.getXMLString();
+<A NAME="1005570"></A>   }
+<A NAME="1005571"></A>
+<A NAME="1005572"></A>   // Function to still perform the next page. 
+<A NAME="1005573"></A>   public String nextPage()
+<A NAME="1005574"></A>   {
+<A NAME="1005575"></A>     String result = getResult(lastRow,lastRow+10);
+<A NAME="1005576"></A>     lastRow+= 10;
+<A NAME="1005577"></A>     return result;
+<A NAME="1005578"></A>   }
+<A NAME="1005579"></A>
+<A NAME="1005580"></A>   public void close()
+<A NAME="1005581"></A>   {
+<A NAME="1005582"></A>     stmt.close();   // close the statement..
+<A NAME="1005583"></A>     conn.close();   // close the connection
+<A NAME="1005584"></A>     qry.close();    // close the query..
+<A NAME="1005585"></A>   }
+<A NAME="1005586"></A>  
+<A NAME="1005587"></A>   public void main(String[] argv)
+<A NAME="1005588"></A>   {
+<A NAME="1005589"></A>     pageTest test = new pageTest("select * from emp");
+<A NAME="1005590"></A>
+<A NAME="1005591"></A>     int i = 0;
+<A NAME="1005592"></A>     // Get the data one page at a time..!!!!!
+<A NAME="1005593"></A>     while ((str = test.getResult(i,i+10))!= null)
+<A NAME="1005594"></A>     {
+<A NAME="1005595"></A>         System.out.println(str);
+<A NAME="1005596"></A>         i+= 10;
+<A NAME="1005597"></A>     }
+<A NAME="1005598"></A>     test.close();
+<A NAME="1005599"></A>   }
+<A NAME="1005600"></A>}
+<A NAME="1005601"></A> 
+</PRE>
+  <A NAME="1005602"></A> <!--TOC=h2-"1005602"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 5: Generating XML from Procedure Return Values (REF CURSORS) (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005603"></A> 
+  <P CLASS="BP"> The OracleXMLQuery class provides XML conversion only for query 
+    string or for ResultSets. But in your application if you had PL/SQL procedures 
+    which returned REF cursors, how would you do the conversion? </P>
+  <A NAME="1006830"></A> 
+  <P CLASS="BP"> In this case, you can use the above mentioned ResultSet conversion 
+    mechanism to perform the task. REF cursors are references to cursor objects 
+    in PL/SQL. These cursor objects are valid SQL statements which can be iterated 
+    upon to get a set of values. These REF cursors are converted in to <CODE>OracleResultSet</CODE> 
+    objects in the Java world. </P>
+  <A NAME="1006831"></A> 
+  <P CLASS="BP"> You can execute these procedures, get the <CODE>OracleResultSet</CODE> 
+    object and then send that in to the OracleXMLQuery object to get the desired 
+    XML. </P>
+  <A NAME="1005604"></A> 
+  <P CLASS="BP"> Take this PL/SQL function which defines a REF cursor and returns 
+    it: </P>
+  <PRE CLASS="CE1">
+<A NAME="1008543"></A>CREATE OR REPLACE package body testRef is
+<A NAME="1008544"></A>
+<A NAME="1008545"></A>  function testRefCur RETURN empREF is
+<A NAME="1008546"></A>  a empREF;
+<A NAME="1008547"></A>  begin 
+<A NAME="1008548"></A>      OPEN a FOR select * from scott.emp; 
+<A NAME="1008549"></A>      return a;
+<A NAME="1008550"></A>  end;
+<A NAME="1008551"></A>end;
+<A NAME="1008552"></A>/
+<A NAME="1005613"></A>
+</PRE>
+  <A NAME="1005615"></A> 
+  <P CLASS="BP"> Now, everytime this function is called, it opens a cursor object 
+    for the query, "select * from emp" and returns that cursor instance. If you 
+    wanted to convert this to XML, you can do the following: </P>
+  <PRE CLASS="CE">
+<A NAME="1008564"></A>import org.w3c.dom.*;
+<A NAME="1008565"></A>import oracle.xml.parser.v2.*;
+<A NAME="1008566"></A>import java.sql.*;
+<A NAME="1008567"></A>import oracle.jdbc.driver.*;
+<A NAME="1008568"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1008569"></A>import java.io.*;
+<A NAME="1008570"></A>public class REFCURtest
+<A NAME="1008571"></A>{
+<A NAME="1008572"></A>   public static void main(String[] argv)
+<A NAME="1008573"></A>     throws SQLException
+<A NAME="1008574"></A>   { 
+<A NAME="1008575"></A>      String str;
+<A NAME="1008576"></A>      Connection conn  = getConnection("scott","tiger"); // create connection
+<A NAME="1008577"></A>
+<A NAME="1008578"></A>      // Create a ResultSet object by calling the PL/SQL function
+<A NAME="1008579"></A>      CallableStatement stmt =
+<A NAME="1008580"></A>         conn.prepareCall("begin ? := testRef.testRefCur(); end;");
+<A NAME="1008581"></A>
+<A NAME="1008582"></A>      stmt.registerOutParameter(1,OracleTypes.CURSOR); // set the define type
+<A NAME="1008583"></A>
+<A NAME="1008584"></A>      stmt.execute();   // Execute the statement.
+<A NAME="1008585"></A>      ResultSet rset = (ResultSet)stmt.getObject(1);  // Get the ResultSet
+<A NAME="1008586"></A>
+<A NAME="1008587"></A>      OracleXMLQuery qry = new OracleXMLQuery(conn,rset); // prepare Query class
+<A NAME="1008588"></A>      qry.setRaiseNoRowsException(true);
+<A NAME="1008589"></A>      qry.setRaiseException(true);
+<A NAME="1008590"></A>      qry.keepCursorState(true);        // set options (keep the cursor alive..
+<A NAME="1008591"></A>      while ((str = qry.getXMLString())!= null)
+<A NAME="1008592"></A>           System.out.println(str);
+<A NAME="1008593"></A>
+<A NAME="1008594"></A>      qry.close();    // close the query..!
+<A NAME="1008595"></A>
+<A NAME="1008596"></A>      // Note since we supplied the statement and resultset, closing the
+<A NAME="1008597"></A>      // OracleXMLquery instance will not close these. We would need to 
+<A NAME="1008598"></A>      // explicitly close this ourselves..!
+<A NAME="1008599"></A>      stmt.close();
+<A NAME="1008600"></A>      conn.close();
+<A NAME="1008601"></A>   }
+<A NAME="1008602"></A>    // Get the connection given the user name and password..!
+<A NAME="1008603"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008604"></A>      throws SQLException
+<A NAME="1008605"></A>    {
+<A NAME="1008606"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008607"></A>      Connection conn =
+<A NAME="1008608"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008609"></A>     return conn;
+<A NAME="1008610"></A>   }
+<A NAME="1008611"></A>
+<A NAME="1008612"></A>}
+<A NAME="1008613"></A>
+</PRE>
+  <A NAME="1005655"></A> 
+  <P CLASS="BP"> To apply the stylesheet on the other hand, use the <CODE>applyStylesheet()</CODE><EM CLASS="Italic"> 
+    </EM>command. This forces the stylesheet to be applied before generating the 
+    output. </P>
+  <A NAME="1005656"></A> <!--TOC=h1-"1005656"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Raising 
+    No Rows Exception</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005658"></A> 
+  <P CLASS="BP"> When there are no rows to process the utility simply returns 
+    a null string. But it might be desirable to get an exception everytime there 
+    are no more rows present, so that the application can process this through 
+    exception handlers. When the <CODE>setRaiseNoRowsException</CODE>() is set, 
+    then whenever there are no rows to generate for the output the utility raises 
+    a oracle.xml.sql.OracleXMLSQLNoRowsException. This is a run time exception 
+    and need not be caught unless needed. The following code extends the previous 
+    examples to use the Exception instead of checking for null strings. </P>
+  <A NAME="1007062"></A> <!--TOC=h2-"1007062"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 6: No Rows Exception (Java)</FONT></H3>
+  <!--/TOC=h2--> 
+  <PRE CLASS="CE1">
+<A NAME="1005659"></A>public class pageTest { 
+<A NAME="1005660"></A>    .... // rest of the class definitions....
+<A NAME="1005661"></A>
+<A NAME="1005662"></A>   public void main(String[] argv)
+<A NAME="1005663"></A>   {
+<A NAME="1005664"></A>     pageTest test = new pageTest("select * from emp");
+<A NAME="1005665"></A>
+<A NAME="1005666"></A>     test.query.setRaiseNoRowsException(true); // ask it to generate 
+exceptions
+<A NAME="1005667"></A>     try
+<A NAME="1005668"></A>     {
+<A NAME="1005669"></A>        while(true)
+<A NAME="1005670"></A>         System.out.println(test.nextPage());
+<A NAME="1005671"></A>     } 
+<A NAME="1005672"></A>     catch(oracle.xml.sql.OracleXMLNoRowsException)
+<A NAME="1005673"></A>     {
+<A NAME="1005674"></A>       System.out.println(" END OF OUTPUT ");  
+<A NAME="1005675"></A>       test.close();
+<A NAME="1005676"></A>     }
+<A NAME="1005677"></A>   }
+<A NAME="1005678"></A>}
+</PRE>
+  <A NAME="1005679"> 
+  <DIV ALIGN="CENTER"> 
+    <P> 
+    <TABLE CLASS="Note" BORDER="0" WIDTH="80%" CELLPADDING="0" CELLSPACING="0">
+      <TR CLASS="Note"> 
+        <TD CLASS="Note"> 
+          <HR>
+          <A NAME="1013373"></A><FONT FACE="Arial, Helvetica, sans-serif"><STRONG CLASS="NH">Note:</STRONG></FONT> 
+          <A NAME="1013382"></A> 
+          <P CLASS="NB"> Notice how the condition to check the termination, changed 
+            from checking for the result to be NULL to an exception handler.&nbsp; 
+          <HR>
+        </TD>
+      </TR>
+    </TABLE>
+    <TABLE CLASS="TableNote" CELLPADDING="3" >
+      <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+        <TD CLASS="TableNote"> </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  </A> <A NAME="1005680"></A> <!--TOC=h1-"1005680"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Storing 
+    XML</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005681"></A> 
+  <P CLASS="BP"> Now that you have seen how queries can be converted to XML, observe 
+    how you can put the XML back into the tables or views using the utility. The 
+    class oracle.xml.sql.dml.OracleXMLSave provides such functionality. It provides 
+    methods to insert the XML into tables, update existing tables with the XML 
+    document and to delete rows from the table based on the XML element values. 
+  </P>
+  <A NAME="1005682"></A> 
+  <P CLASS="BP"> In all these cases the given XML document is parsed, the elements 
+    examined to match the tag names to those of the column names in the target 
+    table or view. The elements are then converted to the SQL types and then bound 
+    to the appropriate statement. The process and options for storing XML using 
+    the XSU are shown in <A HREF="xsu_userguide.html#1006862">Figure&nbsp;4-5</a>. </P>
+  <A NAME="1006862"></A> 
+  <H4 CLASS="FT"><FONT FACE="Arial, Helvetica, sans-serif"><EM>Figure 4-5 &#32;Storing 
+    XML in the Database Using the XML-SQL Utility: Process and Options</EM></FONT></H4>
+  <BR>
+  <A NAME="1006863"> <img src="images/adxml013.gif" height="328" width="560"alt="Text description of adxml013.gif follows"><A HREF="img_text/adxml013.htm"><br>
+  </A></A> 
+  <P CLASS="BP"> The document is assumed to contain a list of ROW elements each 
+    of which constitute a separate DML operation, namely, insert, update or delete 
+    on the table or view. </P>
+  <A NAME="1005684"></A> <!--TOC=h1-"1005684"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Insert 
+    Processing</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005686"></A> 
+  <P CLASS="BP"> The steps to insert a document into a table or view is to simply 
+    supply the table or the view name and then the document. The utility parses 
+    the document (if a string is given) and then creates an insert statement which 
+    it binds all the values into. By default, the utility inserts values into 
+    all the columns of the table or view and an absent element is treated as a 
+    NULL value. The following code shows how the document generated from the emp 
+    table can be put back into it with relative ease. </P>
+  <A NAME="1005687"></A> <!--TOC=h2-"1005687"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 7: Inserting XML Values into all Columns (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006845"></A> 
+  <P CLASS="BP"> This example inserts XML values into all columns: </P>
+  <PRE CLASS="CE1">
+<A NAME="1008625"></A>import java.sql.*;
+<A NAME="1008626"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008627"></A>public class testInsert
+<A NAME="1008628"></A>{
+<A NAME="1008629"></A>   public static void main(String argv[])
+<A NAME="1008630"></A>     throws SQLException
+<A NAME="1008631"></A>  {
+<A NAME="1008632"></A>    Connection conn = getConnection("scott","tiger");
+<A NAME="1008633"></A>    OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008635"></A>  // Assume that the user passes in this document. Save it in to the table.!
+<A NAME="1008636"></A>      sav.insertXML(argv[0]);
+<A NAME="1008637"></A>      sav.close();
+<A NAME="1008638"></A>   }
+<A NAME="1008639"></A>  // Get the connection given the user name and password..!
+<A NAME="1008640"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008641"></A>      throws SQLException
+<A NAME="1008642"></A>    {
+<A NAME="1008643"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008644"></A>      Connection conn =
+<A NAME="1008645"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008646"></A>     return conn;
+<A NAME="1008647"></A>   }
+<A NAME="1008648"></A>}
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005701"></A>
+</PRE>
+  <A NAME="1005702"></A> 
+  <P CLASS="BP"> An insert statement of the form: </P>
+  <PRE CLASS="CE">
+<A NAME="1005703"></A>insert into scott.emp (EMPNO, ENAME, JOB, MGR, SAL, DEPTNO) VALUES(?,?,?,?,?,?);
+<A NAME="1007274"></A>
+</PRE>
+  <A NAME="1005705"></A> 
+  <P CLASS="BP"> will be generated and the element tags in the input XML document 
+    matching the column names will be matched and their values bound. If you sned 
+    the code snippet shown above, to the following XML document: </P>
+  <PRE CLASS="CE1">
+<A NAME="1005706"></A> &lt;?xml version='1.0'?&gt;
+<A NAME="1005707"></A>&lt;ROWSET&gt;
+<A NAME="1005708"></A>	 	 &lt;ROW num="1"&gt;
+<A NAME="1005709"></A> 	 	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1005710"></A>    &lt;ENAME&gt;Smith&lt;/ENAME&gt;
+<A NAME="1005711"></A>    &lt;JOB&gt;CLERK&lt;/JOB&gt;
+<A NAME="1005712"></A>    &lt;MGR&gt;7902&lt;/MGR&gt;
+<A NAME="1005713"></A>    &lt;HIREDATE&gt;12/17/1980 0:0:0&lt;/HIREDATE&gt;
+<A NAME="1005714"></A>    &lt;SAL&gt;800&lt;/SAL&gt;
+<A NAME="1005715"></A>    &lt;DEPTNO&gt;20&lt;/DEPTNO&gt;
+<A NAME="1005716"></A>  &lt;/ROW&gt;
+<A NAME="1005717"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1005718"></A>&lt;/ROWSET&gt;
+</PRE>
+  <PRE CLASS="CE">
+<A NAME="1005719"></A>
+</PRE>
+  <A NAME="1005720"></A> 
+  <P CLASS="BP"> you would have a new row in the emp table containing the values 
+    (7369, Smith, CLERK, 7902, 12/17/1980,800,20). Any element absent inside the 
+    row element would have been taken as a null value. </P>
+  <A NAME="1005721"></A> <!--TOC=h2-"1005721"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 8: Inserting XML Values into Only Certain Columns (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005722"></A> 
+  <P CLASS="BP"> In certain cases, you may not want to insert values into all 
+    columns. This may be true when the values that you are getting is not the 
+    complete set and you need triggers or default values to be used for the rest 
+    of the columns. The code below shows how this can be done. </P>
+  <A NAME="1005723"></A> 
+  <P CLASS="BP"> Assume that you are getting the values only for the employee 
+    number, name and job and the salary, manager, deptno and hiredate field gets 
+    filled in automatically. First create a list of column names that you want 
+    the insert to work on and then pass it to the <CODE>OracleXMLSave</CODE> instance. 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1008657"></A>import java.sql.*;
+<A NAME="1008658"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008659"></A>public class testInsert
+<A NAME="1008660"></A>{
+<A NAME="1008661"></A>   public static void main(String argv[])
+<A NAME="1008662"></A>     throws SQLException
+<A NAME="1008663"></A>   {
+<A NAME="1008664"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1008665"></A>      OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008666"></A>
+<A NAME="1008667"></A>      String [] colNames = new String[5];
+<A NAME="1008668"></A>      colNames[0] = "EMPNO";
+<A NAME="1008669"></A>      colNames[1] = "ENAME";
+<A NAME="1008670"></A>      colNames[2] = "JOB";
+<A NAME="1008671"></A>
+<A NAME="1008672"></A>      sav.setUpdateColumnList(colNames); // set the columns to update..!
+<A NAME="1008673"></A>
+<A NAME="1008674"></A>      // Assume that the user passes in this document as the first argument!
+<A NAME="1008675"></A>      sav.insertXML(argv[0]);
+<A NAME="1008676"></A>      sav.close();
+<A NAME="1008677"></A>   }
+<A NAME="1008678"></A>   // Get the connection given the user name and password..!
+<A NAME="1008679"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008680"></A>      throws SQLException
+<A NAME="1008681"></A>    {
+<A NAME="1008682"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008683"></A>      Connection conn =
+<A NAME="1008684"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008685"></A>     return conn;
+<A NAME="1008686"></A>   }
+<A NAME="1008687"></A>}
+<A NAME="1005742"></A>
+</PRE>
+  <A NAME="1005743"></A> 
+  <P CLASS="BP"> An insert statement of the form, </P>
+  <PRE CLASS="CE">
+<A NAME="1005744"></A>insert into scott.emp (EMPNO, ENAME, JOB) VALUES (?, ?, ?); 
+<A NAME="1005745"></A>
+</PRE>
+  <A NAME="1005746"></A> 
+  <P CLASS="BP"> is generated. Note that in the above example, if the inserted 
+    document contains values for the other columns (JOB, HIREDATE etc.), those 
+    will be ignored. </P>
+  <A NAME="1005747"></A> 
+  <P CLASS="BP"> Also an insert is performed for each ROW element that is present 
+    in the input. These inserts are batched by default. </P>
+  <A NAME="1005748"></A> <!--TOC=h1-"1005748"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Update 
+    Processing</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005750"></A> 
+  <P CLASS="BP"> Now that you know how to insert values into the table from XML 
+    documents, let us see how to update only certain values. If you get an XML 
+    document to update the salary of an employee and also the department that 
+    she works in, </P>
+  <PRE CLASS="CE">
+<A NAME="1005751"></A>&lt;ROWSET&gt;
+<A NAME="1005752"></A>	 	 &lt;ROW num="1"&gt;
+<A NAME="1005753"></A> 	 	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1005754"></A>    &lt;SAL&gt;1800&lt;/SAL&gt;
+<A NAME="1005755"></A>    &lt;DEPTNO&gt;30&lt;/DEPTNO&gt;
+<A NAME="1005756"></A>  &lt;/ROW&gt;
+<A NAME="1005757"></A>  &lt;ROW&gt;
+<A NAME="1005758"></A>    &lt;EMPNO&gt;2290&lt;/EMPNO&gt;
+<A NAME="1005759"></A>    &lt;SAL&gt;2000&lt;/SAL&gt;
+<A NAME="1005760"></A>    &lt;HIREDATE&gt;12/31/1992&lt;/HIREDATE&gt;
+<A NAME="1005761"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1005762"></A>&lt;/ROWSET&gt;
+<A NAME="1007277"></A>
+</PRE>
+  <A NAME="1005763"></A> 
+  <P CLASS="BP"> you can call the update processing to update the values. In the 
+    case of update, you need to supply the utility with the list of key column 
+    names. These form part of the where clause in the update statement. In the 
+    emp table shown above, the employee number (EMPNO) column forms the key and 
+    you use that for updates. </P>
+  <A NAME="1005764"></A> <!--TOC=h2-"1005764"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 9: Updating Using the keyColumns (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006852"></A> 
+  <P CLASS="BP"> This example updates the emp table using keyColumns: </P>
+  <PRE CLASS="CE">
+<A NAME="1008692"></A>import java.sql.*;
+<A NAME="1008693"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008694"></A>public class testUpdate
+<A NAME="1008695"></A>{
+<A NAME="1008696"></A>   public static void main(String argv[])
+<A NAME="1008697"></A>     throws SQLException
+<A NAME="1008698"></A>   {
+<A NAME="1008699"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1008700"></A>      OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008701"></A>
+<A NAME="1008702"></A>      String [] keyColNames = new String[1];
+<A NAME="1008703"></A>      keyColNames[0] = "EMPNO";
+<A NAME="1008704"></A>      sav.setKeyColumnList(keyColNames);
+<A NAME="1008705"></A>
+<A NAME="1008706"></A>      // Assume that the user passes in this document as the first argument!
+<A NAME="1008707"></A>      sav.updateXML(argv[0]);
+<A NAME="1008708"></A>      sav.close();
+<A NAME="1008709"></A>   }
+<A NAME="1008710"></A>   // Get the connection given the user name and password..!
+<A NAME="1008711"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008712"></A>      throws SQLException
+<A NAME="1008713"></A>    {
+<A NAME="1008714"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008715"></A>      Connection conn =
+<A NAME="1008716"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008717"></A>     return conn;
+<A NAME="1008718"></A>   }
+<A NAME="1008719"></A>}
+<A NAME="1005780"></A>
+</PRE>
+  <A NAME="1005781"></A> 
+  <P CLASS="BP"> In this example, two update statements would be generated. For 
+    the first ROW element, you would generate an update statement to update the 
+    SAL and JOB fields as shown below: </P>
+  <PRE CLASS="CE">
+<A NAME="1005782"></A>update scott.emp SET SAL = 1800 and DEPTNO = 30 WHERE EMPNO = 7369;
+<A NAME="1006853"></A>
+</PRE>
+  <A NAME="1005783"></A> 
+  <P CLASS="BP"> and for the second ROW element, </P>
+  <PRE CLASS="CE">
+<A NAME="1005784"></A>update scott.emp SET SAL = 2000 and HIREDATE = 12/31/1992 WHERE EMPNO = 2290;
+<A NAME="1005785"></A>
+</PRE>
+  <A NAME="1005786"></A> <!--TOC=h2-"1005786"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 10: Updating a Specified List of Columns (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005787"></A> 
+  <P CLASS="BP"> However, in a lot of cases you might want to specify the list 
+    of columns to update. This would speed up the processing since the same update 
+    statement can be used for all the ROW elements. Also you can ignore other 
+    tags which occur in the document. </P>
+  <A NAME="1013414"> 
+  <DIV ALIGN="CENTER"> 
+    <P> 
+    <TABLE CLASS="Note" BORDER="0" WIDTH="80%" CELLPADDING="0" CELLSPACING="0">
+      <TR CLASS="Note"> 
+        <TD CLASS="Note"> 
+          <HR>
+          <A NAME="1013420"></A><FONT FACE="Arial, Helvetica, sans-serif"><STRONG CLASS="NH">Note:</STRONG></FONT> 
+          <A NAME="1013427"></A> 
+          <P CLASS="NB"> When you specify a list of columns to update, an element 
+            corresponding to one of the update columns, if absent, will be treated 
+            as NULL.&nbsp; 
+          <HR>
+        </TD>
+      </TR>
+    </TABLE>
+    <TABLE CLASS="TableNote" CELLPADDING="3" >
+      <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+        <TD CLASS="TableNote"> </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  </A> <A NAME="1005788"></A> 
+  <P CLASS="BP"> If you know that all the elements to be updated are the same 
+    for all the ROW elements in the XML document, then you can use the <CODE>setUpdateColumnNames</CODE><EM CLASS="Italic">()</EM> 
+    function to set the list of columns to update. </P>
+  <PRE CLASS="CE">
+<A NAME="1008724"></A>import java.sql.*;
+<A NAME="1008725"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008726"></A>public class testUpdate
+<A NAME="1008727"></A>{
+<A NAME="1008728"></A>   public static void main(String argv[])
+<A NAME="1008729"></A>     throws SQLException
+<A NAME="1008730"></A>   {
+<A NAME="1008731"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1008732"></A>      OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008733"></A>
+<A NAME="1008734"></A>      String [] keyColNames = new String[1];
+<A NAME="1008735"></A>      keyColNames[0] = "EMPNO";
+<A NAME="1008736"></A>      sav.setKeyColumnList(keyColNames);
+<A NAME="1008737"></A>
+<A NAME="1008738"></A>      // you create the list of columns to update..!
+<A NAME="1008739"></A>      // Note that if you do not supply this, then for each ROW element in the
+<A NAME="1008740"></A>      // XML document, you would generate a new update statement to update all
+<A NAME="1008741"></A>      // the tag values (other than the key columns)present in that element.
+<A NAME="1008742"></A>      String[] updateColNames = new String[2];
+<A NAME="1008743"></A>      updateColNames[0] = "SAL";
+<A NAME="1008744"></A>      updateColNames[1] = "JOB";
+<A NAME="1008745"></A>      sav.setUpdateColumnList(updateColNames); // set the columns to update..!
+<A NAME="1008746"></A>
+<A NAME="1008747"></A>      // Assume that the user passes in this document as the first argument!
+<A NAME="1008748"></A>      sav.updateXML(argv[0]);
+<A NAME="1008749"></A>      sav.close();
+<A NAME="1008750"></A>   }
+<A NAME="1008751"></A>   // Get the connection given the user name and password..!
+<A NAME="1008752"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008753"></A>      throws SQLException
+<A NAME="1008754"></A>    {
+<A NAME="1008755"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008756"></A>      Connection conn =
+<A NAME="1008757"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008758"></A>     return conn;
+<A NAME="1008759"></A>   }
+<A NAME="1008760"></A>}
+<A NAME="1008761"></A>
+</PRE>
+  <A NAME="1005814"></A> <!--TOC=h1-"1005814"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Delete 
+    Processing</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005816"></A> 
+  <P CLASS="BP"> In the case of delete, you can set the list of key columns. These 
+    columns will be put as part of the where clause of the delete. If the key 
+    column names are not supplied, then a new delete statement will be created 
+    for each ROW element of the XML document where the list of columns in the 
+    where clause of the delete will match those in the ROW element. </P>
+  <A NAME="1005817"></A> <!--TOC=h2-"1005817"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 11: Deleting Operations Per ROW (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005818"></A> 
+  <P CLASS="BP"> Consider the delete example shown below, </P>
+  <PRE CLASS="CE">
+<A NAME="1008768"></A>import java.sql.*;
+<A NAME="1008769"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008770"></A>public class testDelete
+<A NAME="1008771"></A>{
+<A NAME="1008772"></A>   public static void main(String argv[])
+<A NAME="1008773"></A>     throws SQLException
+<A NAME="1008774"></A>   {
+<A NAME="1008775"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1008776"></A>      OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008777"></A>
+<A NAME="1008778"></A>      // Assume that the user passes in this document as the first argument!
+<A NAME="1008779"></A>      sav.deleteXML(argv[0]);
+<A NAME="1008780"></A>      sav.close();
+<A NAME="1008781"></A>   }
+<A NAME="1008782"></A>   // Get the connection given the user name and password..!
+<A NAME="1008783"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008784"></A>      throws SQLException
+<A NAME="1008785"></A>    {
+<A NAME="1008786"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008787"></A>      Connection conn =
+<A NAME="1008788"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008789"></A>     return conn;
+<A NAME="1008790"></A>   }
+<A NAME="1008791"></A>}
+<A NAME="1005831"></A>
+</PRE>
+  <A NAME="1005832"></A> 
+  <P CLASS="BP"> If you use the same XML document shown for the update example, 
+    you would end up with two delete statements, </P>
+  <PRE CLASS="CE">
+<A NAME="1005833"></A>DELETE FROM scott.emp WHERE empno=7369 and sal=1800 and deptno=30; 
+<A NAME="1005834"></A>DELETE FROM scott.emp WHERE empno=2200 and sal=2000 and hiredate=12/31/1992;
+<A NAME="1005835"></A>
+</PRE>
+  <A NAME="1005836"></A> 
+  <P CLASS="BP"> The delete statements were formed based on the tag names present 
+    in each ROW element in the XML document. </P>
+  <A NAME="1005837"></A> <!--TOC=h2-"1005837"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 12: Deleting Specified Key Values (Java)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005838"></A> 
+  <P CLASS="BP"> If you instead want the delete to only use the key values as 
+    predicates, you can use the <CODE>setKeyColumn</CODE> function to set this. 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1008796"></A>import java.sql.*;
+<A NAME="1008797"></A>import oracle.xml.sql.dml.OracleXMLSave;
+<A NAME="1008798"></A>public class testDelete
+<A NAME="1008799"></A>{
+<A NAME="1008800"></A>   public static void main(String argv[])
+<A NAME="1008801"></A>     throws SQLException
+<A NAME="1008802"></A>   {
+<A NAME="1008803"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1008804"></A>      OracleXMLSave sav = new OracleXMLSave(conn, "scott.emp");
+<A NAME="1008805"></A>
+<A NAME="1008806"></A>      String [] keyColNames = new String[1];
+<A NAME="1008807"></A>      keyColNames[0] = "EMPNO";
+<A NAME="1008808"></A>      sav.setKeyColumnList(keyColNames);
+<A NAME="1008809"></A>
+<A NAME="1008810"></A>      // Assume that the user passes in this document as the first argument!
+<A NAME="1008811"></A>      sav.deleteXML(argv[0]);
+<A NAME="1008812"></A>      sav.close();
+<A NAME="1008813"></A>   }
+<A NAME="1008814"></A>   // Get the connection given the user name and password..!
+<A NAME="1008815"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1008816"></A>      throws SQLException
+<A NAME="1008817"></A>    {
+<A NAME="1008818"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1008819"></A>      Connection conn =
+<A NAME="1008820"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1008821"></A>     return conn;
+<A NAME="1008822"></A>   }
+<A NAME="1008823"></A>}
+<A NAME="1006860"></A>
+</PRE>
+  <A NAME="1005855"></A> 
+  <P CLASS="BP"> Here a single delete statement of the form: </P>
+  <PRE CLASS="CE">
+<A NAME="1005856"></A>DELETE FROM scott.emp WHERE EMPNO=?
+<A NAME="1005857"></A>
+</PRE>
+  <A NAME="1005858"></A> 
+  <P CLASS="BP"> will be generated and used for all ROW elements in the document. 
+  </P>
+  <A NAME="1005859"></A> <!--TOC=h1-"1005859"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    PL/SQL API</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005860"></A> 
+  <P CLASS="BP"> The XML-SQL Utility PL/SQL API reflects the Java API in the generation 
+    and storage. The <CODE><a href="dbmsxsu.html#dbms_xmlquery">DBMS_XMLQuery</a></CODE> 
+    and <CODE><a href="dbmsxsu.html#dbms_xmlsave">DBMS_XMLSave</a></CODE> are 
+    the two packages that reflect the functions in the java classes - OracleXMLQuery 
+    and <CODE>OracleXMLSave</CODE>. </P>
+  <A NAME="1005861"></A> 
+  <P CLASS="BP"> Both these packages have a context handle associated with them. 
+    Create a context by calling one of the constructor-like functions to get the 
+    handle and then use the handle in all subsequent calls. </P>
+  <A NAME="1005862"></A> <!--TOC=h2-"1005862"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Generating 
+    XML with DBMS_XMLQuery()</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005863"></A> 
+  <P CLASS="BP"> Generating XML results in a CLOB that contains the XML document. 
+    To use DBMS_XMLQuery's and the generation engine follow these steps: </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1005864"></A>Create a context 
+      handle by calling the DBMS_XMLQuery.getCtx function and supplying it the 
+      query (either as a CLOB or a VARCHAR2) 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1005865"></A>Bind possible values 
+      to the query using the DBMS_XMLQuery.bind function. The binds work by binding 
+      a name to the position. For example, the query can be something like, select 
+      * from emp where empno = :EMPNO_VAR. Here the user binds the value for the 
+      EMPNO_VAR using the <CODE>setBindValue</CODE> function. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="3"><A NAME="1005866"></A>Set optional arguments 
+      like the ROW tag name, the ROWSET tag name or the number of rows to fetch 
+      etc. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="4"><A NAME="1005867"></A>Fetch the XML as 
+      a CLOB using the getXML() functions. The getXML can be called to generate 
+      the XML with or without a DTD. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="5"><A NAME="1005868"></A>Close the context. 
+      <P> 
+  </OL>
+  <A NAME="1005870"></A> 
+  <P CLASS="BP"> Here are some examples that use the DBMS_XMLQuery PL/SQL package. 
+  </P>
+  <A NAME="1005871"></A> <!--TOC=h2-"1005871"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 13: Generating XML From Simple Queries (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005873"></A> 
+  <P CLASS="BP"> In this example, you will try to select rows from the emp table 
+    and get a XML document as a CLOB. You first get the context handle by passing 
+    in a query and then call the <CODE>getXMLClob</CODE> routine to get the CLOB 
+    value. The document will be in the same encoding as that of the database character 
+    set. </P>
+  <PRE CLASS="CE">
+<A NAME="1008828"></A>declare
+<A NAME="1008829"></A>  queryCtx DBMS_XMLquery.ctxType;
+<A NAME="1008830"></A>  result CLOB;
+<A NAME="1008831"></A>begin
+<A NAME="1008832"></A>
+<A NAME="1008833"></A>  -- set up the query context...!
+<A NAME="1008834"></A>  queryCtx := DBMS_XMLQuery.newContext('select * from emp');
+<A NAME="1008835"></A> 
+<A NAME="1008836"></A>  -- get the result..!
+<A NAME="1008837"></A>  result := DBMS_XMLQuery.getXML(queryCtx);
+<A NAME="1008838"></A>  -- Now you can use the result to put it in tables/send as messages..
+<A NAME="1008839"></A>  printClobOut(result);
+<A NAME="1008840"></A>  DBMS_XMLQuery.closeContext(queryCtx);  -- you must close the query handle..
+<A NAME="1008841"></A>end;
+<A NAME="1008842"></A>/
+</PRE>
+  <A NAME="1005889"></A> <!--TOC=h2-"1005889"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 13a: Printing CLOB to Output Buffer</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005890"></A> 
+  <P CLASS="BP"> The <CODE>printClobOut</CODE><EM CLASS="Italic">() </EM>is a 
+    simple procedure that prints the CLOB to the output buffer. If you run this 
+    PL/SQL code in SQL*Plus, you will see the result of the CLOB being printed 
+    out to screen. Set the <CODE>serveroutput</CODE> to on in order to see the 
+    results. </P>
+  <A NAME="1005891"></A> 
+  <P CLASS="BP"> The <CODE>printClobOut</CODE> is shown below:- </P>
+  <PRE CLASS="CE">
+<A NAME="1008854"></A>/CREATE OR REPLACE PROCEDURE printClobOut(result IN OUT NOCOPY CLOB) is
+<A NAME="1008855"></A>xmlstr varchar2(32767);
+<A NAME="1008856"></A>line varchar2(2000);
+<A NAME="1008857"></A>begin
+<A NAME="1008858"></A>  xmlstr := dbms_lob.SUBSTR(result,32767);
+<A NAME="1008859"></A>  loop
+<A NAME="1008860"></A>    exit when xmlstr is null;
+<A NAME="1008861"></A>    line := substr(xmlstr,1,instr(xmlstr,chr(10))-1);
+<A NAME="1008862"></A>    dbms_output.put_line('| '||line);
+<A NAME="1008863"></A>    xmlstr := substr(xmlstr,instr(xmlstr,chr(10))+1);
+<A NAME="1008864"></A>  end loop;
+<A NAME="1008865"></A>end;
+<A NAME="1008866"></A>/
+</PRE>
+  <A NAME="1005899"></A> <!--TOC=h2-"1005899"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 14: Changing ROW and ROWSET Tag Names (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005901"></A> 
+  <P CLASS="BP"> The PL/SQL APIs also provide the ability to change the ROW and 
+    the ROWSET tag names. These are the default names that are put around each 
+    row of the result and around the whole document respectively. The procedures, 
+    <CODE>setRowTagName</CODE><EM CLASS="Italic"> </EM>and <CODE>setRowSetTagName</CODE> 
+    accomplish this as shown below: </P>
+  <PRE CLASS="CE">
+<A NAME="1008873"></A>--Setting the ROW tag names
+<A NAME="1008874"></A>
+<A NAME="1008875"></A>declare
+<A NAME="1008876"></A>   queryCtx DBMS_XMLQuery.ctxType;
+<A NAME="1008877"></A>   result CLOB;
+<A NAME="1008878"></A>begin
+<A NAME="1008879"></A>   -- set the query context.
+<A NAME="1008880"></A>   queryCtx := DBMS_XMLQuery.newContext('select * from emp');
+<A NAME="1008881"></A> 
+<A NAME="1008882"></A>   DBMS_XMLQuery.setRowTag(queryCtx,'EMP'); -- sets the row tag name
+<A NAME="1008883"></A>   DBMS_XMLQuery.setRowSetTag(queryCtx,'EMPSET'); -- sets rowset tag name
+<A NAME="1008884"></A>
+<A NAME="1008885"></A>   result := DBMS_XMLQuery.getXML(queryCtx); -- get the result
+<A NAME="1008886"></A>
+<A NAME="1008887"></A>   printClobOut(result);  -- print the result..!
+<A NAME="1008888"></A>   DBMS_XMLQuery.closeContext(queryCtx);  -- close the query handle;
+<A NAME="1008889"></A>end;
+<A NAME="1008890"></A>/
+<A NAME="1005918"></A>
+</PRE>
+  <A NAME="1005919"></A> 
+  <P CLASS="BP"> The resulting XML document has an EMPSET document element and 
+    each row separated using the EMP tag. </P>
+  <A NAME="1005920"></A> <!--TOC=h2-"1005920"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 15: Paginating Results Using setMaxRows() and setSkipRows()</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005922"></A> 
+  <P CLASS="BP"> The results from the query generation can be paginated by using 
+    the <CODE>setMaxRows</CODE><EM CLASS="Italic"> </EM>and <CODE>setSkipRows</CODE><EM CLASS="Italic"> 
+    </EM>functions. The former sets the maximum number of rows to be converted 
+    to XML. This is relative to the current row position from which the last result 
+    was generated. The skipRows parameter specifies the number of rows to skip 
+    before converting the row values to XML. For example, to skip the first 3 
+    rows of the emp table and then print out the rest of the rows 10 at a time, 
+    you can set the skipRows to 3 for the first batch of 10 rows and then set 
+    skipRows to 0 for the rest of the batches. </P>
+  <A NAME="1005923"></A> 
+  <P CLASS="BP"> As in the case of the XML-SQL Utility Java API, call the <EM CLASS="Italic">keepObjectOpen() 
+    </EM>function to make sure that the state is maintained between fetches. The 
+    default behavior is to close the state after a fetch is done. In the case 
+    of multiple fetches, you need to figure out when there are no more rows to 
+    fetch. This can be done by setting the <CODE>setRaiseNoRowsException</CODE><EM CLASS="Italic">()</EM>. 
+    This causes an exception to be raised if no rows are written to the CLOB. 
+    This can be caught and used as the termination condition. </P>
+  <PRE CLASS="CE">
+<A NAME="1008897"></A>-- Pagination of results
+<A NAME="1008898"></A>
+<A NAME="1008899"></A>declare
+<A NAME="1008900"></A>  queryCtx DBMS_XMLquery.ctxType;
+<A NAME="1008901"></A>  result CLOB;
+<A NAME="1008902"></A>begin
+<A NAME="1008903"></A>
+<A NAME="1008904"></A>  -- set up the query context...!
+<A NAME="1008905"></A>  queryCtx := DBMS_XMLQuery.newContext('select * from emp');
+<A NAME="1008906"></A> 
+<A NAME="1008907"></A>  DBMS_XMLQuery.setSkipRows(queryCtx,3); -- set the number of rows to skip
+<A NAME="1008908"></A>  DBMS_XMLQuery.setMaxRows(queryCtx,10); -- set the max number of rows per fetch
+<A NAME="1008909"></A>
+<A NAME="1008910"></A>  result := DBMS_XMLQuery.getXML(queryCtx); -- get the first result..!
+<A NAME="1008911"></A>
+<A NAME="1008912"></A>  printClobOut(result); -- print the result out.. This is you own routine..!
+<A NAME="1008913"></A>  DBMS_XMLQuery.setSkipRows(queryCtx,0); -- from now don't skip any more rows..!
+<A NAME="1008914"></A>
+<A NAME="1008915"></A>  DBMS_XMLQuery.setRaiseNoRowsException(queryCtx,true);
+<A NAME="1008916"></A>                                         -- raise no rows exception..!
+<A NAME="1008917"></A>  begin
+<A NAME="1008918"></A>    loop  -- loop forever..!
+<A NAME="1008919"></A>      result := DBMS_XMLQuery.getXML(queryCtx); -- get the next batch 
+<A NAME="1008920"></A>      printClobOut(result);             -- print the next batch of 10 rows..!
+<A NAME="1008921"></A>    end loop;
+<A NAME="1008922"></A>  exception
+<A NAME="1008923"></A>    when others then
+<A NAME="1008924"></A>    -- dbms_output.put_line(sqlerrm);
+<A NAME="1008925"></A>       null; -- termination condition, nothing to do;
+<A NAME="1008926"></A>  end;
+<A NAME="1008927"></A>  DBMS_XMLQuery.closeContext(queryCtx);  -- close the handle..!
+<A NAME="1008928"></A>end;
+<A NAME="1008929"></A>/
+</PRE>
+  <A NAME="1005954"></A> <!--TOC=h1-"1005954"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Setting 
+    Stylesheets in XSU (PL/SQL)</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005956"></A> 
+  <P CLASS="BP"> The PL/SQL API provides the ability to set the stylesheet header 
+    in the result XML or apply a stylesheet itself to the result XML document, 
+    before generation. The latter is a huge performance win since otherwise the 
+    XML document has to be generated as a CLOB, sent to the parser again and then 
+    the stylesheet applied. In this case, internally the utility generates a DOM 
+    document, calls the parser, applies the stylesheet and then generates the 
+    result. </P>
+  <A NAME="1013547"></A> 
+  <P CLASS="BP"> The procedure, <CODE>setStylesheetHeader</CODE><EM CLASS="Italic">(), 
+    </EM>sets the stylesheet header in the result. This simply adds the XML processing 
+    instruction to include the stylesheet. </P>
+  <A NAME="1013548"></A> 
+  <P CLASS="BP"> The <CODE>useStyleSheet</CODE><EM CLASS="Italic">() </EM>procedure, 
+    on the other hand, uses the stylesheet to generate the result. </P>
+  <A NAME="1005957"></A> <!--TOC=h1-"1005957"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Binding 
+    Values in XSU (PL/SQL)</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005959"></A> 
+  <P CLASS="BP"> The PL/SQL API provides the ability to bind values to the SQL 
+    statement. The SQL statement can contain named bind variables. The variables 
+    have to start with a ':' in front of them to signal that they are bind variables. 
+    The steps involved in using the bind variable is as follows, </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1005960"></A>Initialize the query 
+      context with the query containing the bind variables. For example, the following 
+      statement registers a query to select the rows from the emp table with the 
+      where clause containing the bind variables :EMPNO and :ENAME which you will 
+      bind the values for employee number and employee name later. 
+      <P> 
+      <PRE CLASS="CE1">
+<A NAME="1005961"></A>queryCtx = DBMS_XMLQuery.getCtx('select * from emp where empno = :EMPNO and 
+ename = :ENAME');
+<A NAME="1005962"></A>
+</PRE>
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1005963"></A>Set the list of bind 
+      values. The <CODE>clearBindValues</CODE><EM CLASS="Italic">() </EM>clears 
+      all the bind variables set. The <CODE>setBindValue</CODE><EM CLASS="Italic">() 
+      </EM>sets a single bind variable with a string value. For example, you will 
+      set the empno and ename values as shown below:- 
+      <P> 
+      <PRE CLASS="CE1">
+<A NAME="1005964"></A>DBMS_XMLQuery.clearBindValues(queryCtx);
+<A NAME="1005965"></A>DBMS_XMLQuery.setBindValue(queryCtx,'EMPNO',20);
+<A NAME="1005966"></A>DBMS_XMLQuery.setBindValue(queryCtx,'ENAME','John');
+<A NAME="1005967"></A>
+</PRE>
+    <LI CLASS="LN1" TYPE="1" VALUE="3"><A NAME="1005968"></A>Fetch the results. 
+      This will apply the bind values to the statement and then get the result 
+      corresponding to the predicate empno = 20 and ename = 'John'. 
+      <P> 
+      <PRE CLASS="CE1">
+<A NAME="1005969"></A>DBMS_XMLQuery.getXMLClob(queryCtx);
+<A NAME="1005970"></A>
+</PRE>
+    <LI CLASS="LN1" TYPE="1" VALUE="4"><A NAME="1005971"></A>Re-bind values if 
+      necessary, For example to change the ENAME alone to "scott" and re-execute 
+      the query, 
+      <P> 
+      <PRE CLASS="CE1">
+<A NAME="1005972"></A>DBMS_XMLQuery.setBindValue(queryCtx,'ENAME','Scott');
+<A NAME="1007280"></A>
+</PRE>
+  </OL>
+  <A NAME="1005974"></A> 
+  <P CLASS="BP1"> The rebinding of ENAME will now use Scott instead of John. </P>
+  <A NAME="1008935"></A> <!--TOC=h2-"1008935"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 15a: Binding Values to the SQL Statement</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1008976"></A> 
+  <P CLASS="BP"> The following example illustrates the use of bind variables in 
+    the SQL statement: </P>
+  <PRE CLASS="CE">
+<A NAME="1008948"></A>declare
+<A NAME="1008949"></A>  queryCtx DBMS_XMLquery.ctxType;
+<A NAME="1008950"></A>  result CLOB;
+<A NAME="1008951"></A>begin
+<A NAME="1008952"></A>
+<A NAME="1008953"></A>queryCtx := DBMS_XMLQuery.newContext(
+<A NAME="1008954"></A>       'select * from emp where empno = :EMPNO and ename = :ENAME');
+<A NAME="1008955"></A>
+<A NAME="1008956"></A>DBMS_XMLQuery.clearBindValues(queryCtx);
+<A NAME="1008957"></A>DBMS_XMLQuery.setBindValue(queryCtx,'EMPNO',7566);
+<A NAME="1008958"></A>DBMS_XMLQuery.setBindValue(queryCtx,'ENAME','JONES');
+<A NAME="1008959"></A>
+<A NAME="1008960"></A>result := DBMS_XMLQuery.getXML(queryCtx);
+<A NAME="1008961"></A>
+<A NAME="1008962"></A>--printClobOut(result); 
+<A NAME="1008963"></A>
+<A NAME="1008964"></A>DBMS_XMLQuery.setBindValue(queryCtx,'ENAME','Scott');
+<A NAME="1008965"></A>
+<A NAME="1008966"></A>result := DBMS_XMLQuery.getXML(queryCtx);
+<A NAME="1008967"></A>
+<A NAME="1008968"></A>--printClobOut(result);
+<A NAME="1008969"></A>end;
+<A NAME="1008970"></A>/
+</PRE>
+  <A NAME="1005975"></A> <!--TOC=h1-"1005975"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Storing 
+    XML in the Database Using DBMS_XMLSave</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005976"></A> 
+  <P CLASS="BP"> To use DBMS_XMLSave() and the XML-SQL Utility storage engine, 
+    follow these steps: </P>
+  <OL CLASS="LN1" TYPE="1">
+    <LI CLASS="LN1" TYPE="1" VALUE="1"><A NAME="1005977"></A>Create a context 
+      handle by calling the DBMS_XMLSave.getCtx function and supplying it the 
+      table name to use for the DML operations. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="2"><A NAME="1005978"></A> In case of inserts, 
+      you can set the list of columns to insert into using the <CODE>setUpdateColumn</CODE> 
+      function. The default is to insert values into all the columns. 
+      <P> <A NAME="1005979"></A> 
+      <P CLASS="BP1"> For updates, the list of key columns must be supplied. Optionally 
+        the list of columns to update may also be supplied. In this case, the 
+        tags in the XML document matching the key column names will be used in 
+        the WHERE clause of the update statement and the tags matching the update 
+        column list will be used in the SET clause of the update statement. </P>
+      <A NAME="1005980"></A> 
+      <P CLASS="BP1"> For deletes the default is to create a WHERE clause to match 
+        all the tag values present in each ROW element of the document supplied. 
+        To override this behavior you can set the list of key columns. In this 
+        case only those tag values whose tag names match these columns will be 
+        used to identify the rows to delete (in effect used in the WHERE clause 
+        of the delete statement). </P>
+    <LI CLASS="LN1" TYPE="1" VALUE="3"><A NAME="1005981"></A>Supply an XML document 
+      to the <CODE>insertXML</CODE>, <CODE>updateXML</CODE> or <CODE>deleteXML</CODE> 
+      functions to insert, update and delete respectively. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="4"><A NAME="1005982"></A>You can repeat the 
+      last operation any number of times. 
+      <P> 
+    <LI CLASS="LN1" TYPE="1" VALUE="5"><A NAME="1005983"></A>Close the context. 
+      <P> 
+  </OL>
+  <A NAME="1005984"></A> 
+  <P CLASS="BP"> Use the same examples as for the Java case, <CODE>OracleXMLSave</CODE> 
+    class examples. </P>
+  <A NAME="1005985"></A> <!--TOC=h1-"1005985"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Insert Processing in PL/SQL</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1005987"></A> 
+  <P CLASS="BP"> The steps to insert a document into a table or view is to simply 
+    supply the table or the view name and then the document. The utility parses 
+    the document (if a string is given) and then creates an insert statement which 
+    it binds all the values into. By default, the utility inserts values into 
+    all the columns of the table or view and an absent element is treated as a 
+    NULL value. </P>
+  <A NAME="1013555"></A> 
+  <P CLASS="BP"> The following code shows how the document generated from the 
+    emp table can be put back into it with relative ease. </P>
+  <A NAME="1005988"></A> <!--TOC=h2-"1005988"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 16: Inserting Values into All Columns (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1005989"></A> 
+  <P CLASS="BP"> This example creates a procedure, insProc, which takes in an 
+    XML document as a CLOB and a table name to put the document into and then 
+    inserts the document: </P>
+  <PRE CLASS="CE">
+<A NAME="1008982"></A>create or replace procedure insProc(xmlDoc IN CLOB, tableName IN VARCHAR2) is
+<A NAME="1008983"></A>   insCtx DBMS_XMLSave.ctxType;
+<A NAME="1008984"></A>   rows number;
+<A NAME="1008985"></A> begin
+<A NAME="1008986"></A>    insCtx := DBMS_XMLSave.newContext(tableName); -- get the context handle
+<A NAME="1008987"></A>    rows := DBMS_XMLSave.insertXML(insCtx,xmlDoc); -- this inserts the document
+<A NAME="1008988"></A>    DBMS_XMLSave.closeContext(insCtx);            -- this closes the handle
+<A NAME="1008989"></A>end;
+<A NAME="1005997"></A>/
+<A NAME="1005998"></A>
+</PRE>
+  <A NAME="1005999"></A> 
+  <P CLASS="BP"> This procedure can now be called with any XML document and a 
+    table name. For example, a call of the form, </P>
+  <PRE CLASS="CE">
+<A NAME="1006000"></A>insProc(xmlDocument, 'scott.emp');
+<A NAME="1006001"></A>
+</PRE>
+  <A NAME="1006002"></A> 
+  <P CLASS="BP"> will generate an insert statement of the form, </P>
+  <PRE CLASS="CE">
+<A NAME="1006003"></A>insert into scott.emp (EMPNO, ENAME, JOB, MGR, SAL, DEPTNO) VALUES(?,?,?,?,?,?);
+<A NAME="1006004"></A>
+</PRE>
+  <A NAME="1006005"></A> 
+  <P CLASS="BP"> and the element tags in the input XML document matching the column 
+    names will be matched and their values bound. For the code snippet shown above, 
+    if you send it the XML document, </P>
+  <PRE CLASS="CE">
+<A NAME="1006006"></A> &lt;?xml version='1.0'?&gt;
+<A NAME="1006007"></A>&lt;ROWSET&gt;
+<A NAME="1006008"></A>	 	 &lt;ROW num="1"&gt;
+<A NAME="1006009"></A> 	 	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1006010"></A>    &lt;ENAME&gt;Smith&lt;/ENAME&gt;
+<A NAME="1006011"></A>    &lt;JOB&gt;CLERK&lt;/JOB&gt;
+<A NAME="1006012"></A>    &lt;MGR&gt;7902&lt;/MGR&gt;
+<A NAME="1006013"></A>    &lt;HIREDATE&gt;12/17/1980 0:0:0&lt;/HIREDATE&gt;
+<A NAME="1006014"></A>    &lt;SAL&gt;800&lt;/SAL&gt;
+<A NAME="1006015"></A>    &lt;DEPTNO&gt;20&lt;/DEPTNO&gt;
+<A NAME="1006016"></A>  &lt;/ROW&gt;
+<A NAME="1006017"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1006018"></A>&lt;/ROWSET&gt;
+<A NAME="1006019"></A>
+</PRE>
+  <A NAME="1006020"></A> 
+  <P CLASS="BP"> you would have a new row in the emp table containing the values 
+    (7369, Smith, CLERK, 7902, 12/17/1980,800,20). Any element absent inside the 
+    row element would have been taken as a null value. </P>
+  <A NAME="1006021"></A> <!--TOC=h2-"1006021"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 17: Inserting Values into Only Certain Columns (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006022"></A> 
+  <P CLASS="BP"> In certain cases, you may not want to insert values into all 
+    columns. This might be true when the values that you are getting is not the 
+    complete set and you need triggers or default values to be used for the rest 
+    of the columns. The code below shows how this can be done. </P>
+  <A NAME="1006023"></A> 
+  <P CLASS="BP"> Assume that you are getting the values only for the employee 
+    number, name and job and the salary, manager, deptno and hiredate field gets 
+    filled in automatically. You create a list of column names that you want the 
+    insert to work on and then pass it to the <CODE>DBMS_XMLSave</CODE> procedure. 
+    The setting of these values can be done by calling the <CODE>setUpdateColumnName</CODE><EM CLASS="Italic">() 
+    </EM>procedure repeatedly, passing in a column name to update every time. 
+    The column name settings can be cleared using the <CODE>clearUpdateColumnNames</CODE><EM CLASS="Italic">().</EM> 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1006024"></A>
+<A NAME="1008994"></A>create or replace procedure testInsert( xmlDoc IN clob) is
+<A NAME="1008995"></A>  insCtx DBMS_XMLSave.ctxType;
+<A NAME="1008996"></A>  doc clob;
+<A NAME="1008997"></A>  rows number;
+<A NAME="1008998"></A>begin
+<A NAME="1008999"></A> 
+<A NAME="1009000"></A>   insCtx := DBMS_XMLSave.newContext('scott.emp'); -- get the save context..!
+<A NAME="1009001"></A>
+<A NAME="1009002"></A>   DBMS_XMLSave.clearUpdateColumnList(insCtx); -- clear the update settings
+<A NAME="1009003"></A>
+<A NAME="1009004"></A>   -- set the columns to be updated as a list of values..
+<A NAME="1009005"></A>   DBMS_XMLSave.setUpdateColumn(insCtx,'EMPNO'); 
+<A NAME="1009006"></A>   DBMS_XMLSave.setUpdateColumn(insCtx,'ENAME');
+<A NAME="1009007"></A>   DBMS_XMLSave.setUpdatecolumn(insCtx,'JOB');
+<A NAME="1009008"></A>
+<A NAME="1009009"></A>   -- Now insert the doc. This will only insert into EMPNO,ENAME and JOB columns
+<A NAME="1009010"></A>   rows := DBMS_XMLSave.insertXML(insCtx, xmlDoc); 
+<A NAME="1009011"></A>   DBMS_XMLSave.closeContext(insCtx);
+<A NAME="1009012"></A>
+<A NAME="1009013"></A>end;
+<A NAME="1006044"></A>/
+</PRE>
+  <A NAME="1006045"></A> 
+  <P CLASS="BP"> If you call the procedure passing in a CLOB as a document, an 
+    insert statement of the form, </P>
+  <PRE CLASS="CE">
+<A NAME="1006046"></A>insert into scott.emp (EMPNO, ENAME, JOB) VALUES (?, ?, ?); 
+<A NAME="1006047"></A>
+</PRE>
+  <A NAME="1006048"></A> 
+  <P CLASS="BP"> is generated. Note that in the above example, if the inserted 
+    document contains values for the other columns (JOB, HIREDATE etc.), those 
+    will be ignored. </P>
+  <A NAME="1006049"></A> 
+  <P CLASS="BP"> Also an insert is performed for each ROW element that is present 
+    in the input. These inserts are batched by default. </P>
+  <A NAME="1006050"></A> <!--TOC=h1-"1006050"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Update 
+    Processing</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1006052"></A> 
+  <P CLASS="BP"> Now that you know how to insert values into the table from XML 
+    documents, let us see how to update only certain values. If you get an XML 
+    document to update the salary of an employee and also the department that 
+    she works in: </P>
+  <PRE CLASS="CE1">
+<A NAME="1006053"></A>&lt;ROWSET&gt;
+<A NAME="1006054"></A>	 	 &lt;ROW num="1"&gt;
+<A NAME="1006055"></A> 	 	  &lt;EMPNO&gt;7369&lt;/EMPNO&gt;
+<A NAME="1006056"></A>    &lt;SAL&gt;1800&lt;/SAL&gt;
+<A NAME="1006057"></A>    &lt;DEPTNO&gt;30&lt;/DEPTNO&gt;
+<A NAME="1006058"></A>  &lt;/ROW&gt;
+<A NAME="1006059"></A>  &lt;ROW&gt;
+<A NAME="1006060"></A>    &lt;EMPNO&gt;2290&lt;/EMPNO&gt;
+<A NAME="1006061"></A>    &lt;SAL&gt;2000&lt;/SAL&gt;
+<A NAME="1006062"></A>    &lt;HIREDATE&gt;12/31/1992&lt;/HIREDATE&gt;
+<A NAME="1006063"></A>  &lt;!-- additional rows ... --&gt;
+<A NAME="1006064"></A>&lt;/ROWSET&gt;
+<A NAME="1007283"></A>
+</PRE>
+  <A NAME="1006065"></A> 
+  <P CLASS="BP"> you can call the update processing to update the values. In the 
+    case of update, you need to supply the utility with the list of key column 
+    names. These form part of the where clause in the update statement. In the 
+    emp table shown above, the employee number (EMPNO) column forms the key and 
+    you use that for updates. </P>
+  <A NAME="1006066"></A> <!--TOC=h2-"1006066"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 18: Updating an XML Document Using keyColumns(PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006955"></A> 
+  <P CLASS="BP"> ,....... </P>
+  <PRE CLASS="CE">
+<A NAME="1009018"></A>create or replace procedure testUpdate ( xmlDoc IN clob) is
+<A NAME="1009019"></A>  updCtx DBMS_XMLSave.ctxType; 
+<A NAME="1009020"></A>  rows number;
+<A NAME="1009021"></A>begin
+<A NAME="1009022"></A>   
+<A NAME="1009023"></A>   updCtx := DBMS_XMLSave.newContext('scott.emp');  -- get the context
+<A NAME="1009024"></A>   DBMS_XMLSave.clearUpdateColumnList(updCtx); -- clear the update settings..
+<A NAME="1009025"></A>  
+<A NAME="1009026"></A>   DBMS_XMLSave.setKeyColumn(updCtx,'EMPNO'); -- set EMPNO as key column
+<A NAME="1009027"></A>   rows := DBMS_XMLSave.updateXML(updCtx,xmlDoc);  -- update the table.
+<A NAME="1009028"></A>   DBMS_XMLSave.closeContext(updCtx);             -- close the context..!
+<A NAME="1009029"></A>
+<A NAME="1009030"></A>end;
+<A NAME="1006079"></A>/
+<A NAME="1006080"></A>
+</PRE>
+  <A NAME="1006081"></A> 
+  <P CLASS="BP"> In this example, when the procedure is executed with a CLOB value 
+    that contains the document described above, two update statements would be 
+    generated. For the first ROW element, you would generate an update statement 
+    to update the SAL and JOB fields as shown below:- </P>
+  <PRE CLASS="CE">
+<A NAME="1006082"></A>update scott.emp SET SAL = 1800 and DEPTNO = 30 WHERE EMPNO = 7369;
+<A NAME="1006956"></A>
+</PRE>
+  <A NAME="1006083"></A> 
+  <P CLASS="BP"> and for the second ROW element, </P>
+  <PRE CLASS="CE">
+<A NAME="1006084"></A>update scott.emp SET SAL = 2000 and HIREDATE = 12/31/1992 WHERE EMPNO = 2290;
+<A NAME="1006085"></A>
+</PRE>
+  <A NAME="1006086"></A> <!--TOC=h2-"1006086"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 19: Specifying a List of Columns to Update (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006087"></A> 
+  <P CLASS="BP"> However, in a lot of cases you might want to specify the list 
+    of columns to update. This would speed up the processing since the same update 
+    statement can be used for all the ROW elements. Also you can ignore other 
+    tags which occur in the document. Note that when you specify a list of columns 
+    to update, an element corresponding to one of the update columns, if absent, 
+    will be treated as NULL. </P>
+  <A NAME="1006088"></A> 
+  <P CLASS="BP"> If you know that all the elements to be updated are the same 
+    for all the ROW elements in the XML document, then you can use the <CODE>setUpdateColumnName</CODE><EM CLASS="Italic">()</EM> 
+    procedure to set the column name to update. </P>
+  <PRE CLASS="CE">
+<A NAME="1009035"></A>create or replace procedure testUpdate(xmlDoc IN CLOB) is
+<A NAME="1009036"></A>  updCtx DBMS_XMLSave.ctxType;
+<A NAME="1009037"></A>  rows number;
+<A NAME="1009038"></A>begin
+<A NAME="1009039"></A>  
+<A NAME="1009040"></A>   updCtx := DBMS_XMLSave.newContext('scott.emp');
+<A NAME="1009041"></A>   DBMS_XMLSave.setKeyColumn(updCtx,'EMPNO'); -- set EMPNO as key column
+<A NAME="1009042"></A>
+<A NAME="1009043"></A>   -- set list of columnst to update.
+<A NAME="1009044"></A>   DBMS_XMLSave.setUpdateColumn(updCtx,'SAL');
+<A NAME="1009045"></A>   DBMS_XMLSave.setUpdateColumn(updCtx,'JOB');
+<A NAME="1009046"></A>
+<A NAME="1009047"></A>   rows := DBMS_XMLSave.updateXML(updCtx,xmlDoc); -- update the XML document..!
+<A NAME="1009048"></A>   DBMS_XMLSave.closeContext(updCtx);   -- close the handle
+<A NAME="1009049"></A>
+<A NAME="1009050"></A>end;
+<A NAME="1006104"></A>/
+</PRE>
+  <A NAME="1006105"></A> <!--TOC=h1-"1006105"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Delete 
+    Processing</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1006107"></A> 
+  <P CLASS="BP"> In the case of delete, you can set the list of key columns. These 
+    columns will be put as part of the where clause of the delete. If the key 
+    column names are not supplied, then a new delete statement will be created 
+    for each ROW element of the XML document where the list of columns in the 
+    where clause of the delete will match those in the ROW element. </P>
+  <A NAME="1006108"></A> <!--TOC=h2-"1006108"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 20: Deleting Operations per ROW (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006109"></A> 
+  <P CLASS="BP"> Consider the delete example shown below: </P>
+  <PRE CLASS="CE">
+<A NAME="1009055"></A>create or replace procedure testDelete(xmlDoc IN clob) is
+<A NAME="1009056"></A>  delCtx DBMS_XMLSave.ctxType;
+<A NAME="1009057"></A>  rows number;
+<A NAME="1009058"></A>begin
+<A NAME="1009059"></A>
+<A NAME="1009060"></A>   delCtx  := DBMS_XMLSave.newContext('scott.emp');
+<A NAME="1009061"></A>   DBMS_XMLSave.setKeyColumn(delCtx,'EMPNO');
+<A NAME="1009062"></A>
+<A NAME="1009063"></A>   rows := DBMS_XMLSave.deleteXML(delCtx,xmlDoc);
+<A NAME="1009064"></A>   DBMS_XMLSave.closeContext(delCtx);
+<A NAME="1009065"></A>end;
+<A NAME="1006120"></A>/
+<A NAME="1006121"></A>
+</PRE>
+  <A NAME="1006122"></A> 
+  <P CLASS="BP"> If you use the same XML document shown for the update example, 
+    you would end up with two delete statements, </P>
+  <PRE CLASS="CE">
+<A NAME="1006123"></A>DELETE FROM scott.emp WHERE empno=7369 and sal=1800 and deptno=30; 
+<A NAME="1006124"></A>DELETE FROM scott.emp WHERE empno=2200 and sal=2000 and hiredate=12/31/1992;
+<A NAME="1006125"></A>
+</PRE>
+  <A NAME="1006126"></A> 
+  <P CLASS="BP"> The delete statements were formed based on the tag names present 
+    in each ROW element in the XML document. </P>
+  <A NAME="1006127"></A> <!--TOC=h2-"1006127"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 21: Deleting by Specifying the Key Values (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006128"></A> 
+  <P CLASS="BP"> If you instead want the delete to only use the key values as 
+    predicates, you can use the <CODE>setKeyColumn</CODE> function to set this. 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1009070"></A>create or replace package testDML AS
+<A NAME="1009071"></A>   saveCtx DBMS_XMLSave.ctxType := null;   -- a single static variable
+<A NAME="1009072"></A>
+<A NAME="1009073"></A>   procedure insertXML(xmlDoc in clob);
+<A NAME="1009074"></A>   procedure updateXML(xmlDoc in clob);
+<A NAME="1009075"></A>   procedure deleteXML(xmlDoc in clob);
+<A NAME="1009076"></A>
+<A NAME="1009077"></A> end;
+<A NAME="1009078"></A>/
+<A NAME="1009079"></A>
+<A NAME="1009080"></A>create or replace package body testDML AS
+<A NAME="1009081"></A>  
+<A NAME="1009082"></A>  rows number;
+<A NAME="1009083"></A>  
+<A NAME="1009084"></A>  procedure insertXML(xmlDoc in clob) is
+<A NAME="1009085"></A>  begin
+<A NAME="1009086"></A>    rows := DBMS_XMLSave.insertXML(saveCtx,xmlDoc);
+<A NAME="1009087"></A>  end;
+<A NAME="1009088"></A>  
+<A NAME="1009089"></A>  procedure updateXML(xmlDoc in clob) is
+<A NAME="1009090"></A>  begin
+<A NAME="1009091"></A>    rows := DBMS_XMLSave.updateXML(saveCtx,xmlDoc);
+<A NAME="1009092"></A>  end;
+<A NAME="1009093"></A>  
+<A NAME="1009094"></A>  procedure deleteXML(xmlDoc in clob) is
+<A NAME="1009095"></A>  begin
+<A NAME="1009096"></A>    rows := DBMS_XMLSave.deleteXML(saveCtx,xmlDoc);
+<A NAME="1009097"></A>  end;
+<A NAME="1009098"></A>
+<A NAME="1009099"></A>begin
+<A NAME="1009100"></A>  saveCtx := DBMS_XMLSave.newContext('scott.emp'); -- create the context once..!
+<A NAME="1009101"></A>  DBMS_XMLSave.setKeyColumn(saveCtx, 'EMPNO');      -- set the key column name.
+<A NAME="1009102"></A>end;
+<A NAME="1009103"></A>/
+<A NAME="1006139"></A>
+</PRE>
+  <A NAME="1006140"></A> 
+  <P CLASS="BP"> Here a single delete statement of the form, </P>
+  <PRE CLASS="CE">
+<A NAME="1006141"></A>DELETE FROM scott.emp WHERE EMPNO=?
+<A NAME="1006142"></A>
+</PRE>
+  <A NAME="1006143"></A> 
+  <P CLASS="BP"> will be generated and used for all ROW elements in the document. 
+  </P>
+  <A NAME="1006144"></A> <!--TOC=h2-"1006144"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XSU 
+    Example 22: ReUsing the Context Handle (PL/SQL)</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006146"></A> 
+  <P CLASS="BP"> In all the three cases described above, insert, update and delete, 
+    the same context handle can be used to do more than one operation. i.e. one 
+    can perform more than one insert using the same context provided all of those 
+    inserts are going to the same table that was specified when creating the save 
+    context. The context can also be used to mix updates, deletes and inserts. 
+  </P>
+  <A NAME="1006961"></A> 
+  <P CLASS="BP"> For example, the following code shows how one can use the same 
+    context and settings to insert, delete or update values depending on the user's 
+    input. </P>
+  <A NAME="1006147"></A> 
+  <P CLASS="BP"> The example uses a package static variable to store the context 
+    so that the same context can be used for all the function calls. </P>
+  <PRE CLASS="CE">
+<A NAME="1006148"></A>create or replace package testDML AS
+<A NAME="1006149"></A>   saveCtx DBMS_XMLSave.ctxType := null;   -- a single static variable
+<A NAME="1006150"></A>
+<A NAME="1006151"></A>   procedure insert(xmlDoc in clob);
+<A NAME="1006152"></A>   procedure update(xmlDoc in clob);
+<A NAME="1006153"></A>   procedure delete(xmlDoc in clob);
+<A NAME="1006154"></A>
+<A NAME="1006155"></A> end;
+<A NAME="1006156"></A>/
+<A NAME="1006157"></A>
+<A NAME="1006158"></A>create or replace package body testDML AS
+<A NAME="1006159"></A>  
+<A NAME="1006160"></A>  procedure insert(xmlDoc in clob) is
+<A NAME="1006161"></A>  begin
+<A NAME="1006162"></A>    DBMS_XMLSave.insertXML(saveCtx, xmlDoc);
+<A NAME="1006163"></A>  end;
+<A NAME="1006164"></A>  
+<A NAME="1006165"></A>  procedure update(xmlDoc in clob) is
+<A NAME="1006166"></A>  begin
+<A NAME="1006167"></A>    DBMS_XMLSave.updateXML(saveCtx, xmlDoc);
+<A NAME="1006168"></A>  end;
+<A NAME="1006169"></A>  
+<A NAME="1006170"></A>  procedure delete(xmlDoc in clob) is
+<A NAME="1006171"></A>  begin
+<A NAME="1006172"></A>    DBMS_XMLSave.deleteXML(saveCtx, xmlDoc);
+<A NAME="1006173"></A>  end;
+<A NAME="1006174"></A>
+<A NAME="1006175"></A>  begin
+<A NAME="1006176"></A>    saveCtx := DBMS_XMLSave.newContext('scott.emp'); -- create the context 
+once..!
+<A NAME="1006177"></A>    DBMS_XMLSave.setKeyColumn(saveCtx, 'EMPNO');   -- set the key column name.
+<A NAME="1006178"></A>  end;
+<A NAME="1006179"></A>end;
+<A NAME="1006180"></A>/
+</PRE>
+  <A NAME="1006181"></A> 
+  <P CLASS="BP"> In the above package, you create a context once for the whole 
+    package (thus the session) and then reuse the same context for performing 
+    inserts, udpates and deletes. </P>
+  <A NAME="1013557"> 
+  <DIV ALIGN="CENTER"> 
+    <P> 
+    <TABLE CLASS="Note" BORDER="0" WIDTH="80%" CELLPADDING="0" CELLSPACING="0">
+      <TR CLASS="Note"> 
+        <TD CLASS="Note"> 
+          <HR>
+          <A NAME="1013560"></A><FONT FACE="Arial, Helvetica, sans-serif"><STRONG CLASS="NH">Note:</STRONG></FONT> 
+          <A NAME="1013561"></A> 
+          <P CLASS="NB"> The key column ('EMPNO') would be used both for updates 
+            and deletes as a way of identifying the row.&nbsp; 
+          <HR>
+        </TD>
+      </TR>
+    </TABLE>
+    <TABLE CLASS="TableNote" CELLPADDING="3" >
+      <TR CLASS="TableNote" ALIGN=LEFT VALIGN=TOP> 
+        <TD CLASS="TableNote"> </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  </A> <A NAME="1006182"></A> 
+  <P CLASS="BP"> Users of this package can now call any of the three routines 
+    to update the <EM CLASS="Italic">emp</EM> table: </P>
+  <PRE CLASS="CE">
+<A NAME="1006183"></A>testDML.insert(xmlclob);
+<A NAME="1015611"></A>testDML.delete(xmlclob);
+<A NAME="1006184"></A>testDML.update(xmlclob);
+<A NAME="1006185"></A>
+</PRE>
+  <A NAME="1006186"></A> 
+  <P CLASS="BP"> All of these calls would use the same context. This would improve 
+    the performance of these operations, particularly if these operations are 
+    performed frequently. </P>
+  <A NAME="1006189"></A> <!--TOC=h1-"1006189"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Advanced 
+    Usage Techniques</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1006190"></A> <!--TOC=h2-"1006190"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Exception 
+    Handling in Java</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1006191"></A> <!--TOC=h3-"1006191"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> OracleXMLSQLException 
+    class</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1006192"></A> 
+  <P CLASS="BP"> The utility catches all exceptions that occur during processing 
+    and throws an <CODE>oracle.xml.sql.OracleXMLSQLException</CODE><EM CLASS="Italic"> 
+    </EM>which is a run time exception. The calling program thus does not have 
+    to catch this exception all the time. If the program can still catch this 
+    exception and do the appropriate action. The exception class provides functions 
+    to get the error message and also get the parent exception, if any. For example, 
+    the program shown below, catches the run time exception and then gets the 
+    parent exception. </P>
+  <A NAME="1012201"></A> <!--TOC=h3-"1012201"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> OracleXMLNoRowsException 
+    class</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1012202"></A> 
+  <P CLASS="BP"> This exception is generated when the <CODE>setRaiseNoRowsException</CODE><EM CLASS="Italic"> 
+    </EM>is set in the OracleXMLQuery class during generation. This is a subclass 
+    of the <CODE>OracleXMLSQLException</CODE> class and can be used as an indicator 
+    of the end of row processing during generation. </P>
+  <PRE CLASS="CE">
+<A NAME="1009235"></A>import java.sql.*;
+<A NAME="1009236"></A>import oracle.xml.sql.query.OracleXMLQuery;
+<A NAME="1009237"></A>
+<A NAME="1009238"></A>public class testException
+<A NAME="1009239"></A>{
+<A NAME="1009240"></A>   public static void main(String argv[])
+<A NAME="1009241"></A>     throws SQLException
+<A NAME="1009242"></A>   {
+<A NAME="1009243"></A>      Connection conn = getConnection("scott","tiger");
+<A NAME="1009244"></A>
+<A NAME="1009245"></A>      // wrong query this will generate an exception
+<A NAME="1009246"></A>      OracleXMLQuery qry = new OracleXMLQuery(conn, "select * from emp where sd
+<A NAME="1009247"></A> = 322323");
+<A NAME="1009248"></A>
+<A NAME="1009249"></A>      qry.setRaiseException(true); // ask it to raise exceptions..!
+<A NAME="1009250"></A>
+<A NAME="1009251"></A>      try{
+<A NAME="1009252"></A>        String str = qry.getXMLString();
+<A NAME="1009253"></A>      }catch(oracle.xml.sql.OracleXMLSQLException e)
+<A NAME="1009254"></A>      {
+<A NAME="1009255"></A>        // Get the original exception
+<A NAME="1009256"></A>        Exception parent = e.getParentException();
+<A NAME="1009257"></A>        if (parent instanceof java.sql.SQLException)
+<A NAME="1009258"></A>        {
+<A NAME="1009259"></A>           // perform some other stuff. Here you simply print it out..
+<A NAME="1009260"></A>           System.out.println(" Caught SQL Exception:"+parent.getMessage());
+<A NAME="1009261"></A>        }
+<A NAME="1009262"></A>        else
+<A NAME="1009263"></A>          System.out.println(" Exception caught..!"+e.getMessage());
+<A NAME="1009264"></A>     }
+<A NAME="1009265"></A>   }
+<A NAME="1009266"></A>    // Get the connection given the user name and password..!
+<A NAME="1009267"></A>    private static Connection getConnection(String user, String passwd)
+<A NAME="1009268"></A>      throws SQLException
+<A NAME="1009269"></A>    {
+<A NAME="1009270"></A>      DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+<A NAME="1009271"></A>      Connection conn =
+<A NAME="1009272"></A>          DriverManager.getConnection("jdbc:oracle:oci8:@",user,passwd);
+<A NAME="1009273"></A>     return conn;
+<A NAME="1009274"></A>   }
+</PRE>
+  <A NAME="1009233"></A> 
+  <P CLASS="BP"> } </P>
+  <A NAME="1012176"></A> <!--TOC=h2-"1012176"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Exception 
+    Handling in PL/SQL</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1012216"></A> 
+  <P CLASS="BP"> Here is a PL/SQL exception handling example: </P>
+  <PRE CLASS="CE">
+<A NAME="1009179"></A>declare
+<A NAME="1009180"></A>  queryCtx DBMS_XMLQuery.ctxType;
+<A NAME="1009181"></A>  result clob;
+<A NAME="1009182"></A>  errorNum NUMBER;
+<A NAME="1009183"></A>  errorMsg VARCHAR2(200);
+<A NAME="1009184"></A>begin
+<A NAME="1009185"></A>
+<A NAME="1009186"></A>  queryCtx := DBMS_XMLQuery.newContext('select * from emp where df = dfdf');
+<A NAME="1009187"></A>
+<A NAME="1009188"></A>  -- set the raise exception to true..
+<A NAME="1009189"></A>  DBMS_XMLQuery.setRaiseException(queryCtx, true);
+<A NAME="1009190"></A>  DBMS_XMLQuery.setRaiseNoRowsException(queryCtx, true);
+<A NAME="1009191"></A>
+<A NAME="1009192"></A>  -- set propagate original exception to true to get the original exception..!
+<A NAME="1009193"></A>  DBMS_XMLQuery.propagateOriginalException(queryCtx,true);
+<A NAME="1009194"></A>  result := DBMS_XMLQuery.getXML(queryCtx);
+<A NAME="1009195"></A>
+<A NAME="1009196"></A>  exception
+<A NAME="1009197"></A>    when others then
+<A NAME="1009198"></A>      -- get the original exception
+<A NAME="1009199"></A>      DBMS_XMLQuery.getExceptionContent(queryCtx,errorNum, errorMsg);
+<A NAME="1009200"></A>      dbms_output.put_line(' Exception caught ' || TO_CHAR(errorNum)
+<A NAME="1009201"></A>                   || errorMsg );
+<A NAME="1009202"></A>end; 
+<A NAME="1009203"></A>/
+</PRE>
+  <A NAME="1000489"></A> <!--TOC=h1-"1000489"--> 
+  <H2 CLASS="H1"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Frequently 
+    Asked Questions (FAQs): XML-SQL Utility (XSU)</FONT></H2>
+  <!--/TOC=h1--> <A NAME="1001090"></A> <!--TOC=h2-"1001090"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> What 
+    Schema Structure to Use With XSU to Store XML?</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1012133"></A> <!--TOC=h3-"1012133"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1004018"></A> 
+  <P CLASS="BP"> I have the following XML in my customer.xml file: </P>
+  <PRE CLASS="CE">
+<A NAME="1004020"></A>&lt;ROWSET&gt;
+<A NAME="1004021"></A> &lt;ROW num="1"&gt;
+<A NAME="1004022"></A>  &lt;CUSTOMER&gt;
+<A NAME="1004023"></A>   &lt;CUSTOMERID&gt;1044&lt;/CUSTOMERID&gt;
+<A NAME="1004024"></A>   &lt;FIRSTNAME&gt;Paul&lt;/FIRSTNAME&gt;
+<A NAME="1004025"></A>   &lt;LASTNAME&gt;Astoria&lt;/LASTNAME&gt;
+<A NAME="1004026"></A>   &lt;HOMEADDRESS&gt;
+<A NAME="1004027"></A>    &lt;STREET&gt;123 Cherry Lane&lt;/STREET&gt;
+<A NAME="1004028"></A>    &lt;CITY&gt;SF&lt;/CITY&gt;
+<A NAME="1004029"></A>    &lt;STATE&gt;CA&lt;/STATE&gt;
+<A NAME="1004030"></A>    &lt;ZIP&gt;94132&lt;/ZIP&gt;
+<A NAME="1004031"></A>   &lt;/HOMEADDRESS&gt;
+<A NAME="1004032"></A>  &lt;/CUSTOMER&gt;
+<A NAME="1004033"></A> &lt;/ROW&gt;
+<A NAME="1004047"></A>&lt;/ROWSET&gt;
+<A NAME="1011773"></A>
+</PRE>
+  <A NAME="1011774"></A> 
+  <P CLASS="BP"> What database schema structure should I use to store this xml 
+    with XSU? </P>
+  <A NAME="1011807"></A> <!--TOC=h3-"1011807"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011802"></A> 
+  <P CLASS="BP"> Since your example is more than one level deep (i.e. has a nested 
+    structure), you should use an object-relational schema. The XML above will 
+    canonically map to such a schema. An appropriate db. schema would be the following: 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1004171"></A>create type address_type as object
+<A NAME="1004172"></A> (
+<A NAME="1004173"></A> street varchar2(40),
+<A NAME="1004174"></A> city varchar2(20),
+<A NAME="1004175"></A> state varchar2(10),
+<A NAME="1004176"></A> zip varchar2(10)
+<A NAME="1004177"></A> );
+<A NAME="1004178"></A> /
+<A NAME="1004179"></A> create type customer_type as object
+<A NAME="1004180"></A> (
+<A NAME="1004181"></A>customerid number(10),
+<A NAME="1004182"></A>firstname varchar2(20),
+<A NAME="1004183"></A>lastname varchar2(20),
+<A NAME="1004184"></A>homeaddress address_type
+<A NAME="1004185"></A> );
+<A NAME="1004186"></A>/
+<A NAME="1004187"></A>create table customer_tab ( customer customer_type);
+<A NAME="1004188"></A>
+</PRE>
+  <A NAME="1004190"></A> 
+  <P CLASS="BP"> In the case you wanted to load customer.xml via the XSU into 
+    a relational schema, you could still do it by creating objects in views on 
+    top of your relational schema. </P>
+  <A NAME="1004191"></A> 
+  <P CLASS="BP"> For example, you would have a relational table which would contain 
+    all the information: </P>
+  <PRE CLASS="CE">
+<A NAME="1004192"></A>create table cust_tab
+<A NAME="1004193"></A> ( customerid number(10), 
+<A NAME="1004194"></A>   firstname varchar2(20), 
+<A NAME="1004195"></A>   lastname varchar2(20), 
+<A NAME="1004196"></A>   state varchar2(40),
+<A NAME="1004197"></A>   city varchar2(20), 
+<A NAME="1004198"></A>   state varchar2(20), 
+<A NAME="1004199"></A>   zip varchar2(20)
+<A NAME="1011850"></A> );
+</PRE>
+  <A NAME="1011846"></A> 
+  <P CLASS="BP"> </P>
+  <A NAME="1011849"></A> 
+  <P CLASS="BP"> Then you would create a customer view which contains a customer 
+    object on top of it, as in: </P>
+  <PRE CLASS="CE">
+<A NAME="1004202"></A>create view customer_view as
+<A NAME="1004203"></A>select customer_type(customerid, firstname, lastname,
+<A NAME="1004204"></A>address_type(state,street,city,zip))
+<A NAME="1004205"></A>from cust_tab;
+<A NAME="1004206"></A>
+</PRE>
+  <A NAME="1004207"></A> 
+  <P CLASS="BP"> Finally, you could flatten your XML using XSLT and then insert 
+    it directly into your relational schema. This is the least recommended option. 
+  </P>
+  <A NAME="1007408"></A> <!--TOC=h2-"1007408"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Storing 
+    XML Data Across Tables</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1012134"></A> <!--TOC=h3-"1012134"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007409"></A> 
+  <P CLASS="BP"> Can XML- SQL Utility store XML data across tables? </P>
+  <A NAME="1007410"></A> <!--TOC=h3-"1007410"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007419"></A> 
+  <P CLASS="BP"> Currently XML-SQL Utility (XSU) can only store to a single table. 
+    It maps a canonical representation of an XML document into any table/view. 
+    But of course there is a way to store XML with the XSU across table. One can 
+    do this using XSLT to transform any document into multiple documents and insert 
+    them separately. Another way is to define views over multiple tables (object 
+    views if needed) and then do the inserts ... into the view. If the view is 
+    inherently non-updatable (because of complex joins, ...), then one can use 
+    INSTEAD-OF triggers over the views to do the inserts. </P>
+  <A NAME="1012139"></A> <!--TOC=h2-"1012139"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Using 
+    XML-SQL Utility to Load XML Stored in Attributes</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1007434"></A> <!--TOC=h3-"1007434"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011873"></A> 
+  <P CLASS="BP"> I would like to use the XML-SQL Utility to load XML where some 
+    of the data is stored in attributes; yet, the XML-SQL Utility seems to ignore 
+    the XML attributes. What can I do? </P>
+  <A NAME="1007443"></A> <!--TOC=h3-"1007443"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007444"></A> 
+  <P CLASS="BP"> Unfortunately, for now you will have to use XSLT to transform 
+    your XML document (i.e. change your attributes into elements). The XML-SQL 
+    Utility does assume canonical mapping from XML to a db. schema. This takes 
+    away a bit from the flexibility, forcing the user to sometimes resort to XSLT, 
+    but at the same time, in the common case, it doesn't burden the user with 
+    having to specify a mapping. </P>
+  <A NAME="1012140"></A> <!--TOC=h2-"1012140"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> XML-SQL 
+    Utility is Case Sensitive: Use ignoreCase or...</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1007448"></A> <!--TOC=h3-"1007448"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007449"></A> 
+  <P CLASS="BP"> I am trying to insert the following XML document (dual.xml): 
+  </P>
+  <PRE CLASS="CE">
+<A NAME="1011899"></A>&lt;ROWSET&gt;
+<A NAME="1011900"></A>   &lt;row&gt;
+<A NAME="1011901"></A>      &lt;DUMMY&gt;X&lt;/DUMMY&gt;
+<A NAME="1011902"></A>   &lt;/row&gt;
+<A NAME="1011903"></A>&lt;/ROWSET&gt;
+</PRE>
+  <A NAME="1011918"></A> 
+  <P CLASS="BP"> </P>
+  <A NAME="1011926"></A> 
+  <P CLASS="BP"> Into the table "dual" using the command line front end of the 
+    XSU, like in: </P>
+  <PRE CLASS="CE">
+<A NAME="1011927"></A>java OracleXML putxml -filename dual.xml dual
+<A NAME="1011941"></A>
+</PRE>
+  <A NAME="1011928"></A> 
+  <P CLASS="BP"> and I get the following error: </P>
+  <PRE CLASS="CE">
+<A NAME="1011931"></A>oracle.xml.sql.OracleXMLSQLException: No rows to modify -- the row enclosing tag 
+missing.  Specify the correct row enclosing tag.
+</PRE>
+  <A NAME="1007450"></A> <!--TOC=h3-"1007450"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007451"></A> 
+  <P CLASS="BP"> By default the XML SQL Utility is case sensitive, so it looks 
+    for the record separator tag which by default is "ROW"; yet, all it can find 
+    is "row". Another related common mistake is to case mismatch one of the element 
+    tags. For example if in dual.xml the tag "DUMMY" was actually "dummy" than 
+    the XML SQL Utility would also raise an error complaining that if couldn't 
+    find a matching column in the table "dual". So user has two options -- use 
+    the correct case or use the "ignoreCase" feature. </P>
+  <A NAME="1012141"></A> <!--TOC=h2-"1012141"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Generating 
+    Database Schema from a DTD</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1007460"></A> <!--TOC=h3-"1007460"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007463"></A> 
+  <P CLASS="BP"> Given a DTD, will the XML SQL Utility generate the database schema? 
+  </P>
+  <A NAME="1007464"></A> <!--TOC=h3-"1007464"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer 
+    </FONT></H4>
+  <!--/TOC=h3--> <A NAME="1007472"></A> 
+  <P CLASS="BP"> No. Due to a number of shortcomings of the DTD, this functionality 
+    is not available. Once XML Schema standard is finalized this functionality 
+    will become feasible. </P>
+  <A NAME="1012142"></A> <!--TOC=h2-"1012142"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Using 
+    XML-SQL Utility Command Line</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1011968"></A> <!--TOC=h3-"1011968"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011969"></A> 
+  <P CLASS="BP"> I am using the XML SQL Utility's command line front end, and 
+    I am passing a connect string but I get a TNS error back. Can you provide 
+    examples of a thin driver connect string and an OCI8 driver connect string? 
+  </P>
+  <A NAME="1011970"></A> <!--TOC=h3-"1011970"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer 
+    </FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011971"></A> 
+  <P CLASS="BP"> An example of an JDBC thin driver connect string is: "jdbc:oracle:thin:&lt;user&gt;/&lt;password&gt;@&lt;hostname&gt;:&lt;port 
+    number&gt;:&lt;DB SID&gt;"; furthermore, the db. has to have a active TCP/IP 
+    listener. A valid OCI8 connect string would be: "jdbc:oracle:oci8:&lt;user&gt;/&lt;password&gt;@&lt;hostname&gt;". 
+  </P>
+  <A NAME="1012143"></A> <!--TOC=h2-"1012143"--> 
+  <H3 CLASS="H2"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Does 
+    XML-SQL Utility Commit After INSERT, DELETE, UPDATE?</FONT></H3>
+  <!--/TOC=h2--> <A NAME="1011990"></A> <!--TOC=h3-"1011990"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Question</FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011991"></A> 
+  <P CLASS="BP"> Does XML SQL Utility commit after it's done inserting/deleting/updating? 
+    What happens if an error occurs. </P>
+  <A NAME="1011992"></A> <!--TOC=h3-"1011992"--> 
+  <H4 CLASS="H3"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#330099"> Answer 
+    </FONT></H4>
+  <!--/TOC=h3--> <A NAME="1011993"></A> 
+  <P CLASS="BP"> By default the XML SQL Utility executes a number of insert (or 
+    del or update) statements at a time. The number of statements batch together 
+    and executed at the same time can be overridden using the "<CODE>setBatchSize</CODE>" 
+    feature. </P>
+  <A NAME="1012000"></A> 
+  <P CLASS="BP"> By default the XML SQL Utility does no explicit commits. If the 
+    autocommit is on (default for the JDBC connection) then after each batch of 
+    statement executions a commit happens. The user can override this by turning 
+    autocommit off and then specifying after how many statement executions should 
+    a commit occur which can be done using the "<CODE>setCommitBatch</CODE>" feature. 
+  </P>
+  <A NAME="1012005"></A> 
+  <P CLASS="BP"> Finally, what happens if an error occurs... Well, the XSU rolls 
+    back to either the state the target table was before the particular call to 
+    the XSU, or the state right after the last commit made during the current 
+    call to the XSU. </P>
+  <A NAME="1012161"></A> 
+  <P CLASS="BP"> </P>
+  <A NAME="1011959"></A> 
+  <P CLASS="BP"> </P>
+  <!-- Start Footer --> </DIV>
+
+<DIV CLASS="OUTD">
+<HR>
+<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD VALIGN="BOTTOM" WIDTH="33%">
+<TABLE CELLSPACING="0" CELLPADDING="0">
+<TR>
+            <TD ALIGN="CENTER">&nbsp;</TD>            <TD ALIGN="CENTER">&nbsp;</TD>
+    
+</TR>
+</TABLE>
+      </TD>
+      <TD ALIGN="CENTER" WIDTH="34%"> <A HREF="../../dcommon/html/cpyr.htm"> <FONT SIZE="-2">Copyright 
+        &copy; 1996-2000 Oracle Corporation.</FONT></A> <BR>
+<FONT SIZE="-2">All Rights Reserved.</FONT>
+</TD>
+      <TD VALIGN="BOTTOM" ALIGN="RIGHT" WIDTH="33%">&nbsp; </TD>
+</TR>
+</TABLE>
+  
+</DIV>
+
+</BODY>
+</HTML>
+

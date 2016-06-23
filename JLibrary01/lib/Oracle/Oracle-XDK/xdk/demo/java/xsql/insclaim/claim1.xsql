@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql" ><![CDATA[
+
+select value(c) as Claim
+  from insurance_claim_view c
+ where c.claimpolicy.primaryinsured.lastname = 'Astoria'
+
+]]></xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:51:08 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/insclaim/claim1.xsql.mkelem $
+| $Revision: /main/0 $
++-->
+

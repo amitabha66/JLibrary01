@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<BindMixedContent xmlns = "http://www.oracle.com/sample7/"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://www.oracle.com/sample7/ sample7.xsd">
+    Tesing whether a string could be placed in the begining
+   <name> Ivan Tchazianis </name>
+   Sounds like a Russian name
+   <quantity> 10 </quantity>
+   This quantity is sufficient
+</BindMixedContent>
+

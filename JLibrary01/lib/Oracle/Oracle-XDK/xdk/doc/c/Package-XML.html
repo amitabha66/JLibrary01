@@ -1,0 +1,755 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>XML APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package XML</h1></center>
+
+    This C implementation of the XML processor (or parser) follows the W3C
+    XML specification (rev REC-xml-19980210) and implements the required
+    behavior of an XML processor in terms of how it must read XML data and
+    the information it must provide to the application.<p>
+
+<br><hr noshade size=1><center><h2><a name="XML">Interface XML</a></h2></center>
+	   <center><h3>Function Index</h3>
+<table summary="Interface 'XML' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XmlCreate"><b>XmlCreate</b></a></td>
+	       <td>Create an XML Developer's Toolkit xmlctx</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlCreateDTD"><b>XmlCreateDTD</b></a></td>
+	       <td>Create DTD</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlCreateDocument"><b>XmlCreateDocument</b></a></td>
+	       <td>Create Document (node)</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlDestroy"><b>XmlDestroy</b></a></td>
+	       <td>Destroy an xmlctx</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlFreeDocument"><b>XmlFreeDocument</b></a></td>
+	       <td>Free a document (releases all resources)</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlGetEncoding"><b>XmlGetEncoding</b></a></td>
+	       <td>Returns data encoding in use by XML context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlHasFeature"><b>XmlHasFeature</b></a></td>
+	       <td>Determine if DOM feature is implemented</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlIsSimple"><b>XmlIsSimple</b></a></td>
+	       <td>Returns single-byte (simple) character set flag</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlIsUnicode"><b>XmlIsUnicode</b></a></td>
+	       <td>Returns XmlIsUnicode (simple) character set flag</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlLoadDom"><b>XmlLoadDom</b></a></td>
+	       <td>Load (parse) an XML document and produce a DOM</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlLoadSax"><b>XmlLoadSax</b></a></td>
+	       <td>Load (parse) an XML document from and produce SAX events</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlLoadSaxVA"><b>XmlLoadSaxVA</b></a></td>
+	       <td>Load (parse) an XML document from and produce SAX events [varargs]</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaveDom"><b>XmlSaveDom</b></a></td>
+	       <td>Saves (serializes, formats) an XML document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlVersion"><b>XmlVersion</b></a></td>
+	       <td>Returns version string for XDK</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XmlCreate">XmlCreate</a></h2>
+
+<table summary="Function 'XmlCreate' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlCreate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create an XML Developer's Toolkit xmlctx</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlctx&nbsp;*XmlCreate(xmlerr&nbsp;*err,&nbsp;oratext&nbsp;*name,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlCreate' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> returned error code</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  name of context [<i>for debug</i>]</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlctx *)</b></tt> created xmlctx [<i>or NULL on error with err set</i>]</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Create an XML Developer's Toolkit xmlctx.  Properties common
+        to all xmlctx's (both XDK and XMLType) are:<p>
+        ("data_encoding", name of data encoding)
+            The encoding in which XML data will be presented through
+            DOM and SAX.  If not specified, the default is UTF-8 (or
+            UTF-E on EBCDIC platforms).  Note that single-byte encodings
+            such as EBCDIC or ISO-8859 are substantially faster than
+            multibyte encodings like UTF-8; Unicode (UTF-16) uses more
+            memory but has better performance than multibyte.<p>
+BEGIN_NO_DOC
+        ("data_lid", data encoding lid)
+            The data encoding specified as an NLS lx_langid; the
+            matching NLS global area must also be specified.
+END_NO_DOC<p>
+        ("default_input_encoding", name of default input encoding)
+            If the encoding of an input document cannot be automatically
+            determined through BOM, XMLDecl, protocol header, etc, then
+            this encoding will be assumed.<p>
+BEGIN_NO_DOC
+        ("default_input_lid", default input encoding lid)
+            The default input encoding specified as an NLS lx_langid;
+            the matching NLS global area must also be specified.
+END_NO_DOC<p>
+        ("error_language", error language or language.encoding)
+            The language (and optional encoding) in which error
+            messages are created.  The default is American with
+            UTF-8 encoding.  To specify just the language, give
+            the name of the language and nothing else ("American");
+            To also specify the encoding, add a dot and the Oracle
+            name of the encoding ("American.WE8ISO8859P1").<p>
+        ("error_handler", function pointer, see XML_ERRMSG_F)
+            Default behavior on errors is to output the formatted
+            message to stderr.  If an error handler is provided,
+            the formatted message will be passed to it instead of
+            being printed.<p>
+        ("error_context", user-defined context for error handler)
+            This is a context pointer to be passed to the error
+            handler function.  It's meaning is user-defined; it
+            is just specified here and passed along when an error
+            occurs.<p>
+        ("input_encoding", name of forced input encoding)
+            The forced input encoding for input documents.  Used to
+            override a document's XMLDecl, etc, and always interpret
+            it in the given encoding.  USE OF THIS FEATURE IS
+            DISCOURAGED!  It should be not necessary in normal use,
+            as BOMs, XMLDecls, etc, when existing, should be correct.<p>
+BEGIN_NO_DOC
+        ("input_lid",                INLID,          POINTER),
+            The forced input encopding<p>
+        ("lpu_context", lpu context)
+            The LPU context used for URL data loading and
+            access-method hooking.  If one is not provided, it
+            will be made for you.<p>
+        ("lml_context",              LMLCTX,         POINTER),
+            The LML context used for low-level memory allocation.
+            If not provided, one will be made.  From the outside,
+            end-users have to set memory_alloc, memory_free, etc.
+END_NO_DOC<p>
+        ("memory_alloc", low-level memory allocation function)
+            Low-level memory allocation function, if malloc is
+            not to be used.  If provided, the matching free function
+            must also be given.  See XML_ALLOC_F.<p>
+        ("memory_free", low-level memory freeing function)
+            Low-level memory freeing function, if free is not to be
+            used.  Matches the alloc function.<p>
+        ("memory_context", user-defined memory context)
+            User-defined memory context which is passed to the alloc
+            and free functions.  Its definition and use is entirely
+            up to the user; it is just set here and passed to the
+            callbacks.<p>
+BEGIN_NO_DOC
+        ("nls_global_area", NLS global area, lx_glo)
+            If any encoding are specified as NLS lids, the matching
+            NLS global area must also be specified.
+END_NO_DOC<p>
+        The XDK has properites of its own, that only apply to an XDK
+        type xmlctx (the previous properies were all general and
+        applied to all xmlctx's).<p>
+	("input_buffer_size", size in characters of input buffer)
+	    This is the basic I/O buffer size.  Default is 256K,
+	    minimum is 4K and maximum is 4MB.  Depending on the
+	    encoding, 1, 2 or 3 of these buffers may be needed.
+	    Note size is in characters, not bytes.  If the buffer
+	    holds Unicode data, it will be twice as large.<p>
+	("memory_block_size", size in bytes of memory allocation unit)
+	    This is the size of chunk the high-level memory package
+	    will request from the low-level allocator; i.e., the basic
+	    unit of memory allocation.  Default is 64K, minimum is 16K
+	    and maximum is 256K.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlDestroy"><tt>XmlDestroy</tt></a>, <a href="Package-Callback.html#XML_ERRMSG_F"><tt>XML_ERRMSG_F</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlCreateDTD">XmlCreateDTD</a></h2>
+
+<table summary="Function 'XmlCreateDTD' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlCreateDTD</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a>; DOM 2: DOMImplementation.createDocumentType()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create DTD</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b></b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlCreateDTD' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+<tr><td scope=row><tt>qname</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  qualified name</td></tr>
+<tr><td scope=row><tt>pubid</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  external subset public identifier</td></tr>
+<tr><td scope=row><tt>sysid</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  external subset system identifier</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> returned error code</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmldtdnode *)</b></tt> new DTD node</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Create DTD.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlCreateDocument">XmlCreateDocument</a></h2>
+
+<table summary="Function 'XmlCreateDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlCreateDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a>; DOM 2: DOMImplementation.createDocument()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create Document (node)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmldocnode*&nbsp;XmlCreateDocument(xmlctx&nbsp;*xctx,&nbsp;oratext&nbsp;*uri,&nbsp;oratext&nbsp;*qname,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmldtdnode&nbsp;*dtd,&nbsp;xmlerr&nbsp;*err)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlCreateDocument' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+<tr><td scope=row><tt>uri</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  namespace URI of root element to create [<i>or NULL</i>]</td></tr>
+<tr><td scope=row><tt>qname</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  QName of root element [<i>or NULL if none</i>]</td></tr>
+<tr><td scope=row><tt>dtd</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  associated DTD node</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> returned error code</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmldocnode *)</b></tt> new Document object.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates the initial top-level DOCUMENT node and its supporting
+        infrastructure.  If a qname is provided, a an element with that
+        name is created and set as the document's root element.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlDestroy">XmlDestroy</a></h2>
+
+<table summary="Function 'XmlDestroy' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlDestroy</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Destroy an xmlctx</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>void&nbsp;XmlDestroy(xmlctx&nbsp;*xctx)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlDestroy' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Destroys an xmlctx<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlCreate"><tt>XmlCreate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlFreeDocument">XmlFreeDocument</a></h2>
+
+<table summary="Function 'XmlFreeDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlFreeDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Free a document (releases all resources)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>void&nbsp;XmlFreeDocument(xmlctx&nbsp;*xctx,&nbsp;xmldocnode&nbsp;*doc)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlFreeDocument' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>doc</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> document to free</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Destroys a document created by XmlCreateDocument or through one
+        of the Load functions.  Releases all resources associated with
+        the document, which is then invalid.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlCreateDocument"><tt>XmlCreateDocument</tt></a>, <a href="Package-XML.html#XmlLoadDom"><tt>XmlLoadDom</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlGetEncoding">XmlGetEncoding</a></h2>
+
+<table summary="Function 'XmlGetEncoding' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlGetEncoding</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns data encoding in use by XML context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlGetEncoding(xmlctx&nbsp;*xctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlGetEncoding' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> name of data encoding</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns data encoding in use by XML context.  Ordinarily, the
+        data encoding is chosen by the user, so this function is not
+        needed.  However, if the data encoding is not specified, and
+        allowed to default, this function can be used to return the
+        name of that default encoding.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-DOM.html#XmlDomGetDecl"><tt>XmlDomGetDecl</tt></a>, <a href="Package-XML.html#XmlIsSimple"><tt>XmlIsSimple</tt></a>, <a href="Package-XML.html#XmlIsUnicode"><tt>XmlIsUnicode</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlHasFeature">XmlHasFeature</a></h2>
+
+<table summary="Function 'XmlHasFeature' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlHasFeature</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a>; DOM 2: DOMImplementation.hasFeature()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Determine if DOM feature is implemented</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>boolean&nbsp;XmlHasFeature(xmlctx&nbsp;*xctx,&nbsp;oratext&nbsp;*feature,&nbsp;oratext&nbsp;*version)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlHasFeature' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>feature</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> package name of the feature to test.</td></tr>
+<tr><td scope=row><tt>version</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> version # of the package name to test.</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> feature is implemented?</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Determine if a DOM feature is implemented.  Returns TRUE if the
+        feature is implemented in the specified version, FALSE otherwise.<p>
+        In level 1, the legal values for package are 'HTML' and 'XML'
+        (case-insensitive), and the version is the string "1.0".  If the
+        version is not specified, supporting any version of the feature
+        will cause the method to return true.<p>
+	DOM 1.0 features are "XML" and "HTML".<p>
+	DOM 2.0 features are "Core", "XML", "HTML", "Views", "StyleSheets",
+        "CSS", "CSS2", "Events", "UIEvents", "MouseEvents", "MutationEvents",
+        "HTMLEvents", "Range", "Traversal"<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlIsSimple">XmlIsSimple</a></h2>
+
+<table summary="Function 'XmlIsSimple' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlIsSimple</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns single-byte (simple) character set flag</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>boolean&nbsp;XmlIsSimple(xmlctx&nbsp;*xctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlIsSimple' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE of data encoding is "simple", FALSE otherwise</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns a flag saying whether the context's data encoding is
+        "simple", i.e. single-byte per character, like ASCII or EBCDIC.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlGetEncoding"><tt>XmlGetEncoding</tt></a>, <a href="Package-XML.html#XmlIsUnicode"><tt>XmlIsUnicode</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlIsUnicode">XmlIsUnicode</a></h2>
+
+<table summary="Function 'XmlIsUnicode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlIsUnicode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns XmlIsUnicode (simple) character set flag</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>boolean&nbsp;XmlIsUnicode(xmlctx&nbsp;*xctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlIsUnicode' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE of data encoding is Unicode, FALSE otherwise</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns a flag saying whether the context's data encoding is
+        Unicode, i.e. UTF-16, with two-byte per character.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlGetEncoding"><tt>XmlGetEncoding</tt></a>, <a href="Package-XML.html#XmlIsSimple"><tt>XmlIsSimple</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlLoadDom">XmlLoadDom</a></h2>
+
+<table summary="Function 'XmlLoadDom' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlLoadDom</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a>; DOM 3: DOMBuilder.parse()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Load (parse) an XML document and produce a DOM</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmldocnode&nbsp;*XmlLoadDom(xmlctx&nbsp;*xctx,&nbsp;xmlerr&nbsp;*err,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlLoadDom' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> error code on failure</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmldocnode *)</b></tt> document node on success [<i>NULL on failure with err set</i>]</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Loads (parses) an XML document from an input source and
+        creates a DOM.  The root document node is returned on
+        success, or NULL on failure (with err set).<p>
+        The function takes two fixed arguments, the xmlctx and an
+        error return code, then zero or more (property, value)
+        pairs, then NULL.<p>
+    SOURCE
+        Input source is set by one of the following mutually
+        exclusive properties (i.e. choose one):<p>
+        ("uri", document URI) [compiler encoding]<p>
+        ("file", document filesystem path) [compiler encoding]<p>
+        ("buffer", address of buffer,
+         "buffer_length", # bytes in buffer)<p>
+        ("stream", address of stream object,
+         "stream_context", pointer to stream object's context)<p>
+        ("stdio", FILE* stream)<p>
+    PROPERTIES
+        Additional properties:<p>
+        ("dtd", DTD node)
+            DTD for document<p>
+        ("base_uri", document base URI)
+            for documents loaded from other sources than a URI, sets
+            the effective base URI.  the document's base URI is needed
+            in order to resolve relative URI include, import, etc.<p>
+        ("input_encoding", encoding name)
+            forced input encoding [name]<p>
+        ("default_input_encoding", encoding_name)
+            default input encoding to assume if document is not
+            self-describing (i.e. no BOM, protocol header, XMLDecl, etc)<p>
+        ("schema_location", string)
+            schemaLocation of schema for this document.  used to figure
+            optimal layout when loading documents into a database<p>
+        ("validate", boolean)
+            when TRUE, turns on DTD validation; by default, only
+            well-formedness is checked.  note that schema validation is a
+            separate beast.<p>
+        ("discard_whitespace", boolean)
+            when TRUE, formatting whitespace between elements (newlines
+            and indentation) in input documents is discarded.  by default,
+            ALL input characters are preserved.<p>
+        ("dtd_only", boolean)
+            when TRUE, parses an external DTD, not a complete XML document.<p>
+        ("stop_on_warning", boolean)
+            when TRUE, warnings are treated the same as errors and cause
+            parsing, validation, etc, to stop immediately.  by default,
+            warnings are issued but the game continues.<p>
+        ("warn_duplicate_entity", boolean)
+            when TRUE, entities which are declared more than once will
+            cause warnings to be issued.  the default is to accept the
+            first declaration and silently ignore the rest.<p>
+        ("no_expand_char_ref", boolean)
+            when TRUE, causes character references to be left unexpanded
+            in the DOM data.  ordinarily, character references are replaced
+            by the character they represent.  however, when a document is
+            saved those characters entities do not reappear.  to way to
+            ensure they remain through load and save is to not expand them.<p>
+        ("no_check_chars", boolean)
+            when TRUE, omits the test of XML [2] Char production: all input
+            characters will be accepted as valid<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlSaveDom"><tt>XmlSaveDom</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlLoadSax">XmlLoadSax</a></h2>
+
+<table summary="Function 'XmlLoadSax' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlLoadSax</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Load (parse) an XML document from and produce SAX events</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlLoadSax(xmlctx&nbsp;*xctx,&nbsp;xmlsaxcb&nbsp;*saxcb,&nbsp;void&nbsp;*saxctx,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlLoadSax' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>saxcb</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> SAX callback structure</td></tr>
+<tr><td scope=row><tt>saxctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> context to be passed to SAX callbacks</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Loads (parses) an XML document from an input source and
+        generates a set of SAX events (as user callbacks).  Input
+        sources and basic set of properties is the same as for
+        XmlLoadDom.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlLoadSaxVA">XmlLoadSaxVA</a></h2>
+
+<table summary="Function 'XmlLoadSaxVA' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlLoadSaxVA</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Load (parse) an XML document from and produce SAX events [varargs]</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlLoadSaxVA(xmlctx&nbsp;*xctx,&nbsp;xmlsaxcb&nbsp;*saxcb,&nbsp;void&nbsp;*saxctx,&nbsp;va_list&nbsp;va);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlLoadSaxVA' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>saxcb</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> SAX callback structure</td></tr>
+<tr><td scope=row><tt>saxctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> context to pass to callbacks</td></tr>
+<tr><td scope=row><tt>va</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Loads (parses) an XML document from an input source and
+        generates a set of SAX events (as user callbacks).  Input
+        sources and basic set of properties is the same as for
+        XmlLoadDom.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlSaveDom">XmlSaveDom</a></h2>
+
+<table summary="Function 'XmlSaveDom' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaveDom</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a>; DOM 3: DOMWriter.writeNode</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Saves (serializes, formats) an XML document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>ubig_ora&nbsp;XmlSaveDom(xmlctx&nbsp;*xctx,&nbsp;xmlerr&nbsp;*err,&nbsp;xmlnode&nbsp;*root,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaveDom' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> error code on failure</td></tr>
+<tr><td scope=row><tt>root</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  root node of subtree to save</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(ubig_ora)</b></tt> number of bytes written to destination</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Serializes document or subtree to the given destination and
+        returns the number of bytes written; if no destination is
+        provided, just returns formatted size but does not output.<p>
+        If an output encoding is specified, the document will be re-encoded
+        on output; otherwise, it will be in its existing encoding.<p>
+        The top level is indented step*level spaces, the next level
+        step*(level+1) spaces, etc.<p>
+	When saving to a buffer, if the buffer overflows, 0 is returned
+	and err is set to XMLERR_SAVE_OVERFLOW.<p>
+    DESTINATION
+        Output destination is set by one of the following mutually
+        exclusive properties (i.e. choose one):<p>
+        ("uri", document URI) POST, PUT? [compiler encoding]<p>
+        ("file", document filesystem path) [compiler encoding]<p>
+        ("buffer", address of buffer,
+         "buffer_length", # bytes in buffer)<p>
+        ("stream", address of stream object,
+         "stream_context", pointer to stream object's context)<p>
+        ("stdio", FILE* stream)<p>
+    PROPERTIES
+        Additional properties:<p>
+        ("output_encoding", encoding name)
+            name of final encoding for document.  unless specified, saved
+            document will be in same encoding as xmlctx.<p>
+        ("indent_step", unsigned)
+            spaces to indent each level of output.  default is 4, 0 means
+            no indentation.<p>
+        ("indent_level", unsigned)
+            initial indentation level.  default is 0, which means no
+            indentation, flush left.<p>
+        ("xmldecl", boolean)
+            include an XMLDecl in the output document.  ordinarily an
+            XMLDecl is onput output for a compete document (i.e. root
+            node is DOC).<p>
+        ("bom", boolean)
+            input a BOM in the output document.  usually the BOM is
+            only needed for certain encodings (UTF-16), and optional
+            for others (UTF-8).  causes optional BOMs to be output.<p>
+        ("prune", boolean)
+            prunes the output like the unix 'find' command; does not
+            not descend to children, just prints the one node given.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlLoadDom"><tt>XmlLoadDom</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlVersion">XmlVersion</a></h2>
+
+<table summary="Function 'XmlVersion' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlVersion</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XML">XML</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns version string for XDK</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlVersion(void);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> version string</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns the version string for the XDK<p>
+</tr>
+</table>
+</body>
+</html>

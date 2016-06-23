@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<AnElement xmlns = "http://www.oracle.com/sample1/"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://www.oracle.com/sample1/ sample1.xsd">
+   <A>10</A>
+   <B>dataItem</B>
+   <C>
+      <E>
+        Element of type String in complexType called CType having choice
+      </E>
+   </C>
+
+   <rElemOfSTypeInSameNs>
+       Reference element of Simple Type in same namespace
+   </rElemOfSTypeInSameNs>
+
+   <rElemOfCTypeInSameNs>
+     <F>20</F>
+   </rElemOfCTypeInSameNs>
+
+</AnElement>

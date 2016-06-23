@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<style>
+span { text-decoration: underline }
+</style>
+<title>New Page 3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<base target="main">
+<script>
+function showsheet() {
+  var poplist = theform.xsl;
+  var theSheet = poplist.options[ poplist.selectedIndex].value;
+  if (theSheet == "none") {
+
+    parent.pic.document.location =  "../images/claimuml.gif";
+  
+  }
+  else {
+
+    parent.pic.document.location =  theSheet;
+
+  }
+}
+function sample1() {
+   document.theform.sql.value =  "select value(c) as Claim\n  from insurance_claim_view c\n where c.claimpolicy.primaryinsured.lastname = 'Astoria'";
+}
+
+function sample2() {
+   document.theform.sql.value = "select c.claimpolicy.primaryinsured as Customer\n  from insurance_claim_view c\n where c.claimpolicy.primaryinsured.homeaddress.state = 'CA'";
+}
+
+function sample3() {
+   document.theform.sql.value = "select v.claimpolicy.primaryinsured.lastname as lastname,\n       sum(n.amount) as TotalAmount\n  from insurance_claim_view v, TABLE(v.settlements) n\n group by v.claimpolicy.primaryinsured.lastname";
+}
+
+function sample4() {
+   document.theform.sql.value = "select v.claimpolicy.primaryinsured as customer,\n       v.settlements\n  from insurance_claim_view v";
+}
+
+function sample5() {
+   document.theform.sql.value = "select sum(n.amount) as TotalApprovedAmount\n  from insurance_claim_view v, TABLE(v.settlements) n\n where n.approver = 'JCOX'\n   and contains(damageReport,'Brakes within Cause') > 0";
+}
+
+</script>
+</head>
+
+<body background="../images/bg.gif">
+
+<form id="theform" name="theform" method="GET"
+action="query.xsql" target="main">
+  <div align="center"><center><table border="0">
+    <tr>
+      <td width="100%"><table border="0" width="100%">
+        <tr>
+          <td><div align="left"><p><img src="../images/xmlenabled.gif" width="184" height="22"
+          >&nbsp;</td>
+          <td></td>
+          <td>Stylesheet:&nbsp;&nbsp;<select id="xml-stylesheet" name="xml-stylesheet" size="1">
+            <option selected value="none.xsl">None</option>
+            <option value="rowcol2.xsl">Rows and Columns</option>
+            <option value="outline.xsl">Outline</option>
+            <option value="claim.xsl">Claim</option>
+          </select></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" align="center"><div align="center"><center><p><textarea id="query"
+      name="sql" rows="4" cols="60" style="font-family: Courier New; font-size: larger">select value(c) as Claim
+  from insurance_claim_view c
+ where c.claimpolicy.primaryinsured.lastname = 'Astoria'</textarea></td>
+    </tr>
+    <tr>
+      <td width="100%" align="center"><input type="submit" value="Show Results"><b>&nbsp;&nbsp;&nbsp;Sample
+      Queries:</b>&nbsp;<input type="button" value=" 1 " onClick="sample1();">&nbsp;<input
+      type="button" value=" 2 " onClick="sample2();">&nbsp;<input type="button" value=" 3 "
+      onClick="sample3()">&nbsp;<input type="button" value=" 4 " onClick="sample4()">&nbsp;<input
+      type="button" value=" 5 " onClick="sample5()">&nbsp;&nbsp;&nbsp;<a target="pic"
+      href="../images/claimuml.gif">Show Schema</a></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+</body>
+</html>

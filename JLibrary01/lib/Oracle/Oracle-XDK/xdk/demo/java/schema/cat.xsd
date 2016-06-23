@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.publishing.org/namespaces/Catalogue"
+        elementFormDefault="qualified"
+        xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+        xmlns:cat="http://www.publishing.org/namespaces/Catalogue">
+
+    <complexType name="PublicationType">
+        <sequence>
+            <element name="Title" type="string" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="Author" type="string" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="Date" type="gYear" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+    </complexType>
+    <element name="Publication" type="cat:PublicationType" abstract="true"/>
+    <element name="Book" substitutionGroup="cat:Publication">
+        <complexType>
+          <complexContent>
+            <extension base="cat:PublicationType">
+               <sequence>
+                  <element name="ISBN" type="string" minOccurs="1" maxOccurs="1"/>
+                  <element name="Publisher" type="string" minOccurs="1" maxOccurs="1"/>
+               </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+    </element>
+    <element name="Magazine" substitutionGroup="cat:Publication">
+        <complexType>
+          <complexContent>
+             <restriction base="cat:PublicationType">
+               <sequence>
+                  <element name="Title" type="string" minOccurs="1" maxOccurs="unbounded"/>
+                  <element name="Author" type="string" minOccurs="0" maxOccurs="0"/>
+                  <element name="Date" type="gYear" minOccurs="1" maxOccurs="1"/>
+            </sequence>
+           </restriction>
+         </complexContent>
+        </complexType>
+    </element>
+    <element name="Catalogue">
+        <complexType>
+            <sequence>
+                <element ref="cat:Publication" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
+

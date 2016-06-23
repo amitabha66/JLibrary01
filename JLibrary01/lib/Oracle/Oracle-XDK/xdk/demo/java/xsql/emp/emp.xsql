@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+ | smuench 08/24/02 - Change to use the common hr schema
+ +-->
+<?xml-stylesheet type="text/xsl" href="emp.xsl"?>
+<page connection="hr" xmlns:xsql="urn:oracle-xsql">
+<xsql:include-request-params/>
+<xsql:query  find="%"
+             sort="LAST_NAME"
+             bind-params="find"
+             date-format="dd-MMM-yyyy"
+   null-indicator="yes" >
+
+       SELECT LAST_NAME  as "Last_Name", 
+              FIRST_NAME as "First_Name",
+              HIRE_DATE  as "Date_Hired",
+              SALARY     as "Salary"
+         FROM EMPLOYEES
+       WHERE UPPER(LAST_NAME) LIKE UPPER('%'||?||'%')  /* Example of Bind Param */
+      ORDER BY {@sort}  /* Example of Lexical Param */
+
+</xsql:query>
+</page>
+<!--
+| Try passing a part of a LAST_NAME to match like
+|
+|    http://localhost/xsql/demo/emp.xsql?find=A
+|
+| Or a sort column like:
+|
+|    http://localhost/xsql/demo/emp.xsql?find=A&sort=SALARAY
++-->
+

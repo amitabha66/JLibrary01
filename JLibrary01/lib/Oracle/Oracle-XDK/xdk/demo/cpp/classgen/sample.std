@@ -1,0 +1,9 @@
+<sample>
+    <Àårdvãrk>An aardvark is apprehensive</Àårdvãrk>
+    <Ðnepr foo="foo's attribute value">Mmmm, river</Ðnepr>
+    <Egalitarian>
+        <Frisky>Frisky2 the 1st</Frisky>
+        <Frisky>Frisky2 the 2nd</Frisky>
+    </Egalitarian>
+    <Frisky>Top-level Frisky2</Frisky>
+</sample>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns = "http://xmlns.us.oracle.com/XDK/Example/XSQL/schema"
+            targetNamespace = "http://xmlns.us.oracle.com/XDK/Example/XSQL/schema"
+            elementFormDefault="qualified">
+
+<xsd:element name="include-xml">
+  <xsd:complexType>
+     <xsd:simpleContent>
+       <xsd:extension base="xsd:string">
+          <xsd:attribute name="href" type="xsd:string"/>
+       </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:simpleType name="XSQLBool">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="yes"/>
+    <xsd:enumeration value="no"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="XSQLTagCase">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="lower"/>
+    <xsd:enumeration value="upper"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="query">
+  <xsd:complexType>
+   <xsd:simpleContent>
+    <xsd:extension base="xsd:string">
+     <xsd:attribute name="bind-params" type="xsd:string"/>
+     <xsd:attribute name="date-format" type="xsd:string"/>
+     <xsd:attribute name="error-statement" type="XSQLBool"/>
+     <xsd:attribute name="fetch-size" type="xsd:positiveInteger"/>
+     <xsd:attribute name="id-attribute" type="xsd:string"/>
+     <xsd:attribute name="id-attribute-column" type="xsd:string"/>
+     <xsd:attribute name="include-schema" type="XSQLBool"/>
+     <xsd:attribute name="max-rows" type="xsd:positiveInteger"/>
+     <xsd:attribute name="null-indicator" type="XSQLBool"/>
+     <xsd:attribute name="rowset-element" type="xsd:string"/>
+     <xsd:attribute name="row-element" type="xsd:string"/>
+     <xsd:attribute name="skip-rows" type="xsd:positiveInteger"/>
+     <xsd:attribute name="tag-case" type="XSQLTagCase"/>
+    </xsd:extension>
+   </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

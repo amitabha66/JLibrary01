@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Paper Track="APPLICATION"> 
+  <Title>Using XML and Relational Databases for Internet Applications</Title> 
+  <Sect> 
+	 <Title>Abstract</Title> 
+	 <Para>The potent combination of XML for portable Internet data exchange,
+	 Java for portable application logic, and Enterprise relational databases for
+	 mission-critical data management is the technology platform of choice for the
+	 Internet Applications running the world's e-Businesses. This paper discusses
+	 how relational databases and XML fit together and describes Oracle's approach
+	 to providing this technology "stack" to developers.</Para> 
+  </Sect> 
+ 
+  <Sect> 
+	 <Title>How XML and Relational Databases Fit Together</Title> 
+	 <Para>Relational databases offer two fundamental ways to handle XML-based
+	 information, depending on whether the information is business data or document
+	 content:</Para><SubSect1> 
+	 <Title>XML Data and Documents in Relational Databases</Title><List Type="BULLET"><ListItem> 
+	 <Para><Emphasis Type="Italic">Business Data</Emphasis> needs to be stored,
+	 queried, analyzed, and manipulated efficiently by many different kinds of
+	 applications.</Para> 
+	 <Para>This kind of information is optimally stored <Emphasis Type="Italic">internally</Emphasis> in one or more relational
+	 tables.</Para></ListItem><ListItem> 
+	 <Para><Emphasis Type="Italic">Document Content</Emphasis>, both text and
+	 multimedia, needs to searched in specialized ways specific to their media types
+	 and efficiently assembled to produce dynamic documents.</Para> 
+	 <Para>This kind of information is optimally stored <Emphasis Type="Italic">internally</Emphasis> in searchable content "chunks" that can
+	 range in size from a single paragraph or frame of video, to entire documents or
+	 videos.</Para></ListItem></List> 
+	 <Para>When new XML-based messages or documents are stored in the database,
+	 they are easily stored in their optimal <Emphasis Type="Italic">internal</Emphasis> form. Existing and future
+	 <Emphasis Type="Italic">internal</Emphasis> applications can work with the
+	 information in the most efficient way possible. When information must "leave"
+	 the database, for sharing with partners or other applications, the appropriate
+	 view of data and document content specific to the task at hand can be delivered
+	 as an integrated XML document.</Para> 
+</SubSect1>
+  </Sect> 
+ </Paper>

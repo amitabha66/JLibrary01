@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>XSLT APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package XSLT</h1></center>
+
+<br><hr noshade size=1><center><h2><a name="XSLT">Interface XSLT</a></h2></center>
+	   <center><h3>Function Index</h3>
+<table summary="Interface 'XSLT' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XmlXslCreate"><b>XmlXslCreate</b></a></td>
+	       <td>Create an XSLT context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslDestroy"><b>XmlXslDestroy</b></a></td>
+	       <td>Destroy an XSL context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslGetBaseURI"><b>XmlXslGetBaseURI</b></a></td>
+	       <td>Get the XSL processor base URI</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslGetOutput"><b>XmlXslGetOutput</b></a></td>
+	       <td>Get the XSL result fragment</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslGetStylesheetDom"><b>XmlXslGetStylesheetDom</b></a></td>
+	       <td>Get the XSL stylesheet document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslGetTextParam"><b>XmlXslGetTextParam</b></a></td>
+	       <td>Get the XSL text parameter value</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslProcess"><b>XmlXslProcess</b></a></td>
+	       <td>Do XSL processing on an instance document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslResetAllParams"><b>XmlXslResetAllParams</b></a></td>
+	       <td>Reset XSL processor parameters.</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetOutputDom"><b>XmlXslSetOutputDom</b></a></td>
+	       <td>Set the xslctx output DOM</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetOutputEncoding"><b>XmlXslSetOutputEncoding</b></a></td>
+	       <td>Set the xslctx output encoding</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetOutputMethod"><b>XmlXslSetOutputMethod</b></a></td>
+	       <td>Set the xslctx output method</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetOutputSax"><b>XmlXslSetOutputSax</b></a></td>
+	       <td>Set the xslctx output SAX</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetOutputStream"><b>XmlXslSetOutputStream</b></a></td>
+	       <td>Set the xslctx output stream.</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlXslSetTextParam"><b>XmlXslSetTextParam</b></a></td>
+	       <td>Set the xslctx output text param.</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XmlXslCreate">XmlXslCreate</a></h2>
+
+<table summary="Function 'XmlXslCreate' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslCreate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create an XSLT context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xslctx&nbsp;*XmlXslCreate(xmlctx&nbsp;*ctx,&nbsp;xmldocnode&nbsp;*xsl,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*baseuri,&nbsp;xmlerr&nbsp;*err);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslCreate' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context object.</td></tr>
+<tr><td scope=row><tt>xsl</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XSL stylesheet document object.</td></tr>
+<tr><td scope=row><tt>baseuri</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  baseuri for include/import/document().</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(I/O)</b>&nbsp;</td>
+<td> the error returned.</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xslctx *)</b></tt> XSLT context</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Create an XSLT context<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XSLT.html#XmlXslDestroy"><tt>XmlXslDestroy</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlXslDestroy">XmlXslDestroy</a></h2>
+
+<table summary="Function 'XmlXslDestroy' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslDestroy</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Destroy an XSL context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslDestroy(xslctx&nbsp;*ctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslDestroy' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Destroy an XSL context<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XSLT.html#XmlXslCreate"><tt>XmlXslCreate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlXslGetBaseURI">XmlXslGetBaseURI</a></h2>
+
+<table summary="Function 'XmlXslGetBaseURI' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslGetBaseURI</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get the XSL processor base URI</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlXslGetBaseURI(xslctx&nbsp;*ctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslGetBaseURI' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> base URI</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get the XSL processor base URI<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslGetOutput">XmlXslGetOutput</a></h2>
+
+<table summary="Function 'XmlXslGetOutput' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslGetOutput</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get the XSL result fragment</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlfragnode&nbsp;*XmlXslGetOutput(xslctx&nbsp;*ctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslGetOutput' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlfragnode *)</b></tt> result fragment</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get the XSL result fragment<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslGetStylesheetDom">XmlXslGetStylesheetDom</a></h2>
+
+<table summary="Function 'XmlXslGetStylesheetDom' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslGetStylesheetDom</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get the XSL stylesheet document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmldocnode&nbsp;*XmlXslGetStylesheetDom(xslctx&nbsp;*ctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslGetStylesheetDom' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmldocnode *)</b></tt> stylesheet document</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get the XSL stylesheet document<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslGetTextParam">XmlXslGetTextParam</a></h2>
+
+<table summary="Function 'XmlXslGetTextParam' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslGetTextParam</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get the XSL text parameter value</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlXslGetTextParam(xslctx&nbsp;*ctx,&nbsp;oratext&nbsp;*name);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslGetTextParam' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of the top-level param</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> parameter value</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get the XSL text parameter value<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XSLT.html#XmlXslSetTextParam"><tt>XmlXslSetTextParam</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlXslProcess">XmlXslProcess</a></h2>
+
+<table summary="Function 'XmlXslProcess' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslProcess</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Do XSL processing on an instance document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslProcess(xslctx&nbsp;*ctx,&nbsp;xmldocnode&nbsp;*xml,&nbsp;boolean&nbsp;normalize);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslProcess' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object.</td></tr>
+<tr><td scope=row><tt>xml</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> instance document to process</td></tr>
+<tr><td scope=row><tt>normalize</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> if TRUE forces the XSL processor to normalize the doc.</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Do XSL processing on an instance document.  xsl:output is supported 
+        only if XmlXslSetOutputStream has been called previously.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslResetAllParams">XmlXslResetAllParams</a></h2>
+
+<table summary="Function 'XmlXslResetAllParams' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslResetAllParams</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Reset XSL processor parameters.</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslResetAllParams(xslctx&nbsp;*ctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslResetAllParams' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Reset all the top level parameters added<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XSLT.html#XmlXslSetTextParam"><tt>XmlXslSetTextParam</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetOutputDom">XmlXslSetOutputDom</a></h2>
+
+<table summary="Function 'XmlXslSetOutputDom' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetOutputDom</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output DOM</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetOutputDom(xslctx&nbsp;*ctx,&nbsp;xmldocnode&nbsp;*doc);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetOutputDom' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+<tr><td scope=row><tt>stream</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> output stream object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set the xslctx output DOM<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetOutputEncoding">XmlXslSetOutputEncoding</a></h2>
+
+<table summary="Function 'XmlXslSetOutputEncoding' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetOutputEncoding</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output encoding</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetOutputEncoding(xslctx&nbsp;*ctx,&nbsp;oratext*&nbsp;encoding);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetOutputEncoding' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+<tr><td scope=row><tt>encoding</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> output encoding</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set the xslctx output encoding<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetOutputMethod">XmlXslSetOutputMethod</a></h2>
+
+<table summary="Function 'XmlXslSetOutputMethod' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetOutputMethod</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output method</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetOutputMethod(xslctx&nbsp;*ctx,&nbsp;xmlxslomethod&nbsp;method);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetOutputMethod' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+<tr><td scope=row><tt>method</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL output metod (xmlxslomethod)</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set the xslctx output method<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetOutputSax">XmlXslSetOutputSax</a></h2>
+
+<table summary="Function 'XmlXslSetOutputSax' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetOutputSax</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output SAX</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetOutputSax(xslctx&nbsp;*ctx,&nbsp;xmlsaxcb*&nbsp;saxcb,&nbsp;void&nbsp;*saxctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetOutputSax' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+<tr><td scope=row><tt>saxcb</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> SAX callback object</td></tr>
+<tr><td scope=row><tt>saxctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> SAX callback context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set the xslctx output SAX<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetOutputStream">XmlXslSetOutputStream</a></h2>
+
+<table summary="Function 'XmlXslSetOutputStream' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetOutputStream</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output stream.</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetOutputStream(xslctx&nbsp;*ctx,&nbsp;xmlostream&nbsp;*stream);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetOutputStream' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> - XSL context object.</td></tr>
+<tr><td scope=row><tt>stream</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> - output stream object.</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlxsl)</b></tt> error code, XMLXSL_SUCC (0) on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>
+</tr>
+</table>
+
+<h2 align=center><a name="XmlXslSetTextParam">XmlXslSetTextParam</a></h2>
+
+<table summary="Function 'XmlXslSetTextParam' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlXslSetTextParam</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XSLT">XSLT</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the xslctx output text param.</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlXslSetTextParam(xslctx&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*value);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlXslSetTextParam' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XSL context object</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of top-level param</td></tr>
+<tr><td scope=row><tt>value</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> value of top-level param</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_SUCC [<i>0</i>] on success.</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set the xslctx output text param.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XSLT.html#XmlXslGetTextParam"><tt>XmlXslGetTextParam</tt></a></td></tr>
+</table>
+</body>
+</html>

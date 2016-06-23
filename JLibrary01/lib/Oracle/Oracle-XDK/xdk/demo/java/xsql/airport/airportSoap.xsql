@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="airportSoapResponse.xsl"?>
+<page connection="demo" allow-client-style="no"
+                        xmlns:xsql="urn:oracle-xsql"
+                        xmlns:e="http://schemas.xmlsoap.org/soap/envelope/"
+                        xmlns:s="http://www.airport.com/services">
+  <xsql:set-page-param 
+         name="code" 
+        xpath="/e:Envelope/e:Body/s:getAirportDesc/code"/>
+  <xsql:include-param name="code"/>
+  <xsql:query bind-params="code" tag-case="lower">
+       SELECT description FROM AIRPORT WHERE tla = UPPER(?)
+  </xsql:query>
+</page>

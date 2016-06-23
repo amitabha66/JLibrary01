@@ -1,0 +1,848 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>xmlgen PL/SQL package front-end for XML generation</title>
+</head>
+<body bgcolor="#CCCCCC" text="#000000">
+<h1>
+
+<hr SIZE=4 WIDTH="100%"></h1>
+
+<h1> <a href="xsu_userguide.html">XSU</a>'s PL/SQL API -- XMLGEN</h1>
+
+<hr SIZE=4 WIDTH="100%">
+<p>Similar to java API of the XSU, the xmlgen provides calls for customizing the 
+  XSU's generation and loading of XML. These options are stored in static variables, 
+  and will manifest themselves for the duration of the session.&nbsp; Of course 
+  the user can call <a href="#resetOptions">resetOptions</a>() procedure to reset 
+  the options to their default values.
+<p>For a list of examples on using the xmlgen PL/SQL package, refer to
+<a href="xmlgenexp.html">xmlgen
+Example page</a>.
+<br>
+<hr SIZE=1 NOSHADE WIDTH="100%">
+<br><img SRC="images/variable-index.gif" ALT="Variable Index" height=38 width=207>
+<p><font size=+1>Constants relevant to &quot;DB to XML&quot; functionality:</font> 
+<p><img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#ALL_ROWS">ALL_ROWS</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The ALL_ROWS parameter is to indicate 
+  that all rows are needed in the output. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#SKIP_NONE">SKIP_NONE</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The SKIP_NONE parameter is to indicate 
+  that no rows are to be skipped when generating the output. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#NONE">NONE</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The NONE specifies that the output 
+  should not contain the DTD nor the XML Schema. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#DTD">DTD</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DTD specifies that the DTD is 
+  desired in the output. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#NONE">NO_DTD</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The NO_DTD specifies that the output 
+  should not contain the DTD; legacy. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#DEFAULT_ROWSETTAG">DEFAULT_ROWSETTAG</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DEFAULT_ROWSETTAG is the default 
+  name for the document root tag. (the document name). <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#DEFAULT_ERRORTAG">DEFAULT_ERRORTAG</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DEFAULT_ERRORTAG is the default 
+  name for the ERROR tag, used when an error is raised. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#DEFAULT_ROWIDATTR">DEFAULT_ROWIDATTR</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DEFAULT_ROWIDATTR is the default 
+  name for the "num" attribute that is present in each <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ROW element tag. The attribute, by 
+  default, contains the count of the row. 
+<p>&nbsp;
+<p><font size=+1>Constants relevant to &quot;XML to DB&quot; functionality:</font> 
+<p><img SRC="images/red-ball-small.gif" height=6 width=6><a href="#MATCH_CASE">MATCH_CASE</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The MATCH_CASE can be passed to the 
+  setIgnoreTagCase call to force a match of the case of tag names in the document 
+  with that of the column names during insert. <br>
+  <img SRC="images/red-ball-small.gif" height=6 width=6><a href="#IGNORE_CASE">IGNORE_CASE</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The IGNORE_CASE can be used in the 
+  setIgnoreTagCase call to ignore the case of tag names during insert. <br>
+  <img SRC="images/red-ball-small.gif" height=6 width=6><a href="#DEFAULT_DATE_FORMAT">DEFAULT_DATE_FORMAT</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The default date format used when 
+  inserting date elements into database columns. 
+<p>&nbsp;
+<p><font size=+1>Constants relevant to &quot;XML to DB&quot; and &quot;DB to XML&quot; 
+  functionality:</font> 
+<p><img SRC="images/green-ball-small.gif" height=6 width=6><a href="#DEFAULT_ROWTAG">DEFAULT_ROWTAG</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DEFAULT_ROWTAG is the
+default tag name for the ROW element.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (ROW element separates each
+row instance of&nbsp; the query).
+<br>&nbsp;
+<p><img SRC="images/method-index.gif" height=38 width=207>
+<p><font size=+1>Methods relevant to &quot;DB to XML&quot; functionality:</font> 
+<p><img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#getXML">getXML</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creates the XML document given a 
+  SQL query and an optional meta-type parameter. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#getDTD">getDTD</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creates the DTD given a SQL query 
+  and optional with-version parameter. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setRowsetTag">setRowsetTag</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the name of the root tag in 
+  the XML document. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setRowsetTag">setRowIdAttrName</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the name of the root tag in 
+  the XML document. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setRowIdColumn">setRowIdColumn</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the name of the attribute in 
+  the row element that <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setCollIdAttr">setCollIdAttr</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the collection element's id-attribute 
+  name. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#useNullAttributeIndicator">useNullAttributeIndicator</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Specifies that a null attribute should 
+  be used to indicate if an element is null or not. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setErrorTag">setErrorTag</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the error tag. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#useUpperCaseTagNames">useUpperCaseTagNames</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Forces the tag names to be in upper 
+  case. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#useLowerCaseTagNames">useLowerCaseTagNames</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Forces the tag names to be in lower 
+  case. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#useDefaultCaseTagNames">useDefaultCaseTagNames</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Resets the case of the tag names 
+  to be that specified in the query or database column definitions. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setMaxRows">setMaxRows</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the maximum number of rows to 
+  be used for generating the XML document. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setSkipRows">setSkipRows</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the number of rows to skip in 
+  the result before generating the XML document. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setStyleSheetType">setStylesheetType</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the stylesheet type in the generated 
+  XML document's PI (processing instructions). <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setStyleSheet">setStylesheet</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the stylesheet header in the 
+  generated XML document's PI (processing insturctions).. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setBindValue">setBindValue</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the bind value for a name bind 
+  in the sql query. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#clearBindValues">clearBindValues</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clears all the bind values. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setMetaHeader">setMetaHeader</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the meta header. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setDataHeader">setDataHeader</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the data header. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setRaiseException">setRaiseException</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tells the XSU to raise an exception 
+  in the case one is cought; rather then, generate an error doc. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#propagateOriginalException">propagateOriginalException</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tells the XSU to throw the original 
+  raised exception; rather then, the XSU's wrapped version. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#getExceptionContent">getExceptionContent</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If raiseOriginalException is true, 
+  this call returns the original exception's error code and error message. <br>
+  <img SRC="images/blue-ball-small.gif" height=6 width=6><a href="#setLobDuration">setLobDuration</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the duration for the created 
+  temp LOBs used to return the XML doc when the XSU is called from xmlgen. 
+<p>&nbsp;
+<p><font size=+1>Methods relevant to &quot;XML to DB&quot; functionality:</font> 
+<p><img SRC="images/red-ball-small.gif" height=6 width=6><a href="#setIgnoreTagCase">setIgnoreTagCase</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets whether the case of the tag should 
+  be ignored when comparing the element tags with column names during insert. 
+  <br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#setDateFormat">setDateFormat</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the date format to be used when 
+  inserting date values. Default is DATE_FORMAT. <br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#setUpdateColumn">setUpdateColumn</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a column to the list of columns to 
+  be updated.<br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#clearUpdateColumnList">clearUpdateColumnList</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Removes all the columns from the list of 
+  columns which are to be updated.<br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#setKeyColumn">setKeyColumn</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a column to the list of key columns 
+  (i.e. columns used to id. a row).<br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#clearKeyColumnList">clearKeyColumnList</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the list of &quot;key&quot; columns.<br>
+  <img SRC="images/red-ball-small.gif" height=6 width=6><a href="#setInsertBatch">setBatchSize</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The number of inserts statements 
+  that are pooled together (batched) and then executed together in a single trip. 
+  <br>
+  <img SRC="images/red-ball-small.gif" height=6 width=6><a href="#setCommitBatch">setCommitBatch</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The number of insert statement executions 
+  committed at a time.<br>
+<p><img src="images/red-ball-small.gif" height=6 width=6><a href="#insertXML">insertXML</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inserts a given XML document into 
+  a specified table or view.<br>
+<p><img src="images/red-ball-small.gif" height=6 width=6><a href="#updateXML">updateXML</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Updates pecified table or view with 
+  the data from an XML document.<br>
+  <img src="images/red-ball-small.gif" height=6 width=6><a href="#deleteXML">deleteXML</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes records from a specified 
+  table identified by data from an XML document.. 
+<p>&nbsp;
+<p><font size=+1>Methods relevant to &quot;XML to DB&quot; and &quot;DB to XML&quot; 
+  functionality:</font> 
+<p><img SRC="images/green-ball-small.gif" height=6 width=6><a href="#setRowTag">setRowTag</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets the name of the tag for the 
+  row element. Each row in the result is enclosed by a row element. <br>
+  <img SRC="images/green-ball-small.gif" height=6 width=6><a href="#resetOptions">resetOptions</a> 
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Resets all the options that were 
+  set using the above functions. 
+<p>&nbsp;
+<p>
+<hr SIZE=1 NOSHADE WIDTH="100%">
+<br>
+<img SRC="images/variables.gif" height=38 width=153> 
+<p><font size=+1>Constants relevant to &quot;DB to XML&quot; functionality:</font> 
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="ALL_ROWS"></a><b>ALL_ROWS</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; ALL_ROWS CONSTANT NUMBER</font>
+<blockquote>The ALL_ROWS constant can be passed to the <a href="#setMaxRows">setMaxRows</a>()
+procedure. It specifies that all rows from the query should be included
+in the output. All rows of a query are included in the XML document by
+default.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="SKIP_NONE"></a><b>SKIP_NONE</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; SKIP_NONE CONSTANT NUMBER</font>
+<blockquote>The SKIP_NONE constant can be passed to the <a href="#setSkipRows">setSkipRows</a>()
+procedure. This indicates that none of the rows must be skipped before
+creating the XML document from the result of the query. None of the rows
+in the result are skipped by default.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="NONE"></a><b>NONE</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; NONE CONSTANT NUMBER</font>
+<blockquote>The NONE constant indicates that no meta data, like the DTD,&nbsp;
+should be included in the output. This can be passed to the <a href="#getXML">getXML</a>()
+function. This is the default value for the metaType parameter in the <a href="#getXML">getXML</a>()
+function.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="DTD"></a><b>DTD</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; DTD CONSTANT NUMBER</font>
+<blockquote>The DTD constant indicates that the DTD should be included
+in the output. This can be passed to the <a href="#getXML">getXML</a>()
+function.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="DEFAULT_ROWSETTAG"></a><b>DEFAULT_ROWSETTAG</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEFAULT_ROWSETTAG
+CONSTANT VARCHAR2(6) := 'ROWSET';</font>
+<blockquote>The DEFAULT_ROWSETTAG can be passed to the <a href="#setRowsetTag">setRowsetTag</a>()
+procedure and specifies the default tag name for the root of the document</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="DEFAULT_ERRORTAG"></a><b>DEFAULT_ERRORTAG</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEFAULT_ERRORTAG
+CONSTANT VARCHAR2(5) := 'ERROR';</font>
+<blockquote>The DEFAULT_ERRORTAG defines the default name for the error
+tag. The error tag is used when an error is raised during the XML creation.
+This can be passed to the <a href="#setErrorTag">setErrorTag</a>() procedure.</blockquote>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="DEFAULT_ROWIDATTR"></a><b>DEFAULT_ROWIDATTR</b>
+<p><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEFAULT_ROWIDATTR
+CONSTANT VARCHAR2(3) := 'NUM';</font>
+<blockquote>
+  <p>The DEFAULT_ROWIDATTR constant defines the default name for the rownum attribute 
+    in the ROW tag which indicates the row number in the output. This can be passed 
+    to the <a href="#setRowIdAttrName">setRowIdAttrName</a>() procedure.</p>
+  <p>&nbsp;</p>
+</blockquote>
+<font size=+1>Constants relevant to &quot;XML to DB&quot; functionality:</font> 
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="MATCH_CASE"></a><b>MATCH_CASE</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MATCH_CASE&nbsp;
+CONSTANT NUMBER := 0;</font>
+<blockquote>The MATCH_CASE constant can be used in <a href="#setIgnoreTagCase">setIgnoreTagCase</a>()
+procedure to force the matching of case of tag names with the column names
+during insert. By setting this a tag "EMPNO" would NOT match with a column
+defined as "empNo".</blockquote>
+
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="IGNORE_CASE"></a>IGNORE_CASE</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IGNORE_CASE&nbsp;
+CONSTANT NUMBER := 0;</font>
+<blockquote>The IGNORE_CASE constant can be used in <a href="#setIgnoreTagCase">setIgnoreTagCase</a>()
+procedure to ignore the matching of case of tag names with the column names
+during insert. By setting this a tag "EMPNO" would match with a column
+defined as "empNo".</blockquote>
+
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="DEFAULT_DATE_FORMAT"></a><b>DEFAULT_DATE_FORMAT</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEFAULT_DATE_FORMAT
+CONSTANT VARCHAR2(21) := 'YYYY-MM-DD HH24:MI:SS';</font>
+<blockquote>
+  <p>The DEFAULT_DATE_FORMAT defines the default format used for inserting date 
+    values. This constant can be passed to the setDateFormat procedure.</p>
+  <p>&nbsp;</p>
+</blockquote>
+<font size=+1>Constants relevant to &quot;XML to DB&quot; and &quot;DB to XML&quot; 
+functionality:</font> 
+<h4>
+<img SRC="images/green-ball.gif" height=12 width=12><a NAME="DEFAULT_ROWTAG"></a><b>DEFAULT_ROWTAG</b></h4>
+<font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEFAULT_ROWTAG
+CONSTANT VARCHAR2(3) := 'ROW';</font>
+<blockquote>
+  <p>The DEFAULT_ROWTAG defines the default name for the row separator tag. This 
+    can be passed to the setRowTag() procedure.</p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<hr SIZE=1 NOSHADE WIDTH="100%">
+<br>
+<img SRC="images/methods.gif" height=38 width=151> 
+<p><font size=+1>Methods relevant to &quot;DB to XML&quot; functionality:</font> 
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="getXML"></a>getXML</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; FUNCTION getXML(query IN VARCHAR2, metaType
+IN number := NONE) RETURN CLOB</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; FUNCTION getXML(query IN CLOB,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+metaType IN number := NONE) RETURN CLOB</font>
+<blockquote>Given a SQL query, this function generates the XML doc.&nbsp;
+If the optional parameter, metaType, is specified to be DTD, then the DTD
+is generated along with the XML doc.&nbsp; The result is returned in a
+temporary CLOB and it is up to the caller to close and free the temporary
+CLOB. (the temporary CLOB is by default allocated with session duration.)</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="getDTD"></a>getDTD</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; FUNCTION getDTD(query IN VARCHAR2, withVer
+IN BOOLEAN := NONE) RETURN CLOB</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; FUNCTION getDTD(query IN CLOB,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+withVer IN BOOLEAN := NONE) RETURN CLOB</font>
+<blockquote>Given a SQL query, this function generates the DTD.&nbsp; If
+the optional parameter, withVer, is specified to be true, then the version
+info is also generated along with the DTD.&nbsp; The result is returned
+in a temporary CLOB and it is up to the caller to close and free the temporary
+CLOB. (the temporary CLOB is by default allocated with session duration.)</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setRowsetTag"></a>setRowsetTag</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setRowsetTag( tag IN VARCHAR2
+);</font>
+<blockquote>This sets the name of the root tag which is the name of the
+document. The default name for the rowset tag is the same as <a href="#DEFAULT_ROWSETTAG">DEFAULT_ROWSETTAG.</a>
+A string of null value suppresses printing of this tag.
+<br>If the root tag is set to null, then the row tag name is used as the
+document root tag. In this case the document cannot contain more than one
+row or an error will be raised.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setRowIdAttrName"></a>setRowIdAttrName</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setRowIdAttrName(tag IN VARCHAR2);</font>
+<blockquote>This sets the name of the rownum attribute included in the
+row element, to indicate the position of the row (this is the default behavior,
+see <a href="#setRowIdColumn">setRowIdColumn,</a> next) in the result.
+A value of null or empty string suppresses the printing of this attribute.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setRowIdColumn"></a>setRowIdColumn</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setRowIdColumn(columnName IN
+VARCHAR2);</font>
+<blockquote>This procedure sets the value of the rownum attribute to be
+that of the column (or alias) name specified in the parameter. The column
+(or alias) specified should be selected in the query and must be a scalar
+type. (such as number, date etc..). A null parameter value reverts it to
+the default setting which prints the position of the row in the result.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setCollIdAttr"></a>setCollIdAttr</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setCollIdAttr(attrname IN VARCHAR2);</font>
+<blockquote>This procedure sets the collection element's id-attribute name.
+Passing in a null, or an empty string with inhibit the printing of the
+collection element's id-attribute, which is also the default behaviour.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="useNullAttributeIndicator"></a>useNullAttributeIndicator</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE useNullAttributeIndicator(flag
+IN BOOLEAN);</font>
+<blockquote>This procedure specifies whether an attribute should be used
+in each element to indicate whether the element is null or not. The default
+is to omit the printing of the element that is null.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setErrorTag"></a>setErrorTag</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setErrorTag( tag IN VARCHAR2
+);</font>
+<blockquote>This sets the name of the error tag, used when an error document
+is generated. An error document is generated whenever an error occurs during
+the XML document creation. The error tag element contains the actual error
+message. No DTD is generated for an error document.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="useUpperCaseTagNames"></a>useUpperCaseTagNames</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE useUpperCaseTagNames;</font>
+<blockquote>This forces all the tag names to be in upper case.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="useLowerCaseTagNames"></a>useLowerCaseTagNames</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE useLowerCaseTagNames;</font>
+<blockquote>This forces all the tag names to be in lower case.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="useDefaultCaseTagNames"></a>useDefaultCaseTagNames</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE useDefaultCaseTagNames;</font>
+<blockquote>This resets the case setting for the tag names. The tag names
+use the default case, meaning they use the case as specified in the database
+definitions for columns and attributes.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setMaxRows"></a>setMaxRows</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setMaxRows(rows IN NUMBER);</font>
+<blockquote>This procedure sets the maximum number of rows of the query
+result to be used in generating the XML document.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setSkipRows"></a>setSkipRows</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setSkipRows(rows IN NUMBER);</font>
+<blockquote>The setSkipRows procedure sets the number of rows to be skipped
+in the query result before generating the XML document. If the number of
+rows skipped is greater than the number of rows returned by the query,
+then an empty document is generated.
+<br>The rownum attribute in the row element will include the actual row
+position which includes the rows skipped. Thus if you skip 10 rows and
+start the generation, the first row in the output will have the rownum
+attribute value set to 11.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setStyleSheetType"></a>setStylesheetType</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setStylesheetType( type IN VARCHAR2);</font>
+<blockquote>This procedure sets the stylesheet type in the generated XML documents 
+  PI (processing instructions) header.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setStyleSheet"></a>setStylesheet</h4>
+<p><font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setStylesheet( uri IN VARCHAR2);</font> 
+  <br>
+</p>
+<blockquote>
+  <p>This procedure sets the stylesheet URI in the generated XML documents PI.</p>
+</blockquote>
+<p><font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setStylesheet( uri IN VARCHAR2, 
+  type IN VARCHAR2);</font> </p>
+<blockquote>This procedure sets the stylesheet URI and type in the generated XML 
+  documents PI.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setBindValue"></a>setBindValue</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setBindValue(bName IN VARCHAR2,
+bVALUE IN VARCHAR2);</font>
+<blockquote>Sets the value for a particular name bind that was specified
+in the SQL query.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="clearBindValues"></a>clearBindValues</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE clearBindValues;</font>
+<blockquote>Clears the bind values for all the name binds in the SQL query.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setMetaHeader"></a>setMetaHeader</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE </font>setMetaHeader<font size=-1>(header
+IN CLOB := null );</font>
+<blockquote>Sets the XML metadata header; which until unset is inserted
+at the begining of all XML metadata generated by this object (DTD or XMLSchema).&nbsp;
+To unset the header, call this function with null passed in for the "header"
+parameter.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setDataHeader"></a>setDataHeader</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE </font>setDataHeader<font size=-1>(header
+IN CLOB := null, docTag IN VARCHAR2 :=null );</font>
+<blockquote>Sets the XML data header, which until unset is inserted at
+the begining of all the XML data generated by this object.&nbsp; The docTag
+parameter specifies the tag name to be used to enclose the XML resulting
+from adding the "header" and the generated XML data.&nbsp; To unset the
+header, call this function with null passed in for the "header" parameter.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setRaiseException"></a>setRaiseException</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE </font>setRaiseException<font size=-1>(
+flag IN BOOLEAN);</font>
+<blockquote>Tells the XSU to create NO error document when catching an
+exception; but rather, to propagates the exception.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="propagateOriginalException"></a>propagateOriginalException</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE propagateOriginalException(
+flag in BOOLEAN);</font>
+<blockquote>Tell the XSU to throw the original exception rather than the
+OracleXMLSQLException wrapped around the original exception.</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="getExceptionContent"></a>getExceptionContent</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE getExceptionContent(errNo OUT
+NUMBER, errMsg OUT VARCHAR2 );</font>
+<blockquote>If raiseOriginalException is true, this call returns the original
+exception's error code and error message (i.e. sql error code).</blockquote>
+
+<h4>
+<img SRC="images/blue-ball.gif" height=12 width=12><a NAME="setLobDuration"></a>setLobDuration</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setLobDuration(duration IN VARCHAR2);</font>
+<blockquote>
+  <p>Sets the duration for the created temp LOBs used to return the XML doc when 
+    the XSU is called from xmlgen; legal values are DBMS_LOB.CALL and DBMS_LOB.SESSION</p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p> <font size=+1>Methods relevant to &quot;XML to DB&quot; functionality:</font> 
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="setDateFormat"></a>setDateFormat</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setDateFormat(dateFormat IN
+varchar2);</font>
+<blockquote>The setDateFormat takes in a format string for formatting date
+values before binding them for insert. The default format is <a href="#DEFAULT_DATE_FORMAT">DEFAULT_DATE_FORMAT</a>.
+The format must match one of the valid date formats specified by Oracle.(See
+the Oracle SQL reference manual for a list of valid date formats).</blockquote>
+
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="setIgnoreTagCase"></a>setIgnoreTagCase</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setIgnoreTagCase(ignore IN number);</font>
+<blockquote>The setIgnoreTagCase procedure sets whether the case of the
+tag names should be matched when comparing the element tags with the column
+names during insert. If this is set to <a href="#MATCH_CASE">MATCH_CASE</a>,
+then an element with tag "EMPNO" would only match with a column of name
+"EMPNO" and not with a column of name "empno". Whereas, if this is set
+to <a href="#IGNORE_CASE">IGNORE_CASE</a>, then the tag "EMPNO" would match
+both "empno" and "EMPNO" columns.</blockquote>
+
+<h4> <img src="images/red-ball.gif" height=12 width=12><a name="setUpdateColumn"></a>setUpdateColumn</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setUpdateColumn(colName IN VARCHAR2);</font> 
+<blockquote>Adds a column to the list of columns to be updated.</blockquote>
+<h4> <img src="images/red-ball.gif" height=12 width=12><a name="clearUpdateColumnList"></a>clearUpdateColumnList</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE clearUpadateColumnList;</font> 
+<blockquote>Removes all the columns from the list of columns which are to be updated.</blockquote>
+<h4> <img src="images/red-ball.gif" height=12 width=12><a name="setkeyColumn"></a>setKeyColumn</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setKeyColumn(colName IN VARCHAR2);</font> 
+<blockquote>Adds a column to the list of key columns (i.e. columns used to id. 
+  a row). It is these key columns that make up the &quot;where ...&quot; part 
+  of the update or delete SQL statement.</blockquote>
+<h4> <img src="images/red-ball.gif" height=12 width=12><a name="clearKeyColumnList"></a>clearKeyColumnList</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE clearKeyColumnList;</font> 
+<blockquote>Clear the list of &quot;key&quot; columns.</blockquote>
+<h4></h4>
+<h4><img SRC="images/red-ball.gif" height=12 width=12><a NAME="setBatchSize"></a>setBatchSize</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setBatchSize(size IN number)</font> 
+<blockquote>The number of statements that are pooled together (batched) and then 
+  executed together in a single trip.&nbsp; For us, the values between 5 and 31 
+  brought the best performance gains.&nbsp; The default is 17.</blockquote>
+
+<h4>
+<img SRC="images/red-ball.gif" height=12 width=12><a NAME="setCommitBatch"></a>setCommitBatch</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setInsertBatch(size IN number)</font>
+<blockquote>The number of statement executions committed at a time.&nbsp; By default 
+  this value is 51.&nbsp; Note that setting this value to 0 make it so that the 
+  XSU doesn't commit until the end of the session.&nbsp; Also note that if the 
+  commitBatch is very large, than our redo log can run out of space.</blockquote>
+
+<h4> <img src="images/red-ball.gif" height=12 width=12><a name="insertXML"></a>insertXML</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; FUNCTION insertXML(tableName IN varchar2, xmlDoc 
+IN varchar2) RETURN NUMBER;</font> 
+<blockquote>The insertXML function inserts the given xml document (xmlDoc) in 
+  to the table or view (tableName) specified. It returns the number of rows inserted.</blockquote>
+<h4> </h4>
+<p>&nbsp; 
+<p> <font size=+1>Methods relevant to &quot;XML to DB&quot; and &quot;DB to XML&quot; 
+  functionality:</font> 
+<h4>
+<img SRC="images/green-ball.gif" height=12 width=12><a NAME="setRowTag"></a>setRowTag</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE setRowTag( tag IN VARCHAR2 );</font>
+<blockquote>This sets the tag name which is used as the markup for each
+row in the result. The default value for the row tag is the same as <a href="#DEFAULT_ROWTAG">DEFAULT_ROWTAG.</a>
+A string of null value suppresses printing of this tag.(i.e. no row separators
+are to be used around each row).
+<br>If the row tag is set to null, then the result can either contain many
+single column rows or one multi-column row.
+<br>In the case of inserts, if the row tag is not set, then the input document
+must correspond to a single row.</blockquote>
+
+<h4>
+<img SRC="images/green-ball.gif" height=12 width=12><a NAME="resetOptions"></a>resetOptions</h4>
+<font size=-1>&nbsp;&nbsp;&nbsp; PROCEDURE resetOptions;</font>
+<blockquote>The resetOptions procedure resets all the options back to their
+default values. If this procedure is not called then all the option settings
+(such as setMaxRows etc..) will be used in all of the subsequent <a href="#getXML">getXML</a>()
+and insertXML() calls for the remainder of the session.</blockquote>
+
+
+<h1>
+
+<hr SIZE=4 WIDTH="100%"></h1>
+
+<h1>
+Examples for using the xmlgen package</h1>
+
+<hr SIZE=4 WIDTH="100%">
+<br>&nbsp;
+<h3>
+<img SRC="images/blue-ball.gif" NOSAVE height=12 width=12> Example 1: Getting
+XML out as a CLOB and displaying it:</h3>
+
+<blockquote><b><font size=+0>Example PL/SQL code:</font></b>
+<p><font size=+0>This code creates an XML document by selecting data from
+the <i>scott.emp</i> table</font>
+<blockquote><font size=-1>Rem Test out the PL/SQL side</font>
+<p><font size=-1>declare</font>
+<br><font size=-1>&nbsp;xmlString CLOB := null;</font>
+<br><font size=-1>&nbsp;-- Here we are reading 250 bytes at a time. We
+should be really reading a</font>
+<br><font size=-1>&nbsp;-- whole chunk. dbms_output.put_line can only accomodate
+256 characters per line</font>
+<br><font size=-1>&nbsp;-- so we have this limitation.</font>
+<br><font size=-1>&nbsp;amount integer:= 255;</font>
+<br><font size=-1>&nbsp;position integer := 1;</font>
+<br><font size=-1>&nbsp;charString varchar2(255);</font>
+<p><font size=-1>begin</font>
+<p><font size=-1>&nbsp; xmlgen.setRowTag('EMP_ROW');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- we want the row element to be named EMP_ROW.</font>
+<br><font size=-1>&nbsp; xmlgen.setRowsetTag('EMP_RESULTS');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- we want the result document root to be EMP_RESULTS.</font>
+<br><font size=-1>&nbsp; xmlgen.setMaxRows(3);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- limit the output to 3 rows.</font>
+<br><font size=-1>&nbsp; xmlgen.setskipRows(2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- skip the first two rows in the query before outputing results.</font>
+<br><font size=-1>&nbsp; xmlgen.useLowerCaseTagNames();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- set the tag names to be all in lower case.</font>
+<br><font size=-1>&nbsp; xmlgen.setErrorTag('ERROR_RESULT');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- set the ERROR tag to be ERROR_RESULTS.</font>
+<br><font size=-1>&nbsp; xmlgen.setRowIdAttrName('ENO');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- set the id attribute in the ROW element to be ENO.</font>
+<br><font size=-1>&nbsp; xmlgen.setRowIdColumn('EMPNO');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- use the EMPNO column's value for the id attribute.</font>
+<br><font size=-1>&nbsp; xmlgen.useNullAttributeIndicator(false);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- do not use the null indicator to indicate nullness.</font>
+<br><font size=-1>&nbsp; xmlgen.setStyleSheet('http://www.oracle.com/xsl');&nbsp;
+-- attach the stylesheet PI to the result document.</font>
+<p><font size=-1>&nbsp; xmlString := xmlgen.getXML('select * from scott.emp
+',1); -- This gets the XML out</font>
+<p><font size=-1>&nbsp; dbms_lob.open(xmlString,DBMS_LOB.LOB_READONLY);&nbsp;
+-- Now open the lob data..</font>
+<br><font size=-1>&nbsp; loop</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; dbms_lob.read(xmlString,amount,position,charString);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- read the lob data</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; dbms_output.put_line(charString);</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; position := position + amount;</font>
+<br><font size=-1>&nbsp; end loop;</font>
+<p><font size=-1>&nbsp; exception</font>
+<br><font size=-1>&nbsp; when no_data_found then</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; dbms_lob.close(xmlString);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- end of fetch, free the lob</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; dbms_lob.freetemporary(xmlString);</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; xmlgen.resetOptions;</font>
+<br><font size=-1>&nbsp; when others then</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; xmlgen.resetOptions;</font>
+<br><font size=-1>end;</font>
+<br><font size=-1>/</font>
+<br>&nbsp;
+<p><font size=-1>The output from this looks like,</font>
+<p><font size=-1>&lt;?xml version="1.0"?></font>
+<br><font size=-1>&lt;?xml-stylesheet href="http://www.oracle.com/style.xsl"
+type="text/xsl"?></font>
+<br><font size=-1>&lt;!DOCTYPE emp_results [</font>
+<br><font size=-1>&lt;!ELEMENT emp_results (EMP_ROW)*></font>
+<br><font size=-1>&lt;!ELEMENT EMP_ROW (empno, ename?, job?, mgr?, hiredate?,
+sal?, comm?, deptno?)></font>
+<br><font size=-1>&lt;!ATTLIST EMP_ROW num CDATA #REQUIRED></font>
+<br><font size=-1>&lt;!ELEMENT empno (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT ename (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT job (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT mgr (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT hiredate (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT sal (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT comm (#PCDATA)></font>
+<br><font size=-1>&lt;!ELEMENT deptno (#PCDATA)></font>
+<br><font size=-1>]></font>
+<br><font size=-1>&lt;emp_results></font>
+<br><font size=-1>&nbsp; &lt;EMP_ROW num="3"></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;empno>7521&lt;/empno></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;ename>WARD&lt;/ename></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;job>SALESMAN&lt;/job></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;mgr>7698&lt;/mgr></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;hiredate>1981-02-22 00:00:00.0&lt;/hiredate></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;sal>1250&lt;/sal></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;comm>500&lt;/comm></font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; &lt;deptno>30&lt;/deptno></font>
+<br><font size=-1>&nbsp;&lt;/EMP_ROW></font>
+<br><font size=-1>&lt;/emp_results></font>
+<br>&nbsp;</blockquote>
+</blockquote>
+
+<hr SIZE=4 NOSHADE WIDTH="100%">
+<h3>
+<img SRC="images/red-ball.gif" NOSAVE height=12 width=12><b> Example 2:
+Getting the results from a SQL query</b></h3>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=-1> </font><font size=+0>Example
+SQL code:</font></b>
+<blockquote>
+<blockquote><font size=-1>select xmlgen.getXML('select * from scott.emp')
+from dual;</font>
+<p><font size=-1>select xmlgen.getXML('select * from all_Tables where owner=''SCOTT''')
+from dual;</font>
+<br>&nbsp;</blockquote>
+</blockquote>
+
+<hr SIZE=4 NOSHADE WIDTH="100%">
+<h3>
+<img SRC="images/cyan-ball.gif" NOSAVE height=12 width=12> Example 3: Inserting
+an XML document in a CLOB into the database</h3>
+
+<blockquote><b>Example PL/SQL code:</b>
+<p>Here we get the document using getXML into the clob and insert the clob
+back into the <i>temp</i> table. The <i>temp</i> table has the same structure
+as <i>scott.emp</i>.
+<br>The <i>temp</i> table is created as "create table scott.temp as select
+* from scott.emp"</blockquote>
+
+<blockquote>
+<blockquote><font size=-1>Rem Test out the PL/SQL side</font>
+<br><font size=-1>declare</font>
+<br><font size=-1>&nbsp;xmlString CLOB := null;</font>
+<br><font size=-1>-- Here we are reading 250 bytes at a time. We should
+be really reading a</font>
+<br><font size=-1>-- whole chunk. dbms_output.put_line can only accomodate
+256 characters per line</font>
+<br><font size=-1>-- so we have this limitation.</font>
+<br><font size=-1>&nbsp;amount integer:= 255;</font>
+<br><font size=-1>&nbsp;position integer := 1;</font>
+<br><font size=-1>&nbsp;charString varchar2(255);</font>
+<br><font size=-1>&nbsp;finalStr varchar2(4000) := null;</font>
+<br><font size=-1>&nbsp;rowsp integer;</font>
+<br><font size=-1>begin</font>
+<p>&nbsp;<font size=-1>-- the row element is called EMP_ROW</font>
+<br><font size=-1>&nbsp; xmlgen.setRowTag('EMP_ROW');</font>
+<p><font size=-1>&nbsp; -- use a lower case tag names.</font>
+<br><font size=-1>&nbsp; xmlgen.useLowerCaseTagNames();</font>
+<p><font size=-1>&nbsp; xmlgen.useNullAttributeIndicator(false);</font>
+<br><font size=-1>&nbsp; xmlgen.setStyleSheet('http://www.oracle.com/xsl');</font>
+<p><font size=-1>&nbsp; <b>xmlString := xmlgen.getXML('select * from scott.emp
+',0);</b></font>
+<p><font size=-1>&nbsp;-- open the lob</font>
+<br><font size=-1>&nbsp;<b> dbms_lob.open(xmlString,DBMS_LOB.LOB_READONLY);</b></font>
+<p><font size=-1>&nbsp;-- before inserting , make sure that the case is
+ignored (since we generated everything with lower case)</font>
+<br><font size=-1>&nbsp;xmlgen.resetOptions;</font>
+<br><font size=-1>&nbsp;xmlgen.setRowTag('EMP_ROW');</font>
+<br><font size=-1>&nbsp;xmlgen.setIgnoreTagCase(xmlgen.IGNORE_CASE);</font>
+<p><font size=-1>-- insert the XML document</font>
+<br><font size=-1>&nbsp;<b>rowsp := xmlgen.insertXML('scott.temp',xmlString);</b></font>
+<br><font size=-1>&nbsp;dbms_output.put_line(' Rows processed = '|| TO_CHAR(rowsp));</font>
+<p><font size=-1>&nbsp;-- free the lob</font>
+<br><font size=-1>&nbsp;dbms_lob.close(xmlString);</font>
+<br><font size=-1>&nbsp;dbms_lob.freetemporary(xmlString);</font>
+<p><font size=-1>exception</font>
+<br><font size=-1>&nbsp; when others then</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlgen.resetOptions;</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.close(xmlString);</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.freetemporary(xmlString);</font>
+<br><font size=-1>end;</font>
+<br><font size=-1>/</font>
+<br>&nbsp;</blockquote>
+</blockquote>
+
+<hr SIZE=4 NOSHADE WIDTH="100%">
+<h3>
+<img SRC="images/yellow-ball.gif" NOSAVE height=12 width=12> Example 4:
+Inserting an XML document in a string into the database</h3>
+
+<blockquote><b>Example PL/SQL code:</b>
+<p>Here we get the document using getXML into the clob and create a varchar2
+buffer which holds the XML document. This is just for illustration. The
+<i>temp</i>
+table has the same structure as <i>scott.emp</i>.
+<br>The <i>temp</i> table is created as "create table scott.temp as select
+* from scott.emp"
+<blockquote><font size=-1>Rem Test out the PL/SQL side</font>
+<br><font size=-1>declare</font>
+<br><font size=-1>&nbsp;xmlString CLOB := null;</font>
+<br><font size=-1>-- Here we are reading 250 bytes at a time. We should
+be really reading a</font>
+<br><font size=-1>-- whole chunk. dbms_output.put_line can only accomodate
+256 characters per line</font>
+<br><font size=-1>-- so we have this limitation.</font>
+<br><font size=-1>&nbsp;amount integer:= 255;</font>
+<br><font size=-1>&nbsp;position integer := 1;</font>
+<br><font size=-1>&nbsp;charString varchar2(255);</font>
+<br><font size=-1>&nbsp;finalStr varchar2(4000) := null;</font>
+<br><font size=-1>&nbsp;rowsp integer;</font>
+<br><font size=-1>begin</font>
+<p><font size=-1>&nbsp; xmlgen.setRowTag('EMP_ROW');</font>
+<br><font size=-1>&nbsp; xmlgen.setRowsetTag('EMP_RESULTS');</font>
+<br><font size=-1>&nbsp; xmlgen.setMaxRows(2);</font>
+<br><font size=-1>&nbsp; xmlgen.setskipRows(2);</font>
+<p><font size=-1>&nbsp;-- get the XML CLOB out..</font>
+<br><font size=-1>&nbsp; <b>xmlString := xmlgen.getXML('select * from scott.emp
+',0);</b></font>
+<p><font size=-1>&nbsp;begin</font>
+<br><font size=-1><b>&nbsp;&nbsp;&nbsp;&nbsp; </b>-- we are now creating
+a varchar2 string from the clob.</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.open(xmlString,DBMS_LOB.LOB_READONLY);</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; loop</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.read(xmlString,amount,position,charString);</font>
+<p><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if finalStr
+is not null then</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+finalStr := finalStr || charString;</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+finalStr := charString;</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end if;</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; position :=
+position + amount;</font>
+<p><font size=-1>&nbsp;&nbsp;&nbsp; end loop;</font>
+<p><font size=-1>&nbsp;&nbsp; exception</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; when no_data_found then</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.close(xmlString);</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dbms_lob.freetemporary(xmlString);</font>
+<br><font size=-1>&nbsp;&nbsp; end;</font>
+<p><font size=-1>&nbsp;&nbsp; -- insert the varchar string.!</font>
+<br><b><font size=-1>&nbsp; rowsp := xmlgen.insertXML('scott.temp',finalStr);</font></b>
+<p><font size=-1>&nbsp;dbms_output.put_line('INSERT DONE '||TO_CHAR(rowsp));</font>
+<br><font size=-1>&nbsp;xmlgen.resetOptions;</font>
+<br><font size=-1>end;</font>
+<br><font size=-1>/</font></blockquote>
+</blockquote>
+
+</body>
+</html>

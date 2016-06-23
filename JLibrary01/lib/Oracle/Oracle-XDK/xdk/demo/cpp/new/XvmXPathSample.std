@@ -1,0 +1,26 @@
+XML C++ XVM XPath sample
+Initializing context
+Initializing Tools Factory
+Creating XPath compiler
+Creating XPath processor
+Compiling ... //child::*
+Create file source for the instance document
+Processing 'pantry.xml' ...  with  '//child::*' ...
+NodeSet:
+Node Name : pantry
+Node Name : shelf
+Node Name : supplies
+Node Name : paper_goods
+Node Name : paper_good
+Node Name : paper_good
+Node Name : snack_foods
+Node Name : snack_food
+Node Name : snack_food
+Node Name : shelf
+Node Name : supplies
+Node Name : paper_goods
+Node Name : paper_good
+Node Name : paper_good
+Node Name : snack_foods
+Node Name : snack_food
+Node Name : snack_food

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-stylesheeet type="text/xsl" href="emp.xsl"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql" 
+             find="%"
+             sort="ENAME"
+   null-indicator="yes" >
+
+       SELECT *
+         FROM EMP
+       WHERE ENAME LIKE '%{@find}%'
+      ORDER BY {@sort}
+
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:47:17 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/emp/emp-xsql.xml.mkelem $
+| $Revision: /main/0 $
+|
+| Try passing a part of an ENAME to match like
+|
+|    http://localhost/xsql/demo/emp.xsql?find=A
+|
+| Or a sort column like:
+|
+|    http://localhost/xsql/demo/emp.xsql?find=A&sort=SAL
+|
++-->
+

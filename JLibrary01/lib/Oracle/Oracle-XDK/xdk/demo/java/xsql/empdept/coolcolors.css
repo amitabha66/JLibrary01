@@ -1,0 +1,27 @@
+.bl {
+           font-family: verdana, times; 
+      background-color: #6699CC; 
+                 color: white; 
+           font-weight: bold 
+    }
+.dk {
+           font-family: verdana, times; 
+      background-color: #003366; 
+                 color: white; 
+           font-weight: bold 
+    }
+.title {
+           font-family: verdana, times; 
+             font-size: 130%; 
+      background-color: #336699; 
+                 color: #CCFFCC; 
+           font-weight: bold 
+    }
+
+.lt {
+           font-family: verdana, times; 
+      background-color: #9CCFFF; 
+                 color: black; 
+           font-weight: bold 
+    }
+

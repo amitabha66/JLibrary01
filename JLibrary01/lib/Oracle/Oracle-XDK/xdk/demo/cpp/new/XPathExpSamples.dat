@@ -1,0 +1,9 @@
+/child::pantry
+/child::*
+/child::pantry/child::shelf
+/child::pantry/child::*
+/child::pantry/child::shelf/child::supplies
+/child::pantry/child::shelf/node()
+/descendant::paper_good/ancestor::supplies
+/pantry/descendant-or-self::node()/snack_food
+/pantry//snack_food

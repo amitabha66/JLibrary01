@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!-- The element declaration type is an inline simple type definition -->
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.oracle.com/sample2/"
+        elementFormDefault="qualified">
+
+   <element name="AnElementWithInlineSimpleType">
+      <simpleType>
+         <restriction base="string">
+            <minLength value = "1"/>
+            <maxLength value = "30"/>
+         </restriction>
+      </simpleType>
+   </element>
+
+</schema>
+

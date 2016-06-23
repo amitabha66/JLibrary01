@@ -1,0 +1,77 @@
+This directory contains some sample XML applications to show how to use the 
+Oracle XML parser via the DOM and SAX C++ interfaces.
+
+This directory contains:
+
+    DOMNamespace.cpp	Source for DOMNamespace program
+    DOMNamespace.std	Expected output from DOMNamespace
+    DOMSample.cpp	Source for DOMSample program
+    DOMSample.std	Expected output from DOMSample
+    FullDOM.c           Sample usage of DOM interface
+    FullDOM.std		Expected output from FullDOM
+    Make.bat		Batch file to build sample executables
+    Makefile		Makefile for sample programs
+    NSExample.xml	Sample XML file using namespaces
+    README		This file
+    SAXNamespace.cpp	Source for SAXNamespace program
+    SAXNamespace.std	Expected output from SAXNamespace
+    SAXSample.cpp	Source for SAXSample program
+    SAXSample.std	Expected output from SAXSample
+    XSLSample.cpp	Source for XSLSample program
+    XSLSample.std	Expected output from XSLSample
+    class.xml           XML file that may be used with XSLSample
+    iden.xsl            Stylesheet that may be used with XSLSample
+    cleo.xml		XML version of Shakespeare's play
+			"The Tragedy of Antony and Cleopatra"
+
+A batch file, Make.bat, is provided to build the samples.  Giving "all" as a 
+parameter to this file creates executables for all five samples.  You
+could also create an executable for a particular sample program by giving its
+name as a parameter.  Note that the executables are placed in ..\bin but
+should be run from the sample directory (where the .xml files can be found).
+
+An error message file is provided in the mesg subdirectory.  Currently, the
+only message file is in English although message files for other languages
+may be supplied in future releases.  You should set the environment variable 
+ORA_XML_MESG to point to the absolute path of the mesg subdirectory.
+Alternately, if you have an $ORACLE_HOME installed, you may copy the contents
+of the mesg subdirectory to the $ORACLE_HOME\xdk\mesg directory.
+
+In addition, the environment variable ORA_NLS33 must be set to point to the 
+location of the NLS data files.  On Unix systems, this is usually 
+$ORACLE_HOME/ocommon/nls/admin/data.  On Windows NT, this is usually 
+$ORACLE_HOME/nlsrtl/admin/nlsdata.  Starting with version 9.0.1, C and C++ XDK
+releases that are downloaded from OTN contain an nlsdata/ subdirectory.  You 
+must set the environment variable ORA_NLS33 to the absolute path of the 
+nlsdata/ subdirectory if you don't have an Oracle installation.
+
+The following programs will be built:
+
+    SAXSample		A sample application using SAX APIs.  Prints out
+			all speakers in each scene, i.e. all the unique
+			SPEAKER elements within each SCENE element.
+
+    DOMSample [speaker]	A sample application using DOM APIs.  Prints all
+			speeches made by the given speaker.  If no speaker
+			is specified, "Soothsayer" is used.  Note that major
+			characters have uppercase names (e.g. "CLEOPATRA"),
+			whereas minor characters have capitalized names (e.g.
+			"Attendant").  See the output of SAXSample.
+
+    SAXNamespace	A sample application using Namespace extensions to
+			SAX API; prints out all elements and attributes of
+			NSExample.xml along with full namespace information.
+
+    DOMNamespace	Same as SAXNamespace except using DOM interface.
+
+    FullDOM             Sample usage of full DOM interface.  Exercises all
+                        the calls, but does nothing too exciting.
+
+    XSLSample <xmlfile> <xsl ss>
+			Sample usage of XSL processor.  It takes two 
+                        filenames as input, the XML file and the XSL 
+                        stylesheet.  Note: If you redirect stdout of
+			this program to a file, you may encounter some
+			missing output, depending on your environment.
+~
+

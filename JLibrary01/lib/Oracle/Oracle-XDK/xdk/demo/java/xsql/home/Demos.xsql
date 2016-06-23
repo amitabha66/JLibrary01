@@ -1,0 +1,172 @@
+<?xml version = '1.0'?>
+<!--
+ | This XSQL Page is all static XML containing structured
+ | information about the demos that come with the XSQL Servlet.
+ |
+ | The "homecontent.xsql" page uses <xsql:include-xsql>
+ | to include this XML content dynamically when the
+ | current tab page is "Demos".
+ | 
+ | The "homecontent.xsl" stylesheet imports the
+ | "demos.xsl" stylesheet that handles help-specific
+ | formatting.
+ +-->
+<page-content name="Demos">
+   <demo id="helloworld">
+      <name>Hello World Page</name>
+      <description>
+
+        Simplest possible use of an XSQL page.
+
+      </description>
+      <url>helloworld.xsql</url>
+      <sourceurl>helloworld-xsql.xml</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="emp">
+      <name>Employee Page</name>
+      <description>
+
+        Shows XML output from a query against the EMP table. Accepts
+        an optional 'find' URL parameter.
+
+      </description>
+      <url>emp.xsql?find=A</url>
+      <sourceurl>empsource.html</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="insclaim">
+      <name>Insurance Claim Page</name>
+      <description>
+
+        Shows several queries against a richly nested object view for
+        insurance claims.
+
+      </description>
+      <url>xsqlov.htm</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="classerr">
+      <name>Invalid Classes Page</name>
+      <description>
+
+        XSQL page using object view query and XSLT stylesheet to show
+        list of errors for Oracle8i Java classes.
+
+      </description>
+      <url>invalidclasses.xsql</url>
+      <sourceurl>invalidclassessource.html</sourceurl>
+      <ie5-only>N</ie5-only>
+   </demo>
+   <demo id="doyouxml">
+      <name>Do You XML? Site</name>
+      <description>
+
+        Simple dynamic website built using XSQL
+
+      </description>
+      <url>doyouxml.xsql</url>
+      <sourceurl>doyouxmlsource.html</sourceurl>
+      <ie5-only>N</ie5-only>
+   </demo>
+   <demo id="empdept">
+      <name>Emp/Dept ObjectView Demo</name>
+      <description>
+
+        Shows Departments and Employees using an Object View to group
+        master/detail information.
+
+      </description>
+      <url>empdept.xsql</url>
+      <sourceurl>empdeptsource.html</sourceurl>
+      <ie5-only>N</ie5-only>
+   </demo>
+   <demo id="airport">
+      <name>Airport Code Validation</name>
+      <description>
+
+        DHTML page validates airport codes using an XSQL Page as an
+        "XML Data Service"
+
+      </description>
+      <url>airport.htm</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="airport2">
+      <name>Airport Code Display</name>
+      <description>
+
+        Visualizes matching airport codes using same XSQL page as
+        previous demo.
+
+      </description>
+      <baseurl>airport</baseurl>
+      <url>airport.xsql?xml-stylesheet=airport.xsl</url>
+      <sourceurl>airportsource.html</sourceurl>
+      <ie5-only>N</ie5-only>
+   </demo>
+   <demo id="airportSoap">
+      <name>Airport SOAP Service</name>
+      <description>
+
+        Implements a SOAP service to return airport descriptions using an XSQL page
+
+      </description>
+      <baseurl>airport</baseurl>
+      <url>airportSoap.html</url>
+      <sourceurl>airportsource.html</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="adhocsql">
+      <name>Adhoc Query Visualization</name>
+      <description>
+
+        Type in any query and view XML results, optionally using a
+        stylesheet.
+
+      </description>
+      <url>sqltoxml.html</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="document">
+      <name>XML Document Demo</name>
+      <description>
+
+        Post XML documents for storage in the server and view their
+        contents, optionally formatted by a stylesheet
+
+      </description>
+      <url>docdemo.html</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="insertxml">
+      <name>XML Insert Request Demo</name>
+      <description>
+
+        Post XML documents from the Browser using Javascript for
+        insert into the server. 
+
+      </description>
+      <url>newsstorydemo.html</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>Y</ie5-only>
+   </demo>
+   <demo id="svg">
+      <name>Scalable Vector Graphics Demo</name>
+      <description>
+
+        Query department data and use XSLT to transform into
+        a colorful, scalable barchart using scalable vector
+        graphics (SVG). Requires an SVG plugin, like the
+        one from Adobe or others.
+
+      </description>
+      <url>svgdemo.html</url>
+      <sourceurl>None</sourceurl>
+      <ie5-only>N</ie5-only>
+   </demo>
+</page-content>

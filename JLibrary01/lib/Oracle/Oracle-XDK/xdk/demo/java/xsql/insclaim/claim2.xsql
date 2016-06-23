@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql" ><![CDATA[
+
+select c.claimpolicy.primaryinsured as Customer
+  from insurance_claim_view c
+ where c.claimpolicy.primaryinsured.homeaddress.state = 'CA'
+
+]]></xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:51:38 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/insclaim/claim2.xsql.mkelem $
+| $Revision: /main/0 $
++-->
+

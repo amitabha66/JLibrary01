@@ -1,0 +1,36 @@
+XML C++ SAX Namespace
+Initializing XML package...
+Parsing 'NSExample.xml'...
+
+StartDocument
+
+ELEMENT Qualified Name: doc
+ELEMENT Local Name    : doc
+ELEMENT Namespace     : http://www.w3c.org
+ ATTRIBUTE Qualified Name   : nsprefix:a1
+ ATTRIBUTE Prefix           : nsprefix
+ ATTRIBUTE Local Name       : a1
+ ATTRIBUTE Namespace        : http://www.oracle.com
+ ATTRIBUTE Value            : v1
+
+ ATTRIBUTE Qualified Name   : xmlns
+ ATTRIBUTE Prefix           :  
+ ATTRIBUTE Local Name       : xmlns
+ ATTRIBUTE Namespace        :  
+ ATTRIBUTE Value            : http://www.w3c.org
+
+ ATTRIBUTE Qualified Name   : xmlns:nsprefix
+ ATTRIBUTE Prefix           : xmlns
+ ATTRIBUTE Local Name       : nsprefix
+ ATTRIBUTE Namespace        : http://www.w3.org/XML/1998/namespace
+ ATTRIBUTE Value            : http://www.oracle.com
+
+ELEMENT Qualified Name: child
+ELEMENT Local Name    : child
+ELEMENT Namespace     : http://www.w3c.org
+
+ELEMENT Name  : child
+
+ELEMENT Name  : doc
+
+EndDocument

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+
+<xsd:schema xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+            xmlns:po="http://www.oracle.com/sample4/"
+            targetNamespace="http://www.oracle.com/sample4/"
+            elementFormDefault="qualified">
+
+   <xsd:complexType name="PurchaseOrderType">
+      <xsd:sequence>
+          <xsd:choice>
+             <xsd:group ref="po:shipAndBill"/>
+             <xsd:element name="singelUSAddress" type="po:USAddress"/>
+          </xsd:choice>
+          <xsd:element ref="po:comment" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="orderDate" type="xsd:date"/>
+   </xsd:complexType>
+
+   <xsd:group name="shipAndBill">
+      <xsd:sequence>
+         <xsd:element name="shipTo" type="po:USAddress"/>
+         <xsd:element name="billTo" type="po:USAddress"/>
+      </xsd:sequence>
+   </xsd:group>
+
+   <xsd:complexType name="USAddress">
+      <xsd:sequence>
+         <xsd:element name="name" type="xsd:string"/>
+         <xsd:element name="street" type="xsd:string"/>
+         <xsd:element name="city" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:element name="comment" type="xsd:string"/>
+
+   <xsd:element name="PurchaseOrder" type="po:PurchaseOrderType"/>
+
+</xsd:schema>
+

@@ -1,0 +1,35 @@
+DOM Namespace example.
+Parsing 'NSExample.xml'...
+Parse succeeded, traversing DOM:
+
+    ELEM      QName: "doc"
+    ELEM     Prefix: Nil
+    ELEM Local Name: "doc"
+    ELEM  Namespace: "http://www.w3c.org"
+
+    ELEM doc ATTRIBUTES: 
+
+    ATTR      QName: "nsprefix:a1"
+    ATTR      Value: "v1"
+    ATTR  Namespace: "http://www.oracle.com"
+    ATTR Local Name: "a1"
+    ATTR     Prefix: "nsprefix"
+
+    ATTR      QName: "xmlns"
+    ATTR      Value: "http://www.w3c.org"
+    ATTR  Namespace: Nil
+    ATTR Local Name: "xmlns"
+    ATTR     Prefix: Nil
+
+    ATTR      QName: "xmlns:nsprefix"
+    ATTR      Value: "http://www.oracle.com"
+    ATTR  Namespace: "http://www.w3.org/XML/1998/namespace"
+    ATTR Local Name: "nsprefix"
+    ATTR     Prefix: "xmlns"
+
+    ELEM      QName: "child"
+    ELEM     Prefix: Nil
+    ELEM Local Name: "child"
+    ELEM  Namespace: "http://www.w3c.org"
+
+Finished, cleaning up.

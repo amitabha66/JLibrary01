@@ -1,0 +1,219 @@
+This directory contains sample applications to demonstrate the usage of the 
+Oracle XML beans. Currently, the Oracle XML beans toolset contains 
+XMLSourceView, XMLTreeView, XSLTransformer, DOMBuilder, XMLTransformPanel, 
+DBAccess, DBViewer, XMLDBAccess, XMLDiff, XMLCompress and XSDValidator beans.
+
+The following are the sample Java files in this directory:
+
+        ViewSample  - A sample visual application using the  
+                      XMLSourceView bean and XMLTreeView bean.
+                      It visualizes XML document files.
+
+        AsyncTransformSample - A sample nonvisual application using 
+                      XSLTransformer bean and DOMBuilder bean.
+                      It applies XSLT stylesheet specified in doc.xsl 
+                      on all *.xml files from the current directory.   
+                      The results are in the files with extention .log. 
+ 
+        XMLTransformPanelSample - visual application which using 
+                      XMLTransformPanel bean. This bean uses all four beans
+                      from above.Applies XSL transformations on XML documents
+                      and shows the result Visualizes and allows editin of
+                      XML and XSL input files.
+
+        DBViewSample - Sample visual application that uses DBViewer bean to 
+                      implement a simple insurance claim handling application.
+
+        XMLDBAccessSample - This is a non-GUI sample for the XMLDBAccess bean.
+                      It demonstrates the way the XMLDBAccess bean APIs can be
+                      used to store and retrive the XML documents inside the 
+                      database using XMLType tables.
+        
+        XMLDiffSample - Sample visual application that uses XMLDiff bean to 
+                      diff two XML files and generate an XSL stylesheet. This
+                      stylesheet can be used to transform input XML file1 into
+                      input XML file2.
+
+        compviewer   - Sample visual application that uses XMLCompress bean 
+                      to compress an XML file or XML data from the database
+                      obtained through SQL query or from a CLOB or an 
+                      XMLType Table. The application also lets to uncompress
+                      the compressed stream and view the resulting DOM tree.
+
+        XMLSchemaTreeViewer - Visual Application which uses the Treeviewer,
+                      sourceviewer and the XSDValidator bean. The application
+                      accepts an XML Instance document and a XML Schema 
+                      Document as inputs. The application parses both the
+                      documents and does the validation of the instance 
+                      document against the schema. If the instance document
+                      is invalid for the input schema then the nodes where the
+                      errors occured is highlighted and error message is shown 
+                      in a tool tip.
+
+        XMLSrcViewer - Sample visual application using sourceviewer bean and
+                      XSDValidator bean. The demo takes XML file as input. 
+                      The  user can select the validation mode to use, i.e.
+                      DTD, XML Schema or No validation. The XML data file 
+                      is validated against the DTD/XML Schema specified and
+                      displayed with syntax highlighting.  Validation errors
+                      are logged.  For schema validation the error nodes are
+                      highlighted appropriately.  Both external and internal 
+                      DTDs can be viewed. 
+
+        XSDValidatorSample - Sample application for XSDValidator bean. Takes
+                      two arguments as input, an xml-file and a schema-file. 
+                      The error occuring during validation, including line 
+                      numbers, are displayed.
+                                           
+
+Installing the XDK Java beans
+================================
+
+The beans require the version of JDK 1.2 as minimum and can be used with any
+version of JDK 1.2. The DBViewer bean and DBTransformPanel bean require 
+JDK 1.2.2 when rendering HTML. The lesser versions of the JDK may not render
+HTML in the result buffer properly.
+
+1) You need to download and install the following component that is used
+   by the Oracle XML beans:
+
+   - Oracle JDBC Driver for thin client:
+       If you work with JDK 1.2 or above, use the 1.2 version of the JDBC 
+       driver from file classes12.zip.
+       Make sure that the version of the JDBC driver is the same or higher
+       than the Oracle database you want to access.
+
+   After installing this component, include the classes12.zip in your classpath.
+
+
+2) Change the JDKPATH in the Makefile to point to your JDK path.
+
+3) Use "make" to generate .class files.
+
+4) Run the sample programs using commands:
+   gmake sample1
+   gmake sample2 
+   gmake sample3 
+   gmake sample4
+   gmake sample5
+   gmake sample6
+   gmake sample7
+   gmake sample8
+   gmake sample9
+   gmake sample10
+   
+
+Notes:
+
+   Sample1 runs the XMLTransViewer program. This can be used 
+   to import and export XML files from Oracle 8i, keep your XSL transformation
+   files in Oracle8i and apply stylesheets to XML interactively. In order
+   to use the database connectivity feature in this program, you need to know 
+   the network name of the computer where Oracle8i runs, the port (usually 
+   1521) and the name of the oracle instance (usually orcl). You would also 
+   need an account with create table granted. You may try the default account 
+   scott with password tiger if it is enabled on your Oracle 8i system.
+   You can use Sample1 to apply stylesheet transformation to XML files and 
+   display the result. 
+   When you run the sample, you will see a panel with tabs
+   on the top and the bottom. The first two top tabs are used to switch between
+   the XML buffer and the XSL buffer. The third tab (the Transform tab) 
+   performs XSL transformation on the XML buffer and shows the result. 
+   The first two tabs on the bottom can be used to load/save data from Oracle 
+   database and from the file system. The rest of the tabs on the bottom 
+   switch the display of the current content to tree view, XML source, edit 
+   mode and, in case of the result view after the transformation, in HTML.
+
+   Sample2 is a gui demo for XMLSourceView and XMLTreeView beans. It 
+   displays the 'booklist.xml' file in separate source and tree views.
+
+   Sample3 is a non-gui demo for the asynchronous DOMBuilder and 
+   XSLTransformer beans. It applies XSLT stylesheet (doc.xsl) on all *.xml 
+   files in the current directory. The output is stored in the files with 
+   extention .log.
+
+   Sample4 uses sqlplus and the default account scott/tiger on your local host.
+   If this is not the case, make the corresponding changes in the Makefile.
+   Sample4 also expects that the Oracle database is installed on computer
+   named "localhost", the instance name is "orcl", the port is "1521" and
+   the account is scott with password tiger. If your configuration is 
+   different, go to line 92 in DBViewClaims.java. Modify the lines
+      dbPanel.setUsername("scott");
+      dbPanel.setPassword("tiger");
+      dbPanel.setInstancename("orcl0");
+      dbPanel.setHostname("localhost");
+      dbPanel.setPort("1521");
+   with values that reflect your Oracle configuration. 
+
+
+   Sample5 is a demo for XMLDBAccess bean. It uses the XMLType objects to store
+   XML documents inside the database. To use XMLType an Oracle 9i or higher 
+   installation is necessary along with the xdb.jar. Sample5 will run 
+   XMLDBAccessSample using the values for HOSTNAME, PORT, SID, USERID, 
+   PASSWORD as defined in the Makefile.  These should be modified as required.
+   The booklist.xml file is used to insert data into the database. The output 
+   is copied to xmldbaccess.log.
+
+   
+   Sample6 is a demo for XMLDiff bean. It invokes a GUI which allows you to 
+   choose the input data files from the 'File' menu using 'Compare XML Files' 
+   item. The XSLT generated can be applied on input XML file1 using 'Transform'
+   menu. Resulting XML file (which will be the same as input file2) can be 
+   saved using 'Save As' item under 'File' menu. By default the 2 XML files
+   XMLDiffData1.txt and XMLDiffData2.txt are compared and the output XSLT is 
+   stored as XMLDiffSample.xsl.
+   Note: If the input XML files have a DTD which accesses a URL outside the 
+   firewall, then please modify the XMLDiffSample.java to include the proxy 
+   server settings before the setFiles() call:
+   e.g.
+    /* Set proxy to access dtd through firewall */
+    Properties p = System.getProperties();
+    p.put("proxyHost", "www.proxyservername.com");
+    p.put("proxyPort", "80");
+    p.put("proxySet", "true");
+    You will also have to import java.util.*;
+
+
+   Sample7 is a demo for XMLCompress bean. It invokes a GUI which lets the 
+   user compress/uncompress XML files and data obtained from the Database. The
+   loading options lets the user to get the data either from a file system or 
+   a database. This application does not support loading/saving compressed data
+   from the database. The compression factor indicates a rough estimate by 
+   which the XML data is reduced.
+
+
+   Sample8 is a demo for a XMLTreeViewer bean. It lets the user view an 
+   XMLDocument in a tree format. The user can input a schema document and 
+   validate the instance document against the schema. If the document is 
+   invalid the nodes which are invalid are highlighted with the error message.
+   Also a log of all the line information is shown in a seperate panel. This 
+   is done so that the user can edit the instance document and revalidate. 
+   Sample files purchaseorder.xml and purchaseorder.xsd are provided for
+   testing. The instance document purchaseorder.xml doesn't comply 
+   with schema defined in purchaseorder.xsd and hence you can see the errors.
+
+
+   Sample9 is a demo for the SourceViewer. It lets you view an XML document
+   or a DTD with syntax highlighting turned on. 
+   The XML document can be validated using an input XML Schema. 
+   If the validation is successful you can view the xml doc and schema doc in 
+   the  Source View pane. If errors were encountered during schema
+   validation, then an error log with line numbers is available in the Error 
+   pane and the Source View pane will contain the xml document with error 
+   nodes highlighted. 
+   E.g. You can use sample files purchaseorder.xml and purchaseorder.xsd for 
+   testing schema validation with errors. 
+      An XML Document can be validated against an external and an internal DTD.
+   If the validation is successful you can view the xml doc and the DTD in the
+   Source View pane. If errors were encountered during validation, then the 
+   list of errors are logged in the Error Log pane.  
+   E.g. You can use note_in_dtd.xml with DTD validation mode to view an 
+   internal DTD with validation errors.  An internal DTD can be optionally
+   displayed along with the XML data.
+
+
+   Sample10 is a demo for the XSDValidator bean. Its takes as default the
+   purchaseorder.xml data file and the purchaseorder.xsd schema file.  The 
+   output will display the validation errors.
+
+

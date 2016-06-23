@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class XMLParser</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-parser.html">This Package</a>]</pre>
+<hr>
+<h1>Class: <i>XMLParser</i></h1>
+
+This class contains top-level methods for invoking the parser and returning
+high-level information about a document.
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#xmlinit"><b>xmlinit</b></a></td>
+    <td>Initialize XML parser</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlinitenc"><b>xmlinitenc</b></a></td>
+    <td>Initialize XML parser (specifying DOM data encoding)</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlterm"><b>xmlterm</b></a></td>
+    <td>Terminate XML parser</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlclean"><b>xmlclean</b></a></td>
+    <td>Clean up memory used during parse</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlparse"><b>xmlparse</b></a></td>
+    <td>Parse a document from a URI</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlparseBuffer"><b>xmlparseBuffer</b></a></td>
+    <td>Parse a document from a buffer</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlparseDTD"><b>xmlparseDTD</b></a></td>
+    <td>Parse an external DTD</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlparseFile"><b>xmlparseFile</b></a></td>
+    <td>Parse a document from a file</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlparseStream"><b>xmlparseStream</b></a></td>
+    <td>Parse a document from a stream</td>
+  </tr>
+  <tr>
+    <td><a href="#xmlwhere"><b>xmlwhere</b></a></td>
+    <td>Return error location information</td>
+  </tr>
+  <tr>
+    <td><a href="#setAccess"><b>setAccess</b></a></td>
+    <td>Set I/O access callbacks</td>
+  </tr>
+  <tr>
+    <td><a href="#getContent"><b>getContent</b></a></td>
+    <td>Returns the content model for an element</td>
+  </tr>
+  <tr>
+    <td><a href="#getDocument"><b>getDocument</b></a></td>
+    <td>Returns the root node of a parsed document</td>
+  </tr>
+  <tr>
+    <td><a href="#getDocumentElement"><b>getDocumentElement</b></a></td>
+    <td>Returns the root element (node) of a parsed document</td>
+  </tr>
+  <tr>
+    <td><a href="#getDocType"><b>getDocType</b></a></td>
+    <td>Returns the document type string</td>
+  </tr>
+  <tr>
+    <td><a href="#isStandalone"><b>isStandalone</b></a></td>
+    <td>Returns the value of the standalone flag</td>
+  </tr>
+  <tr>
+    <td><a href="#isSingleChar"><b>isSingleChar</b></a></td>
+    <td>Returns the value of the single/multibyte encoding flag</td>
+  </tr>
+  <tr>
+    <td><a href="#getEncoding"><b>getEncoding</b></a></td>
+    <td>Returns the name of the document's encoding method</td>
+  </tr>
+  <tr>
+    <td><a href="#validate"><b>validate</b></a></td>
+    <td>Validate the document</td>
+  </tr>
+  <tr>
+    <td><a href="#context"><b>context</b></a></td>
+    <td>Get the context</td>
+  </tr>
+  <tr>
+    <td><a href="#createDocument"><b>createDocument</b></a></td>
+    <td>Creates and returns a document node</td>
+  </tr>
+</table>
+
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="xmlinit"></a><a name="xmlinitenc"></a>
+<h3><b>xmlinit, xmlinitenc</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Initialize XML parser<p>
+p    <dt> <b><i>Prototype:</i></b>
+    <dd> <pre>uword xmlinit(DOMString incoding,
+              void (*msghdlr)(void *msgctx, DOMString msg, ub4 errcode),
+              void *msgctx, lpxsaxcb *saxcb, void *saxcbctx, DOMString lang)</pre><p>
+    <dd> <pre>uword xmlinitint(DOMString incoding, DOMString outcoding,
+                 void (*msghdlr)(void *msgctx, DOMString msg, ub4 errcode),
+                 void *msgctx, lpxsaxcb *saxcb, void *saxcbctx, DOMString lang)</pre><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd>
+      <tt>incoding</tt> -- Default input file encoding (<b>UTF8</b> if not
+				specified)<br>
+      <tt>outcoding</tt> -- Output (DOM) encoding for document data (same
+				as first input, if not specified)<br>
+      <tt>msghdlr</tt> -- Error message callback<br>
+      <tt>msgctx</tt> -- User-defined context pointer passed to msghdlr<br>
+      <tt>saxcb</tt> -- SAX callback structure (iff using SAX)<br>
+      <tt>saxcbctx</tt> -- User-defined SAX context structure passed
+					    to SAX callback functions<br>
+      <tt>lang</tt> -- Language for error message (not used)<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Numeric error code, 0 meaning success
+  </dl></dd>
+</dl>
+
+<a name="xmlterm"><hr></a>
+<h3><b>xmlterm</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Terminate XML parser, tear down, free memory, etc<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void xmlterm()</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>void</tt><p>
+  </dl></dd>
+</dl>
+
+<a name="xmlclean"><hr></a>
+<h3><b>xmlclean</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> This function frees any memory used during the previous parse.
+	Recycles memory within the XML parser, but does not free it to the
+	system-- only xmlterm() finally releases all memory back to the
+	system.  If xmlclean() is not called between parses, then the data
+	used by the previous documents remains allocated, and pointers to
+	it are valid.  Thus, the data for multiple documents can be accessible
+	simultaneously, although only the current document can be manipulated
+	with DOM. If you just want to access one document's data at a time 
+        (within a single context), then call xmlclean before each new parse.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void xmlclean()</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>void</tt><p>
+  </dl></dd>
+</dl>
+
+<a name="xmlparse"><hr></a>
+<h3><b>xmlparse</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Parses a document<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlparse(DOMString doc, DOMString encoding, ub4 flags)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>doc</tt> -- document path
+    <dd> <tt>encoding</tt> -- document's encoding
+    <dd> <tt>flags</tt> -- Mask of flag bits<p>
+    <dt> <b><i>Flags:</i></b>
+    <dd> <tt>XML_FLAG_VALIDATE</tt> -- Validate document against DTD
+    <dd> <tt>XML_FLAG_DISCARD_WHITESPACE</tt> -- Discard ignorable whitespace<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<a name="xmlparseBuffer"><hr></a>
+<h3><b>xmlparseBuffer</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Parses a document<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlparseBuffer(DOMString buffer, size_t len, DOMString encoding, ub4 flags)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>buffer</tt> -- buffer containing document to parse
+    <dd> <tt>len</tt> -- length of document
+    <dd> <tt>encoding</tt> -- document's encoding
+    <dd> <tt>flags</tt> -- Mask of flag bits<p>
+    <dt> <b><i>Flags:</i></b>
+    <dd> <tt>XML_FLAG_VALIDATE</tt> -- Validate document against DTD
+    <dd> <tt>XML_FLAG_DISCARD_WHITESPACE</tt> -- Discard ignorable whitespace<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<a name="xmlparseDTD"><hr></a>
+<h3><b>xmlparseDTD</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Parses a DTD<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlparseDTD(DOMString uri, DOMString name, DOMString encoding, ub4 flags)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>uri</tt> -- URI pointing to DTD
+    <dd> <tt>name</tt> -- DTD name
+    <dd> <tt>encoding</tt> -- DTD's encoding
+    <dd> <tt>flags</tt> -- Mask of flag bits<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<a name="xmlparseFile"><hr></a>
+<h3><b>xmlparseFile</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Parses a document from a file<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlparsefile(DOMString path, size_t len, DOMString encoding, ub4 flags)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>path</tt> -- document path
+    <dd> <tt>len</tt> -- unused parameter
+    <dd> <tt>encoding</tt> -- document's encoding
+    <dd> <tt>flags</tt> -- Mask of flag bits<p>
+    <dt> <b><i>Flags:</i></b>
+    <dd> <tt>XML_FLAG_VALIDATE</tt> -- Validate document against DTD
+    <dd> <tt>XML_FLAG_DISCARD_WHITESPACE</tt> -- Discard ignorable whitespace<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<a name="xmlparseStream"><hr></a>
+<h3><b>xmlparseStream</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Parses a document from a stream<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlparsestrem(DOMString path, void *stream, DOMString encoding, ub4 flags)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>path</tt> -- unused argument
+    <dd> <tt>stream</tt> -- input stream
+    <dd> <tt>encoding</tt> -- document's encoding
+    <dd> <tt>flags</tt> -- Mask of flag bits<p>
+    <dt> <b><i>Flags:</i></b>
+    <dd> <tt>XML_FLAG_VALIDATE</tt> -- Validate document against DTD
+    <dd> <tt>XML_FLAG_DISCARD_WHITESPACE</tt> -- Discard ignorable whitespace<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<a name="xmlwhere"><hr></a>
+<h3><b>xmlwhere</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Return error location information.  Should only be called from
+         within user error callback function (while error is current)<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>boolean xmlwhere(ub4 *line, DOMString *path, uword idx)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>line</tt> -- returned line# where error occured
+    <dd> <tt>path</tt> -- return path/URL where error occured
+    <dd> <tt>idx</tt> -- position in error stack (starting at 0)<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>boolean</tt> -- idx is valid, location returned
+  </dl></dd>
+</dl>
+
+<a name="setAccess"><hr></a>
+<h3><b>setAccess</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Sets the I/O callback functions for the given access method.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword xmlaccess(xmlctx *ctx, xmlacctype access, XML_OPENF((*openf)),
+		XML_CLOSEF((*closef)), XML_READF((*readf)));</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>ctx</tt> -- The XML context
+    <dd> <tt>access</tt> -- access method enum, XMLACCESS_xxx
+    <dd> <tt>openf</tt> -- Open-input callback function
+    <dd> <tt>closef</tt> -- Close-input callback function
+    <dd> <tt>readf</tt> -- Read-input callback function<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+    <dt> <b><i>Comments:</i></b>
+    <dd> Sets the I/O callback functions for the given access method.  Most
+         methods have built-in callback functions, so none be provided by
+         the user.  The notable exception is XMLACCESS_STREAM, user-defined
+         streams, where the user <b><i>must</i></b> set the stream callback
+         functions themselves.<p>
+    <dd>The three callback functions are invoked to open, close, and read
+        from the input source.  The functions should have been declared
+        using the the function prototype macros XML_OPENF, XML_CLOSEF and
+        XML_READF.<p>
+    <dd><b>XML_OPENF</b> is the open function, called once to open the input
+        source.  It should set its persistent handle in the xmlihdl
+        union, which has two choices, a generic pointer (void *), and
+        an integer (as unix file or socket handle).  This function
+        must return XMLERR_OK on success.  Args:<p>
+    <dd><pre>
+ ctx    (IN)  - XML context
+ path   (IN)  - full path to the source to be opened
+ parts  (IN)  - path broken down into components; opaque pointer
+ length (OUT) - total length of input source, if known.
+                if not known, should be set to 0.
+ ih     (OUT) - the opened handle is placed here
+</pre>
+    <dd><b>XML_CLOSEF</b> is the close function; it closes an open source and
+        frees resources.  Args:<p>
+    <dd><pre>
+ ctx    (IN) - XML context
+ ih     (IN) - input handle union
+</pre>
+    <dd><b>XML_READF</b> is the reader function; it reads data from an open
+	source into a buffer, and returns the number of bytes read:<p>
+	<ul>
+	    <li>If <= 0, an EOI condition is indicated.
+	    <li>If > 0, then the EOI flag determines if this's the
+		terminal data.
+	</ul><p>
+	On EOI, the matching close function will be called automatically.
+	Args:<p>
+
+    <dd><b>XML_READF</b> is the reader function; it reads data from an open
+        source into a buffer.  When the input is exhausted, the reader
+        may close the input at that time, or wait until the close
+        function is called later.  Args:<p>
+<dd><pre>
+ ctx      (IN)  - XML context
+ path     (IN)  - full path to the source to be opened; only
+                  provided here for use in error messages
+ ih       (IN)  - input handle union
+ dest     (OUT) - destination buffer to read data into
+ destsize (IN)  - size of dest
+ nraw     (OUT) - number of bytes read
+ eoi      (OUT) - hit End of Information?  should be set
+                  to TRUE or FALSE after each read.
+</pre>
+</dl>
+</dd>
+</dl>
+
+<a name="getContent"><hr></a>
+<h3><b>getContent</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Returns the content model for a node.  Content model nodes are
+	Nodes and can be traversed and examined with the same functions
+	as the parsed document.<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>Node* getContent(Node *node)</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> <tt>node</tt> -- node whose content model to return
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>Node*</tt> -- root node of content model tree<p>
+  </dl></dd>
+</dl>
+
+<a name="getDocument"><hr></a>
+<h3><b>getDocument</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> After a document has been successfully parsed, returns a pointer
+	to the root node of the document.  Compare with
+	<tt>getDocumentElement</tt> which returns the root <i>element</i>
+        node.<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>Node* getDocument()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>Node*</tt> -- Pointer to root node of document<p>
+  </dl></dd>
+</dl>
+
+<a name="getDocumentElement"><hr></a>
+<h3><b>getDocumentElement</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> After a document has been successfully parsed, returns a pointer
+	to the root element (node) of the document<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>Element* getDocumentElement()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>Element*</tt> -- Pointer to root element (node) of document<p>
+  </dl></dd>
+</dl>
+
+<a name="getDocType"><hr></a>
+<h3><b>getDocType</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Returns a pointer to a "DocType" structure which describes the DTD<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>DocumentType* getDocType()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>DocumentType*</tt> -- Pointer to DTD descriptor<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="isStandalone"><hr></a><b>isStandalone</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Returns TRUE if the document is specified as standalone on the
+		<tt>&lt;?xml?&gt;</tt> line, FALSE otherwise<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>boolean isStandalone()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>boolean</tt> -- Value of standalone flag<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="isSingleChar"><hr></a><b>isSingleChar</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Returns TRUE if the document is single-byte encoded (i.e. ASCII),
+         or FALSE if it's multi-byte encoded (UTF-8, etc).<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>boolean isSingleChar()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>boolean</tt> -- Value of single/multibyte encoding flag<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="getEncoding"><hr></a><b>getEncoding</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Returns the name of the document's encoding method, e.h. "ASCII",
+         "UTF8", etc.  Compare to <tt>isSingleChar</tt> flag which just
+         tells whether it's a single or multibyte encoding.<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>DOMString getEncoding()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>DOMString</tt> -- Name of encoding method<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="validate"><hr></a><b>validate</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Validate the document.<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>uword validate(Node *root)</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> <tt>root</tt> -- document node to validate<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>uword</tt> -- Error code, 0 on success<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="context"><hr></a><b>context</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Get the context.<p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>xmlctx* context()</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>xmlctx*</tt> -- context<p>
+  </dl></dd>
+</dl>
+
+<h3><a name="createDocument"><hr></a><b>createDocument</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b><p>
+    <dd> Creates and returns a DOCUMENT node.  When dtd is not null, its
+    Node.ownerDocument attribute is set to the document being created. <p>
+    <dt> <b><i>Prototype:</i></b><p>
+    <dd> <tt>Document *createDocument(DOMString uri, DOMString qname, DocumentType *dtd)</tt><p>
+    <dt> <b><i>Arguments:</i></b><p>
+    <dd> <tt>uri</tt> -- namespace URI of the new document element
+    <dd> <tt>qname</tt> -- qualified name of the new document element
+    <dd> <tt>dtd</tt> -- document type (DTD)<p>
+    <dt> <b><i>Returns:</i></b><p>
+    <dd> <tt>Document*</tt> -- pointer to created Document node<p>
+  </dl></dd>
+</dl>
+
+</body>
+</html>

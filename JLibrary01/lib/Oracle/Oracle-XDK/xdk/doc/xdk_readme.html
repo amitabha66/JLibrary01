@@ -1,0 +1,754 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; SunOS 5.6 sun4u) [Netscape]">
+   <title>Oracle XML Developers Kit</title>
+<!-- saved from url=(0022)http://internet.e-mail -->
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1 style="color:#000088">
+Oracle XML Developers Kit</h1>
+
+<h3>
+Release Notes for Version 10.1.0.2.0 Production</h3>
+Dec 31, 2003
+<p>
+<hr WIDTH="100%">
+<p><b><u><font size=+1>Contents</font></u></b>
+<p><a href="#Overview">1 Overview</a>
+<br><a href="#Java XDK">2 XDK Java Components</a>
+<br><a href="#C XDK">3 XDK C/C++ Components</a>
+<br><a href="#Compatibilty">4 Compatibility</a>
+<br><a href="#Known Bugs">5 Known Bugs</a><!--<br><a href="#Fixed Bugs">6 Fixed Bugs</a>-->
+<br>
+<hr WIDTH="100%">
+<p><a NAME="Overview"></a>
+<p><b><u><font size=+1>1 Overview</font></u></b>
+<p>Oracle XML Developer's Kit (Oracle XDK) is a set of components, tools
+and utilities that eases the task of building and deploying XML-enabled
+applications. To provide a broad variety of deployment options, the Oracle
+XDK components are available for Java, C, and C++. Unlike many shareware
+and trial XML components, the production Oracle XDK are fully supported
+and come with a commercial redistribution license. Oracle XDK consists
+of the following components:
+<ul>
+<li>
+XML Parsers: supporting Java, C, and C++, the components create and parse
+XML using industry standard DOM and SAX interfaces.</li>
+
+<li>
+XSLT Processor: transforms or renders XML into other text-based formats
+such as HTML.</li>
+
+<li>
+XSLT VM: high performance XSLT transformation engine in C.</li>
+
+<li>
+XML Schema Processor: schema validation in Java, C, and C++, allows use
+of XML simple and complex datatypes.</li>
+
+<li>
+XML Class Generator: automatically generates C++ classes from DTDs and
+XML Schemas to send XML data from Web forms or applications.</li>
+
+<li>
+XML JAXB Class Generator: automatically generates Java classes from XML
+Schemas to send XML data from Web forms or applications.</li>
+
+<li>
+XML Java Beans: visually transform, diff and compress XML documents via
+Java components.</li>
+
+<li>
+XML SQL Utility: generates XML documents, DTDs and Schemas from SQL queries
+in Java.</li>
+
+<li>
+XSQL Servlet: combines XML, SQL, and XSLT in the server to deliver dynamic
+web content.</li>
+
+<li>
+XML Pipeline processor: specifies Java processes to be executed in a declarative
+manner.</li>
+
+<li>
+TransX Utility: makes it easier to load translated seed data and messages
+into the database.</li>
+</ul>
+Please post any questions, comments, or bug reports to the XML Forum on
+the Oracle Technology Network at <a href="http://otn.oracle.com/tech/xml/xdkhome.html">http://otn.oracle.com/tech/xml/xdkhome.html</a>.&nbsp;
+<hr width="100%">
+<p><a NAME="Java XDK"></a>
+<p><b><u><font size=+1>2 XDK Java Components</font></u></b>
+<p>Oracle XDK Java components are built on W3C Recommendations and Java
+JSR standards. The list of currently supported standards are:
+<ul>
+<li>
+<a href="http://www.w3.org/TR/REC-xml">XML 1.0 (Second Edition)</a></li>
+
+<li>
+DOM Level 2.0 Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/DOM-Level-2-Core">DOM Level 2.0 Core</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/DOM-Level-2-Traversal-Range">DOM Level 2.0
+Traversal and Range</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/DOM-Level-2-Events">DOM Level 2.0 Events</a></li>
+</ul>
+
+<li>
+DOM Level 3.0 Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107/">DOM Level
+3.0 Load and Save</a>(Candidate Recommendation)</li>
+
+<li>
+<a href="http://www.w3.org/TR/2003/CR-DOM-Level-3-Val-20030730/">DOM Level
+3.0 Validation</a>(Candidate Recommendation)</li>
+</ul>
+
+<li>
+<a href="http://www.saxproject.org">SAX 2.0 &amp; SAX Extensions</a></li>
+
+<li>
+XSLT/XPath Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/xslt">XSL Transformations (XSLT) 1.0</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xpath">XML Path Language (XPath) 1.0</a></li>
+</ul>
+
+<li>
+XSLT/XPath 2.0 Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/2002/WD-xslt20-20021115">XSL Transformations
+(XSLT) 2.0</a>(working draft dated 11th November 2002)</li>
+
+<li>
+<a href="http://www.w3.org/TR/2002/WD-xpath20-20021115">XML Path Language
+(XPath) 2.0</a>(working draft dated 11th November 2002)</li>
+
+<li>
+<a href="http://www.w3.org/TR/2002/WD-query-datamodel-20021115">XPath 2.0
+Data Model</a>(working draft dated 11th November 2002)</li>
+</ul>
+
+<li>
+XML Schema Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/xmlschema-0/">XML Schema Part 0: Primer</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xmlschema-1/">XML Schema Part 1: Structures</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes</a></li>
+</ul>
+
+<li>
+<a href="http://www.w3.org/TR/2002/NOTE-xml-pipeline-20020228/">XML Pipeline
+Definition Language 1.0</a></li>
+
+<li>
+<a href="http://java.sun.com/xml/jaxp/index.html">Java API for XML Processing
+1.2</a></li>
+
+<li>
+<a href="http://java.sun.com/xml/jaxb/index.html">Java Architecture for
+XML Binding 1.0</a></li>
+</ul>
+
+<p><br><b><u>2.1 DOM Specifications</u></b>
+<p>The DOM APIs include support for Candidate Recommendations of DOM Level
+3 Validation and DOM Level 3 Load and Save.
+<p><b>Load and Save</b>
+<p>The following configuration parameters are not supported by LSParser:
+<ul>
+<li>
+"charset-overrides-xml-encoding"</li>
+</ul>
+Optional settings of the following configuration parameters are not supported
+by LSParser:
+<ul>
+<li>
+"disallow-doctype (true)"</li>
+
+<li>
+"ignore-unknown-character-denormalizations (false)"</li>
+
+<li>
+"namespaces (false)"</li>
+
+<li>
+"supported-media-types-only (true)"</li>
+</ul>
+The following configuration parameters are not supported by LSSerializer:
+<ul>
+<li>
+"discard-default-content"</li>
+</ul>
+Optional settings of the following configuration parameters are not supported
+by LSSerializer:
+<ul>
+<li>
+"canonical-form (true)"</li>
+
+<li>
+"format-pretty-print (true)"</li>
+
+<li>
+"ignore-unknown-character-denormalizations (false)"</li>
+
+<li>
+"normalize-characters (true)"</li>
+</ul>
+<b>Validation</b>
+<p>Some DOM 3 Core functions referred by Validation are implemented, but
+Core itself is not supported.
+<ul>
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; NameList and DOMStringList in DOM core are supported
+for validation purpose</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; Validation is based on XMLSchema, DTD needs to
+be converted to Schema first (use DTDToSchema utility)</li>
+</ul>
+<b><u>2.2 XSL Transformation</u></b>
+<p>The XSLT processor adds support for the current working drafts of XSLT
+2.0, XPath 2.0 and the shared XPath/XQuery data model.
+<p>Some features of these specifications are not supported in the current
+release:
+<ul>
+<li>
+The functions in the Functions and Operators specification are not support,
+only the function from XSLT 1.0 specification are supported.</li>
+
+<li>
+The <i>validate</i> and <i>complex types in SequenceType</i> expressions
+are not supported.</li>
+
+<li>
+The new datatypes <i>fn:yearMonthduration</i>, <i>fn:dayTimeDuration</i>
+are not supported.</li>
+
+<li>
+The <i>Schema Import</i> and <i>Static Typing</i> features are not supported.</li>
+
+<li>
+The XSLT instructions <i>xsl:result-document</i> and <i>xsl:namespace</i>
+are not supported.</li>
+
+<li>
+The XSLT instructions <i>xsl:text</i> and <i>xsl:number</i> use XSLT 1.0
+semantics and syntax.</li>
+
+<li>
+The <i>standard attributes</i> are allowed only on xsl:stylesheet and literal
+result elements.</li>
+
+<li>
+The processor does not honor the following attribute:</li>
+
+<ul>
+<li>
+[copy-namespace] on xsl:copy and xsl:copy-of</li>
+
+<li>
+[required] on xsl:param</li>
+
+<li>
+[default-xpath-namespace] on any instruction</li>
+
+<li>
+[unicode-normalization] and [escape-uri-attributes] on xsl:output</li>
+</ul>
+
+<li>
+regular expression functions are not supported.</li>
+
+<li>
+parameters are not passed through built-in templates.</li>
+</ul>
+
+<p><br><b><u>2.3 JAXB Class Generator</u></b>
+<p>The XML Data Binding is built upon JSR-31 "The Java Architecture for
+XML Binding (JAXB) Final, V1.0 January 8th, 2003". This component allows
+creations of Java classes based on the XML Schema. The XDK 9i Class Generator
+has been deprecated; however, the XDK 9i Class Generator runtime is included
+and will be supported for the duration of XDK v10 release.
+<p>The JAXB 1.0 specification does not require full W3C XML Schema support.
+Please refer to Appendix E.2 for full details. The current release doesn't
+support the following:
+<ul>
+<li>
+The&nbsp; Customization features are not supported.</li>
+
+<li>
+The Javadoc generation is not supported.</li>
+
+<li>
+The "List" and "Union" features of XML Schema are not supported.</li>
+
+<li>
+Generation of TypeSafe&nbsp; Enum class to map the&nbsp; simpleType mapping
+with enumeration.</li>
+</ul>
+
+<p><br><b><u>2.4 XML Java Beans</u></b>
+<p>The following new beans are added in the release:
+<br>&nbsp;
+<ul>
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XSDValidator - encapsulates oracle.xml.parser.schema.XSDValidator
+class and adds capabilities for validating a DOM tree.</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XMLCompress - encapsulates XML compression functionality.</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XMLDBAccess - extension of DBAccess bean to support
+the XMLType column (in which XML documents are stored in an Oracle database</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; table).</li>
+</ul>
+
+<p><br>The following beans have been deprecated in this release.&nbsp;
+These beans are no longer part of xmlcomp.jar.&nbsp; They are archived
+in xmldemo.jar.
+<ul>
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XMLSourceView</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XMLTreeView</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; XMLTransViewer</li>
+
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp; DBViewer</li>
+</ul>
+The oracle.xml.transviewer.DBAccess bean has been deprecated, please use
+oracle.xml.dbaccess.DBAccess instead.
+<br>&nbsp;
+<p><b><u>2.5 XML Pipeline Processor</u></b>
+<p>Oracle XML Pipeline Processor is built upon the XML Pipeline Definition
+Language Version 1.0, W3C&nbsp; Note 28 February 2002. The processor can
+take an input xml pipeline document and executes the pipeline processes
+according to the derived dependencies. The pipeline document is an xml
+document, and specifies the processes to be executed in a declarative manner.
+In addition to the Pipeline Processor, we have defined several Pipeline
+Processes which can be piped together in a pipeline document.
+<p>There are some differences between the W3C Note and this implementation.
+They are:
+<ul>
+<li>
+The parser processes (DOMParserProcess and SAXParserProcess) are included
+in the xml pipeline (Section 1).</li>
+
+<li>
+Currently XML Base is not supported (Section 2.1)</li>
+
+<li>
+Only the final target output is checked to see if it is up-to-date with
+respect to the available pipeline inputs.&nbsp; We do not determine whether
+the intermediate outputs of every process are up-to-date.&nbsp; (Section
+2.2).</li>
+
+<li>
+For the select attribute, anything in between double-quotes "" is considered
+to be a string literal.</li>
+
+<li>
+The processor will throw an error if more that one process produces the
+same infoset (Section 2.4.2.3)</li>
+
+<li>
+The 'document' element is not supported as it is deemed to be redundant
+functionality (Section 2.4.2.8)</li>
+</ul>
+
+<p><br><b><u>2.6 XSQL Servlet</u></b>
+<p>Oracle XSQL servlet combines the power of SQL, XML, and XSLT in the
+server to deliver dynamic web content. With XSQL servlet you can:
+<ul>
+<li>
+Receive web-based information requests from any client device on the Web,</li>
+
+<li>
+Query an appropriate logical "view" of business data needed by the request,</li>
+
+<li>
+Return the "datagram" in XML over the web to the requester, or optionally</li>
+
+<li>
+Transform the information flexibly into any XML, HTML, or text format they
+require</li>
+</ul>
+The XSQL servlet processor has the following new features:
+<ul>
+<li>
+<i><u>Support for Multi-Valued Parameters</u></i>: This allows users to
+work with parameters whose values are <i>arrays</i> of strings. The most
+common scenario where multi-valued parameters occur is when a user submits
+an HTML form containing multiple occurrences of input controls that share
+the same name.</li>
+
+<li>
+<i><u>Conditionally Execute Actions or Include Content with xsql:if-param</u></i>:
+The new&nbsp;<span class="literal">&lt;xsql:if-param>&nbsp;</span>action
+allows you to conditionally include the elements and/or actions that are
+nested inside it if some condition is true.</li>
+
+<li>
+<i><u>New Commit="No" Flag on Actions That Performed an Implicit Commit</u></i>:
+The&nbsp;<span class="literal">&lt;xsql:delete-request</span>,&nbsp;<span class="literal">xsql:insert-request>,
+xsql:insert-request</span>, and&nbsp;<span class="literal">&lt;xsql:insert-parameter></span>
+action elements each takes a new optional commit attribute to control whether
+the action does an implicit commit or not.</li>
+
+<li>
+<i><u>Optionally Set an Error Param on Any Built-in Action</u></i>: It
+is often convenient to know whether an action encountered a non-fatal error
+during its execution.</li>
+
+<li>
+<i><u>Use Your Servlet Container's DataSource Implementation</u></i>: As
+an <i>alternative</i> to defining your named connections in the <nobr>XSQLConfig.xml</nobr>
+file, you may now alternatively use the datasources available through your
+servlet container's implementation of JDBC datasources.</li>
+
+<li>
+<i><u>Provide Custom XSQLErrorHandler Implementation</u></i>: A new interface
+is introduced in this release <nobr>oracle.xml.xsql.XSQLErrorHandler</nobr>
+that allows developers to achieve a programmatic way to control how errors
+are reported to be able to customize the treatment of the errors.</li>
+
+<br>The error code returned by XSQLError.getErrorCode() has changed to
+25NNN instead of NNN. The error code format also has changed to XML-25NNN.
+<li>
+<i><u>Provide Custom XSQLLogger Implementation</u></i>: Two new interfaces
+are introduced in this release <nobr>oracle.xml.xsql.XSQLLoggerFactory</nobr>
+and <nobr>oracle.xml.xsql.XSQLLogger</nobr> that allow developers to achieve
+to log XSQL page requests.</li>
+
+<li>
+<i><u>Override the Default Name of of the XSQLConfig.xml file</u></i>:
+Customers have requested a way to override the default <nobr>XSQLConfig.xml</nobr>
+file name so that they can easily provide different configuration files
+for test and production environments, for example. This releases introduces
+two ways to override the name.</li>
+
+<ul>
+<li>
+By setting the Java System property <nobr>xsql.config</nobr></li>
+
+<li>
+By defining a servlet initialization parameter <nobr>xsql.config</nobr></li>
+</ul>
+
+<li>
+<i><u>Support for Apache FOP 0.20.3</u></i>: If you need to render PDF
+output from XSQL pages, this release supports working with the 0.20.3 release
+candidate of Apache FOP.</li>
+
+<li>
+<i><u>Set Preserve Whitespace Config Option</u></i>: It is now possible
+to control whether or not the XSQL Page Processor uses the Oracle XML Parser
+to parse XSQL page templates and XSLT stylesheets with whitespace preserving
+mode.</li>
+</ul>
+
+<p><br><b><u>2.7 Oracle TransX Utility</u></b>
+<p>TransX is a data transfer utility that allows you to populate your database
+with multilingual data. It uses XML to specify the data so you can take
+advantage of easy data transfer from XML to the database, a simple data
+format that is intuitive for both developers and translators, and validation
+capability that makes it less error prone.
+<p><a NAME="XSU"></a>
+<br><b><u>2.8 Oracle XML SQL Utility</u></b>
+<p>XML-SQL Utility (XSU) is utility can transform data retrieved from object-relational
+database tables or views into XML and insert the data in XML into the appropriate
+columns/attributes of a table or a view based on a canonical mapping.
+<p>
+<hr width="100%">
+<p><a NAME="C XDK"></a>
+<p><b><u><font size=+1>3 XDK C/C++ Components</font></u></b>
+<p>Oracle XDK C/C++ components are built on W3C Recommendations. The list
+of currently supported standards are:
+<ul>
+<li>
+<a href="http://www.w3.org/TR/REC-xml">XML 1.0 (Second Edition)</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/REC-xml-names">Namespaces in XML</a></li>
+
+<li>
+DOM Level 2.0 Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/DOM-Level-2-Core">DOM Level 2.0 Core</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/DOM-Level-2-Traversal-Range">DOM Level 2.0
+Traversal and Range</a></li>
+</ul>
+
+<li>
+<a href="http://www.saxproject.org">SAX 2.0 &amp; SAX Extensions</a></li>
+
+<li>
+XSLT/XPath Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/xslt">XSL Transformations (XSLT) 1.0</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xpath">XML Path Language (XPath) 1.0</a></li>
+</ul>
+
+<li>
+XML Schema Specifications</li>
+
+<ul>
+<li>
+<a href="http://www.w3.org/TR/xmlschema-0/">XML Schema Part 0: Primer</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xmlschema-1/">XML Schema Part 1: Structures</a></li>
+
+<li>
+<a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes</a></li>
+</ul>
+</ul>
+
+<p><br><b><u>3.1 XSLT Virtual Machine</u></b>
+<p>The XSLTVM Package implements the XSL Transformation (XSLT) language
+as specified in W3C Recommendation 16 November 1999. XSLT Virtual Machine
+is the software implementation of a "CPU" designed to run compiled XSLT
+code. A concept of virtual machine assumes a compiler compiling XSLT stylesheets
+to a sequence of byte codes or machine instructions for the "XSLT CPU".
+The byte-code program is a platform independent sequence of 2-byte units.
+It can be stored, cashed and run on different XSLTVM. The XSLTVM uses the
+bytecode programs to transform instance XML documents. This approach clearly
+separates compile(design)-time from run-time computations and specifies
+a uniform way of exchanging data between instructions. The package includes
+two interfaces:
+<ul>
+<li>
+XSLTVM Compiler Interface</li>
+
+<li>
+XSLTVM Interface</li>
+</ul>
+A typical scenario of using the package APIs has the following steps:
+<ol>
+<li>
+Create/Use an XML meta context object.</li>
+
+<li>
+Create/Use an XSLT Compiler object.</li>
+
+<li>
+Compile an XSLT stylesheet and store/cash the result bytecode.</li>
+
+<li>
+Optional. Repeat steps 1 - 2 for all stylesheets.</li>
+
+<li>
+Delete (or preserve for later usage) the Compiler object.</li>
+
+<li>
+Create/Use an XSLTVM object.</li>
+
+<li>
+Set a stylesheet bytecode to the XSLTVM object.</li>
+
+<li>
+Transform an instance XML document.</li>
+
+<li>
+Optional. Repeat step 6 or 5 - 6 as many times as needed.</li>
+
+<li>
+Delete (or preserve for later usage) the XSLTVM object.</li>
+</ol>
+
+<p><br><b><u>3.2 XML Schema Validator</u></b>
+<p>The processor fully supports the functionality stated in the specification
+plus "XML Schema 1.0 Specification Errata" as published on:
+<br>&nbsp; http://www.w3.org/2001/05/xmlschema-errata.
+<br>
+<hr width="100%">
+<p><a NAME="Compatibilty"></a>
+<p><b><u><font size=+1>4 Compatibility</font></u></b>
+<p>This section contains recommendations on upgrading to this release.
+<p><b><u>4.1 XDK Java components upgrade</u></b>
+<ul>
+<li>
+The XDK Java components in this release have several fixes for J2EE conformance
+and XML 1.0 Conformance Test Suite. Some of the changes resulted in change
+in behavior w.r.t to previous release. A few of them are listed below:</li>
+
+<ul>
+<li>
+The default value of preserve whitespace [XMLParser.setPreserveWhitespace()]
+is now dependent on the presence of DTD. If DTD is present, the default
+is 'false', else it is 'true'. Earlier the default was always false.</li>
+
+<li>
+<i>getPrefix</i>, <i>getNamespaceURI</i>, and <i>getLocalName</i> return
+'null' instead of '""' (<i>empty string</i>), when not present in the element
+or attribute, or if the node was created using DOM 1.0 methods.</li>
+</ul>
+
+<li>
+The Java Class Generator is deprecated and replace by the JSR-31 implementation
+of XML Data Binding. The runtime will be supported, the Java classes generated
+in older releases will continue to work.</li>
+
+<li>
+Custom XSQLErrorHandler: The error code returned by XSQLError.getErrorCode()
+has changed to 25NNN instead of NNN. The error code format also has changed
+to XML-25NNN.</li>
+
+<li>
+The PL/SQL wrapper for parsing and transformation are deprecated.</li>
+</ul>
+
+<p><br><b><u>4.2 XDK C/C++ components upgrade</u></b>
+<ul>
+<li>
+Previously, the NLS data environment variable setting was ORA_NLS33; it
+has now been changed to ORA_NLS10.</li>
+
+<li>
+There is now only one library and DLL for the C/C++ XDK. This is libxml10.a
+for Unix platforms and oraxml10.lib and oraxml10.dll for Windows platforms.</li>
+
+<li>
+A new C API is provided in xml.h and a new C++ API is provided in xml.hpp.
+This replaces the old C API in oraxml.h and the old C++ API in oraxml.hpp;
+note that those interfaces are deprecated.</li>
+</ul>
+
+<p><br><b><u>4.3 New C++ API and Old C++ API</u></b>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>This release
+includes new C++ API (see xml.hpp and xmlctx.hpp). The primary difference
+of new API is an introduction of interfaces to various XDK tools. These
+interfaces will replace old C++ API in future releases. The mapping of
+old C++ classes into new C++ interfaces is as follows:<o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'><![if !supportEmptyParas]><![endif]><o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>Class
+XMLParser<span style="mso-spacerun:
+yes"></span>-><span style="mso-spacerun:
+yes"></span>DOMParser
+and SAXParser interfaces (abstract classes)<o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>DOM classes
+(Node, etc.)<span style="mso-spacerun: yes"></span>-><span style="mso-spacerun:
+yes"></span>References
+to DOM nodes (NodeRef, AttrRef, etc.)<o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>Class
+XSLProcessor<span style="mso-spacerun: yes"></span><span 
+style="mso-spacerun:
+yes"></span>-><span 
+style="mso-spacerun: yes"></span>Interfaces
+(abstract classes)<span style="mso-spacerun: yes"></span>Xsl::Transformer,
+Xsl::CompTransformer, Xsl::Compiler<o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>Class
+XPath<span 
+style="mso-spacerun:
+yes"></span>-><span style="mso-spacerun: yes"></span>Interfaces
+(abstract classes) XPath::Processor, XPath::CompProcessor, XPath::Compiler<o:p></o:p></span>
+
+<p class="MsoNormal"><span style='font-family:Arial;color:black'>Class
+XMLSchema<span style="mso-spacerun: yes"></span><span 
+style="mso-spacerun:
+yes"></span>-><span 
+style="mso-spacerun: yes"></span>Interface
+(abstract class) SchemaValidator<o:p></o:p></span>
+<br>
+<hr width="100%">
+<p><a NAME="Known Bugs"></a>
+<p><b><u><font size=+1>5. Known Bugs</font></u></b>
+<ul>
+<li>
+Bug #3448118: Missing C++ symbols in oraxml10.dll and oraxml10.lib. oraxml10.dll and oraxml10.lib have some public C++ symbols marked as non-public, and the linker can fail with unresolved external symbols when these symbols are used. To fix this problem copy $INSTALL_HOME/xdk/p3448118_10102_windows/oraxml10.dll to $INSTALL_HOME/bin/oraxml10.dll and $INSTALL_HOME/xdk/p3448118_10102_windows/oraxml10.lib to $INSTALL_HOME/lib/oraxml10.lib.</li>
+
+<li>
+Bug #3346571: The function <tt>org.xml.sax.EntityResolver.resolveEntity()</tt>
+is called with wrong arguments during XML Schema validation using JAXP.
+The function is used for resolving schema imports/includes during schema
+compilation and for resolving schema location attribute in the instance
+XML document.</li>
+
+<li>
+Class <tt>oracle.xml.parser.v2.XSLNode</tt> and <tt>oracle.xml.parser.v2.XPathException</tt>
+are incorrectly documented as <i>public</i>. The use of these classes is
+not supported.</li>
+
+<li>
+Interface <tt>oracle.xml.parser.v2.XSLConstants</tt> is incorrectly documented
+as <i>public</i>. The use of constants defined in this interface is not
+supported.</li>
+
+<li>
+Constants <tt>TREE_POSITION_*</tt> defined in <tt>oracle.xml.parser.v2.XMLNode</tt>
+are incorrect and will be removed in the next version.</li>
+
+<li>
+Links to DOM Level 3.0 Validation specification in all classes of org.w3c.dom.validation
+package are incorrect. The correct link should be to the candidate recommendation
+at <a href="http://www.w3.org/TR/2003/CR-DOM-Level-3-Val-20030730">http://www.w3.org/TR/2003/CR-DOM-Level-3-Val-20030730</a></li>
+
+<li>
+The following APIs in org.w3c.dom.validation package are incorrectly documented:</li>
+
+<ul>
+<li>
+DocumentEditVal.getContinuousValidityChecking() returns boolean instead
+of short.</li>
+
+<li>
+DocumentEditVal.setContinuousValidityChecking() accepts boolean instead
+of short.</li>
+
+<li>
+ElementEditVal.getAllowedFirstChildElements() is renamed to getAllowedFirstChildren().</li>
+</ul>
+</ul>
+Please see specific sections for additional known issues.
+<p>
+<hr width="100%"><!--
+<p><a NAME="Fixed Bugs"></a>
+<p><b><u><font size=+1>6. Fixed Bugs</font></u></b>
+-->
+</body>
+<script  SRC="http://otn.oracle.com/oracle_smp_chronos/oracle_smp_chronos.js"></script>
+</html>

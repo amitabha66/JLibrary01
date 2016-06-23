@@ -1,0 +1,44 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<definitions name="AirportService" targetNamespace="http://www.airport.com/services"
+             xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:tns="http://www.airport.com/services" >
+   <message name="getAirportDescRequest">
+      <part name="code" type="xsd:string"/>
+   </message>
+   <message name="getAirportDescResponse">
+      <part name="return" type="xsd:string"/>
+   </message>
+   <portType name="AirportPortType">
+      <operation name="getAirportDesc">
+         <input message="tns:getAirportDescRequest" name="getAirportDescRequest"/>
+         <output message="tns:getAirportDescResponse" name="getAirportDescResponse"/>
+      </operation>
+   </portType>
+   <binding name="AirportBinding" type="tns:AirportPortType">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="getAirportDesc">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="encoded" namespace="http://www.airport.com/services" 
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://www.airport.com/services" 
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </output>
+      </operation>
+   </binding>
+   <service name="AirportService">
+      <documentation>Returns airport name given the three letter airport code</documentation>
+      <port name="AirportPort" binding="tns:AirportBinding">
+         <!--
+          | NOTE: You will have to change this location to point to the
+          |       location in your environment where you've deployed
+          |       the XSQL demonstrations.
+          +-->
+         <soap:address location="http://xml.us.oracle.com/xsql/demo/airport/airportSoap.xsql"/>
+      </port>
+   </service>
+</definitions>

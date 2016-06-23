@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class Attr</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-CDATASection.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>Attr</i></h1>
+
+This class contains methods for accessing the name and value of a single
+document node attribute.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#getName"><b>getName</b></a></td>
+    <td>Return name of attribute</td>
+  </tr>
+  <tr>
+    <td><a href="#getValue"><b>getValue</b></a></td>
+    <td>Return "value" (definition) of attribute</td>
+  </tr>
+  <tr>
+    <td><a href="#getSpecified"><b>getSpecified</b></a></td>
+    <td>Return attribute's "specified" flag value</td>
+  </tr>
+  <tr>
+    <td><a href="#setValue"><b>setValue</b></a></td>
+    <td>Set an attribute's value</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="getName"></a>
+<h3><b>getName</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Return name of attribute<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>DOMString getName()</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>DOMString</tt> -- Name of attribute
+  </dl></dd>
+</dl>
+
+<a name="getValue"><hr></a>
+<h3><b>getValue</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return "value" (definition) of attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>DOMString getValue()</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> None<p>
+    <dt> <b>Returns:</b>
+    <dd> Value of attribute<p>
+  </dl></dd>
+</dl>
+
+<a name="getSpecified"><hr></a>
+<h3><b>getSpecified</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return value of attribute's "specified" flag.  The DOM says:<p>
+    <dd>If this attribute was explicitly given a value in the
+original document, this is true; otherwise, it is false. Note
+that the implementation is in charge of this attribute, not
+the user. If the user changes the value of the attribute
+(even if it ends up having the same value as the default
+value) then the specified flag is automatically flipped to
+true. To re-specify the attribute as the default value from
+the DTD, the user must delete the attribute. The
+implementation will then make a new attribute available with
+specified set to false and the default value (if one exists).<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>boolean getSpecified()</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> None<p>
+    <dt> <b>Returns:</b>
+    <dd> Value of specified flag<p>
+  </dl></dd>
+</dl>
+
+<a name="setValue"><hr></a>
+<h3><b>setValue</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Sets an attribute's "value"<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void setValue(DOMString value)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>value</tt> -- Attribute's new value<p>
+    <dt> <b>Returns:</b>
+    <dd> Value of attribute<p>
+  </dl></dd>
+</dl>
+
+</body>
+</html>

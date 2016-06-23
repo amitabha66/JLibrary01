@@ -1,0 +1,12 @@
+<!ELEMENT sample (Aardvark | (Àårdvãrk, (Curaçao | (Ðnepr, Egalitarian, Frisky))) | Frisky)>
+<!ELEMENT Aardvark (#PCDATA)>
+<!ELEMENT Àårdvãrk (#PCDATA | Frisky)*>
+<!ELEMENT Curaçao (#PCDATA)>
+<!ELEMENT Ðnepr (#PCDATA)>
+<!ATTLIST Ðnepr føø CDATA #IMPLIED>
+<!ATTLIST Ðnepr foo CDATA #REQUIRED>
+<!ELEMENT Egalitarian (Frisky, Frisky)>
+<!ELEMENT Frîsky (#PCDATA)>
+<!ELEMENT Frìsky (#PCDATA)>
+<!ELEMENT Frísky (#PCDATA)>
+<!ELEMENT Frisky (#PCDATA)>

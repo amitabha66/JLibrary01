@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root a = "0" b = "0">
+   <elem1 a= "1" b = "1">
+      <elem11 a="2" b = "2"> </elem11>
+    </elem1>
+   <elem2 a= "1" b = "3">
+      <elem21 a="2" b = "4" /> 
+      <elem21 a="2" b = "5" />    
+    </elem2>
+</root>

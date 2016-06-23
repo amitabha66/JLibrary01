@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<xsql:include-xsql connection="demo" xmlns:xsql="urn:oracle-xsql"
+   allow-client-style="yes" 
+   href="doc.xsql?id={@id}" />

@@ -1,0 +1,31 @@
+table.x { font-family: Arial; font-size:9pt}
+table.x SPAN { font-family: Arial; font-size:9pt}
+table.x TD  { font-family: Arial; font-size:9pt}
+table.x TH { background-color:#cccc99;
+                color:#336699;
+                font-family: Arial;
+                font-weight:bold;
+                font-size: 11pt; }
+table.x BR {font-size: 4pt}
+table.x .h { background-color:#f7f7e7 }
+table.x .code { font-family: Andale Mono, monospace; font-size: 9pt }
+table.x .title {background-color:white; font-family: Arial; font-size:14pt}
+
+table.x A:hover { background: #FFA }
+table.x A:visited { text-decoration: none ; color: #336699 }
+table.x A { text-decoration: none; color: #336699 }
+table.x .comment { font-family: Andale Mono, monospace; color: green; font-size: 9pt }
+
+table.y { background-color:white; font-family: Arial; font-size:12pt}
+table.y SPAN { background-color:white; font-family: Arial; font-size:12pt}
+table.y TD  { background-color:white; font-family: Arial; font-size:12pt}
+table.y TH { background-color:#cccc99;
+                color:#336699;
+                font-family: Arial;
+                font-weight:bold;
+                font-size: 12pt; }
+table.y A:hover { background: #FFA }
+table.y A:visited { text-decoration: none ; color: #336699 }
+table.y A { text-decoration: none; color: #336699 }
+table.y .h { background-color:#f7f7e7 }
+

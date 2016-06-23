@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class Document</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-Comment.html">Previous Class</a>]  [<a href="Class-DocumentFragment.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>Document</i></h1>
+
+This class contains methods for creating and retrieving nodes.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#createAttribute"><b>createAttribute</b></a></td>
+    <td>Create an ATTRIBUTE node</td>
+  </tr>
+  <tr>
+    <td><a href="#createAttributeNS"><b>createAttributeNS</b></a></td>
+    <td>Create an ATTRIBUTE node with namespace information</td>
+  </tr>
+  <tr>
+    <td><a href="#createCDATASection"><b>createCDATASection</b></a></td>
+    <td>Create a CDATA node</td>
+  </tr>
+  <tr>
+    <td><a href="#createComment"><b>createComment</b></a></td>
+    <td>Create a COMMENT node</td>
+  </tr>
+  <tr>
+    <td><a href="#createDocumentFragment"><b>createDocumentFragment</b></a></td>
+    <td>Create a DOCUMENT_FRAGMENT node</td>
+  </tr>
+  <tr>
+    <td><a href="#createElement"><b>createElement</b></a></td>
+    <td>Create an ELEMENT node</td>
+  </tr>
+  <tr>
+    <td><a href="#createElementNS"><b>createElementNS</b></a></td>
+    <td>Create an ELEMENT node with namespace information</td>
+  </tr>
+  <tr>
+    <td><a href="#createEntityReference"><b>createEntityReference</b></a></td>
+    <td>Create an ENTITY_REFERENCE node</td>
+  </tr>
+  <tr>
+    <td><a href="#createProcessingInstruction"><b>createProcessingInstruction</b></a></td>
+    <td>Create a PROCESSING_INSTRUCTION node</td>
+  </tr>
+  <tr>
+    <td><a href="#createTextNode"><b>createTextNode</b></a></td>
+    <td>Create a TEXT node</td>
+  </tr>
+  <tr>
+    <td><a href="#getElementByID"><b>getElementByID</b></a></td>
+    <td>Returns the element node which has the given ID</td>
+  </tr>
+  <tr>
+    <td><a href="#getElementsByTagName"><b>getElementsByTagName</b></a></td>
+    <td>Select nodes based on tag name</td>
+  </tr>
+  <tr>
+    <td><a href="#getElementsByTagNameNS"><b>getElementsByTagNameNS</b></a></td>
+    <td>Select nodes based on tag name with namespace information</td>
+  </tr>
+  <tr>
+    <td><a href="#getImplementation"><b>getImplementation</b></a></td>
+    <td>Return DTD for document</td>
+  </tr>
+  <tr>
+    <td><a href="#importNode"><b>importNode</b></a></td>
+    <td>Copy a node from another document into this document</td>
+  </tr>
+  <tr>
+    <td><a href="#saveString"><b>saveString</b></a></td>
+    <td>Allocates memory and saves the given string</td>
+  </tr>
+</table>
+
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="createAttribute"></a>
+<h3><b>createAttribute</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new attribute node.  <p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Attr* createAttribute(DOMString name, DOMString value)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>name</tt> -- name of attribute
+    <dd><tt>value</tt> -- value of attribute<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Attr*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createAttributeNS"></a>
+<h3><b>createAttributeNS</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new attribute node.  <p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Attr* createAttributeNS(DOMString nspuri, DOMString qname, DOMString value)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>nspuri</tt> -- element's namespace URI
+    <dd><tt>qname</tt> -- qualified name of attribute
+    <dd><tt>value</tt> -- value of attribute<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Attr*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createCDATASection"><hr></a>
+<h3><b>createCDATASection</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new CDATA node with the given contents.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Attr* createCDATASection(DOMString name)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>data</tt> -- contents of node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>CDATASection*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createComment"><hr></a>
+<h3><b>createComment</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new comment node with the given contents.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Comment* createComment(DOMString data)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>data</tt> -- contents of node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Comment*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createDocumentFragment"><hr></a>
+<h3><b>createDocumentFragment</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new document fragment node.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DocumentFragment* createDocumentFragment()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DocumentFragment*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createElement"><hr></a>
+<h3><b>createElement</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new element node with the given (tag) name.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Element* createElement(DOMString tagName)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>tagName</tt> -- element's tagname<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Element*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createElementNS"><hr></a>
+<h3><b>createElementNS</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new element node with the given (tag) name and namespace information.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Element* createElementNS(DOMString nspuri, DOMString qname)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>nspuri</tt> -- element's namespace URI
+    <dd><tt>qname</tt> -- element's qualified name<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Element*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createEntityReference"><hr></a>
+<h3><b>createEntityReference</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new entity reference node.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>EntityReference* createEntityReference(DOMString name)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>name</tt> -- name of entity to reference<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>EntityReference*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createProcessingInstruction"><hr></a>
+<h3><b>createProcessingInstruction</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new processing instruction node.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>ProcessingInstruction* createProcessingInstruction(DOMString target, DOMString data)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>target</tt> -- target part of PI
+    <dd><tt>data</tt> -- data for node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>ProcessingInstruction*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="createTextNode"><hr></a>
+<h3><b>createTextNode</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Create a new TEXT node.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Text* createTextNode(DOMString data)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>data</tt> -- data for node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Text*</tt> -- pointer to created node
+  </dl></dd>
+</dl>
+
+<a name="getElementByID"><hr></a>
+<h3><b>getElementByID</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns the element node which has the given ID.  If no such ID is
+        defined (or other problems), returns NULL.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Element* getElementByID(DOMString name)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>name</tt> -- element ID<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Element*</tt> -- element node with given ID
+  </dl></dd>
+</dl>
+
+<a name="getElementsByTagName"><hr></a>
+<h3><b>getElementsByTagName</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns a NodeList of all the Elements with a given tag name
+	in the order in which they would be encountered in a preorder
+	traversal of the Document tree.  If elem is NULL, the entire document
+        is searched.  The special value "*" matches all tags.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>NodeList* getElementsByTagName(Element *elem, DOMString tagname)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>elem</tt> -- root node
+    <dd><tt>tagname</tt> -- tag name to select<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>NodeList*</tt> -- list of matches, NULL if none
+  </dl></dd>
+</dl>
+
+<a name="getElementsByTagNameNS"><hr></a>
+<h3><b>getElementsByTagNameNS</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns a NodeList of all the Elements with a given tag name
+	in the order in which they would be encountered in a preorder
+	traversal of the Document tree.  If elem is NULL, the entire document
+        is searched.  The special value "*" matches all tags.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>NodeList* getElementsByTagName(Element *elem, DOMString nspuri, DOMString local)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>elem</tt> -- root node
+    <dd><tt>nspuri</tt> -- namespace uri
+    <dd><tt>local</tt> -- namespace local name<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>NodeList*</tt> -- list of matches, NULL if none
+  </dl></dd>
+</dl>
+
+<a name="getImplementation"><hr></a>
+<h3><b>getImplementation</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns the DOMImplementation structure, currently useless.  Perhaps
+	it will be used in later DOM versions.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMImplementation* getImplementation()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None</dd><p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMImplementation*</tt> -- pointer to structure
+  </dl></dd>
+</dl>
+
+<a name="importNode"><hr></a>
+<h3><b>importNode</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Imports a node from another document to this document.  The returned
+node has no parent (i.e. it's NULL).  The source node is not altered or
+removed from the original document; this method creates a new copy of the
+source node.  If <tt>deep</tt> is TRUE, recursively imports the subtree
+under <tt>node</tt>; if it's FALSE, imports only the node itself.<p>
+Additional information is copied as appropriate to the <tt>nodeType</tt>,
+attempting to mirror the behavior expected if a fragment of XML source was
+copied from one document to another, recognizing that two documents may
+have different DTDs.  See DOM 2.0 spec for specific action taken for each
+node type.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>xmlnode *importNode(xmlctx *ctx, xmlnode *import, boolean deep);</tt><p>
+    <dt><b><i>Arguments:</i></b>
+	<dd><tt>ctx</tt> -- XML context
+	<dd><tt>import</tt> -- node to be imported
+	<dd><tt>deep</tt> -- recursively import subtree?<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>xmlnode*</tt> -- pointer to new Node
+  </dl></dd>
+</dl>
+
+<a name="saveString"><hr></a>
+<h3><b>saveString</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Allocates memory and saves the given string.  Use to store locally
+        generated strings.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString saveString(DOMString str);</tt><p>
+    <dt><b><i>Arguments:</i></b>
+	<dd><tt>string</tt> -- string to save<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- pointer to saved string
+  </dl></dd>
+</dl>
+
+</body>
+</html>

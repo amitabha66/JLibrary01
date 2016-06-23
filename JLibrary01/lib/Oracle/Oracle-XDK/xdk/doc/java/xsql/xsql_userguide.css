@@ -1,0 +1,69 @@
+/*
+** $Author: mdmehta $
+** $Date: 16-jun-2003.15:37:51 $
+** $Source:  $
+** $Revision: xdk/doc/java/xsql/xsql_userguide.css#1 $
+*/
+BODY,P,P.B,UL,LI,OL,BR {
+  font-family: Arial, sans-serif;
+  color: black;
+  background-position: top left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+TH { /* ns 4 */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+TD { /* ns 4 */
+  font-family: Arial, sans-serif;
+}
+
+H1, H2, H3 {
+  text-align: left;
+  font-family: Tahoma, Verdana, "Myriad Web", Syntax, sans-serif;
+  font-weight: normal;
+  color: #0050B2; 
+}
+
+.hide { display: none }
+.tabletitle { background-color: #eoeoeo }
+
+DIV.head { margin-bottom: 1em }
+DIV.head H1 { margin-top: 2em; clear: both }
+DIV.head TABLE { margin-left: 2em; margin-top: 2em }
+DIV.head IMG { color: white; border: none } /* remove border from top image */
+
+P.copyright { font-size: smaller }
+
+@media screen {  /* hide from IE3 */
+A:hover { background: #FFA } 
+}
+
+PRE { margin-left: 2em }
+/*
+P {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+*/
+DT, DD { margin-top: 0; margin-bottom: 0 } /* opera 3.50 */
+DT { font-weight: bold }
+
+PRE { font-family: monospace }        /* navigator 4 requires this */
+
+UL.toc { list-style: none }
+
+@media aural {  
+  H1, H2, H3 { stress: 20; richness: 90 }
+  .hide { speak: none }
+  P.copyright { volume: x-soft; speech-rate: x-fast }
+  DT { pause-before: 20% }
+  PRE { speak-punctuation: code } 
+}
+
+ .ro  {background-color: #f7f7e7; color: black}
+ .re {background-color: white; color: black}
+ .tableheader {background-color: white; color: black; font-weight:bold}

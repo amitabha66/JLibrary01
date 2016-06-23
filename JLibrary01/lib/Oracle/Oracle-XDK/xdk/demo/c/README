@@ -1,0 +1,112 @@
+This directory contains some sample XML applications to show how to use the 
+Oracle XDK C interfaces.
+
+This directory contains:
+
+    README			This file
+    Makefile			Makefile for sample programs
+
+    dom/DOMNamespace.c		Source for DOMNamespace program
+    dom/DOMNamespace.std	Expected output from DOMNamespace
+    dom/DOMSample.c		Source for DOMSample program
+    dom/DOMSample.std		Expected output from DOMSample
+    dom/FullDOM.c           	Sample usage of DOM interface
+    dom/FullDOM.std		Expected output from FullDOM
+    dom/NSExample.xml		Sample XML file using namespaces
+    dom/cleo.xml		XML version of Shakespeare's play
+				"The Tragedy of Antony and Cleopatra"
+
+    sax/SAXNamespace.c		Source for SAXNamespace program
+    sax/SAXNamespace.std	Expected output from SAXNamespace
+    sax/SAXSample.c		Source for SAXSample program
+    sax/SAXSample.std		Expected output from SAXSample
+    sax/NSExample.xml		Sample XML file using namespaces
+    sax/cleo.xml		XML version of Shakespeare's play
+				"The Tragedy of Antony and Cleopatra"
+
+    schema/xsdtest.c		Program which invokes the Schema API
+    schema/car.{xsd,xml,std}   	Sample Schema, instance document, and expected
+	                        output after running xsdtest on them
+    schema/aq.{xsd,xml,std}     Second sample Schema
+    schema/pub.{xsd,xml,std}   	Third sample Schema
+
+    xslt/XSLSample.c		Source for XSLSample program
+    xslt/XSLSample.std		Expected output from XSLSample
+    xslt/XSLXPathSample.c	Source for XVMXPathSample program
+    xslt/XSLXPathSample.std	Expected output from XVMXpathSample
+    xslt/class.xml           	XML file that may be used with XSLSample
+    xslt/iden.xsl            	Stylesheet that may be used with XSLSample
+
+    xsltvm/XVMSample.c		Source for XVMSample program
+    xsltvm/XVMSample.std	Expected output from XVMSample
+    xsltvm/XVMXPathSample.c	Source for XVMXPathSample program
+    xsltvm/XVMXPathSample.std	Expected output from XVMXpathSample
+    xsltvm/class.xml           	XML file that may be used with XSLSample
+    xsltvm/iden.xsl            	Stylesheet that may be used with XSLSample
+
+A batch file, Make.bat, is provided in each of the subdirectories to build the
+samples and to run them, comparing the actual output to the expected output.  
+Type "Make" in any of the subdirectories to build executables for all samples.
+You can also create a specific sample program by giving its name as a 
+parameter, e.g. "Make DOMSample".
+
+Note that the executables are placed in ..\..\..\bin but should be run from the
+sample directory (where the input data files can be found).
+
+An error message file is provided in the mesg subdirectory.  Currently, the
+only message file is in English although message files for other languages
+may be supplied in future releases.  You should set the environment variable 
+ORA_XML_MESG to point to the absolute path of the mesg subdirectory.
+Alternately, if you have an $ORACLE_HOME installed, you may copy the contents
+of the mesg subdirectory to the $ORACLE_HOME\xdk\mesg directory.
+
+In addition, the environment variable ORA_NLS10 must be set to point to the 
+location of the NLS data files.  This is usually $ORACLE_HOME/nls/data.
+Starting with version 9.0.1, C and C++ XDK releases that are downloaded from 
+OTN contain an nls/data/ subdirectory.  You must set the environment variable 
+ORA_NLS10 to the absolute path of the nls/data/ subdirectory if you don't have
+an Oracle installation.
+
+The following programs will be built:
+
+    SAXSample [word]	A sample application using SAX APIs.  Given a word,
+			shows all lines in the play Cleopatra containing that
+			word.  If no word is specified, 'death' is used.
+
+    DOMSample		A sample application using DOM APIs (shows an
+			outline of Cleopatra, i.e. the XML elements ACT
+			and SCENE).
+
+    SAXNamespace	A sample application using Namespace extensions to
+			SAX API; prints out all elements and attributes of
+			NSExample.xml along with full namespace information.
+
+    DOMNamespace	Same as SAXNamespace except using DOM interface.
+
+    FullDOM		Sample usage of full DOM interface.  Exercises all
+			the calls, but does nothing too exciting.
+
+    xsdtest <document> [schema]
+                        A sample application using the Schema API.  Given an
+                        instance and optionally a Schema, loads the instance
+                        and validates against the Schema.
+
+    XSLSample <xmlfile> <xsl ss>
+			Sample usage of XSL processor. It takes two 
+                        filenames as input, the XML file and the XSL 
+                        stylesheet.
+
+    XVMSample <xmlfile> <xslfile>
+			Sample usage of XSLT Virtuale Machine & Compiler. 
+                        It takes two filenames as input - the XML file and 
+                        the XSL stylesheet.
+
+    XSLXPathSample <xmlfile> <xpathexpr>
+			Sample usage of XSL/XPath processor. 
+                        It takes an XML file and XPath expression as input.
+                        Generates the result of evaluated XPath expression.
+
+    XVMXPathSample <xmlfile> <xpathexpr>
+			Sample usage of XSLT Virtuale Machine & Compiler.
+                        It takes an XML file and XPath expression as input.
+                        Generates the result of evaluated XPath expression.

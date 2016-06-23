@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" media="MSIE 6" client="yes" href="doyouxml.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="doyouxml.xsl" ?>
+<datapage connection="demo" xmlns:xsql="urn:oracle-xsql">
+<xsql:query bind-params="cat cat" rowset-element="" row-element="INFO">
+       select count(*) as "TOTAL", ? as cat
+         from site_entry
+        where categories like '%'||UPPER(?)||'%'
+          and permanent is null
+</xsql:query>
+<xsql:query rowset-element="SiteStructure" row-element="Category" >
+       SELECT name "Name", icon "Icon"
+	 FROM site_category
+        ORDER BY id
+</xsql:query>
+<xsql:query bind-params="cat"
+   category="NEWS" 
+   rowset-element="MAINITEMS" 
+   row-element="ITEM"
+   max-rows="6"
+   skip="0"
+   skip-rows="{@skip}" >
+       select title,id,description,url,to_char(timestamp,'Mon DD') timestamp
+         from site_entry
+        where categories like '%'||UPPER(?)||'%'
+          and permanent is null
+      order by id desc
+</xsql:query>
+<xsql:query bind-params="cat"
+   rowset-element="SIDEBARITEMS" 
+   row-element="ITEM"
+      max-rows="5"
+   category="NEWS">
+       select title,id,description,url,to_char(timestamp,'DD-MON-YYYY') timestamp
+         from site_entry
+        where categories like '%'||UPPER(?)||'%'
+        and permanent > 0
+      order by id desc
+</xsql:query>
+</datapage>

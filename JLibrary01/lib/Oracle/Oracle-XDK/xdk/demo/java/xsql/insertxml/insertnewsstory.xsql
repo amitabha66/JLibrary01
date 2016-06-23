@@ -1,0 +1,3 @@
+<?xml version = '1.0'?>
+<xsql:insert-request connection="demo" xmlns:xsql="urn:oracle-xsql"
+  table="newsstory" transform="moreover-to-newsstory.xsl"/>

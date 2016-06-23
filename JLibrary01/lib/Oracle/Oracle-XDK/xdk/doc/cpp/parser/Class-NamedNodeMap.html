@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class NamedNodeMap</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-EntityReference.html">Previous Class</a>]  [<a href="Class-Node.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>NamedNodeMap</i></h1>
+
+This class contains methods for accessing the number of nodes in a node map
+and fetching individual nodes.
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#item"><b>item</b></a></td>
+    <td>Return <b><i>n</i></b>th node in map</td>
+  </tr>
+  <tr>
+    <td><a href="#getLength"><b>getLength</b></a></td>
+    <td>Return number of nodes in map</td>
+  </tr>
+  <tr>
+    <td><a href="#getNamedItem"><b>getNamedItem</b></a></td>
+    <td>Select a node by name</td>
+  </tr>
+  <tr>
+    <td><a href="#setNamedItem"><b>setNamedItem</b></a></td>
+    <td>Set a node into the map</td>
+  </tr>
+  <tr>
+    <td><a href="#removeNamedItem"><b>removeNamedItem</b></a></td>
+    <td>Remove the named node from map</td>
+  </tr>
+  <tr>
+    <td><a href="#free"><b>free</b></a></td>
+    <td>Free the named node map</td>
+  </tr>
+</table>
+
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="item"></a>
+<h3><b>item</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return <b><i>n</i></b>th node in node map<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* item(size_t index)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>size_t index</tt>-- zero-based node number<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to <tt>index</tt>'th node in map
+  </dl></dd>
+</dl>
+
+<a name="getLength"><hr></a>
+<h3><b>getLength</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return number of nodes in map<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>size_t getLength()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>size_t</tt> -- Number of nodes in map
+  </dl></dd>
+</dl>
+
+<a name="getNamedItem"><hr></a>
+<h3><b>getNamedItem</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Selects the node with the given name from the map<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getNamedItem(String name)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>name</tt> -- Name of node to select<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to named node, NULL of none such exists
+  </dl></dd>
+</dl>
+
+<a name="setNamedItem"><hr></a>
+<h3><b>setNamedItem</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Adds a node to the map, replacing any node that already exists with
+	the same name<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>boolean setNamedItem(Node *node, Node **old)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>node</tt> -- Name of node to add
+    <dd><tt>old</tt> -- Pointer to replaced node, NULL if node is new<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>boolean</tt> -- Success
+  </dl></dd>
+</dl>
+
+<a name="removeNamedItem"><hr></a>
+<h3><b>removeNamedItem</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Removes the node with the given name from the node map<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* removeNamedItem(String name)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>name</tt> -- Name of node to remove<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to removed node, NULL if none such exists
+  </dl></dd>
+</dl>
+
+<a name="free"><hr></a>
+<h3><b>free</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Frees the named node map<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>void free()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd>Nothing
+  </dl></dd>
+</dl>
+
+</body>
+</html>

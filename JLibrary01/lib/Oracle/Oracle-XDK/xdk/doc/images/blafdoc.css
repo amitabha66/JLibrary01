@@ -1,0 +1,168 @@
+BODY {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+BODY {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+P {
+	FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+TABLE {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+TD {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+TH {
+	FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+OL {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+UL {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+A {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+DL {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+DT {
+	FONT-SIZE:  small;FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+DD {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+BLOCKQUOTE {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+CAPTION {
+	FONT-SIZE:  small; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+CAPTION {
+	FONT-WEIGHT: bold
+}
+A:link {
+	COLOR: #663300
+}
+A:active {
+	COLOR: #ff6600
+}
+A:visited {
+	COLOR: #996633
+}
+A.glossary:link {
+	BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary:active {
+	BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary:visited {
+	BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary2:link {
+	COLOR: #003366
+}
+A.glossary2:active {
+	COLOR: #99ccff
+}
+A.glossary2:visited {
+	COLOR: #000066
+}
+A.glossary2a:link {
+	COLOR: #003366; BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary2a:active {
+	COLOR: #99ccff; BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary2a:visited {
+	COLOR: #000066; BORDER-BOTTOM: 1px dotted; TEXT-DECORATION: none
+}
+A.glossary3:link {
+	COLOR: #009900
+}
+A.glossary3:active {
+	COLOR: #009900
+}
+A.glossary3:visited {
+	COLOR: #006600
+}
+A.glossary4:link {
+	COLOR: #660000
+}
+A.glossary4:active {
+	COLOR: #660000
+}
+A.glossary4:visited {
+	COLOR: #660000
+}
+H1 {
+	COLOR: #336699; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+H2 {
+	COLOR: #336699; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+H3 {
+	COLOR: #336699; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+H4 {
+	COLOR: #336699; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+}
+H1 {
+	BORDER-RIGHT: #cccc99 0px solid; BORDER-TOP: #cccc99 0px solid; FONT-WEIGHT: normal; FONT-SIZE: 1.6em; BORDER-LEFT: #cccc99 0px solid; WIDTH: 100%; BORDER-BOTTOM: #cccc99 1px solid
+}
+H2 {
+	BORDER-RIGHT: #cccc99 0px solid; BORDER-TOP: #cccc99 0px solid; FONT-WEIGHT: bold; FONT-SIZE: 1.4em; BORDER-LEFT: #cccc99 0px solid; WIDTH: 100%; BORDER-BOTTOM: #cccc99 1px solid
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.3em
+}
+H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.2em
+}
+PRE {
+	FONT-FAMILY: Courier, "Courier New", monospace
+}
+CODE {
+	COLOR: #000000; FONT-FAMILY: Courier, Courier New, monospace
+}
+CODE EM {
+	COLOR: #880000
+}
+.headercode {
+	FONT-WEIGHT: bold; FONT-FAMILY: Courier, Courier New, monospace
+}
+.GUITag {
+	FONT-WEIGHT: bold
+}
+TABLE {
+	FONT-SIZE: small
+}
+TH {
+	FONT-WEIGHT: bold; COLOR: #336699; BACKGROUND-COLOR: #cccc99; TEXT-ALIGN: center
+}
+TABLE.hdrbookinfo {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; TEXT-ALIGN: left
+}
+TABLE.hdrnavbuttons {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; TEXT-ALIGN: right
+}
+TR.hdrprodname {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #336699; FONT-STYLE: italic; BACKGROUND-COLOR: #ffffff
+}
+TD.hdrbooktitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 1em; COLOR: #336699; BACKGROUND-COLOR: #ffffff
+}
+TD.hdrnav {
+	BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+A.navigation {
+	FONT-SIZE: 0.8em
+}
+.OraCopyright {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Arial,Helvetica,Geneva,sans-serif; TEXT-ALIGN: left
+}
+.ROWODD  {BACKGROUND-COLOR: #E9E9E9; COLOR: black}
+.ROWEVEN {BACKGROUND-COLOR: #F8F8F8; COLOR: black}
+

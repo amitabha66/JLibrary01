@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<car:Car xmlns:car="http://www.CarDealers.com/"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.CarDealers.com/ car.xsd"
+     RequestDate="2000-12-06">
+
+    <Model>Ford</Model>
+    <Make>Explorer</Make>
+    <Year PreviouslyOwned="You betcha">1999</Year>
+    <OwnerName>Joe Smith</OwnerName>
+    <OwnerName>Bob Jones</OwnerName>
+    <Condition Automatic="No">Small dent on right bumper.</Condition>
+    <Mileage>19999</Mileage>
+
+</car:Car>

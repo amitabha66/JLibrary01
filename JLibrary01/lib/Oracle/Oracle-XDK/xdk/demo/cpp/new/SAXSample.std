@@ -1,0 +1,34 @@
+XML C++ SAX sample
+Initializing context
+Initializing Tools Factory
+Creating SAX parser
+Create file source
+set SAX handler
+Parsing 'class.xml' ...
+Start Document
+Element: course
+Element: Name
+Data: Calculus
+Element end
+Element: Dept
+Data: Math
+Element end
+Element: Instructor
+Element: Name
+Data: Jim Green
+Element end
+Element end
+Element: Student
+Element: Name
+Data: Jack
+Element end
+Element: Name
+Data: Mary
+Element end
+Element: Name
+Data: Paul
+Element end
+Element end
+Element end
+End Document
+Parsing completed

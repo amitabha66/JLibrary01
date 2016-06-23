@@ -1,0 +1,21 @@
+<?xml version="1.0" ?> 
+<page connection="xdkdemo" xmlns:xsql="http://xmlns.us.oracle.com/XDK/Example/XSQL/schema">
+  <webpage title=" Search for XDK FAQ">
+      <search>
+       <xsql:include-xml href="xml/title.xml" /> 
+      </search>
+	  <content>
+	    <question>
+	      <xsql:query fetch-size="50" null-indicator="no">
+		     select question from xdkfaq 
+		     where contains(answer,'{@search}')>0
+		   </xsql:query>
+		</question>
+		<time>
+	      <xsql:query tag-case="lower" max-rows="20">
+		     select to_char(sysdate,'DD-MM-YYY') from dual
+		   </xsql:query>
+		</time>
+	  </content>
+  </webpage>
+</page>

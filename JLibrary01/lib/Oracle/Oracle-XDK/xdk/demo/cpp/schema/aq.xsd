@@ -1,0 +1,598 @@
+<?xml version="1.0"?>
+
+<!-- ****************** AQ xml schema  ****************** -->
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+        targetNamespace = "http://www.oracle.com/AQXmlDocument"
+        xmlns:aq = "http://www.oracle.com/AQXmlDocument"
+        xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+   <element name="AQXmlDocument">
+      <complexType mixed="true">
+          <choice>
+              <group ref="aq:client_operation" minOccurs="0"/>
+              <group ref="aq:server_response" minOccurs="0"/>
+          </choice>
+      </complexType>
+    </element>   
+
+
+   <!-- ****************** Client Operations Group  ****************** -->
+   <group name="client_operation">
+       <sequence>
+          <element ref="aq:client_operation" minOccurs="0" maxOccurs="1"/>
+  	      <choice>
+              <element ref="aq:producer_options" maxOccurs="1"/>
+              <element ref="aq:consumer_options" maxOccurs="1"/>
+              <element ref="aq:register_options" maxOccurs="1"/>
+          </choice>
+          <element ref="aq:message_set" minOccurs="0" maxOccurs="unbounded"/>
+       </sequence>
+    </group>
+
+
+   <!-- ****************** Server Response Group ****************** -->
+   <group name="server_response">
+       <sequence>
+          <element ref="aq:server_response" minOccurs="0" maxOccurs="1"/>
+          <element ref="aq:receive_result" maxOccurs="1"/>
+          <choice  minOccurs="0" >
+              <element ref="aq:send_result" maxOccurs="1"/>
+              <element ref="aq:publish_result" maxOccurs="1"/>
+              <element ref="aq:receive_result" maxOccurs="1"/>
+              <element ref="aq:sequence_num_result" maxOccurs="1"/>
+          </choice>
+       </sequence>
+   </group>
+
+
+   <!-- ****************** Server Propagation Group ****************** -->
+   <group name="server_prop_operation">
+       <sequence>
+          <element ref="aq:server_prop_operation" minOccurs="0" maxOccurs="1"/>
+          <choice>
+              <element ref="aq:push" maxOccurs="1"/>
+              <element ref="aq:notification" maxOccurs="1"/>
+              <element ref="aq:sequence_num_request" maxOccurs="1"/>
+          </choice>
+       </sequence>
+   </group>
+
+
+   <!-- ****************** Client Operation ****************** -->
+   <element name="client_operation">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:txid" minOccurs="0"/>   	
+        </sequence>
+	      <attribute name="opcode" use="required" type="aq:opcode_type"/>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Server Response ****************** -->
+   <element name="server_response">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:txid" minOccurs="0"/>   	
+          <element ref="aq:status_response" minOccurs="1"/>   	
+        </sequence>
+        <attribute name="opcode" use="required" type="aq:opcode_type"/>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Server Propagation Operation ****************** -->
+   <element name="server_prop_operation">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:txid" minOccurs="0"/>   	
+        </sequence>
+      	<attribute name="prop_opcode" use="required" type="aq:prop_opcode_type"/>
+      </complexType>
+   </element>   
+
+
+   <element name="txid" type="string"/>   		
+
+   <element name="destination">
+     <complexType>
+       <simpleContent>
+         <extension base='string'>
+           <attribute name="lookup_type" type="aq:dest_lookup_type" 
+        	 default="NORMAL"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+   </element>   		
+
+   <!-- **** destination lookup type ******* -->
+   <!-- lookup_type can be specified to either lookup LDAP or use  -->
+   <!-- the destination directly in NAME::ADDRESS::PROTOCOL format -->
+   <simpleType name="dest_lookup_type">
+      <restriction base="string">
+        <enumeration value="NORMAL"/>
+        <enumeration value="LDAP"/>
+      </restriction>
+    </simpleType>
+
+   <!-- ****************** Producer Options ****************** -->
+   <element name="producer_options">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+          <element ref="aq:priority" minOccurs="0" maxOccurs="1"/>   	
+          <element ref="aq:expiration" minOccurs="0" maxOccurs="1"/>   	
+          <element ref="aq:recipient_list" minOccurs="0" maxOccurs="1"/>  
+        </sequence>
+        <attribute name="visibility" type="aq:visibility_type" 
+	           default="ON_COMMIT"/>
+	    <attribute name="delivery_mode" type="aq:del_mode_type" 
+	           default="PERSISTENT"/>
+      </complexType>
+    </element>   
+
+   <!-- ****************** Consumer Options ****************** -->
+   <element name="consumer_options">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:destination" minOccurs="1" maxOccurs="1"/> 
+          <element ref="aq:consumer_name" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:wait_time" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:selector" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:batch_size" minOccurs="0" maxOccurs="1"/> 
+        </sequence>
+
+	      <attribute name="visibility" type="aq:visibility_type" 
+	           default="ON_COMMIT"/>
+	      <attribute name="dequeue_mode" type="aq:deq_mode_type" 
+	           default="REMOVE"/>
+	      <attribute name="navigation" type="aq:nav_mode_type" 
+	           default="NEXT_MESSAGE"/>
+       </complexType>
+    </element>   
+
+
+   <!-- ****************** Register Options ****************** -->
+   <element name="register_options">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:destination" minOccurs="1" maxOccurs="1"/> 
+          <element ref="aq:consumer_name" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:notify_url" minOccurs="1" maxOccurs="1"/> 
+          <element ref="aq:qos" minOccurs="1" maxOccurs="1"/> 
+          <element ref="aq:batch_size" minOccurs="0" maxOccurs="1"/> 
+        </sequence>
+      </complexType>
+    </element>   
+
+   <element name="recipient_list">
+     <complexType mixed="true">
+       <sequence>
+      	 <element ref="aq:recipient" minOccurs="1" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+   </element>   
+
+
+   <!-- ****************** Message Set ************************* -->
+   <element name="message_set">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:message_count" minOccurs="1"/>   	
+          <element ref="aq:message" minOccurs="0" maxOccurs="unbounded"/>  
+        </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Message ************************* -->
+   <element name="message">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:message_number" minOccurs="0"/>   	
+          <element ref="aq:message_header" minOccurs="1" maxOccurs="1"/>  
+          <element ref="aq:message_payload" minOccurs="0" maxOccurs="1"/>  
+        </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Message header ****************** -->
+   <element name="message_header">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:message_id" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:correlation" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:delay" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:priority" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:delivery_count" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:message_state" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:sender_id" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:exception_queue" minOccurs="0" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+    </element>   
+
+
+   <!-- ****************** Oracle JMS properties ****************** -->
+   <element name="oracle_jms_properties">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:type" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:reply_to" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:userid" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:appid" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:groupid" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:group_sequence" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:timestamp" minOccurs="0" maxOccurs="1"/> 
+        <element ref="aq:recv_timestamp" minOccurs="0" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+    </element>   
+
+
+   <!-- ****************** Message payload ****************** -->
+   <element name="message_payload">
+     <complexType>
+        <choice>
+          <element ref="aq:jms_text_message" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:jms_map_message" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:jms_bytes_message" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:jms_object_message" minOccurs="0" maxOccurs="1"/> 
+   	  <any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+        </choice>
+     </complexType>
+   </element>   		
+
+
+   <!-- ****************** User-defined properties ****************** -->
+   <element name="user_properties">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:property" minOccurs="0" maxOccurs="unbounded"/> 
+       </sequence>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Property  ****************** -->
+   <element name="property">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:name" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:value" minOccurs="1" maxOccurs="1"/> 
+       </sequence>
+	     <attribute name="property_type" type="aq:prop_type"/>
+      </complexType>
+    </element>   
+
+
+   <!-- ****************** Status response ****************** -->
+   <element name="status_response">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:acknowledge" minOccurs="0" maxOccurs="1"/>   	
+        <element ref="aq:status_code" minOccurs="0" maxOccurs="1"/>   	
+        <element ref="aq:error_code" minOccurs="0" maxOccurs="1"/>   	
+        <element ref="aq:error_message" minOccurs="0" maxOccurs="1"/>  
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Send result ****************** -->
+   <element name="send_result">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:message_id" minOccurs="0" maxOccurs="unbounded"/>   	
+       </sequence>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Publish result ****************** -->
+   <element name="publish_result">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:message_id" minOccurs="0" maxOccurs="unbounded"/>   	
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Receive result ****************** -->
+   <element name="receive_result">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:message_set" minOccurs="0" maxOccurs="unbounded"/>   	
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Sequence number request ****************** -->
+   <element name="sequence_num_request">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:consumer_name" minOccurs="1" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Sequence number result ****************** -->
+   <element name="sequence_num_result">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:consumer_name" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:sequence_number" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:message_number" minOccurs="1" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Push messages *************************** -->
+   <element name="push">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:consumer_name" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:sequence_number" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:message_set" minOccurs="1" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <!-- ****************** Notification *************************** -->
+   <element name="notification">
+      <complexType mixed="true">
+       <sequence>
+        <element ref="aq:destination" minOccurs="1" maxOccurs="1"/>   	
+        <element ref="aq:consumer_name" minOccurs="1" maxOccurs="1"/> 
+        <element ref="aq:message" minOccurs="0" maxOccurs="1"/> 
+       </sequence>
+      </complexType>
+   </element>   
+
+
+   <element name="priority" type="integer"/>   		
+   <element name="expiration" type="integer"/>   		
+   <element name="consumer_name" type="string"/> 
+   <element name="wait_time" type="integer"/>  
+   <element name="batch_size" type="integer"/>  
+   <element name="qos" type="string"/> 
+   <element name="notify_url" type="string"/> 
+   <element name="message_id" type="string"/> 
+   <element name="message_state" type="string"/>
+
+   <element name="sequence_number" type="integer"/>  
+   <element name="message_number" type="integer"/>  
+   <element name="message_count" type="integer"/>  
+
+   <element name="correlation" type="string"/> 
+   <element name="delay" type="integer"/> 
+   <element name="delivery_count" type="integer"/> 
+   <element name="exception_queue" type="string"/> 
+
+
+   <element name="type" type="string"/> 
+   <element name="userid" type="string"/> 
+   <element name="appid" type="string"/> 
+   <element name="groupid" type="string"/> 
+   <element name="group_sequence" type="integer"/> 
+   <element name="timestamp" type="date"/> 
+   <element name="recv_timestamp" type="date"/> 
+
+
+   <element name="recipient">
+     <complexType>
+       <simpleContent>
+         <extension base='string'>
+           <attribute name="lookup_type" type="aq:dest_lookup_type" 
+	            default="NORMAL"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+   </element>   		
+
+
+   <element name="sender_id">
+     <complexType> >
+       <simpleContent>
+         <extension base='string'>
+           <attribute name="lookup_type" type="aq:dest_lookup_type" 
+	           default="NORMAL"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+   </element>   		
+
+
+   <element name="reply_to">
+     <complexType >
+       <simpleContent>
+         <extension base='string'>
+           <attribute name="lookup_type" type="aq:dest_lookup_type" 
+	           default="NORMAL"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+   </element>   		
+
+
+   <element name="selector"> 
+     <complexType>
+	     <choice>
+          <element ref="aq:correlation_id" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:message_id" minOccurs="0" maxOccurs="1"/> 
+          <element ref="aq:complex_selector" minOccurs="0" maxOccurs="1"/> 
+       </choice>
+     </complexType>
+   </element>
+
+   <element name="correlation_id" type="string"/>  
+   <element name="complex_selector" type="string"/>  
+
+   <simpleType name="visibility_type">
+      <restriction base="string">
+        <enumeration value="ON_COMMIT"/>
+        <enumeration value="IMMEDIATE"/>
+      </restriction>
+   </simpleType>
+
+
+   <simpleType name="del_mode_type">
+      <restriction base="string">
+        <enumeration value="PERSISTENT"/>
+        <enumeration value="NONPERSISTENT"/>
+      </restriction>
+    </simpleType>
+
+   <simpleType name="deq_mode_type" >
+      <restriction base="string">
+        <enumeration value="BROWSE"/>
+        <enumeration value="LOCKED"/>
+        <enumeration value="REMOVE"/>
+        <enumeration value="REMOVE_NO_DATA"/>
+      </restriction>
+    </simpleType>
+
+   <simpleType name="nav_mode_type">
+      <restriction base="string">
+        <enumeration value="FIRST_MESSAGE"/>
+        <enumeration value="NEXT_MESSAGE"/>
+        <enumeration value="NEXT_TRANSACTION"/>
+      </restriction>
+    </simpleType>
+
+
+   <simpleType name="opcode_type" >
+      <restriction base="string">
+        <enumeration value="SEND"/>
+        <enumeration value="RECEIVE"/>
+        <enumeration value="PUBLISH"/>
+        <enumeration value="REGISTER"/>
+        <enumeration value="COMMIT"/>
+        <enumeration value="ROLLBACK"/>
+        <enumeration value="SEQ_NUM_REQUEST"/>
+      </restriction>
+   </simpleType>
+
+   <simpleType name="prop_opcode_type">
+      <restriction base="string">
+        <enumeration value="SEND"/>
+        <enumeration value="NOTIFICATION"/>
+        <enumeration value="COMMIT"/>
+        <enumeration value="ROLLBACK"/>
+        <enumeration value="SEQ_NUM_REQUEST"/>
+      </restriction>
+   </simpleType>
+
+   <element name="acknowledge">
+     <complexType>
+       <complexContent>
+         <restriction base="anyType">
+           <annotation>
+             <documentation>
+               Empty Content!
+             </documentation>
+           </annotation>
+         </restriction>
+       </complexContent>
+     </complexType>
+   </element>   		
+
+   <element name="status_code" type="string"/> 
+   <element name="error_code" type="string"/> 
+   <element name="error_message" type="string"/> 
+
+
+    <simpleType name="prop_type">
+      <restriction base="string">
+        <enumeration value="STRING"/>
+        <enumeration value="NUMBER"/>
+      </restriction>
+    </simpleType>
+
+   <element name="name" type="string"/> 
+   <element name="value" type="string"/> 
+
+
+   <!-- ****************** JMS text message ****************** -->
+   <element name="jms_text_message">
+      <complexType mixed='true'>
+        <sequence>
+          <element ref="aq:oracle_jms_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:user_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:text_data" minOccurs="1" maxOccurs="1"/>  
+        </sequence>
+      </complexType>
+   </element>   
+	
+   <element name="text_data" type="string"/> 
+
+
+   <!-- ****************** JMS map message ****************** -->
+   <element name="jms_map_message">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:oracle_jms_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:user_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:map_data" minOccurs="1" maxOccurs="1"/>  
+        </sequence>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Map data ****************** -->
+   <element name="map_data">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:item" minOccurs="0" maxOccurs="unbounded"/> 
+        </sequence>
+      </complexType>
+   </element>   
+
+   <!-- ****************** Map Item  ****************** -->
+   <element name="item">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:name" minOccurs="1" maxOccurs="1"/> 
+          <element ref="aq:value" minOccurs="1" maxOccurs="1"/> 
+        </sequence>
+	      <attribute name="item_type" type="aq:prop_type"/>
+       </complexType>
+    </element>   
+	
+
+   <!-- ****************** JMS bytes message ****************** -->
+   <element name="jms_bytes_message">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:oracle_jms_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:user_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:bytes_data" minOccurs="1" maxOccurs="1"/>  
+        </sequence>
+      </complexType>
+   </element>   
+	
+   <element name="bytes_data" type="string"/> 
+
+
+   <!-- ****************** JMS object message ****************** -->
+   <element name="jms_object_message">
+      <complexType mixed="true">
+        <sequence>
+          <element ref="aq:oracle_jms_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:user_properties" minOccurs="0" maxOccurs="1"/>  
+          <element ref="aq:ser_object_data" minOccurs="1" maxOccurs="1"/>  
+        </sequence>
+      </complexType>
+   </element>   
+	
+   <element name="ser_object_data" type="string"/> 
+
+</schema>

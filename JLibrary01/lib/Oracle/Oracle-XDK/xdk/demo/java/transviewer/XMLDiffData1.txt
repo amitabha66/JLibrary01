@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<booklist>
+  <book>    
+    <title>Twelve Red Herrings</title>
+    <author>Jeffrey Archer</author>
+    <publisher>Harper Collins</publisher>
+    <price>7.99</price>      
+  </book>
+  <book>
+    <title>The Eleventh Commandment</title>
+    <author>Jeffrey Archer</author>
+    <publisher>McGraw Hill</publisher>   
+    <price>3.99</price>
+  </book>
+  <book>
+    <title>C++ Primer</title>
+    <author>Lippmann</author>
+    <publisher>Harper Collins</publisher>   
+    <price>4.99</price>
+  </book>          
+  <book>
+    <title>Emperor's New Mind</title>
+    <author>Roger Penrose</author>
+    <publisher>Oxford Publishing Company</publisher>
+    <price>15.9</price>
+  </book>          
+  <book>
+    <title>Evening News</title>
+    <author>Arthur Hailey</author>
+    <publisher>MaMillan Publishers</publisher>
+    <price>9.99</price>
+  </book>  
+</booklist>

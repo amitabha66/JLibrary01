@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql">
+  SELECT name, origin
+    FROM location loc
+   WHERE loc.origin.x = {@x-coord}
+</xsql:query>

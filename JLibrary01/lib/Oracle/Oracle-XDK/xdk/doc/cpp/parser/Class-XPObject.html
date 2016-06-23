@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class XPObject</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-xsl.html">This Package</a>]</pre>
+
+<hr>
+<h1>Class: <i>XPObject</i></h1>
+
+This class contains top-level methods of class XPObject.
+Objects of this class are created as a result of XPath expression evaluation.
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+
+<table>
+  <tr>
+    <td><a href="#xpobject"><b>XPObject</b></a></td>
+    <td><b><i>XPObject</i></b> constructor</td>
+  </tr>
+  <tr>
+    <td><a href="#getbooleanval"><b>getbooleanval</b></a>
+    <td>Returns boolean value of <b><i>XPObject</i></b>
+  </tr>
+  <tr>
+    <td><a href="#getnsetval"><b>getnsetval</b></a>
+    <td>Returns node set value of <b><i>XPObject</i></b> 
+  </tr>
+  <tr>
+    <td><a href="#getnumval"><b>getnumval</b></a>
+    <td>Returns numeric value of <b><i>XPObject</i></b>
+  </tr> 
+  <tr>
+    <td><a href="#getstrval"><b>getstrval</b></a>
+    <td>Returns string value of <b><i>XPObject</i></b> 
+  </tr>
+  <tr>
+    <td><a href="#getxpobjtyp"><b>getxpobjtyp</b></a>
+    <td>Returns type of <b><i>XPObject</i></b>
+  </tr>
+</table>
+
+<hr>
+<h3><a name="getbooleanval">getbooleanval</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Get boolean value of the object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+boolean    getbooleanval ();
+</pre><p>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+Returns <b>TRUE</b> or <b>FALSE</b>.  
+</pre>
+</dl>
+
+<hr>
+<h3><a name="getnumval">getnumval</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Get numeric value of the object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+double    getnumval     ();
+</pre><p>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+Returns numeric value</b>.  
+</pre>
+</dl>
+
+<hr>
+<h3><a name="getstrval">getstrval</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Get string value of the object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+oratext*  getstrval     ();
+</pre><p>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+Returns string value</b>.  
+</pre>
+</dl>
+
+<hr>
+<h3><a name="getnsetval">getnsetval</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Get string value of the object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+xpnset*   getnsetval    ();
+</pre><p>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+Returns node set value</b>.  
+</pre>
+</dl>
+
+<hr>
+<h3><a name="getxpobjtyp">getxpobjtyp</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Get type of the object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+xpobjtyp  getxpobjtyp   ();
+</pre><p>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+Returns the object type.
+The type could be one of the following:
+<p>
+  <b>XPOBJTYP_BOOL</b>
+  <b>XPOBJTYP_NUM</b>
+  <b>XPOBJTYP_STR</b>
+  <b>XPOBJTYP_NSET</b>
+  <b>XPOBJTYP_RTFRAG</b>
+<p>
+</pre>
+
+</dl>
+
+</body>
+</html>

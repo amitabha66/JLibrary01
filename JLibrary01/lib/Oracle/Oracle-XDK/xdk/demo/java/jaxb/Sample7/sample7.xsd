@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!-- Binding a complex type definition to a java content interface
+     When a complex type definition's {content type} is "mixed", its
+     character and element information content is bound to general 
+     content list as described below:
+     List getContent();
+-->
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+            xmlns:bo="http://www.oracle.com/sample7/"
+            targetNamespace="http://www.oracle.com/sample7/"
+            elementFormDefault="qualified">
+
+   <complexType name="BindMixedContentType" mixed="true">
+      <sequence>
+         <element name="name" type="string"/>
+         <element name="quantity" type="int"/>
+      </sequence>
+   </complexType>
+
+   <element name="BindMixedContent" type="bo:BindMixedContentType"/>
+</schema>
+

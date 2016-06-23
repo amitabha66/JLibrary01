@@ -1,0 +1,33 @@
+
+XML C++ DOM Namespace
+Initializing XML package...
+Parsing 'NSExample.xml'...
+
+The elements are:
+  ELEMENT Qualified Name: doc
+  ELEMENT Prefix        :  
+  ELEMENT Local Name    : doc
+  ELEMENT Namespace     : http://www.w3c.org
+
+    ATTRIBUTES: 
+      nsprefix:a1 = v1
+      Namespace : http://www.oracle.com
+      Local Name: a1
+      Prefix    : nsprefix
+
+      xmlns = http://www.w3c.org
+      Namespace :  
+      Local Name: xmlns
+      Prefix    :  
+
+      xmlns:nsprefix = http://www.oracle.com
+      Namespace : http://www.w3.org/XML/1998/namespace
+      Local Name: nsprefix
+      Prefix    : xmlns
+
+
+  ELEMENT Qualified Name: child
+  ELEMENT Prefix        :  
+  ELEMENT Local Name    : child
+  ELEMENT Namespace     : http://www.w3c.org
+

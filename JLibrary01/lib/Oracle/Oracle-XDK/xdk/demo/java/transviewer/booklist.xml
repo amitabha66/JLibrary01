@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<booklist>
+  <book isbn="1234-123456-1234">
+    <title>C Programming Language</title>
+    <author>Kernighan and Ritchie</author>
+    <publisher>EEE</publisher>
+    <price>7.99</price>
+  </book>
+  <book isbn="3456-34567890-3456">
+    <title>C++ Primer</title>
+    <author>Lippmann</author>
+    <publisher>McGraw Hill</publisher>
+    <price>4.99</price>
+  </book>
+  <book isbn="2137-598354-65978">
+    <title>Twelve Red Herrings</title>
+    <author>Jeffrey Archer</author>
+    <publisher>Harper Collins</publisher>
+    <price>12.95</price>
+  </book>
+  <book isbn="237864-4787834-3459">
+    <title>The Eleventh Commandment</title>
+    <author>Jeffrey Archer</author>
+    <publisher>Harper Collins</publisher>
+    <price>3.99</price>
+  </book>
+  <book isbn="1230-23498-2349879">
+    <title>Emperor's New Mind</title>
+    <author>Roger Penrose</author>
+    <publisher>Oxford Publishing Company</publisher>
+    <price>15.99</price>
+  </book>
+</booklist>

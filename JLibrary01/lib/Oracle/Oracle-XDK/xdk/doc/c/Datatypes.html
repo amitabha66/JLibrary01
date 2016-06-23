@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Oracle XML C Datatype Index</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Oracle XML C Datatype Index</h1>
+<table summary="Oracle XML C Datatype Index" cellspacing=0>
+	 <tr><td><a href="#xmlcmphow"><tt><b>xmlcmphow</b></tt></a><td>Constants for range comparison</tr>
+	 <tr><td><a href="#xmlctx"><tt><b>xmlctx</b></tt></a><td>XML top-level context</tr>
+	 <tr><td><a href="#xmliter"><tt><b>xmliter</b></tt></a><td>Control structure for Node Iterator and Tree Walker</tr>
+	 <tr><td><a href="#xmlnodetype"><tt><b>xmlnodetype</b></tt></a><td>DOM node type enumeration</tr>
+	 <tr><td><a href="#xmlostream"><tt><b>xmlostream</b></tt></a><td>User-defined output stream</tr>
+	 <tr><td><a href="#xmlpoint"><tt><b>xmlpoint</b></tt></a><td>XPointer point location</tr>
+	 <tr><td><a href="#xmlrange"><tt><b>xmlrange</b></tt></a><td>DOM Range control structure</tr>
+	 <tr><td><a href="#xmlshowbits"><tt><b>xmlshowbits</b></tt></a><td>Constants for whatToShow etc</tr>
+	 <tr><td><a href="#xmlxptrloc"><tt><b>xmlxptrloc</b></tt></a><td>XPointer location data type</tr>
+	 <tr><td><a href="#xmlxptrlocset"><tt><b>xmlxptrlocset</b></tt></a><td>XPointer location set data type</tr>
+	 <tr><td><a href="#xmlxptrloctype"><tt><b>xmlxptrloctype</b></tt></a><td>XPointer location type</tr>
+	 <tr><td><a href="#xmlxslobjtype"><tt><b>xmlxslobjtype</b></tt></a><td>XSL processor object type</tr>
+	 <tr><td><a href="#xmlxslomethod"><tt><b>xmlxslomethod</b></tt></a><td>XSL processor output method</tr>
+	 <tr><td><a href="#xmlxvm"><tt><b>xmlxvm</b></tt></a><td>The XSLT Virtual Machine.</tr>
+	 <tr><td><a href="#xmlxvmcomp"><tt><b>xmlxvmcomp</b></tt></a><td>The XSLTVM Compiler.</tr>
+	 <tr><td><a href="#xmlxvmflag"><tt><b>xmlxvmflag</b></tt></a><td>XSLT Compiler flags</tr>
+	 <tr><td><a href="#xmlxvmobjtype"><tt><b>xmlxvmobjtype</b></tt></a><td>XSL processor object type</tr>
+	 <tr><td><a href="#xpctx"><tt><b>xpctx</b></tt></a><td>XPath top-level context</tr>
+	 <tr><td><a href="#xpexpr"><tt><b>xpexpr</b></tt></a><td>XPath expression</tr>
+	 <tr><td><a href="#xpobj"><tt><b>xpobj</b></tt></a><td>XPath object</tr>
+	 <tr><td><a href="#xsdctx"><tt><b>xsdctx</b></tt></a><td>XML Schema context</tr>
+	 <tr><td><a href="#xslctx"><tt><b>xslctx</b></tt></a><td>XSL top-level context</tr>
+	 <tr><td><a href="#xvmobj"><tt><b>xvmobj</b></tt></a><td>XSLVM processor run-time object. </tr>
+</table></center><br>
+<hr noshade size=1><br>
+<h2 align=center><a name="xmlcmphow">xmlcmphow</a></h2>
+<table summary="XML datatype 'xmlcmphow' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlcmphow</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>Constants for range comparison</tr>
+	   <tr><th scope=row width="10%">Description<td>   Constant used for DOM Range comparisons</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum {
+    XMLDOM_START_TO_START = 0,
+    XMLDOM_START_TO_END   = 1,
+    XMLDOM_END_TO_END     = 2, 
+    XMLDOM_END_TO_START   = 3
+} xmlcmphow;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-Range.html#XmlDomRangeCompareBoundaryPoints"><tt>XmlDomRangeCompareBoundaryPoints</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlctx">xmlctx</a></h2>
+<table summary="XML datatype 'xmlctx' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlctx</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XML top-level context</tr>
+	   <tr><th scope=row width="10%">Description<td>   Context shared for all documents in an XML session.  Contains encoding
+   information, low-level memory allocation function pointers, error message
+   language/encoding and optional handler function, etc.  Required to load
+   (parse) documents and create DOM, generate SAX, etc.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xmlctx; typedef struct xmlctx xmlctx;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XML.html#XmlCreate"><tt>XmlCreate</tt></a>, <a href="Package-XML.html#XmlDestroy"><tt>XmlDestroy</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmliter">xmliter</a></h2>
+<table summary="XML datatype 'xmliter' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmliter</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>Control structure for Node Iterator and Tree Walker</tr>
+	   <tr><th scope=row width="10%">Description<td>   Control structure for DOM 2 Node Iterator and Tree Walker</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xmliter {
+    xmlnode *root_xmliter;   /* root node of the iteration space */
+    xmlnode *cur_xmliter;    /* current position (ref) node of the iterator */
+    ub4      show_xmliter;   /* node filter mask */
+    void    *filt_xmliter;   /* node filter function */
+    boolean  attach_xmliter; /* is iterator valid? */
+    boolean  expan_xmliter;  /* are external entities expanded? */
+    boolean  before_xmliter; /* is the iter position before the ref node? */
+};
+typedef struct xmliter xmliter;
+typedef struct xmliter xmlwalk;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-Traversal.html#XmlDomCreateNodeIter"><tt>XmlDomCreateNodeIter</tt></a>, <a href="Package-Traversal.html#XmlDomCreateTreeWalker"><tt>XmlDomCreateTreeWalker</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlnodetype">xmlnodetype</a></h2>
+<table summary="XML datatype 'xmlnodetype' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlnodetype</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>DOM node type enumeration</tr>
+	   <tr><th scope=row width="10%">Description<td>   The numeric type code of a node.  0 means invalid, 1-13 are the
+   standard numberings from DOM 1.0, and higher numbers are for
+   internal use only.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum {
+    XMLDOM_NONE     = 0,  /* bogus node */
+    XMLDOM_ELEM     = 1,  /* element */
+    XMLDOM_ATTR     = 2,  /* attribute */
+    XMLDOM_TEXT     = 3,  /* char data not escaped by CDATA */
+    XMLDOM_CDATA    = 4,  /* char data escaped by CDATA */
+    XMLDOM_ENTREF   = 5,  /* entity reference */
+    XMLDOM_ENTITY   = 6,  /* entity */
+    XMLDOM_PI       = 7,  /* &lt;?processing instructions?&gt; */
+    XMLDOM_COMMENT  = 8,  /* &lt;!-- Comments --&gt; */
+    XMLDOM_DOC      = 9,  /* Document */
+    XMLDOM_DTD      = 10, /* DTD */
+    XMLDOM_FRAG     = 11, /* Document fragment */
+    XMLDOM_NOTATION = 12, /* notation */
+    /* === Oracle extensions from here on === */
+    XMLDOM_ELEMDECL = 13, /* DTD element declaration */
+    XMLDOM_ATTRDECL = 14, /* DTD attribute declaration */
+    /* --- Content Particles (nodes in element's Content Model) --- */
+    XMLDOM_CPELEM   = 15, /* element */
+    XMLDOM_CPCHOICE = 16, /* choice (a|b) */
+    XMLDOM_CPSEQ    = 17, /* sequence (a,b) */
+    XMLDOM_CPPCDATA = 18, /* #PCDATA */
+    XMLDOM_CPSTAR   = 19, /* '*' (zero or more) */
+    XMLDOM_CPPLUS   = 20, /* '+' (one or more) */
+    XMLDOM_CPOPT    = 21, /* '?' (optional) */
+    XMLDOM_CPEND    = 22  /* end marker */
+} xmlnodetype;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-DOM.html#XmlDomGetNodeType"><tt>XmlDomGetNodeType</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlostream">xmlostream</a></h2>
+<table summary="XML datatype 'xmlostream' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlostream</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>User-defined output stream</tr>
+	   <tr><th scope=row width="10%">Description<td>    Generic user-defined output stream.  The three function pointers are
+    required (but may be stubs).  The context pointer is entirely user-defined;
+    point it to whatever state information is required to manage the stream;
+    it will be passed as first argument to the user functions.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef struct xmlostream {
+    XML_STREAM_OPEN_F((*open_xmlostream), xctx, sctx, path, parts, length);
+    XML_STREAM_WRITE_F((*write_xmlostream), xctx, sctx, path, src, size);
+    XML_STREAM_CLOSE_F((*close_xmlostream), xctx, sctx);
+    void *ctx_xmlostream;                         /* user's stream context */
+} xmlostream;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+, <a href="Package-XSLT.html#XmlXslSetOutputStream"><tt>XmlXslSetOutputStream</tt></a>, <a href="Package-XSLTVM.html#XmlXvmSetOutputStream"><tt>XmlXvmSetOutputStream</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlpoint">xmlpoint</a></h2>
+<table summary="XML datatype 'xmlpoint' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlpoint</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer point location</tr>
+	   <tr><th scope=row width="10%">Description<td>   MISSING FULL DESCRIPTION OF THIS TYPE</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef struct xmlpoint xmlpoint;</pre></tr>
+</table><br>
+<h2 align=center><a name="xmlrange">xmlrange</a></h2>
+<table summary="XML datatype 'xmlrange' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlrange</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>DOM Range control structure</tr>
+	   <tr><th scope=row width="10%">Description<td>   Control structure for DOM 2 Range </tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef struct xmlrange {
+    xmlnode *startnode_xmlrange;  /* start point container */
+    ub4      startofst_xmlrange;  /* start point index */
+    xmlnode *endnode_xmlrange;    /* end point container */
+    ub4      endofst_xmlrange;    /* end point index */
+    xmlnode *doc_xmlrange;        /* document node */
+    xmlnode *root_xmlrange;       /* root node of the range */
+    boolean  collapsed_xmlrange;  /* is range collapsed? */
+    boolean  detached_xmlrange;   /* is range invalid or invalidated? */
+} xmlrange;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-Range.html#XmlDomCreateRange"><tt>XmlDomCreateRange</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlshowbits">xmlshowbits</a></h2>
+<table summary="XML datatype 'xmlshowbits' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlshowbits</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>Constants for whatToShow etc</tr>
+	   <tr><th scope=row width="10%">Description<td>   Bit flags used to select which nodes types to show</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef ub4 xmlshowbits;
+#define XMLDOM_SHOW_ALL         ~(xmlshowbits)0
+#define XMLDOM_SHOW_BIT(ntype)  ((xmlshowbits)1 &lt;&lt; (ntype))
+#define XMLDOM_SHOW_ELEM        XMLDOM_SHOW_BIT(XMLDOM_ELEM)
+#define XMLDOM_SHOW_ATTR        XMLDOM_SHOW_BIT(XMLDOM_ATTR)
+#define XMLDOM_SHOW_TEXT        XMLDOM_SHOW_BIT(XMLDOM_TEXT)
+#define XMLDOM_SHOW_CDATA       XMLDOM_SHOW_BIT(XMLDOM_CDATA)
+#define XMLDOM_SHOW_ENTREF      XMLDOM_SHOW_BIT(XMLDOM_ENTREF)
+#define XMLDOM_SHOW_ENTITY      XMLDOM_SHOW_BIT(XMLDOM_ENTITY)
+#define XMLDOM_SHOW_PI          XMLDOM_SHOW_BIT(XMLDOM_PI)
+#define XMLDOM_SHOW_COMMENT     XMLDOM_SHOW_BIT(XMLDOM_COMMENT)
+#define XMLDOM_SHOW_DOC         XMLDOM_SHOW_BIT(XMLDOM_DOC)
+#define XMLDOM_SHOW_DTD         XMLDOM_SHOW_BIT(XMLDOM_DTD)
+#define XMLDOM_SHOW_FRAG        XMLDOM_SHOW_BIT(XMLDOM_FRAG)
+#define XMLDOM_SHOW_NOTATION    XMLDOM_SHOW_BIT(XMLDOM_NOTATION)
+#define XMLDOM_SHOW_DOC_TYPE    XMLDOM_SHOW_BIT(XMLDOM_DOC_TYPE)</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-Traversal.html#XmlDomCreateNodeIter"><tt>XmlDomCreateNodeIter</tt></a>, <a href="Package-Traversal.html#XmlDomCreateTreeWalker"><tt>XmlDomCreateTreeWalker</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxptrloc">xmlxptrloc</a></h2>
+<table summary="XML datatype 'xmlxptrloc' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxptrloc</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer location data type</tr>
+	   <tr><th scope=row width="10%">Description<td>   MISSING FULL DESCRIPTION OF THIS TYPE</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef struct xmlxptrloc xmlxptrloc;</pre></tr>
+</table><br>
+<h2 align=center><a name="xmlxptrlocset">xmlxptrlocset</a></h2>
+<table summary="XML datatype 'xmlxptrlocset' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxptrlocset</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer location set data type</tr>
+	   <tr><th scope=row width="10%">Description<td>   MISSING FULL DESCRIPTION OF THIS TYPE</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef struct xmlxptrlocset xmlxptrlocset;</pre></tr>
+</table><br>
+<h2 align=center><a name="xmlxptrloctype">xmlxptrloctype</a></h2>
+<table summary="XML datatype 'xmlxptrloctype' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxptrloctype</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer location type</tr>
+	   <tr><th scope=row width="10%">Description<td>   MISSING FULL DESCRIPTION OF THIS TYPE</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum xmlxptrloctype {
+  XMLXPTRLOCTYPE_UNDEF     = 0,
+  XMLXPTRLOCTYPE_NODE      = 1,
+  XMLXPTRLOCTYPE_POINT     = 2,
+  XMLXPTRLOCTYPE_RANGE     = 3,
+  XMLXPTRLOCTYPE_BOOL      = 4,
+  XMLXPTRLOCTYPE_NUM       = 5,
+  XMLXPTRLOCTYPE_STR       = 6
+} xmlxptrloctype;</pre></tr>
+</table><br>
+<h2 align=center><a name="xmlxslobjtype">xmlxslobjtype</a></h2>
+<table summary="XML datatype 'xmlxslobjtype' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxslobjtype</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL processor object type</tr>
+	   <tr><th scope=row width="10%">Description<td>   Type of XSLT object that may be returned.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum xmlxslobjtype {
+    XMLXSL_TYPE_UNKNOWN = 0, /* Not a defined type */
+    XMLXSL_TYPE_NDSET   = 1, /* Node-set */
+    XMLXSL_TYPE_BOOL    = 2, /* Boolean value */
+    XMLXSL_TYPE_NUM     = 3, /* Numeric value (double) */
+    XMLXSL_TYPE_STR     = 4, /* String */
+    XMLXSL_TYPE_FRAG    = 5  /* Document Fragment */
+} xmlxslobjtype;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XPath.html#XmlXPathGetObjectType"><tt>XmlXPathGetObjectType</tt></a>, <a href="Package-XSLTVM.html#XmlXvmGetObjectType"><tt>XmlXvmGetObjectType</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxslomethod">xmlxslomethod</a></h2>
+<table summary="XML datatype 'xmlxslomethod' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxslomethod</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL processor output method</tr>
+	   <tr><th scope=row width="10%">Description<td>   Type of output to be produced by the XSLT processor.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum xmlxslomethod {
+    XMLXSL_OUTPUT_UNKNOWN   = 0, /* Not defined */
+    XMLXSL_OUTPUT_XML       = 1, /* Produce a Document Fragment */
+    XMLXSL_OUTPUT_STREAM    = 2, /* Stream out formatted result */
+    XMLXSL_OUTPUT_HTML      = 3  /* Stream out HTML-ized formatted result */
+} xmlxslomethod;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLT.html#XmlXslSetOutputMethod"><tt>XmlXslSetOutputMethod</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxvm">xmlxvm</a></h2>
+<table summary="XML datatype 'xmlxvm' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxvm</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>The XSLT Virtual Machine.</tr>
+	   <tr><th scope=row width="10%">Description<td>    An object of type 'xmlxvm' is used for XML documents transformation.
+    Note: The contents of 'xmlxvm' are private and must not be accessed by
+    users.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xmlxvm; typedef struct xmlxvm xmlxvm;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLTVM.html#XmlXvmCreate"><tt>XmlXvmCreate</tt></a>, <a href="Package-XSLTVM.html#XmlXvmDestroy"><tt>XmlXvmDestroy</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxvmcomp">xmlxvmcomp</a></h2>
+<table summary="XML datatype 'xmlxvmcomp' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxvmcomp</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>The XSLTVM Compiler.</tr>
+	   <tr><th scope=row width="10%">Description<td>    An object of type 'xmlxvmcomp' is used for compiling XSL stylesheets.
+    Note: The contents of 'xmlxvmcomp' are private and must not be accessed by
+    users.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xmlxvmcomp; typedef struct xmlxvmcomp xmlxvmcomp;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLTVM.html#XmlXvmCreateComp"><tt>XmlXvmCreateComp</tt></a>, <a href="Package-XSLTVM.html#XmlXvmDestroyComp"><tt>XmlXvmDestroyComp</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxvmflag">xmlxvmflag</a></h2>
+<table summary="XML datatype 'xmlxvmflag' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxvmflag</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSLT Compiler flags</tr>
+	   <tr><th scope=row width="10%">Description<td>   Control flags for the XSLT compiler
+      XMLXVM_DEBUG - forces compiler to insert debug info into the bytecode.
+      XMLXVM_STRIPSPACE - same as xsl:strip-space elements="*" </tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef ub4 xmlxvmflag;
+#define XMLXVM_NOFLAG     0x00
+#define XMLXVM_DEBUG      0x01 /* insert debug info into bytecode */
+#define XMLXVM_STRIPSPACE 0x02 /* same as xsl:strip-space elements="*" */</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLTVM.html#XmlXvmCompileFile"><tt>XmlXvmCompileFile</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xmlxvmobjtype">xmlxvmobjtype</a></h2>
+<table summary="XML datatype 'xmlxvmobjtype' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xmlxvmobjtype</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL processor object type</tr>
+	   <tr><th scope=row width="10%">Description<td>   Type of XSLTVM objects </tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+typedef enum xmlxvmobjtype {
+    XMLXVM_TYPE_UNKNOWN = 0,
+    XMLXVM_TYPE_NDSET   = 1,
+    XMLXVM_TYPE_BOOL    = 2,
+    XMLXVM_TYPE_NUM     = 3,
+    XMLXVM_TYPE_STR     = 4,
+    XMLXVM_TYPE_FRAG    = 5
+} xmlxvmobjtype;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLTVM.html#XmlXvmGetObjectType"><tt>XmlXvmGetObjectType</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xpctx">xpctx</a></h2>
+<table summary="XML datatype 'xpctx' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xpctx</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath top-level context</tr>
+	   <tr><th scope=row width="10%">Description<td>   XPath context</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xpctx;
+typedef struct xpctx xpctx;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XPath.html#XmlXPathCreateCtx"><tt>XmlXPathCreateCtx</tt></a>, <a href="Package-XPath.html#XmlXPathDestroyCtx"><tt>XmlXPathDestroyCtx</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xpexpr">xpexpr</a></h2>
+<table summary="XML datatype 'xpexpr' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xpexpr</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath expression</tr>
+	   <tr><th scope=row width="10%">Description<td>   XPath expression</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xpexpr;
+typedef struct xpexpr xpexpr;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XPath.html#XmlXPathParse"><tt>XmlXPathParse</tt></a>, <a href="Package-XPath.html#XmlXPathEval"><tt>XmlXPathEval</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xpobj">xpobj</a></h2>
+<table summary="XML datatype 'xpobj' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xpobj</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath object</tr>
+	   <tr><th scope=row width="10%">Description<td>   XPath object</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xpobj;
+typedef struct xpobj xpobj;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XPath.html#XmlXPathEval"><tt>XmlXPathEval</tt></a>, <a href="Package-XPath.html#XmlXPathGetObjectType"><tt>XmlXPathGetObjectType</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xsdctx">xsdctx</a></h2>
+<table summary="XML datatype 'xsdctx' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xsdctx</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XML Schema context</tr>
+	   <tr><th scope=row width="10%">Description<td>    XML Schema validator context, created by XmlSchemaCreate and passed 
+    to most Schema functions.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+# define XSDCTX_DEFINED
+struct xsdctx; typedef struct xsdctx xsdctx;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-Schema.html#XmlSchemaCreate"><tt>XmlSchemaCreate</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xslctx">xslctx</a></h2>
+<table summary="XML datatype 'xslctx' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xslctx</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL top-level context</tr>
+	   <tr><th scope=row width="10%">Description<td>   XSLT context</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xslctx;
+typedef struct xslctx xslctx;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLT.html#XmlXslCreate"><tt>XmlXslCreate</tt></a>, <a href="Package-XSLT.html#XmlXslDestroy"><tt>XmlXslDestroy</tt></a></tr>
+</table><br>
+<h2 align=center><a name="xvmobj">xvmobj</a></h2>
+<table summary="XML datatype 'xvmobj' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>xvmobj</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSLVM processor run-time object. </tr>
+	   <tr><th scope=row width="10%">Description<td>    Note: The contents of 'xvmobj' are private and must not be accessed
+    by users.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+struct xvmobj; typedef struct xvmobj xvmobj;</pre></tr>
+    <tr><th scope=row width="10%">See Also<td>
+<a href="Package-XSLTVM.html#XmlXvmEvaluateXPath"><tt>XmlXvmEvaluateXPath</tt></a></tr>
+</table><br>
+</body>
+</html>

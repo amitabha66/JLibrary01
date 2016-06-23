@@ -1,0 +1,12 @@
+XML Schema validator C++ sample
+Initializing context
+Initializing Tools Factory
+Creating DOM parser
+Create file source
+Parsing 'car.xml' ...
+Get document element
+Create document element reference
+Finished parsing
+Creating Schema validator
+Validating document
+Document is valid

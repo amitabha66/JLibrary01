@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql"><![CDATA[
+
+select sum(n.amount) as TotalApprovedAmount
+  from insurance_claim_view v, TABLE(v.settlements) n
+ where n.approver = 'JCOX'
+   and contains(damageReport,'Brakes within Cause') > 0
+
+]]></xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:52:53 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/insclaim/claim5.xml.mkelem $
+| $Revision: /main/0 $
++-->
+

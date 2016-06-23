@@ -1,0 +1,1183 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>XML SQL Utility (XSU) PL/SQL API</title>
+</head>
+<body bgcolor="#CCCCCC" text="#000000">
+<h1>
+
+<hr SIZE=4 WIDTH="100%"></h1>
+
+<h1> <font color="#000000">XML SQL Utility (XSU) PL/SQL API</font></h1>
+
+<hr SIZE=4 WIDTH="100%">
+<p>XSU’s PL/SQL API consists of two packages:</p>
+<ul>
+  <li> DBMS_XMLQuery -- provides DB_to_XML type functionality.</li>
+  <li>DBMS_XMLSave -- provides XML_to_DB type functionality. </li>
+</ul>
+<h2><font size="6"><a name="dbms_xmlquery"></a>DBMS_XMLQuery </font></h2>
+<h2>Types: </h2>
+<dl> 
+  <dt><b><font color="#0000CC">ctxType</font></b></dt>
+  <dd> The type of the query context handle. This the return type of &quot;DBMS_ 
+    XMLQuery.newContext()&quot;.</dd>
+</dl>
+<h2>Constants:</h2>
+<dl> 
+  <dt><b><font color="#0000CC">DEFAULT_ROWSETTAG</font> </b></dt>
+  <dd>The tag name for the element enclosing the XML generated from the result 
+    set (i.e. for most cases the root node tag name) -- ROWSET </dd>
+  <dt><b><font color="#0000CC">DEFAULT_ERRORTAG</font></b> </dt>
+  <dd>The default tag to enclose raised errors -- ERROR. </dd>
+  <dt><b><font color="#0000CC">DEFAULT_ROWIDATTR</font></b> </dt>
+  <dd>The default name for the cardinality attribute of XML elements coresponding 
+    to db. records. -- NUM </dd>
+  <dt><b><font color="#0000CC">DEFAULT_ROWTAG</font></b> </dt>
+  <dd>The default tag name for the element cooresponding to db. records. -- ROW</dd>
+  <dt>&nbsp; </dt>
+  <dt><b><font color="#0000CC">DEFAULT_DATE_FORMAT</font></b> </dt>
+  <dd>Default date mask. -- &#146;MM/dd/yyyy HH:mm:ss&#146;</dd>
+  <dt><b><font color="#0000CC">ALL_ROWS</font></b> <font color="#0000CC">&nbsp;&nbsp;</font></dt>
+  <dd>The ALL_ROWS parameter is to indicate that all rows are needed in the output. 
+  </dd>
+  <dt><b><font color="#0000CC">NONE</font></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </dt>
+  <dd>Used to specifies that the output should not contain any XML metadata (e.g. 
+    no DTD). </dd>
+  <dt><b><font color="#0000CC">DTD</font></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </dt>
+  <dd>Used to specify that the generation of the DTD is desired. </dd>
+  <dt><b><font color="#0000CC">SCHEMA</font></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </dt>
+  <dd>Used to specify that the generation of the XML SCHEMAis desired. </dd>
+  <dt><b><font color="#0000CC"></font></b></dt>
+  <dt><b><font color="#0000CC">LOWER_CASE &nbsp;&nbsp;&nbsp;</font></b>&nbsp;&nbsp;&nbsp;&nbsp; 
+  </dt>
+  <dd>Use lower cased tag names.</dd>
+  <dt><b><font color="#0000CC">UPPER_CASE</font></b></dt>
+  <dd>Use upper case tag names.</dd>
+  <dt>&nbsp;</dt>
+</dl>
+<h2>Function and Procedure Index:</h2>
+<dl> 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#closeContext(ctxType)"><b>PROCEDURE 
+    closeContext(ctxType)</b></a> 
+  <dd> It closes/deallocates a particular query context 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getDTD(ctx,%20boolean)"><b>FUNCTION 
+    getDTD(ctxType, BOOLEAN := false) RETURN CLOB</b></a> 
+  <dd> Generates the DTD based on the SQL query used to init. 
+  <dt>&nbsp; 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getDTD(ctx,%20clob,%20boolean)"><b>PROCEDURE 
+    getDTD(ctxType, CLOB, BOOLEAN := false)</b></a> 
+  <dd> Generates the DTD based on the SQL query used to init. 
+  <dt> 
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getExceptionContent(ctxType,%20number,%20varchar2)"><b>PROCEDURE 
+    getExceptionContent(ctxType, NUMBER, VARCHAR2)</b></a> 
+  <dd> Via its arguments, this method returns the thrown exception's error code 
+    and error message (i.e. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getXML(ctxType,%20number)"><b>FUNCTION 
+    getXML(VARCHAR2, NUMBER := NONE) RETURN CLOB</b></a> 
+  <dd> Generates the XML doc. 
+  <dt>
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getXML(ctxType,%20number)"><b>FUNCTION 
+    getXML(CLOB, NUMBER := NONE) RETURN CLOB</b></a> 
+  <dd> Generates the XML doc. 
+  <dt>
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getXML(ctxType,%20number)"><b>FUNCTION 
+    getXML(ctxType, NUMBER := NONE) RETURN CLOB</b></a> 
+  <dd> Generates the XML doc. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getXML(ctxType,%20clob,%20number)"><b>PROCEDURE 
+    getXML(ctxType, CLOB, NUMBER := NONE)</b></a> 
+  <dd> Generates the XML doc. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#newContext(oracle.sql.CLOB)"><b>FUNCTION 
+    newContext(VARCHAR2) RETURN ctxType</b></a> 
+  <dd> It creates a query context, and it returns the context handle. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#newContext(java.sql.Connection, java.lang.String)"><b>FUNCTION 
+    newContext(CLOB) RETURN ctxType</b></a> 
+  <dd> It creates a query context, and it returns the context handle. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#propagateOriginalException(int, byte)"><b>PROCEDURE 
+    propagateOriginalException(ctxType, BOOLEAN)</b></a> 
+  <dd> Tells the XSU that if an exception is raised, and is being thrown, the 
+    XSU should throw the very exception raised; rather then, wrapping it with 
+    an OracleXMLSQLException. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setBindValue(int, java.lang.String, java.lang.String)"><b>PROCEDURE 
+    setBindValue(ctxType, VARCHAR2, VARCHAR2)</b></a> 
+  <dd> Sets a value for a particular bind name. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setCollIdAttrName(int, java.lang.String)"><b>PROCEDURE 
+    setCollIdAttrName(ctxType, VARCHAR2</b></a> 
+  <dd> Sets the name of the id attribute of the collection element's separator 
+    tag. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setDataHeader(int, oracle.sql.CLOB, java.lang.String)"><b>PROCEDURE 
+    setDataHeader(ctxType, CLOB := null, VARCHAR2 := null)</b></a> 
+  <dd> Sets the xml data header. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setDateFormat(int, java.lang.String)"><b>PROCEDURE 
+    setDateFormat(ctxType, VARCHAR2)</b></a> 
+  <dd> Sets the format of the generated dates in the XML doc. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setErrorTag(int, java.lang.String)"><b>PROCEDURE 
+    setErrorTag(ctxType, VARCHAR2)</b></a> 
+  <dd> Sets the tag to be used to enclose the xml error docs. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setMaxRows(int, int)"><b>PROCEDURE 
+    setMaxRows (ctxType, NUMBER)</b></a> 
+  <dd> Sets the max number of rows to be converted to XML. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setMetaHeader(int, oracle.sql.CLOB)"><b>PROCEDURE 
+    setMetaHeader(ctxType, CLOB := null)</b></a> 
+  <dd> Sets the XML meta header. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRaiseException(int, byte)"><b>PROCEDURE 
+    setRaiseException(ctxType, BOOLEAN)</b></a> 
+  <dd> Tells the XSU to throw the raised exceptions. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRaiseNoRowsException(int, byte)"><b>PROCEDURE 
+    setRaiseNoRowsException(ctxType, BOOLEAN)</b></a> 
+  <dd> Tells the XSU to throw or not to throw an OracleXMLNoRowsException in the 
+    case when for one reason or another, the XML doc generated is empty. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRowIdAttrName(int, java.lang.String)"><b>PROCEDURE 
+    setRowIdAttrName(ctxType, VARCHAR2)</b></a> 
+  <dd> Sets the name of the id attribute of the row enclosing tag. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRowIdAttrValue(int, java.lang.String)"><b>PROCEDURE 
+    setRowIdAttrValue(ctxType, VARCHAR2)</b></a> 
+  <dd> Specifies the scalar column whose value is to be assigned to the id attribute 
+    of the row enclosing tag. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRowsetTag(int, java.lang.String)"><b>PROCEDURE 
+    setRowsetTag(ctxType, VARCHAR2)</b></a> 
+  <dd> Sets the tag to be used to enclose the xml dataset. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRowTag(int, java.lang.String)"><b>PROCEDURE 
+    setRowTag(ctxType, VARCHAR2)</b></a> 
+  <dd> Sets the tag to be used to enclose the xml element corresponding to a db. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setSkipRows(int, int)"><b>PROCEDURE 
+    setSkipRows(ctxType, NUMBER)</b></a> 
+  <dd> Sets the number of rows to skip. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setStylesheetHeader(int, java.lang.String, java.lang.String)"><b>PROCEDURE 
+    setStylesheetHeader(ctxType, VARCHAR2, VARCHAR2 := 'text/xsl')</b></a> 
+  <dd> Sets the stylesheet header (i.e. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setTagCase(int, byte)"><b>PROCEDURE 
+    setTagCase(ctxType, NUMBER)</b></a> 
+  <dd> Specified the case of the generated XML tags. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setXSLT(int, oracle.sql.CLOB, java.lang.String)"><b>PROCEDURE 
+    setXSLT(ctxType, VARCHAR2, VARCHAR2 := null)</b></a> 
+  <dd> Registers a stylesheet to be applied to generated XML. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setXSLT(int, java.lang.String, java.lang.String)"><b>PROCEDURE 
+    setXSLT(ctxType, CLOB, VARCHAR2 := null)</b></a> 
+  <dd> Registers a stylesheet to be applied to generated XML. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setXSLT(int, java.lang.String, java.lang.String)"><b>PROCEDURE 
+    setXSLTParam(ctxType, VARCHAR2, VARCHAR2)</b></a> 
+  <dd> Sets the value of a top-level stylesheet parameter. 
+  <dt> 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setXSLT(int, java.lang.String, java.lang.String)"><b>PROCEDURE 
+    removeXSLTParam(ctxType, VARCHAR2)</b></a> 
+  <dd> Removes a particular top-level stylesheet parameter. 
+  <dt> 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#useNullAttributeIndicator(int, byte)"><b>PROCEDURE 
+    useNullAttributeIndicator(ctxType, BOOLEAN)</b></a> 
+  <dd> Specified weather to use an XML attribute to indicate NULLness, or to do 
+    it by omitting the inclusion of the particular entity in the XML document. 
+</dl>
+<h2>Functions and Procedures:</h2>
+<p><a name="newContext(java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="newContext"><b>newContext</b></a> </p>
+<pre>FUNCTION newContext(sqlQuery IN VARCHAR2) RETURN ctxType
+</pre>
+<dl> 
+  <dd> It creates a query context, and it returns the context handle. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> sqlQuery - SQL query, the results of which to convert to XML 
+      <dt> <b>Returns:</b> 
+      <dd> The context handle. 
+    </dl>
+  </dd>
+</dl>
+<a name="newContext(oracle.sql.CLOB)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="newContext"><b>newContext</b></a> 
+<pre>FUNCTION newContext(sqlQuery IN CLOB) RETURN ctxType
+</pre>
+<dl> 
+  <dd> It creates a query context, and it returns the context handle. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> sqlQuery - SQL query, the results of which to convert to XML 
+      <dt> <b>Returns:</b> 
+      <dd> The context handle. 
+    </dl>
+  </dd>
+</dl>
+<a name="closeContext(int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="closeContext"><b>closeContext</b></a> 
+<pre>PROCEDURE closeContext(ctxHdl IN ctxType)
+</pre>
+<dl> 
+  <dd> It closes/deallocates a particular query context 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+    </dl>
+  </dd>
+</dl>
+<a name="setRowsetTag(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRowsetTag"><b>setRowsetTag</b></a> 
+<pre>PROCEDURE setRowsetTag(ctxHdl IN ctxType, tag IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the tag to be used to enclose the xml dataset. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> tag - tag name 
+    </dl>
+  </dd>
+</dl>
+<a name="setRowTag(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRowTag"><b>setRowTag</b></a> 
+<pre>PROCEDURE setRowTag(ctxHdl IN ctxType, tag IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the tag to be used to enclose the xml element corresponding to a db. 
+    record. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> tag - tag name 
+    </dl>
+  </dd>
+</dl>
+<a name="setErrorTag(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setErrorTag"><b>setErrorTag</b></a> 
+<pre>PROCEDURE setErrorTag(ctxHdl IN ctxType, tag IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the tag to be used to enclose the xml error docs. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> tag - tag name 
+    </dl>
+  </dd>
+</dl>
+<a name="setRowIdAttrName(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRowIdAttrName"><b>setRowIdAttrName</b></a> 
+<pre>PROCEDURE setRowIdAttrName(ctxHdl IN ctxType, attrName IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the name of the id attribute of the row enclosing tag. Passing <code>null</code> 
+    or an empty string for the <code>tag</code> results the row id attribute to 
+    be omitted. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> attrName - attribute name 
+    </dl>
+  </dd>
+</dl>
+<a name="setRowIdAttrValue(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRowIdAttrValue"><b>setRowIdAttrValue</b></a> 
+<pre>PROCEDURE setRowIdAttrValue(ctxHdl IN ctxType, colName IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Specifies the scalar column whose value is to be assigned to the id attribute 
+    of the row enclosing tag. Passing <code>null</code> or an empty string for 
+    the <code>colName</code> results the row id attribute being assigned the row 
+    count value (i.e. 0, 1, 2 and so on). 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> colName - column whose value is to be assigned to the row id attr 
+    </dl>
+  </dd>
+</dl>
+<a name="setCollIdAttrName(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setCollIdAttrName"><b>setCollIdAttrName</b></a> 
+<pre>PROCEDURE setCollIdAttrName(ctxHdl IN ctxType, attrName IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the name of the id attribute of the collection element's separator 
+    tag. Passing <code>null</code> or an empty string for the <code>tag</code> 
+    results the row id attribute to be omitted. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> attrName - attribute name 
+    </dl>
+  </dd>
+</dl>
+<a name="useNullAttributeIndicator(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="useNullAttributeIndicator"><b>useNullAttributeIndicator</b></a> 
+<pre>PROCEDURE useNullAttributeIndicator(ctxHdl IN ctxType, flag IN BOOLEAN)
+</pre>
+<dl> 
+  <dd> Specified weather to use an XML attribute to indicate NULLness, or to do 
+    it by omitting the inclusion of the particular entity in the XML document. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> flag - use attribute to indicate null? 
+    </dl>
+  </dd>
+</dl>
+<a name="setTagCase(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setTagCase"><b>setTagCase</b></a> 
+<pre>PROCEDURE setTagCase(ctxHdl IN ctxType, tCase IN NUMBER)
+</pre>
+<dl> 
+  <dd> Specified the case of the generated XML tags. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> tCase - the tag's case (0-asAre, 1-lower, 2-upper) 
+    </dl>
+  </dd>
+</dl>
+<a name="setDateFormat(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setDateFormat"><b>setDateFormat</b></a> 
+<pre>PROCEDURE setDateFormat(ctxHdl IN ctxType, mask IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the format of the generated dates in the XML doc. The syntax of the 
+    date format patern (i.e. the date mask), should conform to the requirements 
+    of the java.text.SimpleDateFormat class. Setting the mask to <code>null</code> 
+    or an empty string, results the use of the default mask -- DEFAULT_DATE_FORMAT. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> mask - the date mask 
+    </dl>
+  </dd>
+</dl>
+<a name="setMaxRows(int, int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setMaxRows"><b>setMaxRows</b></a> 
+<pre>PROCEDURE setMaxRows (ctxHdl IN ctxType, rows IN NUMBER)
+</pre>
+<dl> 
+  <dd> Sets the max number of rows to be converted to XML. By default there is 
+    no max set. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> rows - max number of rows to generate 
+    </dl>
+  </dd>
+</dl>
+<a name="setSkipRows(int, int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setSkipRows"><b>setSkipRows</b></a> 
+<pre>PROCEDURE setSkipRows(ctxHdl IN ctxType, rows IN NUMBER)
+</pre>
+<dl> 
+  <dd> Sets the number of rows to skip. By default 0 rows are skipped. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> rows - number of rows to skip 
+    </dl>
+  </dd>
+</dl>
+<a name="setStylesheetHeader(int, java.lang.String, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setStylesheetHeader"><b>setStylesheetHeader</b></a> 
+<pre>PROCEDURE setStylesheetHeader(ctxHdl IN ctxType, uri IN VARCHAR2, type IN VARCHAR2 := 'text/xsl')
+</pre>
+<dl> 
+  <dd> Sets the stylesheet header (i.e. stylesheet processing instructions) in 
+    the generated XML doc. Note: Passing <code>null</code> for the <code>uri</code> 
+    argument will unset the stylesheet header and the stylesheet type. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> uri - stylesheet URI 
+      <dd> type - stylesheet type; defaults to 'text/xsl' 
+    </dl>
+  </dd>
+</dl>
+<a name="setXSLT(int, java.lang.String, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setXSLT"><b>setXSLT</b></a> 
+<pre>PROCEDURE setXSLT(ctxHdl IN ctxType, uri IN VARCHAR2, ref IN VARCHAR2 := null)
+</pre>
+<dl> 
+  <dd> Registers a stylesheet to be applied to generated XML. If a stylesheet 
+    was already registered, it gets replaced by the new one. To un-register the 
+    stylesheet pass in a <code>null</code> for the <code>uri</code> argument. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> uri - stylesheet URI 
+      <dd> ref - URL for include, import and external entities 
+    </dl>
+  </dd>
+</dl>
+<a name="setXSLT(int, oracle.sql.CLOB, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setXSLT"><b>setXSLT</b></a> 
+<pre>PROCEDURE setXSLT(ctxHdl IN ctxType, stylesheet CLOB, ref IN VARCHAR2 := null)
+</pre>
+<dl> 
+  <dd> Registers a stylesheet to be applied to generated XML. If a stylesheet 
+    was already registered, it gets replaced by the new one. To un-register the 
+    stylesheet pass in a <code>null</code> or an empty string for the <code>stylesheet</code> 
+    argument. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> stylesheet - the stylesheet 
+      <dd> ref - URL for include, import and external entities 
+    </dl>
+  </dd>
+</dl>
+<a name="setXSLT(int, oracle.sql.CLOB, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setXSLT"><b>setXSLTParam</b></a> 
+<pre>PROCEDURE setXSLTParam(ctxHdl IN ctxType, name IN VARCHAR2, value IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the value of a top-level stylesheet parameter. The parameter value 
+    is expected to be a valid XPath expression (note that string literal values 
+    would therefore have to be explicitly quoted). NOTE: if no stylesheet is registered, 
+    this method is a no op. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> name - name of the top level stylesheet parameter 
+      <dd> value - value to be assigned to the stylesheet parameter
+    </dl>
+  </dd>
+</dl>
+<a name="setXSLT(int, oracle.sql.CLOB, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setXSLT"><b>removeXSLTParam</b></a> 
+<pre>PROCEDURE removeXSLTParam(ctxHdl IN ctxType, name IN VARCHAR2, value IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets the value of a top-level stylesheet parameter. The parameter value 
+    is expected to be a valid XPath expression (note that string literal values 
+    would therefore have to be explicitly quoted). NOTE: if no stylesheet is registered, 
+    this method is a no op. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> name - name of the top level stylesheet parameter 
+      <dd> . 
+    </dl>
+  </dd>
+</dl>
+<a name="setBindValue(int, java.lang.String, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setBindValue"><b>setBindValue</b></a> 
+<pre>PROCEDURE setBindValue(ctxHdl IN ctxType, bindName IN VARCHAR2, bindValue IN VARCHAR2)
+</pre>
+<dl> 
+  <dd> Sets a value for a particular bind name. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> bindName - bind name 
+      <dd> bindValue - bind value 
+    </dl>
+  </dd>
+</dl>
+<a name="setMetaHeader(int, oracle.sql.CLOB)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setMetaHeader"><b>setMetaHeader</b></a> 
+<pre>PROCEDURE setMetaHeader(ctxHdl IN ctxType, header IN CLOB := null)
+</pre>
+<dl> 
+  <dd> Sets the XML meta header. When set, the header is inserted at the begining 
+    of the metadata part (DTD or XMLSchema) of each XML document generated by 
+    this object. Note that the last meta header specified is the one that is used; 
+    furthermore, passing in <code>null</code> for the <code>header</code>, parameter 
+    unsets the meta header. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> header - header 
+    </dl>
+  </dd>
+</dl>
+<a name="setDataHeader(int, oracle.sql.CLOB, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setDataHeader"><b>setDataHeader</b></a> 
+<pre>PROCEDURE setDataHeader(ctxHdl IN ctxType, header IN CLOB := null, tag IN VARCHAR2 := null)
+</pre>
+<dl> 
+  <dd> Sets the xml data header. The data header is an XML entity which is appended 
+    at the begining of the query-generated xml entity (ie. rowset). The two entities 
+    are enclosed by the tag specified via the <code>docTag</code> argument. Note 
+    that the last data header specified is the one that is used; furthermore, 
+    passing in <code>null</code> for the <code>header</code>, parameter unsets 
+    the data header. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> header - header 
+      <dd> tag - tag used to enclose the data header and the rowset 
+    </dl>
+  </dd>
+</dl>
+<a name="setRaiseException(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRaiseException"><b>setRaiseException</b></a> 
+<pre>PROCEDURE setRaiseException(ctxHdl IN ctxType, flag IN BOOLEAN)
+</pre>
+<dl> 
+  <dd> Tells the XSU to throw the raised exceptions. If this call isn't made or 
+    if <code>false</code> is passed to the <code>flag</code> argument, the XSU 
+    catches the SQL exceptions and generates an XML doc out of the exception's 
+    message. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> flag - throw raised exceptions? 
+    </dl>
+  </dd>
+</dl>
+<a name="setRaiseNoRowsException(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="setRaiseNoRowsException"><b>setRaiseNoRowsException</b></a> 
+<pre>PROCEDURE setRaiseNoRowsException(ctxHdl IN ctxType, flag IN BOOLEAN)
+</pre>
+<dl> 
+  <dd> Tells the XSU to throw or not to throw an OracleXMLNoRowsException in the 
+    case when for one reason or another, the XML doc generated is empty. By default, 
+    the exception is not thrown. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> flag - throw OracleXMLNoRowsException if no data? 
+    </dl>
+  </dd>
+</dl>
+<a name="propagateOriginalException(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="propagateOriginalException"><b>propagateOriginalException</b></a> 
+<pre>PROCEDURE propagateOriginalException(ctxHdl IN ctxType, flag IN BOOLEAN)
+</pre>
+<dl> 
+  <dd> Tells the XSU that if an exception is raised, and is being thrown, the 
+    XSU should throw the very exception raised; rather then, wrapping it with 
+    an OracleXMLSQLException. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> flag - propagate original exception? 
+    </dl>
+  </dd>
+</dl>
+<a name="getExceptionContent(int, int[], java.lang.String[])"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="getExceptionContent"><b>getExceptionContent</b></a> 
+<pre>PROCEDURE getExceptionContent(ctxHdl IN ctxType, errNo OUT NUMBER, errMsg OUT VARCHAR2)
+</pre>
+<dl> 
+  <dd> Via its arguments, this method returns the thrown exception's error code 
+    and error message (i.e. sql error code) This is to get around the fact that 
+    the jvm throws an exception on top of whatever exception was raised; thus, 
+    rendering pl/sql unable to access the original exception. 
+    <p> 
+  <dd>
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> errNo - error number 
+      <dd> errMsg - error message 
+    </dl>
+  </dd>
+</dl>
+<a name="getDTD(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="getDTD"><b>getDTD</b></a> 
+<pre>FUNCTION  getDTD(ctxHdl IN ctxType, withVer IN BOOLEAN := false) RETURN CLOB
+</pre>
+<dl> 
+  <dd> Generates the DTD based on the SQL query used to init. the context. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd>&nbsp; 
+      <dd> withVer - generate the version info? 
+      <dt> <b>Returns:</b> 
+      <dd> The DTD. 
+    </dl>
+  </dd>
+</dl>
+<a name="getDTD(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="getDTD"><b>getDTD</b></a> 
+<pre>PROCEDURE getDTD(ctx IN ctxType, xDoc IN CLOB, withVer IN BOOLEAN := false)
+</pre>
+<dl> 
+  <dd> Generates the DTD based on the SQL query used to init. the context. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> xDoc - lob into which to write the generated XML doc 
+      <dd> withVer - generate the version info?
+    </dl>
+  </dd>
+</dl>
+<a name="getXML(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="getXML"><b>getXML</b></a> 
+<pre>FUNCTION  getXML(sqlQuery IN VARCHAR2, metaType IN NUMBER := NONE) RETURN CLOB
+</pre>
+<dl> 
+  <dd> This is a convenience function. One doesn't have to explicitly open a context 
+    and close the context. This function creates the new context, executes the 
+    query, gets the xml back and closes the context.. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> sqlQueryl - SQL query
+      <dd>&nbsp; 
+      <dd> metaType - xml metadata type (i.e. NONE, DTD, SCHEMA) 
+      <dt> <b>Returns:</b> 
+      <dd> The XML document. 
+    </dl>
+  </dd>
+</dl>
+<p><a name="getXML(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="getXML"><b>getXML</b></a> </p>
+<pre>FUNCTION getXML(sqlQuery IN CLOB, metaType IN NUMBER := NONE) RETURN CLOB
+</pre>
+<dl> 
+  <dd>&nbsp; 
+  <dd>This is a convenience function. One doesn't have to explicitly open a context 
+    and close the context. This function creates the new context, executes the 
+    query, gets the xml back and closes the context.. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> sqlQueryl - SQL query 
+      <dd>&nbsp; 
+      <dd> metaType - xml metadata type (i.e. NONE, DTD, SCHEMA) 
+      <dt> <b>Returns:</b> 
+      <dd> The XML document. 
+    </dl>
+  </dd>
+</dl>
+<p></p>
+<a name="getXML(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+<a name="getXML"><b>getXML</b></a> 
+<pre>FUNCTION  getXML(ctxHdl IN ctxType, metaType IN NUMBER := NONE) RETURN CLOB
+</pre>
+<dl> 
+  <dd> Generates the XML doc. based on the SQL query used to init. the context. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd>&nbsp; 
+      <dd> metaType - xml metadata type (i.e. NONE, DTD, SCHEMA) 
+      <dt> <b>Returns:</b> 
+      <dd> The XML document. 
+    </dl>
+  </dd>
+</dl>
+
+<p><a name="getXML(int, oracle.sql.CLOB, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="getXML"><b>getXML</b></a> </p>
+<pre>PROCEDURE getXML(ctxHdl IN ctxType, xDoc IN CLOB, metaType IN NUMBER := NONE)
+</pre>
+<dl> 
+  <dd> Generates the XML doc. based on the SQL query used to init. the context. 
+    <p> 
+  <dd> 
+    <dl> 
+      <dt> <b>Parameters:</b> 
+      <dd> ctxHdl - context handle 
+      <dd> xDoc - lob into which to write the generated XML doc 
+      <dd> metaType - xml metadata type (i.e. NONE, DTD, SCHEMA) 
+    </dl>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<h2><font size="6"><a name="dbms_xmlsave"></a>DBMS_XMLSave </font></h2>
+<h2>Types: </h2>
+<dl> 
+  <dt><b><font color="#0000CC">ctxType</font></b></dt>
+  <dd> The type of the query context handle. This the return type of &quot;DBMS_ 
+    XMLSave.newContext()&quot;.</dd>
+</dl>
+<h2>Constants:</h2>
+<dl> 
+  <dt><b><font color="#0000CC">DEFAULT_ROWTAG </font></b></dt>
+  <dd>The default tag name for the element cooresponding to db. records. -- ROW</dd>
+  <dt><b><font color="#0000CC">DEFAULT_DATE_FORMAT </font></b></dt>
+  <dd>Default date mask. -- &#146;MM/dd/yyyy HH:mm:ss&#146;</dd>
+  <dt></dt>
+  <dt><b><font color="#0000CC">MATCH_CASE &nbsp;&nbsp;&nbsp;</font></b>&nbsp;&nbsp;&nbsp;&nbsp; 
+  </dt>
+  <dd>Used to specify that when mapping XML elements to DB. entities the XSU should 
+    be case sensitive.</dd>
+  <dt><b><font color="#0000CC">IGNORE_CASE</font></b></dt>
+  <dd>Used to specify that when mapping XML elements to DB. entities the XSU should 
+    be case insensitive.</dd>
+</dl>
+<h2>Function and Procedure Index:</h2>
+<dl> 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#clearKeyColumnList(int)"><b>PROCEDURE 
+    clearKeyColumnList(ctxType)</b></a> 
+  <dd> Clears the key column list. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#clearUpdateColumnList(int)"><b>PROCEDURE 
+    clearUpdateColumnList(ctxType)</b></a> 
+  <dd> Clears the update column list. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#closeContext(int)"><b>PROCEDURE 
+    closeContext(ctxType)</b></a> 
+  <dd> It closes/deallocates a particular save context 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#deleteXML(int, oracle.sql.CLOB)"><b>FUNCTION 
+    deleteXML(ctxType, CLOB) RETURN NUMBER</b></a> 
+  <dd> Deletes records specified by data from the XML document, from the table 
+    specified at the context creation time. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#deleteXML(int, java.lang.String)"><b>FUNCTION 
+    deleteXML(ctxType, VARCHAR2) RETURN NUMBER</b></a> 
+  <dd> Deletes records specified by data from the XML document, from the table 
+    specified at the context creation time. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#getExceptionContent(int, int[], java.lang.String[])"><b>PROCEDURE 
+    getExceptionContent(ctxType, NUMBER, VARCHAR2)</b></a> 
+  <dd> Via its arguments, this method returns the thrown exception's error code and error message (i.e. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#insertXML(int, oracle.sql.CLOB)"><b>FUNCTION 
+    insertXML(ctxType, CLOB) RETURN NUMBER</b></a> 
+  <dd> Inserts the XML document into the table specified at the context creation time. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#insertXML(int, java.lang.String)"><b>FUNCTION 
+    insertXML(ctxType, VARCHAR2) RETURN NUMBER</b></a> 
+  <dd> Inserts the XML document into the table specified at the context creation time. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#newContext(java.lang.String)"><b>FUNCTION 
+    newContext(targetTable IN VARCHAR2) RETURN ctxType</b></a> 
+  <dd> It creates a save context, and it returns the context handle. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#propagateOriginalException(int, byte)"><b>PROCEDURE 
+    propagateOriginalException(ctxType, BOOLEAN)</b></a> 
+  <dd> Tells the XSU that if an exception is raised, and is being thrown, the 
+    XSU should throw the very exception raised; rather then, wrapping it with 
+    an OracleXMLSQLException. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setBatchSize(int, int)"><b>PROCEDURE 
+    setBatchSize(ctxType, NUMBER)</b></a> 
+  <dd> Changes the batch size used during DML operations. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setCommitBatch(int, int)"><b>PROCEDURE 
+    setCommitBatch(ctxType, NUMBER)</b></a> 
+  <dd> Sets the commit batch size. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setDateFormat(int, java.lang.String)"><b>PROCEDURE 
+    setDateFormat(ctxType, VARCHAR2)</b></a> 
+  <dd> Describes to the XSU the format of the dates in the XML document. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setIgnoreCase(int, byte)"><b>PROCEDURE 
+    setIgnoreCase(ctxType, NUMBER)</b></a> 
+  <dd> The XSU does mapping of XML elements to db. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setKeyColumn(int, java.lang.String)"><b>PROCEDURE 
+    setKeyColumn(ctxType, VARCHAR2)</b></a> 
+  <dd> This methods adds a column to the "key column list". 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setRowTag(int, java.lang.String)"><b>PROCEDURE 
+    setRowTag(ctxType, VARCHAR2)</b></a> 
+  <dd> Names the tag used in the XML doc., to enclose the XML elements corresponding to db. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#setUpdateColumn(int, java.lang.String)"><b>PROCEDURE 
+    setUpdateColumn(ctxType, VARCHAR2)</b></a> 
+  <dd> Adds a column to the "update column list". 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#updateXML(int, oracle.sql.CLOB)"><b>PROCEDURE 
+    getExceptionContent(ctxType, NUMBER, VARCHAR2)</b></a> 
+  <dd> Updates the table specified at the context creation time with data from 
+    the XML document. 
+  <dt> <img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="#updateXML(int, java.lang.String)"><b>PROCEDURE 
+    propagateOriginalException(ctxType, BOOLEAN)</b></a> 
+  <dd> Updates the table specified at the context creation time with data from 
+    the XML document. 
+</dl>
+<h2>Functions and Procedures:</h2>
+<dl> 
+  <dt><a name="newContext(java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+    <a name="newContext"><b>newContext</b></a> </dt>
+  <pre>
+ FUNCTION newContext(targetTable IN VARCHAR2) RETURN ctxType
+</pre>
+  <dl> 
+    <dd> It creates a save context, and it returns the context handle. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> targetTable - the target table into which to load the XML doc 
+        <dt> <b>Returns:</b> 
+        <dd> The context handle. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="closeContext(int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="closeContext"><b>closeContext</b></a> 
+  <pre>
+ PROCEDURE closeContext(ctxHdl IN ctxType)
+</pre>
+  <dl> 
+    <dd> It closes/deallocates a particular save context 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setRowTag(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setRowTag"><b>setRowTag</b></a> 
+  <pre>
+ PROCEDURE setRowTag(ctxHdl IN ctxType, tag IN VARCHAR2)
+</pre>
+  <dl> 
+    <dd> Names the tag used in the XML doc., to enclose the XML elements corresponding 
+      to db. records. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> tag - tag name 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setIgnoreCase(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setIgnoreCase"><b>setIgnoreCase</b></a> 
+  <pre>
+ PROCEDURE setIgnoreCase(ctxHdl IN ctxType, flag IN NUMBER)
+</pre>
+  <dl> 
+    <dd> The XSU does mapping of XML elements to db. columns/attrs. based on the 
+      element names (xml tags). This function tells the XSU to do this match case 
+      insensitive. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> flag - ignore tag case in the XML doc? 0-false 1-true 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setDateFormat(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setDateFormat"><b>setDateFormat</b></a> 
+  <pre>
+ PROCEDURE setDateFormat(ctxHdl IN ctxType, mask IN VARCHAR2)
+</pre>
+  <dl> 
+    <dd> Describes to the XSU the format of the dates in the XML document. The 
+      syntax of the date format patern (i.e. the date mask), should conform to 
+      the requirements of the java.text.SimpleDateFormat class. Setting the mask 
+      to <code>null</code> or an empty string, results the use of the default 
+      mask -- OracleXMLCore.DATE_FORMAT. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> mask - the date mask 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setBatchSize(int, int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setBatchSize"><b>setBatchSize</b></a> 
+  <pre>
+ PROCEDURE setBatchSize(ctxHdl IN ctxType, batchSize IN NUMBER);
+</pre>
+  <dl> 
+    <dd> Changes the batch size used during DML operations. When performing inserts, 
+      updates or deletes, it is better to batch the operations so that they get 
+      executed in one shot rather than as separate statements. The flip side is 
+      that more memory is needed to buffer all the bind values. Note that when 
+      batching is used, a commit occurs only after a batch is executed. So if 
+      one of the statement inside a batch fails, the whole batch is rolled back. 
+      This is a small price to pay considering the performance gain; nevertheless, 
+      if this behaviour is unaccepatable, then set the batch size to 1. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> batchSize - batch size 
+        <dt> <b>See Also:</b> 
+        <dd> <a href="oracle.xml.sql.dml.OracleXMLSave.html#DEFAULT_BATCH_SIZE">DEFAULT_BATCH_SIZE</a> 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setCommitBatch(int, int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setCommitBatch"><b>setCommitBatch</b></a> 
+  <pre>
+ PROCEDURE setCommitBatch(ctxHdl IN ctxType, batchSize IN NUMBER);
+</pre>
+  <dl> 
+    <dd> Sets the commit batch size. The commit batch size refers to the number 
+      or records inserted after which a commit should follow. Note that if commitBatch 
+      is < 1 or the session is in "auto-commit" mode then the XSU does not make 
+      any explicit commit's. By default the commit-batch size is 0. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> batchSize - commit batch size 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setUpdateColumn(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setUpdateColumn"><b>setUpdateColumn</b></a> 
+  <pre>
+ PROCEDURE setUpdateColumn(ctxHdl IN ctxType, colName IN VARCHAR2);
+</pre>
+  <dl> 
+    <dd> Adds a column to the "update column list". In case of insert, the default 
+      is to insert values to all the columns in the table; on the other hand, 
+      in case of updates, the default is to only update the columns corresponding 
+      to the tags present in the ROW element of the XML document. When the update 
+      column list is specified, the columns making up this list alone will get 
+      updated or inserted into. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> colName - column to be added to the update column list 
+      </dl>
+    </dd>
+  </dl>
+  <a name="clearUpdateColumnList(int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="clearUpdateColumnList"><b>clearUpdateColumnList</b></a> 
+  <pre>
+ PROCEDURE clearUpdateColumnList(ctxHdl IN ctxType)
+</pre>
+  <dl> 
+    <dd> Clears the update column list. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dt> <b>See Also:</b> 
+        <dd> <a href="#setUpdateColumn(int, String)">setUpdateColumn</a> 
+      </dl>
+    </dd>
+  </dl>
+  <a name="setKeyColumn(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="setKeyColumn"><b>setKeyColumn</b></a> 
+  <pre>
+ PROCEDURE setKeyColumn(ctxHdl IN ctxType, colName IN VARCHAR2)
+</pre>
+  <dl> 
+    <dd> This methods adds a column to the "key column list". In case of update 
+      or delete, it is the columns in the key column list that make up the where 
+      clause of the update/delete statement. The key columns list must be specified 
+      before updates can be done; yet, it is only optional for delete operations. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> colName - column to be added to the key column list 
+      </dl>
+    </dd>
+  </dl>
+  <a name="clearKeyColumnList(int)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="clearKeyColumnList"><b>clearKeyColumnList</b></a> 
+  <pre>
+ PROCEDURE clearKeyColumnList(ctxHdl IN ctxType)
+</pre>
+  <dl> 
+    <dd> Clears the key column list. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dt> <b>See Also:</b> 
+        <dd> <a href="#setKeyColumn(int, String)">setKeyColumn</a> 
+      </dl>
+    </dd>
+  </dl>
+  <a name="insertXML(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="insertXML"><b>insertXML</b></a> 
+  <pre>
+ FUNCTION  insertXML(ctxHdl IN ctxType, xDoc IN VARCHAR2) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Inserts the XML document into the table specified at the context creation 
+      time. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDoc - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows inserted. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="insertXML(int, oracle.sql.CLOB)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="insertXML"><b>insertXML</b></a> 
+  <pre>
+ FUNCTION  insertXML(ctxHdl IN ctxType, xDoc IN CLOB) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Inserts the XML document into the table specified at the context creation 
+      time. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDocl - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows inserted. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="updateXML(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="updateXML"><b>updateXML</b></a> 
+  <pre>
+ FUNCTION  updateXML(ctxHdl IN ctxType, xDoc IN VARCHAR2) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Updates the table specified at the context creation time with data from 
+      the XML document. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDoc - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows updated. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="updateXML(int, oracle.sql.CLOB)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="updateXML"><b>updateXML</b></a> 
+  <pre>
+ FUNCTION  updateXML(ctxHdl IN ctxType, xDoc IN CLOB) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Updates the table specified at the context creation time with data from 
+      the XML document. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDocl - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows updated. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="deleteXML(int, java.lang.String)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="deleteXML"><b>deleteXML</b></a> 
+  <pre>
+ FUNCTION  deleteXML(ctxHdl IN ctxType, xDoc IN VARCHAR2) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Deletes records specified by data from the XML document, from the table 
+      specified at the context creation time. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDoc - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows deleted. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="deleteXML(int, oracle.sql.CLOB)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="deleteXML"><b>deleteXML</b></a> 
+  <pre>
+ FUNCTION  deleteXML(ctxHdl IN ctxType, xDoc IN CLOB) RETURN NUMBER
+</pre>
+  <dl> 
+    <dd> Deletes records specified by data from the XML document, from the table 
+      specified at the context creation time. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> xDocl - string containing the XML document 
+        <dt> <b>Returns:</b> 
+        <dd> The number of rows deleted. 
+      </dl>
+    </dd>
+  </dl>
+  <a name="propagateOriginalException(int, byte)"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="propagateOriginalException"><b>propagateOriginalException</b></a> 
+  <pre>
+ PROCEDURE propagateOriginalException(ctxHdl IN ctxType, flag IN BOOLEAN)
+</pre>
+  <dl> 
+    <dd> Tells the XSU that if an exception is raised, and is being thrown, the 
+      XSU should throw the very exception raised; rather then, wrapping it with 
+      an OracleXMLSQLException. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> flag - propagate original exception? 0-false 1-true 
+      </dl>
+    </dd>
+  </dl>
+  <a name="getExceptionContent(int, int[], java.lang.String[])"><img src="images/green-ball.gif" width=12 height=12 alt=" o "></a> 
+  <a name="getExceptionContent"><b>getExceptionContent</b></a> 
+  <pre>
+ PROCEDURE getExceptionContent(ctxHdl IN ctxType, errNo OUT NUMBER, errMsg OUT VARCHAR2)
+</pre>
+  <dl> 
+    <dd> Via its arguments, this method returns the thrown exception's error code 
+      and error message (i.e. sql error code) This is to get around the fact that 
+      the jvm throws an exception on top of whatever exception was raised; thus, 
+      rendering pl/sql unable to access the original exception. 
+      <p> 
+    <dd> 
+      <dl> 
+        <dt> <b>Parameters:</b> 
+        <dd> ctxHdl - context handle 
+        <dd> errNo - error number 
+        <dd> errMsg - error message 
+      </dl>
+    </dd>
+  </dl>
+</dl>
+<p>&nbsp;</p>
+</body>
+</html>

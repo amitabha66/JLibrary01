@@ -1,0 +1,62 @@
+<html>
+
+<head>
+<style>
+   a { text-decoration: none; font-family: arial; font-size: 24pt; color: white }
+span { text-decoration: underline }
+</style>
+<title>New Page 3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<base target="main">
+<script>
+function showsheet() {
+  var poplist = theform.xsl;
+  var theSheet = poplist.options[ poplist.selectedIndex].value;
+  if (theSheet == "none") {
+
+    parent.pic.document.location =  "../images/claimuml.gif";
+  
+  }
+  else {
+
+    parent.pic.document.location =  theSheet;
+
+  }
+}
+function sample1() {
+   document.theform.sql.value =  "select value(c) as Claim\n  from insurance_claim_view c\n where c.claimpolicy.primaryinsured.lastname = 'Astoria'";
+}
+
+function sample2() {
+   document.theform.sql.value = "select c.claimpolicy.primaryinsured as Customer\n  from insurance_claim_view c\n where c.claimpolicy.primaryinsured.homeaddress.state = 'CA'";
+}
+
+function sample3() {
+   document.theform.sql.value = "select v.claimpolicy.primaryinsured.lastname as lastname,\n       sum(n.amount) as TotalAmount\n  from insurance_claim_view v, TABLE(v.settlements) n\n group by v.claimpolicy.primaryinsured.lastname";
+}
+
+function sample4() {
+   document.theform.sql.value = "select v.claimpolicy.primaryinsured as customer,\n       v.settlements\n  from insurance_claim_view v";
+}
+
+function sample5() {
+   document.theform.sql.value = "select sum(n.amount) as TotalApprovedAmount\n  from insurance_claim_view v, TABLE(v.settlements) n\n where n.approver = 'JCOX'\n   and contains(damageReport,'Brakes within Cause') > 0";
+}
+
+</script>
+</head>
+
+<body background="../images/middlebluepattern.gif" vlink="white" alink="white" link="white">
+<ul>
+<li><a href="uri.xsql?uri=/scott/claim/claimid" target="main">/scott/claim/claimid</a>
+<li><a href="uri.xsql?uri=/scott/claim[claimid>50000]/claimid" target="main">/scott/claim[claimid>50000]/claimid</a>
+<li><a href="uri.xsql?uri=/scott/claim[claimpolicy/policyid = 8895]/settlements" target="main">/scott/claim[claimpolicy/policyid = 8895]/settlements</a>
+<li><a href="uri.xsql?uri=/scott/claim[claimid>50000]/claimpolicy[policyid=8895]/policyid" target="main">/scott/claim[claimid>50000]/claimpolicy[policyid=8895]/policyid</a>
+</ul>
+ 
+<form id="theform" name="theform" method="GET"
+action="uri.xsql" target="main">
+<input id="uri" name="uri" size="60" style="font-family: Arial; font-size: 24pt">
+</form>
+</body>
+</html>

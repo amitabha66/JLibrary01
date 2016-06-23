@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xsql:query null-indicator="yes" connection="demo" allow-client-style="yes"
+xmlns:xsql="urn:oracle-xsql">
+  select * from ( {@sql} )
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 10-apr-2001.21:02:52 $
+| $Source:  $
+| $Revision: xdk/demo/java/xsql/adhocsql/query.xsql#0 $
++-->

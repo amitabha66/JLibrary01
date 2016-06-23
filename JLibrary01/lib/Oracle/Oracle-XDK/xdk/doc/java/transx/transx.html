@@ -1,0 +1,1103 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Quadralay WebWorks Publisher 5.0.4">
+   <meta name="Page" content="DefaultSingle">
+   <meta name="Title" content="Using XML-SQL Utility (XSU)">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Dan Chiba">
+   <title>Oracle TransX Utility Users Guide</title>
+<link REL="home" HREF="../../products.htm" TITLE="Library">
+<link REL="toc" HREF="adxml_1t.htm" TITLE="Contents">
+<link REL="index" HREF="adxml_1i.htm" TITLE="Index">
+<link REL="copyright" HREF="../../dcommon/html/cpyr.htm" TITLE="Copyright">
+<link REL="up" HREF="adxml_1t.htm" TITLE="Up">
+<link REL="next" HREF="adx05xml.htm" TITLE="Next">
+<link REL="previous" HREF="partpg2.htm" TITLE="Previous">
+</head>
+<body bgcolor="#FFFFFF">
+<a NAME="top"></a><font face="Arial, Helvetica, sans-serif"><font color="#330099"><font size=+3>Oracle
+TransX Utility</font></font></font>
+<div CLASS="IND">
+<h5>
+<!--/TOC=Title--><i>For release specific information, please refer to <a href="readme.html">README</a>.</i></h5>
+
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1006575"></a><a href="#what_is_transx">What is the Oracle TransX
+Utility?</a></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014872"></a><a href="#installation">Dependencies and Installation</a></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014872"></a><a href="#example_usage">Example Usage</a></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1015639"></a><a href="#using_cmdline">Using the Command Line Front
+End</a></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1015639"></a><font face="Arial, Helvetica, sans-serif"><font color="#330099"><a href="#example_xml">Example
+of Dataset represented in XML</a></font></font></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1008144"></a><a href="#using_api">Using Java API</a></li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013802"></a><a href="#faq">Frequently Asked Questions (FAQs)</a></li>
+</ul>
+<a NAME="what_is_transx"></a><!--TOC=h1-"1013816"-->
+<h2 CLASS="H1">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">What is
+the Oracle TransX Utility?</font></font></h2>
+<!--/TOC=h1--><a NAME="1013817"></a>
+
+<p CLASS="BP">TransX is a data transfer utility that allows you to populate
+your database with multilingual data. It uses XML to specify the data so
+you can take advantage of easy data transfer from XML to the database,
+a simple data format that is intuitive for both developers and translators,
+and validation capability that makes it less error prone.
+<div CLASS="BP"><a NAME="1013819"></a></div>
+
+<ul>
+<h3>
+<font color="#000099">&nbsp;Easy multilingual data loading</font></h3>
+Traditionally, the typical way to load translated data was to switch the
+NLS_LANG setting as you switched files to be loaded, each of which is encoded
+in a particular character set suitable for the particular language. This
+was required because the translations have to be in the same file format
+(typically in .sql script) as the original, and NLS_LANG is changed as
+the files are loaded to reflect
+the character set corresponding to the language. TransX frees developers
+and translators from having to maintain the correct character set throughout
+the process of translating the data and loading them successfully into
+the database.</ul>
+
+<ul>
+<h3>
+<font color="#000099">&nbsp;Support for simple data format</font></h3>
+TransX defines an XML data format for a canonical representation of data
+to be transferred to a database. The format makes it intuitive for developers
+to understand what will happen to the data represented in it and how it
+is transferred. It is also self-explanatory for translators to identify
+what data needs to be translated. The format specification defines how
+to describe the data that it is loaded as expected. The values in the dataset
+can be represented using scalar values or using expressions such as constant,
+sequence,&nbsp; and queries.</ul>
+
+<ul>
+<h3>
+<font color="#000099">Simple interfaces</font></h3>
+TransX has a command line interface and programmatic interface. Both of
+them are straightforward and require little time to get familiar with.
+Details will be discussed in the next section. All the functionalities
+of TransX are accessible through both the command line interface and the
+Java API.</ul>
+
+<p><br><a NAME="1013930"></a><!--TOC=h2-"1013930"-->
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">TransX
+Features at a Glance</font></font></h3>
+<!--/TOC=h2--><a NAME="1015650"></a>
+
+<p CLASS="BP">TransX has the following features:
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013932"></a>Support loading data in the predefined XML format.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013933"></a>Support constant expression: A column can be loaded
+with a value specified by a constant expression.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013934"></a>Support sequence expression: A column can be loaded
+with a value obtained from a sequence in a database.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013936"></a>Support SQL expression: Query and stored procedure/function
+call.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1013937"></a>Support incremental loading: A transfer mode where
+existing rows are updated is available in addition to the regular transfer
+mode for initial loading.</li>
+
+<li>
+Support data format validation: The format of an input document can be
+checked whether or not there is a loading operation. Validation can be
+disabled upon loading.</li>
+
+<li>
+Support data element attributes for translation purposes.</li>
+
+<li>
+Support unloading to make it easy to migrate from loading .sql files to
+.xml files</li>
+</ul>
+<a NAME="installation"></a><!--TOC=h1-"1014684"-->
+<h2 CLASS="H1">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Dependencies
+and Installation</font></font></h2>
+<!--/TOC=h1--><a NAME="1014685"></a><!--TOC=h2-"1014685"-->
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Dependencies</font></font></h3>
+<!--/TOC=h2--><a NAME="1014686"></a>
+
+<p CLASS="BP">The Oracle TransX utility needs the following components
+in order to function:
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014687"></a><b><i>Database connectivity -- JDBC drivers</i></b>.
+The utility can work with any JDBC drivers but is optimized for Oracle's
+JDBC drivers. Oracle does not guarantee or provide support for TransX running
+against non-Oracle databases.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014688"></a><b><i>XML Parser -- Oracle XML Parser, Version 2.</i></b>
+The Oracle XML Parser, Version 2, is part of the Oracle8i<i> </i>and Oracle9iinstallation,
+and is also available from the Oracle Technology Network (OTN) web site.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014688"></a><b><i>XML Schema Processor -- Oracle XML Schema Processor.</i></b>
+The Oracle XML Schema Processor is part of the Oracle8i<i> </i>and Oracle9iinstallation
+downloadable from the Oracle Technology Network (OTN) web site.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014688"></a><b><i>XML SQL Utility-- Oracle XML SQL Utility(XSU).</i></b>
+The Oracle XSU is part of the Oracle8i<i> </i>and Oracle9iinstallation,
+and is also available from Oracle Technology Network (OTN) web site.</li>
+
+<br>&nbsp;</ul>
+<a NAME="1014689"></a><!--TOC=h2-"1014689"-->
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Installing
+TransX Using the Oracle Installer</font></font></h3>
+<!--/TOC=h2--><a NAME="1014690"></a>
+
+<p CLASS="BP">TransX is packaged with Oracle9i.
+<br><a NAME="1014691"></a>
+
+<p CLASS="BP">The TransX utility is made up of three executable files:
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1014692"></a>$ORACLE_HOME/rdbms/jlib/transx.zip -- contains all
+the java classes which make up TransX</li>
+
+<li CLASS="LB1" TYPE="DISC">
+$ORACLE_HOME/rdbms/bin/transx -- a shell script to invoke TransX from UNIX
+command line</li>
+
+<li CLASS="LB1" TYPE="DISC">
+$ORACLE_HOME/rdbms/bin/transx.bat -- a batch file to invoke TransX from
+Windows command line</li>
+</ul>
+<a NAME="1014695"></a>
+
+<p CLASS="BP">By default, the Oracle9i installer installs TransX on your
+hard drive in the locations specified above.
+<h3>
+<a NAME="1014710"></a><font face="Arial, Helvetica, sans-serif"><font color="#330099">Installing
+TransX Downloaded from OTN</font></font></h3>
+Download the correct XDK for java distribution archive from the Oracle
+Technology Network (<a href="http://otn.oracle.com">http://otn.oracle.com</a>).
+Expand the downloaded archive. Depending on the usage scenario, perform
+the following install tasks:</div>
+
+<ul>
+<div CLASS="IND">To use the TransX's front-end or its java API, you need
+to:</div>
+
+<ul>
+<div CLASS="IND">Set up the environment (i.e. set CLASSPATH ...) using
+the env.xxx script (located in the bin directory inside the directory created
+by extracting the XDK download archive):</div>
+
+<ul>
+<div CLASS="IND"><b>Unix users</b>: make sure that the path names in env.csh
+are correct; source the env.csh. If you are using a shell other than csh
+or tcsh, you will have to edit the file to use your shell's syntax.</div>
+
+<div CLASS="IND"><b>Windows users</b>: make sure that the path names in
+env.bat are correct; execute the file.</div>
+</ul>
+</ul>
+</ul>
+
+<div CLASS="IND">
+<h2>
+<a NAME="example_usage"></a><!--TOC=h1-"1013918"--></h2>
+
+<h2>
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Example
+Usage</font></font></h2>
+TransX is especially useful in populating a database with multilingual
+data. This section discusses how it can be accomplished with a typical
+use scenario where TransX is used to organize translated application messages
+in a database.
+
+<p CLASS="H2"><b><font face="Arial, Helvetica, sans-serif"><font color="#330099">Choosing
+Where to Keep Translatable Data</font></font></b>
+<p>To build an internationalized system, it is essential to decouple localizable
+resources from the business logic. A typical example of such a resource
+is translated text information. Data specific to a particular region and
+shares a common language and cultural conventions needs to be organized
+using some kind of resource management facility that allows you to retrieve
+locale-specific information. A database is often used to store them because
+of easy maintenance and flexibility. Typically they are stored in a table
+like the following:
+<h5>
+<b><i>Table 1-1: Table Structure for Translated Text Messages</i></b></h5>
+
+<blockquote><tt>MESSAGE_ID&nbsp; LANGUAGE_ID&nbsp; MESSAGE</tt>
+<br><tt>----------&nbsp; -----------&nbsp; ----------------------------------</tt>
+<br><tt>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Welcome to System X</tt>
+<br><tt>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Please enter username and password</tt>
+<br><tt>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+:</tt></blockquote>
+
+<p><br>Notice that the column <tt>LANGUAGE_ID</tt> is included in this
+table so that applications can retrieve messages based on the preferred
+language of the end user. It contains abbreviations of language names to
+identify the language of messages. Oracle language abbreviations can be
+found in the appendix of the Oracle9i Globalization Support Guide. Translated
+messages can be added to this table.
+
+<p CLASS="H2"><b><font face="Arial, Helvetica, sans-serif"><font color="#330099">Arrangement
+in the Predefined XML Format</font></font></b>
+
+<p CLASS="H2">An XML document that represents the table above would look
+something like the following example:
+<h5 CLASS="H2">
+<b><i>Example 1-1 : Original Data in the Predefined XML Format</i></b></h5>
+
+<blockquote><tt>&lt;?xml version="1.0"?></tt>
+<br><tt>&lt;table name="translated_messages"></tt>
+<p><tt>&nbsp; &lt;lookup-key></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_id" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="language_id" /></tt>
+<br><tt>&nbsp; &lt;/lookup-key></tt>
+<p><tt>&nbsp; &lt;columns></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_id"&nbsp; type="number"/></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="language_id" type="string"
+constant="us" translate="yes"/></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message"&nbsp;&nbsp;&nbsp;&nbsp;
+type="string" translate="yes"/></tt>
+<br><tt>&nbsp; &lt;/columns></tt>
+<p><tt>&nbsp; &lt;dataset></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_id">1&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message" translation-note="dnt'X'">Welcome
+to System X&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_id">2&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message">Please enter
+username and password&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;!-- ... --></tt>
+<br><tt>&nbsp; &lt;/dataset></tt>
+<p><tt>&lt;/table></tt>
+<br>&nbsp;</blockquote>
+As shown above in the predefined XML format, the way your dataset is arranged
+in XML should reflect the structure of the target table. The table is defined
+as in Example 1-2, and all of the columns are to be populated.
+<h5>
+<b><i>Example 1-2: Table Description for Translated Messages</i></b></h5>
+
+<blockquote><tt>SQL> desc translated_messages</tt>
+<p><tt>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Null?&nbsp;&nbsp;&nbsp;&nbsp;
+Type</tt>
+<br><tt>-----------&nbsp; --------&nbsp; -------------</tt>
+<br><tt>MESSAGE_ID&nbsp;&nbsp; NOT NULL&nbsp; NUMBER(4)</tt>
+<br><tt>LANGUAGE_ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+VARCHAR2(3)</tt>
+<br><tt>MESSAGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+VARCHAR2(200)</tt></blockquote>
+As always, this XML example starts with the declaration. Its root element
+<tt>table</tt>
+encloses all the other elements. Inside the <tt>table</tt> element there
+are three sections, one for the list of lookup keys, one for the table
+description and one for the dataset. <tt>lookup-key</tt>s are those columns
+that are used to evaluate rows if they are already existing in the database.
+Because we want a pair of message and language ID to identify a unique
+string, we list the corresponding columns. The <tt>columns</tt> section
+should mirror the table's structure because it specifies which piece of
+data in the dataset section should go to which column in the database.
+The column names should be consistent throughout your XML dataset and database.
+The valid values for the type attribute are <tt>string</tt>, <tt>number</tt>,
+<tt>date</tt>
+or <tt>dateTime</tt>. They correspond to the datatypes defined in the XML
+schema standard, so each piece of data should conform to the respective
+datatype definition. In particular, it is important to use the ISO 8601
+format for <tt>date</tt> and <tt>dateTime</tt> datatypes.
+<h5>
+<b><i>Table 1-2: Date Format in the TransX XML Format</i></b></h5>
+
+<center><table WIDTH="70%" >
+<tr>
+<td><b>Datatype</b></td>
+
+<td><b>Format</b></td>
+
+<td><b>Example</b></td>
+</tr>
+
+<tr>
+<td>date</td>
+
+<td><tt>CCYY-MM-DD</tt></td>
+
+<td>2009-05-20</td>
+</tr>
+
+<tr>
+<td>dateTime</td>
+
+<td><tt>CCYY-MM-DDThh:mm:ss</tt></td>
+
+<td>2009-05-20T16:01:37</td>
+</tr>
+</table></center>
+
+<p>Example 1-3 shows how a row with a <tt>dateTime</tt> data would look:
+<h5>
+<b><i>Example 1-3: A Record with a dateTime Datatype Field</i></b></h5>
+
+<blockquote><tt>&lt;row></tt>
+<br><tt>&nbsp; &lt;col name="article_id">12345678&lt;/col></tt>
+<br><tt>&nbsp; &lt;col name="author_id">10500&lt;/col></tt>
+<br><tt>&nbsp; &lt;col name="submission">2002-03-09T16:01:37&lt;/col></tt>
+<br><tt>&nbsp; &lt;col name="title">...&lt;/col></tt>
+<br><tt>&nbsp; &lt;!-- some columns follows --></tt>
+<br><tt>&lt;/row></tt></blockquote>
+Back to our example, the constant attribute of a column is used to specify
+a value to be stored into the corresponding column for every row that appears
+in the dataset section. As we are working on the original language, the
+<tt>language_id</tt>
+column is set to be '<tt>us</tt>'.
+
+<p CLASS="H2"><b><font face="Arial, Helvetica, sans-serif"><font color="#330099">Translating
+the Data in XML</font></font></b>
+<p>When translating messages for applications, it is often the case that
+certain words or phrases should be left untranslated. As shown in this
+example, the translation-note attribute may be added to elements with translatable
+string to help improve the quality of translation. It is used to tell if
+the column is going to contain translated data. In this example, there
+are two columns with this attribute and they use it with a slight difference
+in their meanings. The first one for the <tt>language_id</tt> means the
+value of the constant attribute should be translated. The other one for
+the message column means those data in the dataset section that has a name
+that matches this column, which is "<tt>message</tt>", needs to be translated,
+such as <tt>&lt;col name="message">Welcome to System X&lt;/col>, &lt;col
+name="message">Please enter...&lt;/col>, </tt>and so on.
+<p>By using XML transformation, this format can be converted into another
+format for exchanging translation data among localization service providers
+for use with XML-based translation tools. This transformation insulates
+application developers from the inherent complexity of the format for translation
+data exchange that includes information for keeping track of revisions,
+categorizing translatable strings into some units, and so on.
+<p>If a plain text editor or a traditional text-based translation tool
+is used during the translation process, it is important to maintain the
+encoding of the document. After a document is translated, it is likely
+that it is encoded in a different encoding than the original one. If the
+translated document is in an encoding other than Unicode, the encoding
+declaration should be added to the XML declaration on the first line. A
+declaration for non-Unicode encoding looks like this:
+<p><tt>&lt;?xml version="1.0" encoding="ISO-8859-15"?></tt>
+<p>To ensure that the translation process did not lose the syntactic integrity,
+it is important to process the document as XML. If that is not the case,
+the validation option of the command line option is handy for anybody to
+check the format. If any syntactic error was brought in, the option prints
+out the location and what the error is. Errors must be fixed for the data
+transfer to succeed.
+<p>A translated document for our example is shown in Example 1-4:
+<h5 CLASS="H2">
+<b><i>Example 1-4 : Translated Data in the Predefined XML Format</i></b></h5>
+
+<p><br><tt>&lt;?xml version="1.0"?></tt>
+<br><tt>&lt;table name="translated_messages"></tt>
+<p><tt>&nbsp; &lt;lookup-key></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_id" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="language_id" /></tt>
+<br><tt>&nbsp; &lt;/lookup-key></tt>
+<p><tt>&nbsp; &lt;columns></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_id"&nbsp; type="number"/></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="language_id" type="string"
+constant="e" translate="yes"/></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message"&nbsp;&nbsp;&nbsp;&nbsp;
+type="string" translate="yes"/></tt>
+<br><tt>&nbsp; &lt;/columns></tt>
+<p><tt>&nbsp; &lt;dataset></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_id">1&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message" translation-note="dnt'System
+X'">Bienvenido al Sistema X&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_id">2&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message">Porfavor
+entre su nombre de usuario y su contrase&ntilde;a&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;!-- ... --></tt>
+<br><tt>&nbsp; &lt;/dataset></tt>
+<p><tt>&lt;/table></tt>
+<br>&nbsp;
+
+<p CLASS="H2"><b><font face="Arial, Helvetica, sans-serif"><font color="#330099">Data
+Transfer with TransX</font></font></b>
+<p>Now that you have the original and translated versions of XML, it is
+time to execute TransX. The following command is an example to connect
+to the database <tt>mydb</tt> at port <tt>1521</tt> on <tt>myhost</tt>
+as <tt>scott</tt>/<tt>tiger</tt> and transfer the data in the XML files.
+<h5>
+<b><i>Example 1-5: TransX Execution with 2 XML Datafiles</i></b></h5>
+
+<blockquote><tt>transx "myhost:1521:mydb" scott tiger example.xml example_e.xml</tt></blockquote>
+The above command transfers two files of data at the same time.
+<p>In building a multilingual software system, translations usually become
+available at a later stage of development.
+<br>They also tend to evolve over a period of time. If for any reason some
+messages need to be added, they can be added as new rows in your dataset
+definition simply by running TransX again. As we discussed earlier, TransX
+recognizes which rows are new and it inserts only the new messages based
+on the column(s) specified in the lookup-key section. If some messages
+are updated, run TransX with the -u option. Then it updates existing rows
+with the data specified in XML.
+<p>After running TransX with the command in Example 1-5, your table would
+look like the following:
+<h5>
+<b><i>Table 1-3: Table Populated with Multilingual Data</i></b></h5>
+
+<blockquote><tt>MESSAGE_ID&nbsp; LANGUAGE_ID&nbsp; MESSAGE</tt>
+<br><tt>----------&nbsp; -----------&nbsp; ----------------------------------</tt>
+<br><tt>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Welcome to System X</tt>
+<br><tt>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bienvenido al Sistema X</tt>
+<br><tt>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Please enter username and password</tt>
+<br><tt>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Porfavor entre su nombre de usuario y su contrase&ntilde;a</tt></blockquote>
+Your application can retrieve a message in a language with a SQL query
+like this:
+<blockquote><tt>SELECT message FROM translated_messages WHERE message_id
+= 2 AND LANGUAGE_ID = 'e' ;</tt></blockquote>
+<!--/TOC=h1--><a NAME="using_cmdline"></a>
+<h2>
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Using the
+TransX Command Line Front End</font></font></h2>
+<!--/TOC=h1--><a NAME="1014451"></a>
+
+<p CLASS="BP">TransX comes with a simple command line which gives users
+quick access to TransX's functionality.
+<br><a NAME="1012784"></a>
+
+<p CLASS="BP">The command line options are provided through the java class
+loader. Invoke it by calling:
+<pre CLASS="CE1"><a NAME="1005258"></a>transx<a NAME="1005260"></a></pre>
+
+<div CLASS="BP">The above call will result in the front-end usage information
+being printed.</div>
+
+<p><br><a NAME="1012793"></a>
+
+<p CLASS="BP">To use the TransX command line, you first need to specify
+where the executable is located. To do this, add the TransX java library
+(transx.zip) to your CLASSPATH.
+<br><a NAME="1012794"></a>
+
+<p CLASS="BP">Because the TransX depends on the the other XDK components,
+for the TransX to run, you need to make known the location of these components.
+To do this, your CLASSPATH needs to include the locations of the Oracle
+XML Parser java library (xmlparserv2.jar), the Oracle XML Schema Processor(xschema.jar)
+and the JDBC library (classes12.jar).
+<br><a NAME="1005267"></a><!--TOC=h1-"1005267"-->
+<br>Here is the syntax of TransX command line:
+<p><tt>&nbsp;&nbsp; transx [ &lt;option> ... ] &lt;connect_string> &lt;username>
+&lt;password> &lt;datasource> [ &lt;datasource> ... ]</tt>
+<p>where arguments are specified as follows:
+<h5>
+<b><i>Table 2-1: TransX Command Line Arguments</i></b></h5>
+
+<center><table WIDTH="60%" >
+<tr>
+<td><tt>&lt;option></tt></td>
+
+<td>One of the TransX options found in <a href="#table_2_2">Table 2-2</a></td>
+</tr>
+
+<tr>
+<td><tt>&lt;connect_string></tt></td>
+
+<td>A JDBC connect string</td>
+</tr>
+
+<tr>
+<td><tt>&lt;username></tt></td>
+
+<td>A database username</td>
+</tr>
+
+<tr>
+<td><tt>&lt;password></tt></td>
+
+<td>The password for the database user</td>
+</tr>
+
+<tr>
+<td><tt>&lt;datasource></tt></td>
+
+<td>An XML data source</td>
+</tr>
+</table></center>
+
+<p>Example:
+<p><tt>&nbsp;&nbsp; transx "jdbc:oracle:oci:@mydb" scott tiger foo.xml</tt>
+<p>If the type of your JDBC driver is Thin, the connect string does not
+have to be fully specified. Host name, port number, and the SID separated
+by colons connects you as if you specified the whole connect string.
+<p><tt>&nbsp;&nbsp; transx "myhost:1521:mydb" scott tiger foo.xml</tt>
+<br>&nbsp;
+<div CLASS="BP">The last two examples perform the following tasks:</div>
+
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1006733"></a>Connects to the database "mydb" as "scott."</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1006734"></a>Validates the datasource "foo.xml."</li>
+
+<div CLASS="LB1" TYPE="DISC"><a NAME="1006735"></a>Populates the database
+as per "foo.xml."</div>
+</ul>
+When you specify the -v(validation only) option, arguments for database
+connection should not be there:
+<p><tt>&nbsp;&nbsp; transx -v &lt;datasource> [ &lt;datasource> ... ]</tt>
+<p>Example:
+<p><tt>&nbsp;&nbsp; transx -v foo.xml</tt>
+<p>This example validates the format of foo.xml and exit without database
+access.
+<p>When you specify the -s(unloading) option, the argument list looks like
+this:
+<p><tt>&nbsp;&nbsp; transx -s &lt;connect_string> &lt;username> &lt;password>
+&lt;filename> &lt;table> [ &lt;column> ... ]</tt>
+<p>Example:
+<p><tt>&nbsp;&nbsp; transx -s "dlsun9999:1521:mydb" scott tiger emp.xml
+emp ename job</tt>
+<p>This example shows how columns in a table(ename and job in the table
+emp) are formatted into an XML file(emp.xml) in the predefined format.
+Column names are optional. By default, all columns are unloaded.
+<br>&nbsp;
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">TransX
+Options</font></font></h3>
+
+<h3 CLASS="H2">
+<!--/TOC=h2--><a NAME="1013289"></a></h3>
+
+<div CLASS="BP">Table 2-2 lists the TransX options:</div>
+
+<h5 CLASS="TTW">
+<a NAME="table_2_2"></a><b><i><font face="Arial, Helvetica, sans-serif">Table
+2-2 TransX Options</font></i></b></h5>
+
+<table BORDER CELLSPACING=0 CELLPADDING=3 WIDTH="100%" CLASS="HRuleFormalWide" FRAME="HSIDES" RULES="ROWS" >
+<caption>&nbsp;</caption>
+
+<tr CLASS="Formal">
+<th ALIGN=LEFT VALIGN=BOTTOM CLASS="Formal"><a NAME="1013214"></a><b><font face="Arial, Helvetica, sans-serif">Option</font></b></th>
+
+<th ALIGN=LEFT VALIGN=BOTTOM CLASS="Formal"><a NAME="1013216"></a><b><font face="Arial, Helvetica, sans-serif">Description</font></b></th>
+</tr>
+
+<tr ALIGN=LEFT VALIGN=TOP CLASS="Formal">
+<td CLASS="Formal"><a NAME="1013218"></a>
+
+<p CLASS="TB">-u
+<div CLASS="TB">Update operation</div>
+&nbsp;</td>
+
+<td CLASS="Formal"><a NAME="1013220"></a>
+
+<p CLASS="TB">When this option is specified, existing rows are not skipped
+but updated. To exclude a column from the update operation, specify the
+<tt>useforupdate</tt>
+attribute to be "no".</td>
+</tr>
+
+<tr>
+<td>-e
+<br>Raise exception on duplicates</td>
+
+<td>
+<div CLASS="TB">When this option is specified, an exception will be thrown
+if a duplicate row is found. By default, duplicate rows are simly skipped.
+Rows are considered duplicate if the values for lookup-key column(s) in
+the database and the dataset are the same.</div>
+</td>
+</tr>
+
+<tr>
+<td>-p
+<br>Print the XML for insert</td>
+
+<td>Prints out the dataset for insert in the canonical format of XSU.</td>
+</tr>
+
+<tr>
+<td>-t
+<br>Print the XML for update</td>
+
+<td>Prints out the dataset for update in the canonical format of XSU.</td>
+</tr>
+
+<tr>
+<td>-o
+<br>Omit validation</td>
+
+<td>
+<div CLASS="TB">This option causes TransX to skip the format validation,
+which is performed by default.</div>
+</td>
+</tr>
+
+<tr>
+<td>-v
+<br>Validation only</td>
+
+<td>
+<div CLASS="TB">This option causes TransX to perform validation and exit.</div>
+</td>
+</tr>
+
+<tr>
+<td>-s
+<br>Save data into an XML file</td>
+
+<td>This is an option to perform unloading. It queries the database, formats
+the result into the predefined XML format and store it under the specified
+file name.</td>
+</tr>
+
+<tr>
+<td>-x
+<br>Print data in the predefined XML format</td>
+
+<td>Similar to the -s option, it causes TransX to perform the opposite
+operation of loading. Unlike the -s option, it prints the output to stdout.&nbsp;
+<br>Note: Redirecting this output to a file is discouraged, because intervention
+of the operating system may result in data loss due to unexpected transcoding.</td>
+</tr>
+
+<tr>
+<td>-w
+<br>Preserve whitespace</td>
+
+<td>This option causes TransX to treat whitespace characters (such as \t,
+\r, \n and ' ') as significant. Consecutive whitespace characters in string
+data elements are condensed into one space character by default.</td>
+</tr>
+</table>
+
+<table CELLSPACING=0 CELLPADDING=3 WIDTH="100%" CLASS="TableNote" >
+<tr ALIGN=LEFT VALIGN=TOP CLASS="TableNote">
+<td CLASS="TableNote"></td>
+</tr>
+</table>
+
+<h2 CLASS="H1">
+<a NAME="example_xml"></a></h2>
+
+<h2 CLASS="H1">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Example
+of Dataset Represented in XML</font></font></h2>
+
+<blockquote><tt>&lt;?xml version="1.0"?></tt>
+<br><tt>&lt;table name="i18n_messages"></tt>
+<br><tt>&nbsp; &lt;lookup-key></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_code" /></tt>
+<br><tt>&nbsp; &lt;/lookup-key></tt>
+<p><tt>&nbsp; &lt;columns></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_id"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+type="number" sequence="i18n_message_seq" useforupdate="no"/></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_code"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+type="number" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_name"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+type="string" translate="yes" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_description" type="string"
+translate="yes" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="version_created"&nbsp;&nbsp;&nbsp;&nbsp;
+type="number" constant="0" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="version_updated"&nbsp;&nbsp;&nbsp;&nbsp;
+type="number" constant="0" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_type_code"&nbsp;&nbsp;
+type="string" virtual="yes" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;column name="message_type_id"&nbsp;&nbsp;&nbsp;&nbsp;
+type="number" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;query text="select message_type_id
+from i18n_message_type where message_type_code = :1" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;parameter id="1"
+col="message_type_code" /></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/query></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/column></tt>
+<br><tt>&nbsp; &lt;/columns></tt>
+<p><tt>&nbsp; &lt;dataset></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >100&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-1"
+>Continue&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-1" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The client should continue
+with its request.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>INFO&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >101&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-2"
+>Switching Protocols&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-2" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The server understands
+and is willing to comply with the client''s</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request (via the Upgrade
+message header field) for a change in the</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; application protocol
+being used on this connection.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>INFO&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >200&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-3"
+>OK&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-3" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The request has succeeded.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>SUCCESS&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >201&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-4"
+>Created&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-4" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The request has been
+fulfilled and resulted in a new resource being</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; created.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>SUCCESS&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >202&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-5"
+>Accepted&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-5" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The request has been
+accepted for processing, but the processing has</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not been completed.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>SUCCESS&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >203&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-6"
+>Non-Authoritative Information&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-6" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The returned metainformation
+in the entity-header is not the</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; definitive set as available
+from the origin server, but is gathered</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from a local or a third-party
+copy.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>SUCCESS&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;row></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_code" >204&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_name" trans-key="stts-name-7"
+>No Content&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_description"
+trans-key="stts-desc-7" ></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The server has fulfilled
+the request but does not need to return an</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entity-body, and might
+want to return updated metainformation.&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;col name="message_type_code"
+>SUCCESS&lt;/col></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; &lt;/row></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; &lt;!-- ... --></tt>
+<p><tt>&nbsp; &lt;/dataset></tt>
+<br><tt>&lt;/table></tt></blockquote>
+
+<table CELLSPACING=0 CELLPADDING=3 WIDTH="100%" CLASS="TableNote" >
+<tr ALIGN=LEFT VALIGN=TOP CLASS="TableNote">
+<td CLASS="TableNote"></td>
+</tr>
+</table>
+<a NAME="using_api"></a><!--TOC=h1-"1005334"-->
+<h2 CLASS="H1">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">TransX
+Java API</font></font></h2>
+<!--/TOC=h1--><a NAME="1005335"></a>
+
+<p CLASS="BP">The following two classes make up the XML-SQL Utility Java
+API:
+<ul CLASS="LB1">
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1006676"></a><tt><a href="../javadoc/oracle/xml/transx/loader.html">oracle.xml.transx.loader</a></tt>
+-- provides a method to obtain a TransX instance.</li>
+
+<li CLASS="LB1" TYPE="DISC">
+<a NAME="1006674"></a><tt><a href="../javadoc/oracle/xml/transx/TransX.html">oracle.xml.transx.TransX</a></tt>
+-- the TransX API</li>
+</ul>
+</div>
+
+<div CLASS="IND">You can find the full Java API documentation <a href="../javadoc/index.html">here</a>.</div>
+
+<div CLASS="IND">
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Loading
+Dataset in XML</font></font></h3>
+<!--/TOC=h2--><a NAME="1005337"></a>
+
+<p CLASS="BP">The TransX interface makes up the core part of the TransX's
+API.
+<br><a NAME="1006677"></a>
+
+<p CLASS="BP"><a href="temp/xdk/doc/java/xsu/adx04xsu.htm#1006678">Figure
+1</a> illustrates the basic steps in the usage of TransX API.
+<br><a NAME="1006696"></a>
+
+<p CLASS="BP">Perform these steps when loading XML:
+<ul CLASS="LN1">
+<li CLASS="LN1" TYPE="1" VALUE="1">
+<a NAME="1006697"></a>Create an TransX instance</li>
+
+<li CLASS="LN1" TYPE="1" VALUE="2">
+<a NAME="1006698"></a>Start a data loading session by supplying database
+connection information</li>
+
+<li CLASS="LN1" TYPE="1" VALUE="3">
+<a NAME="1006699"></a>Load the datasets by specifying which XML to load</li>
+
+<li CLASS="LN1" TYPE="1" VALUE="3">
+<a NAME="1006699"></a>Complete the session by invoking the close method</li>
+</ul>
+
+<div CLASS="LN1" TYPE="1" VALUE="3"><a NAME="1006678"></a></div>
+
+<h5 CLASS="LN1" TYPE="1" VALUE="3">
+<b><i><font face="Arial, Helvetica, sans-serif">Figure 1 Data Loading With
+TransX Utility for Java: Basic Steps</font></i></b></h5>
+
+<blockquote><tt>1. getLoader()&nbsp;&nbsp; -----------+</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+V</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++------+------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ________</tt>
+<br><tt>2. transx.open()&nbsp; -->|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+\</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|TransX:&nbsp;&nbsp; TransX&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+\________/</tt>
+<br><tt>3. transx.load()&nbsp; -->|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| =====> |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-->|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp; Core&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-->| API&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+:&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; Powerd by |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+\________/</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp; XDK&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>4. transx.close() -->|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++------+------------+</tt></blockquote>
+
+<div CLASS="BP">The following examples show how XML datasets can be loaded.</div>
+
+<p><br><a NAME="1005374"></a><!--TOC=h2-"1005374"--><a NAME="1006772"></a>
+<h3 CLASS="H2">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">TransX
+Programming Example: Loading Dataset from XML File(s)</font></font></h3>
+
+<h3 CLASS="H2">
+<!--/TOC=h2--><a NAME="1005378"></a></h3>
+
+<div CLASS="BP">The first thing to do to load dataset is to create an instance
+of TransX. Then a data loading session can be initiated by supplying the
+JDBC connect string, username, and password to the open method. Next you
+can set the operation mode and/or specify options available on the interface.
+The same JDBC connection is used during the iteration of the load operations.
+The loading session ends with the close call, which closes the database
+connection.</div>
+
+<pre CLASS="CE1"><a NAME="1005379"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String&nbsp; datasrc[] = {"data1.xml", "data2.xml", "data3.xml"};&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // instantiate a transx class
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TransX&nbsp; transx = loader.getLoader();&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // start a data loading session&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transx.open( "jdbc:oracle:oci8:@", "scott", "tiger" );&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // specify operation modes&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transx.setLoadingMode( LoadingMode.SKIP_DUPLICATES );&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transx.setValidationMode( false );&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // load the dataset(s)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for ( int i = 0 ; i &lt; datasrc.length ; i++ )&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transx.load( datasrc[i] );&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // cleanup&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transx.close();</pre>
+<a NAME="1005387"></a>
+
+<p CLASS="BP">Here, the connection is made using the Oracle OCI driver.&nbsp;
+You can connect to the scott schema supplying the password <i>tiger. </i>It
+connects to the current database (identified by the ORACLE_SID environment
+variable). You can also use the JDBC Thin driver to connect to the database.
+The thin driver is written in pure Java and can be called from within applets
+or any other Java program.
+<br><a NAME="1012335"></a>
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Connecting
+With the Thin Driver</font></font></h4>
+<!--/TOC=h3--><a NAME="1006782"></a>
+
+<p CLASS="BP">Here's an example of connecting using the thin driver.
+
+<p CLASS="CE"><a NAME="1005388"></a><tt>// start a data loading session
+with thin driver</tt>
+<br><a NAME="1005389"></a><tt>transx.open( "jdbc:oracle:thin:@myhost:1521:ORCL",
+"scott","tiger</tt>");
+<br>&nbsp;
+<br>&nbsp;
+<div CLASS="BP">The Thin driver requires the specification of the host
+name (<i>myhost</i>), port number (<i>1521</i>) and the Oracle SID (<i>ORCL)</i>
+which identifies a specific Oracle instance on the machine.</div>
+
+<p><br><a NAME="1005393"></a><!--TOC=h3-"1005393"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">No Connection
+Needed When Validating</font></font></h4>
+<!--/TOC=h3--><a NAME="1006785"></a>
+
+<p CLASS="BP">If you are just validating your data format, you don't need
+to establish a database connection, since the validation is totally performed
+by TransX. Consequently your command line for validation only should not
+have connect information.
+<pre CLASS="CE"><a NAME="1005394"></a>transx -v foo.xml</pre>
+
+<div CLASS="CE">By the same token in your Java code the validate() method
+can be invoked without a preceding open() call.</div>
+
+<p><br><a NAME="faq"></a>
+<h2 CLASS="H1">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Frequently
+Asked Questions (FAQs)</font></font></h2>
+
+<h3>
+<!--/TOC=h1--><a NAME="1001090"></a><!--TOC=h2-"1001090"--><font color="#000099">General</font></h3>
+</div>
+
+<div CLASS="OUTD"><!--/TOC=h2--><a NAME="1012133"></a><!--TOC=h3-"1012133"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Question</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">What
+makes TransX different from other data loading utilities like SQL*Loader,
+Import, XSU or DataPump?</font></font>
+<br><!--/TOC=h2--><a NAME="1012133"></a><!--TOC=h3-"1012133"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Answer</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">TransX
+is suitable for loading translated data, as it is designed to meet today's
+globalization needs like storing application messages in various languages.
+With TransX multilingual data can be transferred without having to switch
+NLS_LANG to set the client to an appropriate NLS environment. It also makes
+TransX unique that it takes its input in a simple predefined XML format
+that represents your dataset which can contain expressions such as constants,
+sequences and stored procedure calls.</font></font>
+<p><!--/TOC=h2--><a NAME="1012133"></a><!--TOC=h3-"1012133"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Question</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">Is
+it possible to unload existing data in the database into the canonical
+XML format?</font></font>
+<br><!--/TOC=h2--><a NAME="1012133"></a><!--TOC=h3-"1012133"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Answer</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">Yes,
+it is. This functionality is provided through the -s option to make it
+easy to switch from loading .sql files to .xml files. After migrating to
+.xml format, it will no longer be necessary to configure the environment
+to a different NLS setting each time the character set of the data file
+to be loaded is changed to another.</font></font>
+<br>&nbsp;
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Question</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">Do
+I need to have tables in the database before I can use TransX?</font></font>
+<br><!--/TOC=h2--><a NAME="1012133"></a><!--TOC=h3-"1012133"-->
+<h4 CLASS="H3">
+<font face="Arial, Helvetica, sans-serif"><font color="#330099">Answer</font></font></h4>
+<!--/TOC=h3--><a NAME="1004018"></a>
+
+<p CLASS="H2"><font face="Arial, Helvetica, sans-serif"><font color="#000000">Yes.
+TransX does not create them for you.</font></font>
+<p>
+<hr>
+<table CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td VALIGN=BOTTOM WIDTH="33%">
+<table CELLSPACING=0 CELLPADDING=0 >
+<tr>
+<td ALIGN=CENTER>&nbsp;</td>
+
+<td ALIGN=CENTER>&nbsp;</td>
+</tr>
+</table>
+</td>
+
+<td ALIGN=CENTER WIDTH="34%"><font size=-2><a href="temp/xdk/doc/dcommon/html/cpyr.htm">Copyright
+&copy; 1996-2003 Oracle Corporation.</a></font>
+<br><font size=-2>All Rights Reserved.</font></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM WIDTH="33%">&nbsp;</td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>

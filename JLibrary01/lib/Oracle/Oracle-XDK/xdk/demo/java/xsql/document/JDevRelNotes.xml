@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<article id="x-p.1">
+  <artheader><title>
+    JDeveloper 3.0 Release Notes</title><date>October 22, 1999</date></artheader>
+  <sect1>
+    <title>Business Components for Java</title>
+    
+    <para>This section documents "late-breaking" information you
+    should know about Business Components for Java which is not
+    covered in the documentation. Please refer to the Online
+    Documentation for all other information about using Business
+    Components for Java.</para>
+
+    <sect2><title>Known Runtime Issues</title><itemizedlist><listitem>
+    <para><emphasis>Programmatically Removing a ViewLink Without
+    Removing Linked ViewObjects </emphasis></para>
+
+    <para>Creating a dynamic link between two ViewObjects
+    programmatically works properly. However, if you dynamically
+    remove the ViewLink you've created and then relink the same two
+    ViewObjects that were previously linked, you will get an
+    ORA-01006: Not All Variables Bound upon rexecuting a query on the
+    master ViewObject. The workaround for this release is to not only
+    remove the ViewLink, but remove and recreate the two ViewObjects
+    before trying to dynamically relink them
+    again.</para></listitem><listitem>
+
+    <para><emphasis>Dynamically Setting VO Where Clause to Contain
+    Different Number of Bind Variables</emphasis></para>
+
+    <para>If you use the <literal>setWhereClause</literal> method on a
+    ViewObject or RowSet to change the text of your query's WHERE
+    clause, you need to pay attention to the situtation in which you
+    set the new WHERE clause to contain a different number of bind
+    variables (represented by question marks in your WHERE clause
+    string) than the WHERE clause in use previously on the same
+    object.</para>
+
+    <para>To make sure that the array of bind variable parameter
+    <emphasis>values</emphasis> is properly setup after such a WHERE
+    clause change either:</para>
+
+    <para><literal>setWhereClauseParams(Object[])</literal> to reset
+    the entire bind variable value array, or</para>
+
+    <para><literal>setWhereClauseParams(null)</literal> followed by
+    <literal>setWhereClauseParams(int,Object) </literal>for the ones
+    you want to set for the new WHERE clause's different number of
+    bind variables.</para></listitem></itemizedlist></sect2>
+
+</sect1></article>

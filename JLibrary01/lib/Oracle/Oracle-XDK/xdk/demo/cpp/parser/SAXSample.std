@@ -1,0 +1,252 @@
+XML C++ SAX sample
+Initializing XML package...
+Parsing 'cleo.xml' and showing speakers by scene...
+startDocument
+
+--- ACT I ---
+
+  SCENE I.  Alexandria. A room in CLEOPATRA's palace.
+    PHILO
+    CLEOPATRA
+    MARK ANTONY
+    Attendant
+    DEMETRIUS
+  SCENE II.  The same. Another room.
+    CHARMIAN
+    ALEXAS
+    Soothsayer
+    DOMITIUS ENOBARBUS
+    IRAS
+    CLEOPATRA
+    Messenger
+    MARK ANTONY
+    First Attendant
+    Second Attendant
+    Second Messenger
+  SCENE III.  The same. Another room.
+    CLEOPATRA
+    CHARMIAN
+    MARK ANTONY
+  SCENE IV.  Rome. OCTAVIUS CAESAR's house.
+    OCTAVIUS CAESAR
+    LEPIDUS
+    Messenger
+  SCENE V.  Alexandria. CLEOPATRA's palace.
+    CLEOPATRA
+    CHARMIAN
+    MARDIAN
+    ALEXAS
+
+--- ACT II ---
+
+  SCENE I.  Messina. POMPEY's house.
+    POMPEY
+    MENECRATES
+    MENAS
+    VARRIUS
+  SCENE II.  Rome. The house of LEPIDUS.
+    LEPIDUS
+    DOMITIUS ENOBARBUS
+    MARK ANTONY
+    OCTAVIUS CAESAR
+    MECAENAS
+    AGRIPPA
+  SCENE III.  The same. OCTAVIUS CAESAR's house.
+    MARK ANTONY
+    OCTAVIA
+    OCTAVIUS CAESAR
+    Soothsayer
+  SCENE IV.  The same. A street.
+    LEPIDUS
+    AGRIPPA
+    MECAENAS
+  SCENE V.  Alexandria. CLEOPATRA's palace.
+    CLEOPATRA
+    Attendants
+    CHARMIAN
+    MARDIAN
+    Messenger
+  SCENE VI.  Near Misenum.
+    POMPEY
+    OCTAVIUS CAESAR
+    MARK ANTONY
+    LEPIDUS
+    DOMITIUS ENOBARBUS
+    MENAS
+  SCENE VII.  On board POMPEY's galley, off Misenum.
+    First Servant
+    Second Servant
+    MARK ANTONY
+    LEPIDUS
+    POMPEY
+    DOMITIUS ENOBARBUS
+    MENAS
+    OCTAVIUS CAESAR
+
+--- ACT III ---
+
+  SCENE I.  A plain in Syria.
+    VENTIDIUS
+    SILIUS
+  SCENE II.  Rome. An ante-chamber in OCTAVIUS CAESAR's house.
+    AGRIPPA
+    DOMITIUS ENOBARBUS
+    MARK ANTONY
+    OCTAVIUS CAESAR
+    OCTAVIA
+    LEPIDUS
+  SCENE III.  Alexandria. CLEOPATRA's palace.
+    CLEOPATRA
+    ALEXAS
+    Messenger
+    CHARMIAN
+  SCENE IV.  Athens. A room in MARK ANTONY's house.
+    MARK ANTONY
+    OCTAVIA
+  SCENE V.  The same. Another room.
+    DOMITIUS ENOBARBUS
+    EROS
+  SCENE VI.  Rome. OCTAVIUS CAESAR's house.
+    OCTAVIUS CAESAR
+    MECAENAS
+    AGRIPPA
+    OCTAVIA
+  SCENE VII.  Near Actium. MARK ANTONY's camp.
+    CLEOPATRA
+    DOMITIUS ENOBARBUS
+    MARK ANTONY
+    CANIDIUS
+    Messenger
+    Soldier
+  SCENE VIII.  A plain near Actium.
+    OCTAVIUS CAESAR
+    TAURUS
+  SCENE IX.  Another part of the plain.
+    MARK ANTONY
+  SCENE X.  Another part of the plain.
+    DOMITIUS ENOBARBUS
+    SCARUS
+    CANIDIUS
+  SCENE XI.  Alexandria. CLEOPATRA's palace.
+    MARK ANTONY
+    All
+    EROS
+    IRAS
+    CHARMIAN
+    CLEOPATRA
+  SCENE XII.  Egypt. OCTAVIUS CAESAR's camp.
+    OCTAVIUS CAESAR
+    DOLABELLA
+    EUPHRONIUS
+    THYREUS
+  SCENE XIII.  Alexandria. CLEOPATRA's palace.
+    CLEOPATRA
+    DOMITIUS ENOBARBUS
+    MARK ANTONY
+    EUPHRONIUS
+    Attendant
+    THYREUS
+    First Attendant
+
+--- ACT IV ---
+
+  SCENE I.  Before Alexandria. OCTAVIUS CAESAR's camp.
+    OCTAVIUS CAESAR
+    MECAENAS
+  SCENE II.  Alexandria. CLEOPATRA's palace.
+    MARK ANTONY
+    DOMITIUS ENOBARBUS
+    CLEOPATRA
+    All
+  SCENE III.  The same. Before the palace.
+    First Soldier
+    Second Soldier
+    Third Soldier
+    Fourth Soldier
+    All
+  SCENE IV.  The same. A room in the palace.
+    MARK ANTONY
+    CLEOPATRA
+    EROS
+    Soldier
+    Captain
+    All
+    CHARMIAN
+  SCENE V.  Alexandria. MARK ANTONY's camp.
+    Soldier
+    MARK ANTONY
+    EROS
+  SCENE VI.  Alexandria. OCTAVIUS CAESAR's camp.
+    OCTAVIUS CAESAR
+    AGRIPPA
+    Messenger
+    DOMITIUS ENOBARBUS
+    Soldier
+  SCENE VII.  Field of battle between the camps.
+    AGRIPPA
+    SCARUS
+    MARK ANTONY
+    EROS
+  SCENE VIII.  Under the walls of Alexandria.
+    MARK ANTONY
+    CLEOPATRA
+  SCENE IX.  OCTAVIUS CAESAR's camp.
+    First Soldier
+    Second Soldier
+    DOMITIUS ENOBARBUS
+    Third Soldier
+  SCENE X.  Between the two camps.
+    MARK ANTONY
+    SCARUS
+  SCENE XI.  Another part of the same.
+    OCTAVIUS CAESAR
+  SCENE XII.  Another part of the same.
+    MARK ANTONY
+    SCARUS
+    CLEOPATRA
+  SCENE XIII.  Alexandria. Cleopatra's palace.
+    CLEOPATRA
+    CHARMIAN
+  SCENE XIV.  The same. Another room.
+    MARK ANTONY
+    EROS
+    MARDIAN
+    First Guard
+    Second Guard
+    All
+    Third Guard
+    DERCETAS
+    DIOMEDES
+  SCENE XV.  The same. A monument.
+    CLEOPATRA
+    CHARMIAN
+    DIOMEDES
+    MARK ANTONY
+    All
+    IRAS
+
+--- ACT V ---
+
+  SCENE I.  Alexandria. OCTAVIUS CAESAR's camp.
+    OCTAVIUS CAESAR
+    DOLABELLA
+    DERCETAS
+    AGRIPPA
+    MECAENAS
+    Egyptian
+    PROCULEIUS
+    All
+  SCENE II.  Alexandria. A room in the monument.
+    CLEOPATRA
+    PROCULEIUS
+    GALLUS
+    IRAS
+    CHARMIAN
+    DOLABELLA
+    OCTAVIUS CAESAR
+    SELEUCUS
+    Guard
+    Clown
+    First Guard
+    Second Guard
+endDocument

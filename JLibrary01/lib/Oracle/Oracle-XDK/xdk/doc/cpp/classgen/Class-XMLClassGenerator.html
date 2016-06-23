@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class XMLClassGenerator</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Class-generated.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>XMLClassGenerator</i></h1>
+
+This class contain method for generating classes based on a DTD or Schema.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#generate-dtd"><b>generate</b></a></td>
+    <td>Generate classes from DTD</td>
+  </tr>
+  <tr>
+    <td><a href="#generate-xsd"><b>generate</b></a></td>
+    <td>Generate classes from Schema</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="generate-dtd"></a>
+<h2><b>generate</b></h2>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Generates classes for the given DTD.  Two files are created in
+	the output directory <tt>outdir</tt> (or in the currect directory
+	if <tt>outdir</tt> is NULL): <b><tt><i>DTDname</i>.h</tt></b> and
+	<b><tt><i>DTDname</i>.cpp</tt></b>, both named after the DTD.
+	One class is generated for each defined element in the DTD.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword XMLClassGenerator::generate(DocumentType *dtd, DOMString outdir)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>dtd</tt> -- DTD whose elements to generate classes for
+    <dd><tt>outdir</tt> -- directory in which to place output files<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- error code, 0 on success
+  </dl></dd>
+</dl>
+
+<hr>
+<a name="generate-xsd"></a>
+<h2><b>generate</b></h2>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Generates classes for the given Schema.  Two files are created in
+	the output directory <tt>outdir</tt> (or in the currect directory
+	if <tt>outdir</tt> is NULL): <b><tt><i>name</i>.h</tt></b> and
+	<b><tt><i>name</i>.cpp</tt></b>.  One class is generated for each
+	element in the Schema.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>uword XMLClassGenerator::generate(Schema *schema, DOMString name, DOMString outdir)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>schema</tt> -- Schema whose elements to generate classes for
+    <dd><tt>name</tt> -- Name for generated files and enclosing C++ namespace
+    <dd><tt>outdir</tt> -- directory in which to place output files<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- error code, 0 on success
+  </dl></dd>
+</dl>
+
+</body>
+</html>

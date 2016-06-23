@@ -1,0 +1,3766 @@
+<html>
+   <head>
+      <META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <link rel="stylesheet" type="text/css" href="readme.css">
+      <style>
+    .literal {font-family: monospace }
+    </style>
+      <title> Oracle XSQL Pages and the XSQL Servlet</title>
+   </head>
+   <body>
+      <h1 style="color:#000088"><img src="images/line1.gif" width="600" height="15"><br> Oracle XSQL Pages and the XSQL Servlet</h1>
+      <h3>Release Notes</h3><br><h2 style="color:#000090"><img src="images/line3.gif" width="300" height="11"><br>
+Contents</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID55">Overview</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID138">What are XSQL Pages?</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID318">Release 10.0.0.0</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID329">New Features for Multi-Valued Parameters</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID983">Other New Features</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID1975">Bugs Fixed</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2041">Security Consideration for Production XSQL Pages Systems</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2165">Reference Information</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2172">Online Help</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2196">XSQL Action Handler Summary</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2588">Parameter Resolution</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2778">Known Issues</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2851">Installation</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID2859">Supported Configurations</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID3280">Prerequisites</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID3336">XSQL Software Included in the XDK Distribution</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID3386">Downloading and Installing the XSQL Servlet</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID5300">Additional Technical Tips</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID5307">Producing XML from SQL with Nested Structure</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID5775">Inserting XML Into Any Table You Require </a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID7116">Demos Included with This Release</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ID7660">Closing Comments</a><br><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+	 <p>Before installing XSQL Pages on a production server, please read the
+		section below on 
+		<a href="#securityinfo">Security Considerations for Production XSQL
+		  Pages System</a>
+               </p> 
+  </td>
+         </tr>
+      </table><br><a name="intro"></a><a name="ID55">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Overview</h2>
+      </a>
+      <p>As the Internet drives an explosive demand for flexible information
+		exchange, more and more application developers need to put their business data
+		to work over the Web. Developers require standards-based solutions to this
+		problem and SQL, XML, and XSLT are the standards that can get the job done in
+		practice.</p>
+      <p>SQL is the standard you are already familiar with for accessing
+		appropriate views of business information in your production systems. XML
+		provides an industry-standard, platform-neutral format for representing the
+		results of SQL queries as "datagrams" for exchange, and 
+		<a href="http://www.w3.org/TR/xslt">XSLT</a> defines the
+		industry-standard way to transform XML "datagrams" into target XML, HTML, or
+		Text formats as needed. </p>
+      <p>By combining the power of SQL, XML, and XSLT in the server with the
+		ubiquitously available HTTP protocol for the transport mechanism you
+		can:</p>
+      <ul> 
+		<li> 
+		  <p>Receive web-based information requests from any client device on
+			 the Web,</p> 
+		</li> 
+		<li> 
+		  <p>Query an appropriate logical "view" of business data needed by
+			 the request,</p> 
+		</li> 
+		<li> 
+		  <p>Return the "datagram" in XML over the web to the requester, or
+			 optionally</p> 
+		</li> 
+		<li> 
+		  <p>Transform the information flexibly into any XML, HTML, or text
+			 format they require.</p> 
+		</li> 
+	 </ul>
+      <p> Of course, Oracle 8<i>i</i>, the Oracle 
+		<a href="http://otn.oracle.com/tech/xml">XML Developer's
+		  Kit</a>, and the 
+		<a href="http://otn.oracle.com/tech/xml/oracle_xsu/">XML SQL
+		  Utility for Java</a> provide all of the core technology needed by
+		developers to implement this solution. However it is <i>Oracle XSQL
+		Pages</i> that bring this capability to the "rest of us" by automating
+		the use of these underlying XML technology components to solve the most common
+		cases without programming. </p><a name="ID138">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>What are XSQL Pages?</h3>
+      </a>
+      <p> Oracle XSQL Pages are templates that allow <i>anyone</i>
+		  familiar with SQL to declaratively:</p>
+      <ul> 
+		  <li> 
+			 <p> Assemble dynamic XML "datapages" based on one or more
+				parametrized SQL queries, and </p> 
+		  </li> 
+		  <li> 
+			 <p>Transform the "datapage" to produce a final result in any
+				desired XML, HTML, or Text-based format using an associated XSLT
+				Transformation.</p> 
+		  </li> 
+		</ul>
+      <p>The two key design goals of Oracle XSQL Pages are: 
+		  <ul> 
+			 <li> 
+				<p>Make simple things very simple and hard things
+				  possible</p> 
+			 </li> 
+			 <li> 
+				<p>Keep the "datapage" cleanly separate from the way that data
+				  will be rendered to the requester.</p> 
+			 </li> 
+		  </ul> </p>
+      <p>XSQL Pages are simple to build. Just use any text editor to create
+		  an XML file that includes <span class="literal">
+            <nobr>&lt;xsql:query></nobr>
+         </span> tags wherever you want
+		  to include XML-based SQL query results in the template. Associate an XSLT
+		  stylesheet to the page by including one extra line at the top of the file: an
+		  <span class="literal">
+            <nobr>&lt;?xml-stylesheet?></nobr>
+         </span> instruction. Save the file and request it
+		  through your browser to get immediate results. Since you can extend the set of
+		  actions that can be performed to assemble the "datapage" using the
+		  <span class="literal">
+            <nobr>&lt;xsql:action></nobr>
+         </span> element, it's possible to cleverly extend the
+		  basic simple model to handle harder jobs. Let's start by looking at a simple
+		  example of an XSQL Page.</p>
+      <p>For example, to serve a list of available flights today for any
+		  desired destination city from your enterprise database in response to a URL
+		  request like:</p>
+      <p> 
+		  <pre>http://yourcompany.com/AvailableFlightsToday.xsql?City=NYC</pre>
+
+		</p>
+      <p> you might write an XSQL Page like:</p>
+      <pre>&lt;?xml version="1.0"?&gt;
+&lt;xsql:query connection="demo" bind-params="City" xmlns:xsql="urn:oracle-xsql"&gt;
+
+    SELECT Carrier, FlightNumber, Origin, TO_CHAR(ExpectedTime,'HH24:MI') Due
+      FROM FlightSchedule
+     WHERE TRUNC(ArrivalTime) = TRUNC(SYSDATE)
+       AND Destination = ?
+  ORDER BY ExpectedTime
+
+&lt;/xsql:query&gt;</pre>
+      <p>To return the same information in HTML or some alternative XML
+		  format that might comply with a particular DTD you've been given, just
+		  associate an appropriate with <span class="literal">
+            <nobr>&lt;?xml-stylesheet?></nobr>
+         </span> like
+		  this:</p>
+      <pre>&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="FlightList.xsl"?&gt;
+&lt;xsql:query connection="demo" bind-params="City" xmlns:xsql="urn:oracle-xsql"&gt;
+
+    SELECT Carrier, FlightNumber, Origin, TO_CHAR(ExpectedTime,'HH24:MI') Due
+      FROM FlightSchedule
+     WHERE TRUNC(ArrivalTime) = TRUNC(SYSDATE)
+       AND Destination = ?
+  ORDER BY ExpectedTime
+
+&lt;/xsql:query&gt;</pre>
+      <p>Once you've built a set of XSQL Pages, you can "exercise" your
+		  templates by:</p>
+      <ul> 
+		  <li> 
+			 <p>Requesting the pages over the Web from browsers or client
+				programs after installing the Oracle XSQL <i>Servlet</i> on your
+				favorite Web Server,</p> 
+		  </li> 
+		  <li> 
+			 <p>Using the Oracle XSQL <i>Command Line Utility</i>
+				in batch programs, </p> 
+		  </li> 
+		  <li> 
+			 <p>Calling the <nobr class="literal">XSQLRequest.process()</nobr> method
+				from within any Java program</p> 
+		  </li> 
+		  <li> 
+			 <p><span class="literal">
+                  <nobr>&lt;jsp:include></nobr>
+               </span>ing an XSQL Page into your JSP
+				page, or <span class="literal">
+                  <nobr>&lt;jsp:forward></nobr>
+               </span>ing to</p> 
+		  </li> 
+		</ul>
+      <p>These release notes explain in detail how to setup the Oracle XSQL
+		  Servlet and how to make use of all the time-saving features supported by XSQL
+		  Page templates. </p>
+      <p> Using XSQL Pages, the information you already have in your Oracle
+		  database, and the power of SQL, XML, and XSLT, you'll quickly discover that a
+		  powerful and flexible world of web data publishing is at your fingertips.
+		  </p><a name="ID318">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Release 10.0.0.0</h2>
+      </a>
+      <p>Release 10.0.0.0 adds several new features:</p><a name="ID329">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>New Features for Multi-Valued Parameters</h3>
+      </a>
+      <p>Many users have requested an easy way to work with parameters whose
+		  values are <i>arrays</i> of strings. The most common scenario
+		  where multi-valued parameters occur is when a user submits an HTML form
+		  containing multiple occurrences of input controls that share the same
+		  name.</p>
+      <ul> 
+		  <li> 
+			 <p><i><b><u>Working with Array-Valued
+				Parameters</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>In addition to the existing support for simple-string values,
+				now request parameters, session parameters, and page-private parameters may
+				have values that are arrays of strings. To treat to the value of a parameter as
+				an array, you add two empty square brackets to the end of its name. For
+				example, if an HTML form is posted having four occurrences of a input control
+				named <nobr class="literal">productid</nobr>, then to refer to the array-valued
+				<nobr class="literal">productid</nobr> parameter you use the notation
+				<nobr class="literal">productid[]</nobr>.</p> 
+			 <p>If you refer to an array-valued parameter as a lexical
+				substitution parameter -- either inside an action handler attribute value or
+				inside the content of an action handler element -- its value will be converted
+				to a comma-separated list of all non-null and non-empty strings in the array in
+				the order that they appear in the array. For example, if you had a page
+				like:</p> 
+			 <pre>&lt;page xmlns:xsql="urn:oracle-xsql"&gt;
+  &lt;xsql:query&gt;
+    select description
+      from product
+     where productid in ( {@productid[]} )  /* Using lexical parameter */
+  &lt;/xsql:query&gt;
+&lt;/page&gt;</pre>
+			 <p>and the request contains four values for the productid
+				parameter, then the <nobr class="literal">{@productid[]}</nobr> lexical substitution
+				expression will be replaced in the query by a string like
+				<nobr class="literal">111,222,333,444</nobr>.</p> 
+			 <p>If you refer to an array-valued parameter without using the
+				array-brackets notation on the end of the name, then the value used will be the
+				value of the <i>first</i> array entry.</p> 
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>It is <i>not</i> supported to use a number
+				  inside the array brackets. That is, you can refer to
+				  <nobr class="literal">productid</nobr> or <nobr class="literal">productid[]</nobr>, but
+				  <i>not</i> <nobr class="literal">productid[2]</nobr>. Also, as described
+				  above only the request parameters, page-private parameters, and session
+				  parameters can use string arrays. The
+				  <span class="literal">
+                           <nobr>&lt;xsql:set-stylesheet-param></nobr>
+                        </span> and
+				  <span class="literal">
+                           <nobr>&lt;xsql:set-cookie></nobr>
+                        </span> only support working with parameters as
+				  simple string values.</p> 
+			 </td>
+               </tr>
+            </table><br> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Setting Array-Valued Page or Session Parameters From
+				Strings</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>You can set the value of a page-private parameter or session
+				parameter to a string-array value simply by using the array-brackets notation
+				on the name like this:</p> 
+			 <pre>&lt;!-- Note, param name contains array brackets --&gt;
+&lt;xsql:set-page-param name="names[]" value="Tom Jane Joe"/&gt;</pre>
+			 <p>or similarly for session parameters:</p> 
+			 <pre>&lt;!-- Note, param name contains array brackets --&gt;
+&lt;xsql:set-session-param name="dates[]" value="12-APR-1962 15-JUL-1968"/&gt;</pre>
+			 <p>By default, when the name of the parameter being set is an name
+				with array-brackets, the value will be treated as a space-or-comma-separated
+				list and tokenized. The resulting string array value will contain these
+				separate tokens. In the examples above, the <nobr class="literal">names[]</nobr>
+				parameter would be the string array <nobr class="literal">{"Tom", "Jane", "Joe"}</nobr>
+				and the <nobr class="literal">dates[]</nobr> parameter would be the string array
+				<nobr class="literal">{"12-APR-1962", "15-JUL-1968"}</nobr>.</p> 
+			 <p>In order to handle strings that contain spaces, the
+				tokenization algorithm first checks the string being tokenized for the presence
+				of any commas. If at least one comma is found in the string, then commas are
+				used as the token delimiter. So, for example, the following action:</p> 
+			 <pre>&lt;!-- Note, param name contains array brackets --&gt;
+&lt;xsql:set-page-param name="names[]" value="Tom Jones,Jane York"/&gt;</pre>
+			 <p>would set the value of the <nobr class="literal">names[]</nobr> parameter
+				to the string array <nobr class="literal">{"Tom Jones", "Jane York"}</nobr>.</p> 
+			 <p>By default, when you set a parameter whose name does
+				<i>not</i> end with the array-brackets, then the
+				string-tokenization does not occur. So, as in previous releases of XSQL Pages,
+				the following action:</p> 
+			 <pre>&lt;!-- Note, param name does NOT contain array brackets --&gt;
+&lt;xsql:set-page-param name="names" value="Tom Jones,Jane York"/&gt;</pre>
+			 <p>Sets a parameter named <nobr class="literal">names</nobr> to the literal
+				string "<nobr class="literal">Tom Jones,Jane York</nobr>". For convenience, you can
+				optionally force the string to be tokenized by including the new
+				<nobr class="literal">treat-list-as-array="yes"</nobr> attribute on the
+				<span class="literal">
+                  <nobr>&lt;xsql:set-page-param></nobr>
+               </span> or
+				<span class="literal">
+                  <nobr>&lt;xsql:set-session-param></nobr>
+               </span> actions. The result will be to assign
+				a comma-separated string of the tokenized values to the parameter. For example,
+				the action:</p> 
+			 <pre>&lt;!-- Note, param name does NOT contain array brackets --&gt;
+&lt;xsql:set-page-param name="names" value="Tom Jane Joe" treat-list-as-array="yes"/&gt;</pre>
+			 <p>sets the names parameter to the literal string
+				"<nobr class="literal">Tom,Jane,Joe</nobr>". As a final new convenience, when you are
+				setting the value of a simple string-valued parameter and you are tokenizing
+				the value using <nobr class="literal">treat-list-as-array="yes"</nobr>, you can include
+				the new <nobr class="literal">quote-array-values="yes"</nobr> attribute to have the
+				comma-separated values be surrounded by single-quotes. So, an action like
+				this:</p> 
+			 <pre>&lt;!-- Note, param name does NOT contain array brackets --&gt;
+&lt;xsql:set-page-param name="names" value="Tom Jones,Jane York,Jimmy"
+                     treat-list-as-array="yes" quote-array-values="yes"/&gt;</pre>
+			 <p>assigns the literal string value "<nobr class="literal">'Tom Jones','Jane
+				York','Jimmy'</nobr>" to the <nobr class="literal">names</nobr> parameter.</p> 
+
+
+
+
+
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Binding Array-Valued Parameters in SQL and PL/SQL
+				Statements</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>Anywhere in XSQL Pages where string-valued scalar bind
+				variables were supported previously, you may now bind array-valued parameters
+				by simply using the array-parameter name in the list of parameter names that
+				you supply for the <nobr class="literal">bind-params</nobr> attribute.</p> 
+			 <p>This makes it very easy to process array-valued parameters in
+				SQL statements and in PLSQL procedures. Array-valued parameters are bound as an
+				nested table object type named <nobr class="literal">XSQL_TABLE_OF_VARCHAR</nobr> that
+				you must create in your current schema using the DDL statement:</p> 
+			 <pre>CREATE TYPE xsql_table_of_varchar AS TABLE OF VARCHAR2(<i>2000</i>);</pre>
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>While the type must have this exact name,
+				  <nobr class="literal">XSQL_TABLE_OF_VARCHAR</nobr>, you can change the dimension of the
+				  VARCHAR2 string if desired. Of course, you should make it as long as any string
+				  value you expect to handle in your array-valued string parameters.</p> 
+			 </td>
+               </tr>
+            </table><br> 
+			 <p>Consider the following PL/SQL stored procedure:</p> 
+			 <pre>FUNCTION testTableFunction(p_name  XSQL_TABLE_OF_VARCHAR,
+                           p_value XSQL_TABLE_OF_VARCHAR) RETURN VARCHAR2 IS
+  lv_ret     VARCHAR2(4000);
+  lv_numElts INTEGER;
+BEGIN
+  IF p_name IS NOT NULL THEN
+    lv_numElts := p_name.COUNT;
+    FOR j IN 1..lv_numElts LOOP
+      IF (j &gt; 1) THEN
+        lv_ret := lv_ret||':';
+      END IF;
+      lv_ret := lv_ret||p_name(j)||'='||p_value(j);
+    END LOOP;
+  END IF;
+  RETURN lv_ret;
+END;</pre>
+			 <p>The following page illustrates how to bind two array-valued
+				parameters in a SQL statement that uses this PL/SQL function taking
+				<nobr class="literal">XSQL_TABLE_OF_VARCHAR</nobr>-typed arguments.</p> 
+			 <pre>&lt;page xmlns:xsql="urn:oracle-xsql" connection="demo" someNames="aa,bb,cc" someValues="11,22,33"&gt;
+  &lt;xsql:query bind-params="someNames[] someValues[]"&gt;
+    select testTableFunction(?,?) as example from dual
+  &lt;/xsql:query&gt;
+&lt;/page&gt;</pre>
+			 <p>This produces a resulting XML data page of:</p> 
+			 <pre>&lt;page someNames="aa,bb,cc" someValues="11,22,33"&gt;
+  &lt;ROWSET&gt;
+    &lt;ROW num="1"&gt;
+      &lt;EXAMPLE&gt;aa=11:bb=22:cc=33&lt;/EXAMPLE&gt;
+    &lt;/ROW&gt;
+  &lt;/ROWSET&gt;
+&lt;/page&gt;</pre>
+			 <p>illustrating that the array-valued someNames[] and someValues[]
+				parameters were bound as table collection types and the values were iterated
+				over and concatenated together to produce the
+				"<nobr class="literal">aa=11:bb=22:cc=33</nobr>" string value as the function
+				return.</p> 
+			 <p>You can mix any number of regular parameters and array-valued
+				parameters in your bind-params string. Just use the array-bracket notation for
+				the ones you want to be bound as arrays.</p> 
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>If you try the example above and you have not created the
+				  XSQL_TABLE_OF_VARCHAR type as illustrated above, you will receive an error like
+				  this:</p> 
+				<pre>&lt;page someNames="aa,bb,cc" someValues="11,22,33"&gt;
+  &lt;xsql-error code="17074" action="xsql:query"&gt;
+    &lt;statement&gt;select testTableFunction(?,?) as example from dual&lt;/statement&gt;
+    &lt;message&gt;invalid name pattern: SCOTT.XSQL_TABLE_OF_VARCHAR&lt;/message&gt;
+  &lt;/xsql-error&gt;
+&lt;/page&gt;</pre>
+
+			 </td>
+               </tr>
+            </table><br> 
+			 <p>Since the array parameters are bound as nested table collection
+				types, you can use the <nobr class="literal">TABLE()</nobr> operator in combination with
+				the <nobr class="literal">CAST()</nobr> operator in SQL to treat the nested table bind
+				variable value as a table of values to query against. This can be quite a
+				powerful technique to use in subselect clauses of a SQL statement (but it's not
+				limited to this). The following page illustrates using an array-valued
+				parameter containing employee id's to restrict the rows queried from the
+				familiar EMP table.</p> 
+			 <pre>&lt;page xmlns:xsql="urn:oracle-xsql" connection="demo"&gt;
+  &lt;xsql:set-page-param name="someEmployees[]" value="7369,7839"/&gt;
+  &lt;xsql:query bind-params="someEmployees[]"&gt;
+    select ename, sal
+      from emp
+     where empno in (
+        select * from TABLE(CAST( ? as xsql_table_of_varchar))
+     )
+   &lt;/xsql:query&gt;
+&lt;/page&gt;</pre>
+			 <p>This produces a result like:</p> 
+			 <pre>&lt;page&gt;
+  &lt;ROWSET&gt;
+    &lt;ROW num="1"&gt;
+      &lt;ENAME&gt;SMITH&lt;/ENAME&gt;
+      &lt;SAL&gt;800&lt;/SAL&gt;
+    &lt;/ROW&gt;
+    &lt;ROW num="2"&gt;
+      &lt;ENAME&gt;KING&lt;/ENAME&gt;
+      &lt;SAL&gt;5000&lt;/SAL&gt;
+    &lt;/ROW&gt;
+  &lt;/ROWSET&gt;
+&lt;/page&gt;</pre>
+			 <p>These examples have shown using <nobr class="literal">bind-params</nobr>
+				with <span class="literal">
+                  <nobr>&lt;xsql:query></nobr>
+               </span>, but these new features work for
+				<span class="literal">
+                  <nobr>&lt;xsql:dml></nobr>
+               </span>, <span class="literal">
+                  <nobr>&lt;xsql:include-owa></nobr>
+               </span>,
+				<span class="literal">
+                  <nobr>&lt;xsql:ref-cursor-function></nobr>
+               </span>, and any other actions that accept
+				SQL statements as part of their functionality. </p> 
+			 <p>Finally, some users might ask, "Why doesn't XSQL support using
+				PL/SQL index-by tables instead of nested table collection types for binding
+				string-array values?" The simple answer is that PL/SQL index-by-tables do not
+				work with the JDBC Thin driver. They only work using the OCI8 JDBC driver. By
+				using the nested table collection type <nobr class="literal">XSQL_TABLE_OF_VARCHAR</nobr>
+				we can use the array-valued parameters with both the Thin driver and the OCI8
+				driver, without losing any of the programming flexibility of working with the
+				array of values in PL/SQL.</p> 
+
+
+
+
+
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Supplying Multi-Valued Parameters on the Command
+				Line</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>If you use the
+				<nobr class="literal">oracle.xml.xsql.XSQLCommandLine</nobr> command-line utility to run
+				XSQL pages, you can supply multi-valued parameters to the XSQL page processor
+				by simply including the same parameter name on the command line multiple times
+				like this:</p> 
+			 <pre>java oracle.xml.xsql.XSQLCommandLine SomePage.xsql user=Steve user=Paul user=Mary</pre>
+			 <p>This will result in having the <nobr class="literal">user[]</nobr>
+				array-valued parameter set as part of the page processing request.</p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Supplying Multi-Valued Parameters Programmatically
+				with XSQLRequest</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>The <nobr class="literal">XSQLRequest</nobr> programmatic API to the XSQL
+				Page engine already takes a <nobr class="literal">java.util.Dictionary</nobr> of named
+				parameters. Typically users have used a <nobr class="literal">Hashtable</nobr> and called
+				its <nobr class="literal">put( 
+				<i>name</i>, 
+				<i>value</i>)</nobr> method to add
+				String-valued parameters to the request. To add multi-valued parameters, simply
+				put a value of type <nobr class="literal">String[]</nobr> instead of type
+				<nobr class="literal">String</nobr>.</p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Using Multi-Valued Parameters in Custom XSQL
+				Actions</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>The base class for custom XSQL actions,
+				<nobr class="literal">oracle.xml.xsql.XSQLActionHandlerImpl</nobr> has been enhanced to
+				support working with array-named lexical parameter substitution and array-named
+				bind variables, so if your custom actions are using methods like
+				<nobr class="literal">getAttributeAllowingParam()</nobr>,
+				<nobr class="literal">getActionElementContent()</nobr>, or
+				<nobr class="literal">handleBindVariables()</nobr> methods from this base class, you
+				pickup this new functionality for free in your custom actions.</p> 
+			 <p>A new method <nobr class="literal">getParameterValues()</nobr> is added
+				to the XSQLPageRequest interface to explicitly get a parameter value as a
+				<nobr class="literal">String[]</nobr>, and the helper method
+				<nobr class="literal">variableValues()</nobr> in <nobr class="literal">XSQLActionHandlerImpl</nobr>
+				makes it easy to use this functionality from within a custom action handler if
+				you need to do so programmatically. </p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>New Behavior of &lt;xsql:include-param&gt; for
+				Multi-Valued Parameters</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>The <span class="literal">
+                  <nobr>&lt;xsql:include-param></nobr>
+               </span> method is used to
+				include the value of any parameter into the XML data page that your XSLT
+				stylesheet will "see" for processing. When used with a simple string-valued
+				parameter, an action like:</p> 
+			 <pre>&lt;xsql:include-param name="productid"/&gt;</pre>
+			 <p>includes a fragment of XML like this into your data
+				page:</p> 
+			 <pre>&lt;productid&gt;1234&lt;/productid&gt;</pre>
+			 <p>If you use the new array-name syntax to indicate that you want
+				to treat the parameter as an array-valued parameter,
+				<span class="literal">
+                  <nobr>&lt;xsql:include-param></nobr>
+               </span> will add all array values to your data
+				page using an XML fragment that looks like this:</p> 
+			 <pre>&lt;productid&gt;
+  &lt;value&gt;1234&lt;/value&gt;
+  &lt;value&gt;4567&lt;/value&gt;
+  &lt;value&gt;890&lt;/value&gt;  
+&lt;/productid&gt;</pre>
+			 <p>assuming the <nobr class="literal">productid</nobr> parameter was
+				array-valued with values <nobr class="literal">{"1234","4567","890"}</nobr> and that you
+				used the array-bracket notation in the action like this:</p> 
+			 <pre>&lt;xsql:include-param name="productid[]"/&gt;</pre>
+
+
+
+
+		  </li> 
+		</ul><a name="ID983">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Other New Features</h3>
+      </a>
+      <ul> 
+		  <li> 
+			 <p><i><b><u>Conditionally Execute Actions or Include Content with
+				xsql:if-param</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>The new <span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span> action allows you to
+				conditionally include the elements and/or actions that are nested inside it if
+				some condition is true. If the condition evaluates to true, then all nested XML
+				content and actions are included in the page. If the condition evaluates to
+				false, then none of the nested XML content or actions are included (and hence
+				any nested actions are <i>not</i> executed).</p> 
+			 <p>You specify which parameter value will be evaluated by
+				supplying the required <nobr class="literal">name</nobr> attribute. Both simple parameter
+				names as well as array-parameter names are supported.</p> 
+			 <p>In addition to the <nobr class="literal">name</nobr> attribute, you must
+				also pick <i>exactly one</i> of the following five attributes to
+				indicate how the parameter value (or values, in the array case) should be
+				tested:</p> 
+			 <ol> 
+				<li> 
+				  <p>
+                     <nobr class="literal">exists="yes"</nobr> or
+					 <nobr class="literal">exists="no"</nobr>
+                  </p> 
+				  <p>This tests whether the named parameter exists and has a
+					 non-empty value. For an array-valued parameter, it tests whether the
+					 array-parameter exists, and has at least one non-empty element.</p> 
+				</li> 
+				<li> 
+				  <p>
+                     <nobr class="literal">equals=" 
+					 <i>stringValue</i>"</nobr>
+                  </p> 
+				  <p>This tests whether the named parameter equals the string
+					 value provided. By default the comparison is an exact string match. If you want
+					 a case-insensitive match, supply the additional ignore-case="yes" attribute as
+					 well. For an array-valued parameter, it tests whether any element in the array
+					 has the indicated value.</p> 
+				</li> 
+				<li> 
+				  <p>
+                     <nobr class="literal">not-equals="<i>stringValue</i>"</nobr>
+                  </p>
+				  
+				  <p>This tests whether the named parameter does not equal the
+					 string value provided. For an array-valued parameter, it tests whether no
+					 element in the array has the indicated value.</p> 
+				</li> 
+				<li> 
+				  <p>
+                     <nobr class="literal">in-list="<i>comma-or-space-separated-list</i>"</nobr>
+                  </p>
+				  
+				  <p>This tests whether the named parameter matches any of the
+					 strings in the provided list. The value of the <nobr class="literal">in-list</nobr>
+					 parameter is tokenized into an array using commas as the delimiter if any
+					 commas are detected in the string, otherwise using space as the delimiter. For
+					 an array-valued parameter, it tests whether <i>any</i> element in
+					 the array matches some element in the list.</p> 
+				</li> 
+				<li> 
+				  <p>
+                     <nobr class="literal">not-in-list=" 
+					 <i>comma-or-space-separated-list</i>"</nobr>
+                  </p>
+				  
+				  <p>This tests whether the named parameter does not match any
+					 of the strings in the provided list. The value of the
+					 <nobr class="literal">not-in-list</nobr> parameter is tokenized into an array using
+					 commas as the delimiter if any commas are detected in the string, otherwise
+					 using space as the delimiter. For an array-valued parameter, it tests whether
+					 <i>none</i> of the elements in the array matches any element in
+					 the list.</p> 
+				</li> 
+			 </ol> 
+			 <p>For the <nobr class="literal">equals</nobr>,
+				<nobr class="literal">not-equals</nobr>, <nobr class="literal">in-list</nobr>, and
+				<nobr class="literal">not-in-list</nobr> tests, by default the comparison is an exact
+				string match. If you want a case-insensitive match, supply the additional
+				<nobr class="literal">ignore-case="yes"</nobr> attribute as well. </p> 
+			 <p>All of the attributes of the <span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span>
+				action can contain lexical substitution parameter expressions (e.g. <nobr class="literal">{@
+				
+				<i>paramName</i>}</nobr>) if needed.</p> 
+			 <p>Any XML content or XSQL action element can be nested inside an
+				<span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span>, including other
+				<span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span> elements if needed.</p> 
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>If the parameter being tested does not exist, the test
+				  evaluates to false.</p> 
+			 </td>
+               </tr>
+            </table><br> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>New Commit="No" Flag on Actions That Performed an
+				Implicit Commit</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>The <span class="literal">
+                  <nobr>&lt;xsql:delete-request></nobr>
+               </span>,
+				<span class="literal">
+                  <nobr>&lt;xsql:insert-request></nobr>
+               </span>, <span class="literal">
+                  <nobr>&lt;xsql:insert-request></nobr>
+               </span>,
+				and <span class="literal">
+                  <nobr>&lt;xsql:insert-parameter></nobr>
+               </span> action elements each takes a new
+				optional commit attribute to control whether the action does an implicit commit
+				or not. For backward compatibility, if not specified, these actions perform an
+				implicit commit. To avoid performing this implicit commit, you may now specify
+				<nobr class="literal">commit="no"</nobr> on any of these actions.</p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Optionally Set an Error Param on Any Built-in
+				Action</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>It is often convenient to know whether an action encountered a
+				non-fatal error during its execution. For example, an attempt to insert a row
+				or call a stored procedure could fail with a database exception. Now you can
+				optionally have any built-in XSQL action set a page-private parameter of your
+				choice when that action reports a non-fatal error by using the
+				<nobr class="literal">error-param</nobr> attribute on your action. </p> 
+			 <p>For example, to have the parameter named
+				<nobr class="literal">dml-error</nobr> set if the statement inside the
+				<span class="literal">
+                  <nobr>&lt;xsql:dml></nobr>
+               </span> action encounters a database error, use an action
+				like this:</p> 
+			 <pre>&lt;xsql:dml error-param="dml-error" bind-params="val"&gt;
+  insert into yourtable(somecol) values(?)
+&lt;/xsql:dml&gt;</pre>
+			 <p>If the execution of this action encounters an error, then the
+				page-private parameter named dml-error will be set to the string
+				"<nobr class="literal">Error</nobr>". </p> 
+			 <p>If the execution of the action is
+				<i>successful</i>, the error parameter is not assigned any value.
+				In the example above, this would mean that if the page-private parameter
+				<nobr class="literal">dml-error</nobr> already exists, it will retain its current value.
+				If it does not exist, it will continue to not exist.</p> 
+			 <p>By using this new error parameter in combination with
+				<span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span> you can achieve conditional behavior in your
+				XSQL page tempate, depending on the success or failure of certain actions. For
+				example, assuming your connection definition sets the
+				<nobr class="literal">autocommit</nobr> flag to <i>false</i> on the
+				connection named "<nobr class="literal">demo</nobr>" in
+				<nobr class="literal">XSQLConfig.xml</nobr>, then the following page illustrates how you
+				might rollback the changes made by a previous action if a subsequent action
+				encounters an error.</p> 
+			 <pre>&lt;!-- NOTE: Connection "demo" must not set to autocommit! --&gt;
+&lt;page connection="demo" xmlns:xsql="urn:oracle-xsql"&gt;
+  &lt;xsql:dml error-param="dml-error" bind-params="val"&gt;
+    insert into yourtable(somecol) values(?)
+  &lt;/xsql:dml&gt;
+  &lt;!-- This second statement will commit if it succeeds --&gt;
+  &lt;xsql:dml commit="yes" error-param="dml-error" bind-params="val2"&gt;
+    insert into anothertable(anothercol) values(?)
+  &lt;/xsql:dml&gt;
+  &lt;xsql:if-param name="dml-error" exists="yes"&gt;
+    &lt;xsql:dml&gt;rollback&lt;/xsql:dml&gt;
+  &lt;/xsql:if-param&gt;
+&lt;/page&gt;</pre>
+			 <p>If you've written any custom action handlers andyour custom
+				actions call <nobr class="literal">reportMissingAttribute()</nobr>,
+				<nobr class="literal">reportError()</nobr>, or
+				<nobr class="literal">reportErrorIncludingStatement()</nobr> to report non-fatal action
+				errors, then they will automatically pickup this new feature as well.</p> 
+
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Use Your Servlet Container's DataSource
+				Implementation</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>As an <i>alternative</i> to defining your named
+				connections in the <nobr class="literal">XSQLConfig.xml</nobr> file, you may now
+				alternatively use the datasources available through your servlet container's
+				implementation of JDBC datasources.</p> 
+			 <p>Two new <nobr class="literal">XSQLConnectionManager</nobr>
+				implementations are provided:</p> 
+			 <ol> 
+				<li> 
+				  <p>
+                     <nobr class="literal">oracle.xml.xsql.XSQLDatasourceConnectionManager</nobr>
+                  </p>
+				  
+				  <p>Consider using this alternative connection manager
+					 implementation if your servlet container's datasource implementation does
+					 <i>not</i> use the Oracle JDBC driver under the covers. Certain
+					 features of the XSQL Pages system will not be available when you are not using
+					 an Oracle JDBC driver, like <span class="literal">
+                        <nobr>&lt;xsql:ref-cursor-function></nobr>
+                     </span> and
+					 <span class="literal">
+                        <nobr>&lt;xsql:include-owa></nobr>
+                     </span>.</p> 
+				</li> 
+				<li> 
+				  <p>
+                     <nobr class="literal">oracle.xml.xsql.XSQLOracleDatasourceConnectionManager</nobr>
+                  </p>
+				  
+				  <p> Consider using this alternative connection manager
+					 implementation when you know that your datasource implementation returns JDBC
+					 <nobr class="literal">PreparedStatement</nobr> and <nobr class="literal">CallableStatement</nobr>
+					 objects that implement the <nobr class="literal">oracle.jdbc.PreparedStatement</nobr> and
+					 <nobr class="literal">oracle.jdbc.CallableStatement</nobr> interfaces respectively. The
+					 Oracle9<i>i</i>AS application server has a datasource
+					 implementation that does this.</p> 
+				</li> 
+			 </ol> 
+			 <p>When using either of these alternative connection manager
+				implementations, the value of the <nobr class="literal">connection</nobr> attribute in
+				your XSQL page should be the JNDI name used to lookup your desired datasource.
+				For example, the value of the connection attribute might look something like:
+				"<nobr class="literal">jdbc/scottDS</nobr>". </p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Provide Custom XSQLErrorHandler
+				Implementation</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>Many customers have asked for a programmatic way to control how
+				errors are reported to be able to customize the treatment of how page processor
+				errors (like a connection's being unavailable) are reported to users. A new
+				interface is introduced in this release
+				<nobr class="literal">oracle.xml.xsql.XSQLErrorHandler</nobr> that allows developers to
+				achieve this. The interface contains the single method:</p> 
+			 <pre>public interface XSQLErrorHandler {
+  public void handleError( XSQLError err, XSQLPageRequest env);
+}</pre>
+			 <p>You can provide a class that implements the
+				<nobr class="literal">XSQLErrorHandler</nobr> interface to customize how the XSQL Page
+				Processor writes out any page processor error messages. The new
+				<nobr class="literal">XSQLError</nobr> object encapsulates the error information and
+				provides access to the error code, formatted error message, etc. </p> 
+			 <p>For example, here is a sample implementation of
+				<nobr class="literal">XSQLErrorHandler</nobr>:</p> 
+			 <pre>package test;
+import oracle.xml.xsql.*;
+import java.io.*;
+/**
+ * Example of a custom XSQLErrorHandler implementation
+ */
+public class MyErrorHandler implements XSQLErrorHandler {
+  public void logError( XSQLError err, XSQLPageRequest env) {
+    // Must set the content type before writing anything out
+    env.setContentType("text/html");
+    PrintWriter pw = env.getErrorWriter();
+    pw.println("&lt;H1&gt;ERROR&lt;/H1&gt;&lt;hr&gt;"+err.getMessage());    
+  }
+}</pre>
+			 <p>You can control which custom
+				<nobr class="literal">XSQLErrorHandler</nobr> implementation gets used in two distinct
+				ways:</p> 
+			 <ol> 
+				<li> 
+				  <p>You can define the name of a custom
+					 <nobr class="literal">XSQLErrorHandler</nobr> implementation class in the
+					 <nobr class="literal">XSQLConfig.xml</nobr> file by providing the fully-qualified
+					 classname of your error writer class as the value of the
+					 <nobr class="literal">XSQLConfig.xml</nobr> file entry
+					 <nobr class="literal">/XSQLConfig/processor/error-handler/class</nobr>. </p> 
+				  <p>If the Page Processor can load this class and it correctly
+					 implements the <nobr class="literal">XSQLErrorHandler</nobr> interface, then this class
+					 is used as a singleton and replaces the default implementation globally,
+					 wherever page processor errors are reported.</p> 
+				</li> 
+				<li> 
+				  <p>You can override the error writer on a per-page basis using
+					 the new, optional <nobr class="literal">errorHandler</nobr> (or
+					 <nobr class="literal">xsql:errorHandler</nobr>) attribute on the document element of your
+					 page. </p> 
+				  <p>The value of this attribute is the fully-qualified class
+					 name of a class that implements the <nobr class="literal">XSQLErrorHandler</nobr>
+					 interface. This class will be used to report the errors for just this page and
+					 the class is instantiated on each page request by the page engine.</p> 
+				  <p>Or you can use a combination of both approaches.</p> 
+				</li> 
+			 </ol> 
+
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Provide Custom XSQLLogger
+				Implementation</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>Customers have asked for a way to log XSQL page requests. Two
+				new interfaces are introduced in this release
+				<nobr class="literal">oracle.xml.xsql.XSQLLoggerFactory</nobr> and
+				<nobr class="literal">oracle.xml.xsql.XSQLLogger</nobr> that allow developers to achieve
+				this. </p> 
+			 <p>The <nobr class="literal">XSQLLoggerFactory</nobr> interface contains the
+				single method:</p> 
+			 <pre>public interface XSQLLoggerFactory {
+  public XSQLLogger create( XSQLPageRequest env);
+}</pre>
+			 <p>You can provide a class that implements the
+				<nobr class="literal">XSQLLoggerFactory</nobr> interface to decide how
+				<nobr class="literal">XSQLLogger</nobr> objects should be created (or reused) for
+				logging. The XSQL Page processor holds a reference to the XSQLLogger object
+				returned by the factory for the duration of a page request and using it to log
+				the start and end of each page request by invoking the
+				<nobr class="literal">logRequestStart()</nobr> and <nobr class="literal">logRequestEnd()</nobr>
+				methods on it.</p> 
+			 <p>Here is the interface for <nobr class="literal">XSQLLogger</nobr>:</p>
+			 
+			 <pre>public interface XSQLLogger {
+   public void logRequestStart(XSQLPageRequest env) ;
+   public void logRequestEnd(XSQLPageRequest env);
+}</pre>
+			 <p>The following two classes illustrate a trivial implementation
+				of a custom logger. First is the <nobr class="literal">XSQLLogger</nobr> implementation
+				which notes the time the page request started and then logs the page request
+				end by printing the name of the page request and the elapsed time to
+				<nobr class="literal">System.out</nobr>:</p> 
+			 <pre>package example;
+import oracle.xml.xsql.*;
+public class SampleCustomLogger implements XSQLLogger  {
+  long start = 0;
+  public void logRequestStart(XSQLPageRequest env) {
+    start = System.currentTimeMillis();
+  }
+  public void logRequestEnd(XSQLPageRequest env) {
+    long secs = System.currentTimeMillis() - start;
+    System.out.println("Request for " + env.getSourceDocumentURI() + " took "+ secs + "ms");
+  }
+}</pre>
+			 <p>Next, the factory implementation:</p> 
+			 <pre>package example;
+import oracle.xml.xsql.*;
+public class SampleCustomLoggerFactory implements XSQLLoggerFactory {
+  public XSQLLogger create(XSQLPageRequest env) {
+    return new SampleCustomLogger();
+  }
+}</pre>
+			 <p>To register a custom logger factory, edit the XSQLConfig.xml
+				file and provide the name of your custom logger factory class as the conent to
+				the <nobr class="literal">/XSQLConfig/processor/logger/factory</nobr> element like
+				this:</p> 
+			 <pre>&lt;XSQLConfig&gt;
+    :
+  &lt;processor&gt;
+         :
+      &lt;logger&gt;
+         &lt;factory&gt;test.SampleCustomLoggerFactory&lt;/factory&gt;
+      &lt;/logger&gt;
+         :
+   &lt;/processor&gt;
+&lt;/XSQLConfig&gt;</pre>
+			 <p>By default, this <span class="literal">
+                  <nobr>&lt;logger></nobr>
+               </span> section is commented
+				out. There is no default logger.</p> 
+
+
+
+
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Override the Default Name of of the XSQLConfig.xml
+				file</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>Customers have requested a way to override the default
+				<nobr class="literal">XSQLConfig.xml</nobr> file name so that they can easily provide
+				different configuration files for test and production environments, for
+				example. This releases introduces two ways to override the name.</p> 
+			 <ol> 
+				<li> 
+				  <p>By setting the Java System property
+					 <nobr class="literal">xsql.config</nobr>
+                  </p> 
+				  <p>The simplest way to accomplish this is to specify a Java VM
+					 command-line flag like <nobr class="literal">-Dxsql.config= 
+					 <i>MyConfigFile.xml</i>
+                     </nobr>
+                  </p> 
+				</li> 
+				<li> 
+				  <p>By defining a servlet initialization parameter
+					 <nobr class="literal">xsql.config</nobr>
+                  </p> 
+				  <p>This is accomplished by adding an
+					 <span class="literal">
+                        <nobr>&lt;init-param></nobr>
+                     </span> element to your <nobr class="literal">web.xml</nobr> file
+					 as part of the <span class="literal">
+                        <nobr>&lt;servlet></nobr>
+                     </span> tag that defines the XSQL Servlet as
+					 follows:</p> 
+				  <pre>     :
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;XSQL&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;oracle.xml.xsql.XSQLServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;xsql.config&lt;/param-name&gt;
+      &lt;param-value&gt;MyConfigFile.xml&lt;/param-value&gt;
+      &lt;description&gt;Please Use MyConfigFile.xml instead of XSQLConfig.xml&lt;/description&gt;
+    &lt;/init-param&gt;
+  &lt;/servlet&gt;
+     :</pre>
+
+				</li> 
+			 </ol> 
+			 <p>Of course, the servlet initialization parameter is only
+				applicable to the servlet-based use of the XSQL Pages engine. When using the
+				<nobr class="literal">XSQLCommandLine</nobr> or <nobr class="literal">XSQLRequest</nobr>
+				programmatic interfaces, use the System parameter instead. </p> 
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>The config file is always read from the CLASSPATH. For
+				  example, if you specify a custom configuration parameter file named
+				  <nobr class="literal">MyConfigFile.xml</nobr>, then the XSQL page processor will attempt
+				  to read the XML file as a resource from the CLASSPATH. In a J2EE-style servlet
+				  environment, that means you should put your MyConfigFile.xml into the
+				  <nobr class="literal">.\WEB-INF\classes</nobr> directory (or some other top-level
+				  directory that will be found on the CLASSPATH). If <i>both</i>
+				  the servlet initialization parameter and the System parameter are provided, the
+				  servlet initialization parameter value is used.</p> 
+			 </td>
+               </tr>
+            </table><br> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Support for Apache FOP 0.20.3</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>If you need to render PDF output from XSQL pages, this release
+				supports working with the 0.20.3 release candidate of Apache FOP. The source
+				code for the FOP Serializer in this release looks like this:</p> 
+			 <pre>package oracle.xml.xsql.serializers;
+import org.w3c.dom.Document;
+import org.apache.log.Logger;
+import org.apache.log.Hierarchy;
+import org.apache.fop.messaging.MessageHandler;
+import org.apache.log.LogTarget;
+import oracle.xml.xsql.XSQLPageRequest;
+import oracle.xml.xsql.XSQLDocumentSerializer;
+import org.apache.fop.apps.Driver;
+import org.apache.log.output.NullOutputLogTarget;
+/**
+ * Tested with the FOP 0.20.3RC release from 19-Jan-2002
+ */
+public class XSQLFOPSerializer implements XSQLDocumentSerializer {
+  private static final String PDFMIME = "application/pdf";
+  public void serialize(Document doc, XSQLPageRequest env) throws Throwable {
+    try {
+
+      // First make sure we can load the driver
+      Driver FOPDriver = new Driver();
+
+      // Tell FOP not to spit out any messages by default.
+      // You can modify this code to create your own FOP Serializer
+      // that logs the output to one of many different logger targets
+      // using the Apache LogKit API
+      Logger logger = Hierarchy.getDefaultHierarchy().getLoggerFor("XSQLServlet");
+      logger.setLogTargets(new LogTarget[]{new NullOutputLogTarget()});
+      FOPDriver.setLogger(logger);
+      // Some of FOP's messages appear to still use MessageHandler.
+      MessageHandler.setOutputMethod(MessageHandler.NONE);
+
+      // Then set the content type before getting the reader/
+      env.setContentType(PDFMIME);
+      
+      FOPDriver.setOutputStream(env.getOutputStream());
+      FOPDriver.setRenderer(FOPDriver.RENDER_PDF);
+      FOPDriver.render(doc);
+    }
+    catch (Exception e) {
+      // Cannot write PDF output for the error anyway.
+      // So maybe this stack trace will be useful info
+      e.printStackTrace(System.err);
+    }
+  }
+}</pre>
+			 <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				<p>Using Apache FOP requires adding the following additional JAR
+				  files to your XSQL Pages runtime CLASSPATH to function correctly:</p> 
+				<ul> 
+				  <li> 
+					 <p>
+                              <nobr class="literal">fop.jar</nobr> (Apache FOP Rendering
+						Engine)</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                              <nobr class="literal">avalon-framework-4.0.jar</nobr> (Base Apache
+						Avalon Framework API's)</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                              <nobr class="literal">logkit-1.0.jar</nobr> (Apache Avalon
+						Framework's LogKit subcomponent)</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                              <nobr class="literal">batik.jar</nobr> (Apache Batik SVG Rendering
+						Engine)</p> 
+				  </li> 
+				</ul> 
+			 </td>
+               </tr>
+            </table><br> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>Set Preserve Whitespace Config
+				Option</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>It is now possible to control whether or not the XSQL Page
+				Processor uses the Oracle XML Parser to parse XSQL page templates and XSLT
+				stylesheets with whitespace preserving mode. The default has always been to
+				preserve whitespace, but it can be slightly faster to parse these documents
+				with whitespace-preserving mode off. For backward compatibility, the default is
+				to preserve whitespace, but to turn off whitespace-preserving mode set the new
+				<nobr class="literal">XSQLConfig.xml</nobr> file entry
+				<nobr class="literal">/XSQLConfig/processor/xml-parsing/preserve-whitespace</nobr> to the
+				value <nobr class="literal">false</nobr>.</p> 
+		  </li> 
+		</ul><a name="ID1975">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Bugs Fixed</h3>
+      </a>
+      <ul> 
+		  <li> 
+			 <p><i><b><u>Tags present in stylesheet name are not quoted in the
+				error message</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>A potential security issue was reported whereby a malicious
+				user could execute JavaScript in the browser by passing in a value like
+				<nobr class="literal">&lt;script&gt;alert('Bingo.');&lt;/script&gt;</nobr> for the value
+				of the <nobr class="literal">xml-stylesheet</nobr> parameter. When the XSQL Servlet
+				renders the error page to complain that a stylesheet named
+				"<nobr class="literal">&lt;script&gt;alert('Bingo.');&lt;/script&gt;</nobr>" could not be
+				found, it was not quoting the tags so the <nobr class="literal">&lt;script&gt;</nobr> tag
+				would be interpreted by the browser. Now any tag maliciously introduced this
+				way are quoted so that they appear as literal text in the error page instead of
+				as an executable script tag. The security issue was minimal since users could
+				always disable client styling on any or all pages to completely ignore the
+				value of the <nobr class="literal">xml-stylesheet</nobr> parameter, but with this fix,
+				even a page that allows client styling is no longer a victim to this
+				vulnerability.</p> 
+		  </li> 
+		  <li> 
+			 <p><i><b><u>&lt;xsql:include-xml&gt; Only Works with Clobs using
+				the Oracle JDBC Driver</u>
+                  </b>
+               </i>
+            </p> 
+			 <p>Now any JDBC driver that supports java.sql.Clob can be used to
+				select a Clob-valued XML document for inclusion in the page.</p> 
+		  </li> 
+		</ul><a name="securityinfo"></a><a name="ID2041">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Security Consideration for Production XSQL Pages Systems</h2>
+      </a>
+      <p>As with any software running on a server, care must be taken to avoid
+		risks of exposing sensitive information to malicious users. This section
+		describes best practice security techniques for using the Oracle XSQL
+		Servlet.</p>
+      <ul> 
+		<li> 
+		  <p><i><b><u>Install Your XSQLConfig.xml File in a Safe
+			 Directory</u>
+                  </b>
+               </i>
+            </p> 
+		  <p>The <nobr class="literal">XSQLConfig.xml</nobr> configuration file contains
+			 sensitive database username/password information that must be kept secure on
+			 the server. This file should not reside in any directory that is mapped to a
+			 virtual path of your Web server, nor in any subdirectory thereof. Its read
+			 permissions need only be granted such that the Unix account that owns the
+			 servlet engine can read it.</p> 
+		  <p>Failure to follow this recommendation could mean that a user of
+			 your site could accidentally (or intentionally) browse the contents of your
+			 configuration file.</p> 
+		</li> 
+		<li> 
+		  <p><i><b><u>Disable Default Client Stylesheet Overrideability When
+			 Your Pages Go Production</u>
+                  </b>
+               </i>
+            </p> 
+		  <p>By default, the XSQL Page Processor allows the user to supply a
+			 stylesheet in the request by passing a value for the special
+			 <nobr class="literal">xml-stylesheet</nobr> parameter. If you want the stylesheet that is
+			 referenced inside if your server-side XSQL page to be the only stylesheet that
+			 is used, then you can include the <nobr class="literal">allow-client-style="no"</nobr>
+			 attribute on the document element of your page. You also can
+			 <i>globally</i> change the default setting to disallow client
+			 stylesheet overrides by changing a setting in your
+			 <nobr class="literal">XSQLConfig.xml</nobr> file. If you do this, then only pages that
+			 will allow client stylesheet overrides are ones that include the
+			 <nobr class="literal">allow-client-style="yes"</nobr> attribute on their document
+			 element.</p> 
+		</li> 
+		<li> 
+		  <p><i><b><u>Be Alert of the Use of Subsitution
+			 Parameters</u>
+                  </b>
+               </i>
+            </p> 
+		  <p>With power comes responsibility. Any product, like Oracle Reports
+			 and XSQL Pages among others, that supports the use of lexical substitution
+			 variables in a SQL query can give a developer enough rope to hang himself. Any
+			 time you deploy an XSQL page that allows important parts of a SQL statement (or
+			 at the extreme, the entire SQL statement) to be substituted by a lexical
+			 parameter, you should make sure that you have taken appropriate precautions
+			 against misuse.</p> 
+		  <p>For example, one of the demonstrations that comes with XSQL Pages
+			 is the "adhoc query demo". It illustrates how the entire SQL statement of an
+			 <span class="literal">
+                  <nobr>&lt;xsql:query></nobr>
+               </span> action handler can be supplied as a parameter.
+			 This is a powerful capability when in the right users hands, but be aware if
+			 you deploy a similar kind of page to your product system that the user can
+			 execute any query that the database security privileges for the connection
+			 associated with the page allows. The demo is setup to use a connection that
+			 maps to the SCOTT account, so a user of the "adhoc query demo" can query any
+			 data that SCOTT would be allowed to query from the SQL*Plus command line.
+			 </p> 
+		  <p>Techniques that can be used to make sure your pages are not
+			 abused include:</p> 
+		  <ul> 
+			 <li> 
+				<p>Making sure the database user account associated with the
+				  page has only the privileges for reading the tables/views you want your users
+				  to see.</p> 
+			 </li> 
+			 <li> 
+				<p>Using true bind variables instead of lexical bind variables
+				  when substituting single values in a SELECT statement. If you need to make
+				  syntactic parts of your SQL statement parameterized, then lexical parameters
+				  are the only game in town. Otherwise, true bind variabled are recommended so
+				  that any attempt to pass an invalid value will generate an error instead of
+				  producing an unexpected result.</p> 
+			 </li> 
+		  </ul> 
+		</li> 
+	 </ul><a name="ID2165">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Reference Information</h2>
+      </a><a name="ID2172">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Online Help</h3>
+      </a>
+      <p>This release includes an on-line Help System (built using XSQL
+		  Pages, of course) giving helpful information about the syntax and options for
+		  each XSQL Action Element. In additional helpful examples are provided
+		  illustrating each action. To access the help system, after successfully
+		  installing the XSQL Servlet, browse the URL:</p>
+      <p> 
+		  <pre>http://yourmachine/xsql/index.html</pre>
+
+		</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+         <tr>
+            <td><img src="images/helpsystem.gif">
+            </td>
+         </tr>
+      </table><a name="ID2196">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>XSQL Action Handler Summary</h3>
+      </a>
+      <p>A number of new built-in XSQL Action Elements have been added in
+		  this release. The following table documents the new arrivals...</p>
+      <table border="0" cellpadding="3" cellspacing="0"> 
+			 <tr class="tableheader">
+            <td> Action Element </td>
+            <td> Description </td>
+         </tr> 
+			 <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:set-stylesheet-param></nobr>
+               </span> </td>
+            <td> 
+					 <p> Set the value of a top-level XSLT stylesheet parameter.
+						</p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:set-page-param></nobr>
+               </span> </td>
+            <td> 
+					 <p> Set a page-level (local) parameter that can be referred
+						to in subsequent SQL statements in the page. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:set-session-param></nobr>
+               </span> </td>
+            <td> 
+					 <p> Set an HTTP-Session level parameter. </p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:set-cookie></nobr>
+               </span> </td>
+            <td> 
+					 <p> Set an HTTP Cookie. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:query></nobr>
+               </span> </td>
+            <td> 
+					 <p> Execute an arbitrary SQL statement and include its
+						result set in canonical XML format. </p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:ref-cursor-function></nobr>
+               </span> </td>
+            <td> 
+					 <p> Includes the canonical XML representation of the result
+						set of a cursor returned by a PL/SQL stored function. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:include-param></nobr>
+               </span> </td>
+            <td> 
+					 <p> Include a parameter and its value as an element in your
+						XSQL page. </p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:include-request-params></nobr>
+               </span> </td>
+            <td> 
+					 <p> Include all request parameters as XML elements in your
+						XSQL page. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:include-xml></nobr>
+               </span> </td>
+            <td> 
+					 <p> Include arbitrary XML resources at any point in your
+						page by relative or absolute URL. </p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:include-owa></nobr>
+               </span> </td>
+            <td> 
+					 <p> Include the results of executing a stored procedure that
+						makes use of the Oracle Web Agent (OWA) packages inside the database to
+						generate XML. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td><span class="literal">
+                  <nobr>&lt;xsql:if-param></nobr>
+               </span>
+            </td>
+            <td> 
+					 <p> Includes nested actions and/or literal XML content if
+						some condition based on a parameter value is true. </p>
+            </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:include-xsql></nobr>
+               </span> </td>
+            <td> 
+					 <p> Include the results of one XSQL page at any point inside
+						another. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:insert-request></nobr>
+               </span> </td>
+            <td> 
+					 <p> Insert the XML document (or HTML form) posted in the
+						request into a database table or view. </p> </td>
+         </tr>
+         <tr class="re">
+            <td><span class="literal">
+                  <nobr>&lt;xsql:update-request></nobr>
+               </span>
+            </td>
+            <td> 
+					 <p> Update an existing row in the database based on the
+						posted XML document supplied in the request.</p>
+            </td>
+         </tr>
+         <tr class="ro">
+            <td><span class="literal">
+                  <nobr>&lt;xsql:delete-request></nobr>
+               </span>
+            </td>
+            <td> 
+					 <p> Delete an existing row in the database based on the
+						posted XML document supplied in the request.</p>
+            </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:insert-param></nobr>
+               </span> </td>
+            <td> 
+					 <p> Inserts the XML document contained in the value of a
+						single parameter. </p> </td>
+         </tr>
+         <tr class="ro">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:dml></nobr>
+               </span> </td>
+            <td> 
+					 <p> Execute a SQL DML statement or PL/SQL anonymous block.
+						</p> </td>
+         </tr>
+         <tr class="re">
+            <td> <span class="literal">
+                  <nobr>&lt;xsql:action></nobr>
+               </span> </td>
+            <td> 
+					 <p> Invoke a user-defined action handler, implemented in
+						Java, for executing custom logic and including custom XML information into your
+						XSQL page. </p> </td>
+         </tr> 
+		  </table><a name="ID2588">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Parameter Resolution</h3>
+      </a>
+      <p>XSQL provides a single way to refer to values that can be specified
+		  as:</p>
+      <ul> 
+		  <li> 
+			 <p>HTTP Request Parameters</p> 
+		  </li> 
+		  <li> 
+			 <p>HTTP Cookies </p> 
+		  </li> 
+		  <li> 
+			 <p>HTTP Session Variables</p> 
+		  </li> 
+		  <li> 
+			 <p>Local XSQL Page Parameters</p> 
+		  </li> 
+		</ul>
+      <p> When you reference an parameter like <nobr class="literal">myParam</nobr>
+		  inside the content of an XSQL Action Element, like:</p>
+      <pre>&lt;xsql:query&gt;
+   select name from users where userid = {@myParam}
+&lt;/xsql:query&gt;</pre>
+      <p>or in the attribute value of an XSQL Action Element, like:</p>
+      <pre>&lt;xsql:query max-rows="{@myParam}"&gt;
+   :
+&lt;/xsql:query&gt;</pre>
+      <p>the XSQL Page Processor determines the value of the parameter by
+		  using the following logic.</p>
+      <p> If the request is being processed by the XSQL
+		  <i>Servlet</i>, then check in the following order if
+		  <nobr class="literal">myParam</nobr> is the name of...</p>
+      <ol> 
+		  <li> 
+			 <p>An XSQL local page parameter</p> 
+		  </li> 
+		  <li> 
+			 <p>An HTTP Cookie</p> 
+		  </li> 
+		  <li> 
+			 <p>An HTTP Session Variable</p> 
+		  </li> 
+		  <li> 
+			 <p>An HTTP Request Parameter</p> 
+		  </li> 
+		</ol>
+      <p>If the request is being processed by a non-Servlet request method
+		  using <nobr class="literal">XSQLCommandLine</nobr> or the <nobr class="literal">XSQLRequest</nobr>
+		  class, then check in the following order if <nobr class="literal">myParam</nobr> is the
+		  name of...</p>
+      <ol> 
+		  <li> 
+			 <p>An XSQL local page parameter</p> 
+		  </li> 
+		  <li> 
+			 <p>An XSQL Request parameter</p> 
+			 <p> Provided on the command-line or passed into the
+				<nobr class="literal">XSQLRequest.process()</nobr> method.</p> 
+		  </li> 
+		</ol>
+      <p> In either case, if none of the attempts produces a matching
+		  parameter value, the XSQL Page Processor looks for a "fallback" (a.k.a
+		  "default") value for <nobr class="literal">myParam</nobr> by searching the current Action
+		  Element and its ancestor elements in order to find an XML attribute of the same
+		  name as the parameter. If such an attribute is found, it's value is used as the
+		  value of <nobr class="literal">myParam</nobr>. </p><a name="ID2778">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Known Issues</h3>
+      </a>
+      <p> This release contains the following known issues: 
+		  <ul> 
+			 <li> 
+				<p>HTTP parameters with multibyte names (e.g. a parameter whose
+				  name is in Kanji) are properly handled when they are inserted into your XSQL
+				  page using <span class="literal">
+                     <nobr>&lt;xsql:include-request-params></nobr>
+                  </span>, but an attempt to
+				  refer to a parameter with a multibyte name inside the query statement of an
+				  <span class="literal">
+                     <nobr>&lt;xsql:query></nobr>
+                  </span> tag will return an empty string for the
+				  parameter's value. The workaround is to use a non-multibyte parameter name. The
+				  parameter can still properly have a multibyte <i>value</i> which
+				  will be handled correctly.</p> 
+			 </li> 
+			 <li> 
+				<p>Using the <nobr class="literal">CURSOR()</nobr> function in SQL
+				  statements can cause an "Exhausted ResultSet" error if
+				  <nobr class="literal">CURSOR()</nobr> statements are nested and outer <nobr class="literal">CURSOR()
+				  </nobr> functions evaluate to an empty rowset.</p> 
+			 </li> 
+			 <li> 
+				<p>When using the Apache JServ servlet engine, the use of
+				  relative stylesheet and XSQL page references may not produce the results you
+				  expect if you have an elaborate virtual path mapping. Since the Apache JServ
+				  engine does not properly implement the Servlet API method
+				  <nobr class="literal">getRealPath()</nobr> that the XSQL Servlet uses to resolve a path
+				  relative to the web server's virtual file system, a workaround is implemented
+				  for JServ to make relative path references work for the most common
+				  cases.</p> 
+			 </li> 
+		  </ul> </p><a name="installation"></a><a name="ID2851">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Installation</h2>
+      </a><a name="ID2859">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Supported Configurations</h3>
+      </a>
+      <p>The XSQL Servlet is <i>designed</i> to run on any
+		  Java VM, using any JDBC driver, against any database. In practice, we are able
+		  to test it against only the most popular configurations of these. In this
+		  section we document the supported configurations that have been tested in the
+		  Oracle labs.</p><a name="ID2874">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Supported Java JDK Versions</h4>
+      </a>
+      <p>The XSQL Pages and XSQL Servlet have been tested using:</p>
+      <ul> 
+			 <li> 
+				<p>JDK 1.1.8</p> 
+			 </li> 
+			 <li> 
+				<p>JDK 1.2.2</p> 
+			 </li> 
+			 <li> 
+				<p>JDK 1.3</p> 
+			 </li> 
+		  </ul>
+      <p>These are the only three JDK versions that we
+			 <i>know</i> work correctly.</p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>Numerous users have reported problems using XSQL Pages and the
+				XSQL Servlet with JDK 1.1.7 which suffers problems in its character set
+				conversion routines for UTF-8 that make it unusable for processing XSQL
+				Pages.</p> 
+		  </td>
+         </tr>
+      </table><br><a name="ID2930">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Supported Servlet Engines</h4>
+      </a>
+      <p>This XSQL Servlet has been tested with the following servlet
+			 engines: </p>
+      <ul> 
+			 <li> 
+				<p>Oracle9iAS Apache/JServ Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle9iAS OC4J Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Allaire JRun 2.3.3 and 3.0.0</p> 
+			 </li> 
+			 <li> 
+				<p>Apache 1.3.9 with JServ 1.0 and 1.1</p> 
+			 </li> 
+			 <li> 
+				<p>Apache 1.3.9 with Tomcat 3.1 or 3.2 Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Apache Tomcat 3.1 or 3.2 Web Server + Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Caucho Resin 1.1</p> 
+			 </li> 
+			 <li> 
+				<p>Java Web Server 2.0</p> 
+			 </li> 
+			 <li> 
+				<p>Weblogic 5.1 Web Server</p> 
+			 </li> 
+			 <li> 
+				<p>NewAtlanta ServletExec 2.2 and 3.0 for IIS/PWS 4.0</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> Lite Web-to-Go Server</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.7 Oracle Servlet
+				  Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Sun JavaServer Web Development Kit (JSWDK) 1.0.1 Web
+				  Server</p> 
+			 </li> 
+		  </ul><a name="ID3058">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Supported JSP Implementations</h4>
+      </a>
+      <p>JavaServer Pages can use <span class="literal">
+            <nobr>&lt;jsp:forward></nobr>
+         </span> and/or
+			 <span class="literal">
+            <nobr>&lt;jsp:include></nobr>
+         </span> to collaborate with XSQL Pages as part of an
+			 application. The following JSP platforms have been tested:</p>
+      <ul> 
+			 <li> 
+				<p>Oracle9iAS Apache/JServ Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle9iAS OC4J Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Apache 1.3.9 with Tomcat 3.1 or 3.2 Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Apache Tomcat 3.1 or 3.2 Web Server + Tomcat 3.1 or 3.2
+				  Servlet Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Caucho Resin 1.1 (Built-in JSP 1.0 Support)</p> 
+			 </li> 
+			 <li> 
+				<p>NewAtlanta ServletExec 2.2 and 3.0 for IIS/PWS 4.0 (Built-in
+				  JSP 1.0 Support)</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> Lite Web-to-Go Server with
+				  Oracle JSP 1.0</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.7 Oracle Servlet
+				  Engine</p> 
+			 </li> 
+			 <li> 
+				<p>Any Servlet Engine with Servlet API 2.1+ and Oracle JSP
+				  1.0</p> 
+			 </li> 
+		  </ul>
+      <p>In general, it should work with any servlet engine supporting the
+			 Servlet 2.1 Specification or higher, and the Oracle JSP 1.0 reference
+			 implementation or functional equivalent from another vendor.</p><a name="ID3166">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>JDBC Drivers and Databases</h4>
+      </a>
+      <p>The Oracle XSQL Page processor has been designed to exploit the
+			 maximum set of features against the <i>Oracle</i> JDBC drivers,
+			 but gracefully degrade to work against any database with a reasonable JDBC
+			 driver. While numerous users have reported successfully using XSQL Pages with
+			 many other JDBC drivers, the ones that we have tested in-house are:</p>
+      <ul> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.5 Driver for JDBC 1. 
+				  <i>x</i>
+            </p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.6 Driver for JDBC 1. 
+				  <i>x</i>
+            </p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.7 Driver for JDBC 1. 
+				  <i>x</i>
+            </p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> Lite 4.0 Driver for JDBC
+				  1.x</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.6 Driver for JDBC
+				  2.0</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle8<i>i</i> 8.1.7 Driver for JDBC
+				  2.0</p> 
+			 </li> 
+			 <li> 
+				<p>Oracle9<i>i</i> 9.0.1 Driver for JDBC
+				  2.0</p> 
+			 </li> 
+		  </ul><a name="ID3280">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Prerequisites</h3>
+      </a>
+      <p> Oracle XSQL Pages 10.0.0.0 depends on: </p>
+      <ul> 
+		  <li> 
+			 <p>Oracle XML Parser V2, version 9.0.1 or higher</p> 
+		  </li> 
+		  <li> 
+			 <p>Oracle XML SQL Utilities for Java, version 2.0.1 or higher</p> 
+		  </li> 
+		  <li> 
+			 <p>A Web Server that supports Java Servlets</p> 
+		  </li> 
+		  <li> 
+			 <p>A JDBC driver, like Oracle JDBC or
+				Oracle8<i>i</i> Lite JDBC</p> 
+		  </li> 
+		</ul>
+      <p> For your convenience, all of these dependent libraries are
+		  included with the XSQL Servlet distribution when you download it.</p><a name="ID3336">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>XSQL Software Included in the XDK Distribution</h3>
+      </a>
+      <p>In addition to the Oracle XSQL Servlet archive itself in
+		  <nobr class="literal">.\lib\oraclexsql.jar</nobr>, and the optional
+		  <nobr class="literal">.\lib\xsqlserializers.jar</nobr> archive for FOP/PDF integration,
+		  the Oracle Technet (OTN) distribution of the XDK includes the following Oracle
+		  XDK components on which Oracle XSQL Pages depends:</p>
+      <ul> 
+		  <li> 
+			 <p>Oracle XML Parser V2,
+				<nobr class="literal">.\lib\xmlparserv2.jar</nobr>
+            </p> 
+		  </li> 
+		  <li> 
+			 <p>Oracle XML SQL Utility,
+				<nobr class="literal">.\lib\xsu12.jar</nobr>
+            </p> 
+		  </li> 
+		</ul><a name="ID3386">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Downloading and Installing the XSQL Servlet</h3>
+      </a>
+      <p></p><a name="ID3397">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Obtaining the XSQL Servlet Software from Oracle Technet</h4>
+      </a>
+      <p>You can download the XSQL Servlet as part of the Oracle XDK for
+			 Java download by:</p>
+      <ol> 
+			 <li> 
+				<p>Visiting 
+				  <a href="http://otn.oracle.com/tech/xml">http://otn.oracle.com/tech/xml</a>
+            </p>
+				
+			 </li> 
+			 <li> 
+				<p>Clicking on the 'Software' icon at the top of the page: 
+				  <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                     <td><img src="images/software_download.gif">
+                     </td>
+                  </tr>
+               </table> </p> 
+			 </li> 
+			 <li> 
+				<p>Logging in with your OTN username and password (registration
+				  is free if you do not already have an account).</p> 
+			 </li> 
+			 <li> 
+				<p>Selecting whether you want the NT or Unix download (both
+				  contain the same files)</p> 
+			 </li> 
+			 <li> 
+				<p>Acknowledging the licensing agreement and download
+				  survey</p> 
+			 </li> 
+			 <li> 
+				<p>Clicking on appropriate <nobr class="literal">*.tar.gz</nobr> or
+				  <nobr class="literal">*.zip</nobr> file.</p> 
+			 </li> 
+		  </ol><a name="ID3481">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Extracting the Files in the Distribution</h4>
+      </a>
+      <p>To extract the contents of the XDK distribution, do the
+			 following:</p>
+      <ol> 
+			 <li> 
+				<p> Choose a directory under which you would like the
+				  <nobr class="literal">.\xdk</nobr> directory and subdirectories to go. (e.g.
+				  <nobr class="literal">C:\</nobr>) </p> 
+			 </li> 
+			 <li> 
+				<p> Change directory to <nobr class="literal">C:\</nobr>, then extract the
+				  XSQL downloaded archive file there. For example:</p> 
+				<pre>tar xvfz xdk_xxx.tar.gz</pre>
+				<p>on Unix, or on Windows:</p> 
+				<pre>pkzip25 -extract -directories xdk_xxx.zip</pre>
+				<p> using the 
+				  <a href="http://www.pkware.com/shareware/pkzip_cli.html">pkzip25</a>
+				  command-line tool or the 
+				  <a href="http://www.winzip.com">WinZip</a> visual archive
+				  extraction tool.</p> 
+
+			 </li> 
+		  </ol><a name="ID3558">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Setting Up the Database Connection Definitions for Your
+			 Environment</h4>
+      </a>
+      <p> The demos are set up to use the <nobr class="literal">SCOTT</nobr> schema
+			 on a database on your local machine (i.e. the machine where the web server is
+			 running). If you are running a local database and have a
+			 <nobr class="literal">SCOTT</nobr> account whose password is <nobr class="literal">TIGER</nobr>,
+			 then you are all set. Otherwise, you need to edit the
+			 <nobr class="literal">.\xdk\admin\XSQLConfig.xml</nobr> file to correspond to your
+			 appropriate values for <nobr class="literal">username</nobr>,
+			 <nobr class="literal">password</nobr>, <nobr class="literal">dburl</nobr>, and
+			 <nobr class="literal">driver</nobr> values for the connection named
+			 "<nobr class="literal">demo</nobr>".</p>
+      <pre>&lt;?xml version="1.0" ?&gt;
+&lt;XSQLConfig&gt;
+     :
+  &lt;connectiondefs&gt;
+    &lt;connection name="demo"&gt;
+      &lt;username&gt;scott&lt;/username&gt;
+      &lt;password&gt;tiger&lt;/password&gt;
+      &lt;dburl&gt;jdbc:oracle:thin:@localhost:1521:ORCL&lt;/dburl&gt;
+      &lt;driver&gt;oracle.jdbc.driver.OracleDriver&lt;/driver&gt;
+    &lt;/connection&gt;
+    &lt;connection name="lite"&gt;
+      &lt;username&gt;system&lt;/username&gt;
+      &lt;password&gt;manager&lt;/password&gt;
+      &lt;dburl&gt;jdbc:Polite:POlite&lt;/dburl&gt;
+      &lt;driver&gt;oracle.lite.poljdbc.POLJDBCDriver&lt;/driver&gt;
+    &lt;/connection&gt;
+  &lt;/connectiondefs&gt;
+      :
+&lt;/XSQLConfig&gt;</pre><a name="ID3620">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Setting Up Your Servlet Engine to Run XSQL Pages</h4>
+      </a>
+      <p>Unix users and any user wanting to install the XSQL Servlet on
+			 other web servers should continue with the instructions below depending on the
+			 web server you're trying to use. In every case, there are 3 basic steps:</p>
+      <ol> 
+			 <li> 
+				<p>Include the list of XSQL Java archives:</p> 
+				<ul> 
+				  <li> 
+					 <p>
+                     <nobr class="literal">xsu12.jar</nobr>- Oracle XML SQL
+						Utility</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                     <nobr class="literal">xmlparserv2.jar</nobr>- Oracle XML Parser for
+						Java V2</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                     <nobr class="literal">oraclexsql.jar</nobr>- Oracle XSQL
+						Pages</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                     <nobr class="literal">xsqlserializers.jar</nobr>- Oracle XSQL
+						Serializers for FOP/PDF Integration</p> 
+				  </li> 
+				  <li> 
+					 <p>
+                     <nobr class="literal">classes12.jar</nobr>- Oracle JDBC
+						Driver</p> 
+					 <p><i>or the JAR file for the JDBC driver you will be
+						using instead</i>
+                  </p> 
+				  </li> 
+				</ul> 
+				<p> as well as the directory where
+				  <nobr class="literal">XSQLConfig.xml</nobr> resides (by default
+				  <nobr class="literal">./xdk/admin</nobr>) in the server CLASSPATH. </p> 
+				<br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+				  <p>In a production system, make sure your
+					 <nobr class="literal">XSQLConfig.xml</nobr> file does not reside under a directory that
+					 is broweable from your web server. See 
+					 <a href="#securityinfo">Security Considerations for
+						Production XSQL Pages System</a> for more information.</p> 
+				</td>
+               </tr>
+            </table><br> 
+			 </li> 
+			 <li> 
+				<p>Map the <nobr class="literal">.xsql</nobr> file extension to the
+				  <nobr class="literal">oracle.xml.xsql.XSQLServlet</nobr> servlet class</p> 
+			 </li> 
+			 <li> 
+				<p>Map a virtual directory <nobr class="literal">/xsql</nobr> to the
+				  directory where you extracted the XSQL files (to access the on-line help and
+				  demos)</p> 
+			 </li> 
+		  </ol><a name="oc4j_install"></a><a name="ID3778">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>Oracle 9iAS 2.0 Oracle Containers for J2EE (OC4J) Servlet
+				Container</h5>
+      </a>
+      <p>You can install the XSQL Servlet in one of two ways:</p>
+      <ul> 
+				<li> 
+				  <p>You can deploy the <nobr class="literal">xsqldemos.ear</nobr> file to
+					 the OC4J server, or</p> 
+				</li> 
+				<li> 
+				  <p>You can install the XSQL Servlet as a global application to
+					 handle <nobr class="literal">*.xsql</nobr> files globally, similar to how
+					 <nobr class="literal">*.jsp</nobr> files are globally recognized and handled by the
+					 JSP-Runner servlet.</p> 
+				</li> 
+			 </ul>
+      <p> To install <nobr class="literal">xsqldemos.ear</nobr>...</p>
+      <ul> 
+				<li> 
+				  <p>Change directory to the <nobr class="literal">./j2ee/home</nobr>
+					 directory.</p> 
+				</li> 
+				<li> 
+				  <p>Deploy the ear file with the command (all on one line,
+					 replacing 
+					 <i>admin</i> and 
+					 <i>welcome</i> with your username and
+					 password for OC4J administration):</p> 
+				  <pre>java -jar admin.jar ormi://<i>yourserver</i>/ admin welcome
+  -deploy -file <i>XDKHome</i>/xdk/demo/java/xsql/xsqldemos.ear -deploymentName xsqldemos</pre>
+
+				</li> 
+				<li> 
+				  <p>Bind the web application with the command (all on one line,
+					 replace 
+					 <i>admin</i> and 
+					 <i>welcome</i> as above, using
+					 <nobr class="literal">default-web-site</nobr> or <nobr class="literal">http-web-site</nobr> as
+					 appropriate):</p> 
+				  <pre>java -jar admin.jar ormi://<i>yourserver</i>/ admin welcome
+  -bindWebApp xsqldemos xsqldemos http-web-site /xsql</pre>
+
+				</li> 
+			 </ul>
+      <p>The demos can then be run by browsing:</p>
+      <p>
+         <nobr class="literal">http:// 
+				<i>yourserver</i>: 
+				<i>port</i>/xsql/index.html</nobr>
+      </p>
+      <p>To install XSQL Servlet in the Oracle9iAS OC4J servlet
+				container as a global application, do the following instead. Assuming your OC4J
+				installation home is <nobr class="literal">C:\j2ee\home</nobr>, and that you've extracted
+				the XDK distribution into the <nobr class="literal">C:\xdk902</nobr> directory, here are
+				the setup steps:</p>
+      <ol> 
+				<li> 
+				  <p>Verify that the following jar files are already in your
+					 <nobr class="literal">C:\j2ee\home\lib</nobr> directory (they should come
+					 preinstalled):</p> 
+				  <ul> 
+					 <li> 
+						<p>
+                     <nobr class="literal">xmlparserv2.jar</nobr>- Oracle XML Parser
+						  for Java V2</p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">classes12.jar</nobr>- Oracle JDBC
+						  Driver</p> 
+					 </li> 
+				  </ul> 
+				</li> 
+				<li> 
+				  <p>Copy the following additional jar files from
+					 <nobr class="literal">C:\xdk902\lib</nobr> to
+					 <nobr class="literal">C:\j2ee\home\lib</nobr>...</p> 
+				  <ul> 
+					 <li> 
+						<p>
+                     <nobr class="literal">xsu12.jar</nobr>- Oracle XML SQL
+						  Utility</p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">oraclexsql.jar</nobr>- Oracle XSQL
+						  Pages</p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">xsqlserializers.jar</nobr>- Oracle XSQL
+						  Serializers for FOP/PDF Integration</p> 
+					 </li> 
+				  </ul> 
+				</li> 
+				<li> 
+				  <p>Copy the <nobr class="literal">C:\xdk\admin\XSQLConfig.xml</nobr>
+					 configuration file to the
+					 <nobr class="literal">C:\j2ee\home\default-web-app\WEB-INF\classes</nobr>
+					 directory.</p> 
+				</li> 
+				<li> 
+				  <p>Edit the
+					 <nobr class="literal">C:\j2ee\home\config\global-web-application.xml</nobr> server
+					 configuration file to add a <span class="literal">
+                  <nobr>&lt;servlet></nobr>
+               </span> and
+					 <span class="literal">
+                  <nobr>&lt;servlet-mapping></nobr>
+               </span> entry as child elements of the
+					 <span class="literal">
+                  <nobr>&lt;web-app></nobr>
+               </span> element as follows: </p> 
+				  <pre>&lt;orion-web-app ...etc... &gt;
+  :
+ etc
+  :
+  &lt;web-app&gt;
+<i>    &lt;servlet&gt;
+      &lt;servlet-name&gt;xsql&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;oracle.xml.xsql.XSQLServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;xsql&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;/*.xsql&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;</i>
+     :
+    etc
+     :
+  &lt;/web-app&gt;
+&lt;/web-app&gt;</pre>
+
+				</li> 
+				<li> 
+				  <p>At this point, you can refer to any XSQL page in
+					 <i>any</i> virtual path and it will be processed by the XSQL
+					 Servlet. If you want to try the XSQL built-in samples, demos, and online help
+					 then you need to perform the following additional step to map a virtual path of
+					 <nobr class="literal">/xsql/</nobr> to the <nobr class="literal">C:\xdk\demo\java\xsql</nobr>
+					 directory.</p> 
+				  <p>Edit the
+					 <nobr class="literal">c:\j2ee\home\application-deployments\default\defaultWebApp\orion-web.xml</nobr>
+					 file to add the following <span class="literal">
+                  <nobr>&lt;virtual-directory></nobr>
+               </span> entry:</p> 
+				  <pre>&lt;orion-web-app ...etc...&gt;
+    :
+   etc
+    :
+<i>   &lt;virtual-directory
+   virtual-path="/xsql"
+   real-path="/c:/xdk/xdk/demo/java/xsql/" /&gt;</i>
+    :
+   etc
+    :
+&lt;/orion-web-app&gt;
+</pre>
+
+				</li> 
+			 </ol>
+      <p>Then, you can browse the demos using the URL
+				<nobr class="literal">http://yoursever:yourport/xsql/index.html</nobr>
+      </p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+				<p>In a production system, make sure your
+				  <nobr class="literal">XSQLConfig.xml</nobr> file does not reside under a directory that
+				  is broweable from your web server. See 
+				  <a href="#securityinfo">Security Considerations for
+					 Production XSQL Pages System</a> for more information.</p> 
+			 </td>
+         </tr>
+      </table><br><a name="ID4176">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>Oracle Internet Application Server</h5>
+      </a>
+      <p>Oracle IAS release 1.0 and beyond comes pre-configured to run
+				XSQL Servlet. By default it's Apache JServ servlet engine contains all of the
+				<nobr class="literal">wrapper.classpath</nobr> entries in <nobr class="literal">jserv.conf</nobr>
+				to include the necessary Java archives to run XSQL. The
+				<nobr class="literal">XSQLConfig.xml</nobr> file lives in the
+				<nobr class="literal">./xdk/admin</nobr> subdirectory of the IAS installation
+				home.</p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+				<p>In a production system, make sure your
+				  <nobr class="literal">XSQLConfig.xml</nobr> file does not reside under a directory that
+				  is broweable from your web server. See 
+				  <a href="#securityinfo">Security Considerations for
+					 Production XSQL Pages System</a> for more information.</p> 
+			 </td>
+         </tr>
+      </table><br><a name="ID4226">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>Allaire JRun 2.3.3</h5>
+      </a>
+      <ol> 
+				<li> 
+				  <p><i><b><u>Setup the Server CLASSPATH Correctly for the XSQL
+					 Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>This is done by starting the JRun Administrator, clicking
+					 on the <i>General</i> tab, and clicking on the
+					 <i>Java</i> subtab as shown below.</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/jrun-step1.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Append the list of JAR files and directory that need to be
+					 in the server CLASSPATH for the XSQL Servlet to the existing value in the Java
+					 Classpath field. Assuming you installed into <nobr class="literal">C:\</nobr>, this list
+					 looks like:</p> 
+				  <ul> 
+					 <li> 
+						<p>To use the Oracle JDBC 1.x Driver, the list looks
+						  like:</p> 
+						<pre>C:\xsql\lib\xsu111.jar;
+C:\xsql\lib\xmlparserv2.jar;
+<i>directory_where_JDBC_Driver_resides</i>\classes111.zip;
+C:\xsql\lib\oraclexsql.jar;
+<i>directory_where_XSQLConfig.xml_resides</i>
+                  </pre>
+						<p>To use Apache FOP for PDF Generation, you need to
+						  add:</p> 
+						<pre>C:\xsql\lib\xsqlserializers.jar;
+<i>FOPHOME</i>/build/fop.jar;
+<i>FOPHOME</i>/lib/batik.jar;
+<i>FOPHOME</i>/lib/logkit-1.0.jar;
+<i>FOPHOME</i>/lib/avalon-framework-4.0.jar</pre>
+
+
+					 </li> 
+					 <li> 
+						<p>To use the Oracle JDBC 2.0 Driver, the list looks
+						  like:</p> 
+						<pre>C:\xdk902\lib\xsu12.jar;
+C:\xdk902\lib\xmlparserv2.jar;
+<i>directory_where_JDBC_Driver_resides</i>\classes12.zip;
+C:\xdk902\lib\oraclexsql.jar;
+<i>directory_where_XSQLConfig.xml_resides</i>
+                  </pre>
+
+					 </li> 
+				  </ul> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map the <nobr class="literal">.xsql</nobr> file extension
+					 to the XSQL Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>To do this, select the <i>Services</i> tab in
+					 the JRun Administrator and select the appropriate "JRun Servlet Engine for XXX"
+					 entry for the Servlet Engine that corresponds to the web server that you are
+					 using. In the example below, we'll show configuring the Servlet Engine for the
+					 (built-in) JRun Web Server (JWS).</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/jrun-step2-1.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Then click the <i>Service Config</i>
+					 button...</p> 
+				  <p>On the Service Config screen, select the
+					 <i>Mappings</i> tab.</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/jrun-step2-2.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Click the Add button and make an entry for the
+					 <nobr class="literal">*.xsql</nobr> extension, indicating the name of the servlet to
+					 invoke of <nobr class="literal">oracle.xml.xsql.XSQLServlet</nobr> as shown above. Then
+					 click <i>Save</i> to save the changes, and
+					 <i>Close</i> to dismiss the dialog.</p> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map an <nobr class="literal">/xsql/</nobr> virtual
+					 directory</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>In this step, we want to map the virtual path
+					 <nobr class="literal">/xsql/</nobr> to <nobr class="literal">C:\xdk902\xdk\demo\java\xsql\</nobr>
+					 (or wherever you installed the XSQL Servlet files).</p> 
+				  <p>If you are using JRun together with another web server like
+					 Apache, IIS, or others, the virtual directory mapping needs to be done using
+					 the web server configuration file/utility. If you are using the JRun Web
+					 Server, then you can configure this virtual path mapping from the JRun
+					 Adminstrator. To do this, select the "jws" service and click on
+					 <i>Service Config</i>.</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/jrun-step2-3.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Click on the <i>Path Settings</i> tab on the
+					 Service Config dialog, and click the <i>Add</i> button as show
+					 below.</p>
+            <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/jrun-step2-4.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Make an entry for a virtual path of
+					 <nobr class="literal">/xsql/</nobr> (trailing slash important!) that maps to a Real Path
+					 of <nobr class="literal">C:\xdk902\xdk\demo\java\xsql\</nobr> (trailing slash
+					 important!), or the appropriate directory into which you installed the XSQL
+					 Servlet files. Click <i>Save</i> to save the changes, then
+					 <i>Close</i> to dismiss the dialog.</p> 
+				</li> 
+			 </ol>
+      <p>Restart the JRun server and browse the URL:</p>
+      <pre>http://localhost:8000/xsql/index.html</pre><a name="ID4500">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>Apache JServ 1.0 or 1.1</h5>
+      </a>
+      <ol> 
+				<li> 
+				  <p><i><b><u>Setup the Server CLASSPATH Correctly for the XSQL
+					 Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>This is done by editing the JServ configuration file named
+					 <nobr class="literal">jserv.properties</nobr>. Assuming you installed the XSQL Servlet
+					 files into <nobr class="literal">C:\</nobr>, you need to add the following
+					 entries:</p> 
+				  <ul> 
+					 <li> 
+						<p>To use the Oracle JDBC 1.x Driver, the entries look
+						  like:</p> 
+						<pre>
+# Oracle XML SQL Utility (XSU)
+wrapper.classpath=C:\xdk902\lib\xsu111.jar
+# Oracle XSQL Servlet
+wrapper.classpath=C:\xdk902\lib\oraclexsql.jar
+# Oracle JDBC (8.1.6) -- JDBC 1.x driver
+wrapper.classpath=<i>directory_where_JDBC_Driver_resides</i>\classes111.zip
+# Oracle XML Parser V2 (with XSLT Engine)
+wrapper.classpath=C:\xdk902\lib\xmlparserv2.jar
+# XSQLConfig.xml File location
+wrapper.classpath=<i>directory_where_XSQLConfig.xml_resides</i>
+# FOR Apache FOP Generation, Add
+# wrapper.classpath=C:\xdk902\lib\xsqlserializers.jar
+# wrapper.classpath=<i>FOPHOME</i>/build/fop.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/batik.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/logkit-1.0.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/avalon-framework-4.0.jar</pre>
+
+					 </li> 
+					 <li> 
+						<p>To use the Oracle JDBC 2.0 Driver, the list looks
+						  like:</p> 
+						<pre>
+# Oracle XML SQL Utility (XSU)
+wrapper.classpath=C:\xdk902\lib\xsu12.jar
+# Oracle XSQL Servlet
+wrapper.classpath=C:\xdk902\lib\oraclexsql.jar
+# Oracle JDBC (8.1.6) -- JDBC 2.0 driver
+wrapper.classpath=<i>directory_where_JDBC_Driver_resides</i>\classes12.zip
+# Oracle XML Parser V2 (with XSLT Engine)
+wrapper.classpath=C:\xdk902\lib\xmlparserv2.jar
+# XSQLConfig.xml File location
+wrapper.classpath=<i>directory_where_XSQLConfig.xml_resides</i>
+# FOR Apache FOP Generation, Add
+# wrapper.classpath=C:\xdk902\lib\xsqlserializers.jar
+# wrapper.classpath=<i>FOPHOME</i>/build/fop.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/batik.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/logkit-1.0.jar
+# wrapper.classpath=<i>FOPHOME</i>/lib/avalon-framework-4.0.jar
+</pre>
+
+					 </li> 
+				  </ul> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map the <nobr class="literal">.xsql</nobr> file extension
+					 to the XSQL Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p> To do this, you need to edit the JServ configuration file
+					 named <nobr class="literal">jserv.conf</nobr> (in JServ 1.0 this was named
+					 <nobr class="literal">mod_jserv.conf</nobr> on some platforms). Add the following
+					 line:</p> 
+				  <pre># Executes a servlet passing filename with proper extension in PATH_TRANSLATED 
+# property of servlet request.
+# Syntax: ApJServAction [extension] [servlet-uri]
+# Defaults: NONE
+
+ApJServAction .xsql /servlets/oracle.xml.xsql.XSQLServlet</pre>
+
+				</li> 
+				<li> 
+				  <p><i><b><u>Map an <nobr class="literal">/xsql/</nobr> virtual
+					 directory</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>In this step, we want to map the virtual path
+					 <nobr class="literal">/xsql/</nobr> to <nobr class="literal">C:\xdk902\xdk\demo\java\xsql\</nobr>
+					 (or wherever you installed the XSQL Servlet files). To do this, you need to
+					 edit the Apache configuration file named <nobr class="literal">httpd.conf</nobr> and add
+					 the following line:</p> 
+				  <pre>Alias /xsql/ "C:\xdk902\xdk\demo\java\xsql\"</pre>
+
+				</li> 
+			 </ol>
+      <p>Restart the Apache server and browse the URL:</p>
+      <pre>http://localhost/xsql/index.html</pre><a name="ID4698">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>Jakarta Tomcat 3.1 or 3.2</h5>
+      </a>
+      <ol> 
+				<li> 
+				  <p><i><b><u>Setup the Server CLASSPATH Correctly for the XSQL
+					 Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>This is done by editing the Tomcat startup script named
+					 <nobr class="literal">tomcat.bat</nobr> in <nobr class="literal">./jakarta-tomcat/bin</nobr> and
+					 adding five lines to append the appropriate entries onto the system CLASSPATH
+					 before the Tomcat server is started as shown below:</p> 
+				  <ul> 
+					 <li> 
+						<p>To use the Oracle JDBC 1.x Driver, the entries look
+						  like:</p> 
+						<pre>
+rem Set up the CLASSPATH that we need
+
+set cp=%CLASSPATH%
+
+set CLASSPATH=.
+set CLASSPATH=%TOMCAT_HOME%\classes
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\webserver.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\jasper.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\xml.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\servlet.jar
+set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\lib\tools.jar
+
+REM Added for Oracle XSQL Servlet
+REM -----------------------------
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xsu111.jar
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\oraclexsql.jar
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xmlparserv2.jar
+set CLASSPATH=%CLASSPATH%;<i>directory_where_JDBC_Driver_resides</i>\classes111.zip
+set CLASSPATH=%CLASSPATH%;<i>directory_where_XSQLConfig.xml_resides</i>
+REM FOR Apache FOP Generation, Add
+REM set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xsqlserializers.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/fop.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/lib/batik.jar</pre>
+
+					 </li> 
+					 <li> 
+						<p>To use the Oracle JDBC 2.0 Driver, the list looks
+						  like:</p> 
+						<pre>
+rem Set up the CLASSPATH that we need
+
+set cp=%CLASSPATH%
+
+set CLASSPATH=.
+set CLASSPATH=%TOMCAT_HOME%\classes
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\webserver.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\jasper.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\xml.jar
+set CLASSPATH=%CLASSPATH%;%TOMCAT_HOME%\lib\servlet.jar
+set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\lib\tools.jar
+
+REM Added for Oracle XSQL Servlet
+REM -----------------------------
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xsu12.jar
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\oraclexsql.jar
+set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xmlparserv2.jar
+set CLASSPATH=%CLASSPATH%;<i>directory_where_JDBC_Driver_resides</i>\classes12.zip
+set CLASSPATH=%CLASSPATH%;<i>directory_where_XSQLConfig.xml_resides</i>
+REM FOR Apache FOP Generation, Add
+REM set CLASSPATH=%CLASSPATH%;C:\xdk902\lib\xsqlserializers.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/build/fop.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/lib/batik.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/lib/logkit-1.0.jar
+REM set CLASSPATH=%CLASSPATH%;<i>FOPHOME</i>/lib/avalon-framework-4.0.jar</pre>
+
+					 </li> 
+				  </ul> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map the <nobr class="literal">.xsql</nobr> file extension
+					 to the XSQL Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p> Tomcat supports creating any number of configuration
+					 "contexts" to better organize the web applications your site needs to support.
+					 Each context is mapped to a virtual directory path, and has its own separate
+					 servlet configuration information. XSQL Servlet comes with a pre-configured
+					 context file to make XSQL Servlet setup easier. </p> 
+				  <p>By default, Tomcat 3.1 and 3.2 come pre-configured with the
+					 following contexts (defined by <span class="literal">
+                  <nobr>&lt;Context></nobr>
+               </span> entries in the
+					 <nobr class="literal">./jakarta-tomcat/conf/server.xml</nobr> file)...</p> 
+				  <ul> 
+					 <li> 
+						<p>The <i>root</i> context</p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">/examples</nobr>
+                  </p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">/test</nobr>
+                  </p> 
+					 </li> 
+					 <li> 
+						<p>
+                     <nobr class="literal">/admin</nobr>
+                  </p> 
+					 </li> 
+				  </ul> 
+				  <p>We could install XSQL Servlet into one of these, but for
+					 simplicity we'll create a new context just for the XSQL Servlet that maps to
+					 the directory where you installed the XSQL Servlet distribution.</p> 
+				  <p>Edit the
+					 <nobr class="literal">./jakarta-tomcat/conf/server.xml</nobr> file to add the following
+					 <span class="literal">
+                  <nobr>&lt;Context></nobr>
+               </span> entry with a
+					 <nobr class="literal">path="/xsql"</nobr>...</p> 
+				  <pre>&lt;Context path="/test" docBase="webapps/test" debug="0" reloadable="true" /&gt; 
+
+&lt;!--
+ |  Define a Servlet context for the XSQL Servlet  
+ |  
+ |  The XSQL Servlet ships with a .\WEB-INF directory
+ |  with its web.xml file pre-configured for C:\xdk902\xdk\demo\java\xsql
+ |  installation.
+ +--&gt;
+&lt;Context path="/xsql" docBase="C:\xdk902\xdk\demo\java\xsql"/&gt;
+</pre>
+				  <p>Note that the <nobr class="literal">docBase="C:/xsql"</nobr> points
+					 to the physical directory where you installed the XSQL Servlet distribution.
+					 You then need to create a <nobr class="literal">WEB-INF</nobr> subdirectory directory in
+					 the <nobr class="literal">C:\xdk902\xdk\demo\java\xsql</nobr> and save into it the
+					 following <nobr class="literal">./WEB-INF/web.xml</nobr> file:</p> 
+				  <pre>&lt;?xml version = '1.0' encoding = 'UTF-8'?&gt;
+&lt;!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+                         "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd"&gt;
+&lt;web-app&gt;
+   &lt;servlet&gt;
+      &lt;servlet-name&gt;oracle-xsql-servlet&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;oracle.xml.xsql.XSQLServlet&lt;/servlet-class&gt;
+   &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;oracle-xsql-servlet&lt;/servlet-name&gt;
+      &lt;url-pattern&gt; *.xsql &lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</pre>
+				  <br>
+            <table border="1" cellspacing="0" cellpadding="4">
+               <tr>
+                  <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+                  </td>
+                  <td valign="top"><b><u>Note</u>
+                     </b>: 
+					 <p>To add the XSQL Servlet to an existing context, add the
+						servlet and servlet-mapping entries that you find in <nobr class="literal">web.xml</nobr>
+						file above into the <nobr class="literal">web.xml</nobr> file for the context in
+						question.</p> 
+				  </td>
+               </tr>
+            </table><br> 
+
+				</li> 
+				<li> 
+				  <p><i><b><u>Map an <nobr class="literal">/xsql/</nobr> virtual
+					 directory</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>This is already achieved by creating the
+					 <nobr class="literal">/xsql</nobr> context above.</p> 
+				</li> 
+			 </ol>
+      <p>Restart the Tomcat server and browse the URL:</p>
+      <pre>http://localhost:8080/xsql/index.html</pre><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+				<p>If you use Tomcat with an XML Parser (like the Sun Crimson
+				  Parser) that only supports DOM Leve 1 interfaces, then you must edit tomcat.bat
+				  to insure that the Oracle XML Parser's archive xmlparser.jar comes before the
+				  DOM Level 1 parser's archive in the classpath. For example, you could edit
+				  tomcat.bat to add the following line:</p> 
+				<pre>REM NEED TO PUT xmlparserv2.jar FIRST before parser.jar
+set CP=C:\xdk902\lib\xmlparserv2.jar;%CP%
+</pre>
+				<p>just before the line:</p> 
+				<pre>echo Using CLASSPATH: %CP%
+echo.
+set CLASSPATH=%CP%</pre>
+
+
+			 </td>
+         </tr>
+      </table><br><a name="ID5016">
+         <h5 style="color:#000044"><img src="images/line4.gif" width="100" height="7"><br>ServletExec 2.2</h5>
+      </a>
+      <ol> 
+				<li> 
+				  <p><i><b><u>Setup the Server CLASSPATH Correctly for the XSQL
+					 Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>This is done by browsing the url
+					 http://localhost/servlet/admin after starting the IIS Server, and clicking the
+					 VM Settings link under "Advanced" in the sidebar.</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/servletexec-step1.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Add the four archives and one directory as shown above, by
+					 adding them one at a time and clicking the <i>Submit</i> button
+					 after each new entry.</p> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map the <nobr class="literal">.xsql</nobr> file extension
+					 to the XSQL Servlet</u>
+                  </b>
+               </i>
+            </p> 
+				  <p> Click on <i>Configure</i> under the
+					 "Servlets" heading in the sidebar to browse the form where you register
+					 servlets. Enter a Servlet Name of <nobr class="literal">oraclexsql</nobr> and a Servlet
+					 Class of <nobr class="literal">oracle.xml.xsql.XSQLServlet</nobr> into the blank form at
+					 the top and click Submit. It should then look like the picture below:</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/servletexec-step2.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p>Then, click on <i>Aliases</i> under
+					 "Servlets" in the sidebar.</p> 
+				  <p>Add an entry as shown below mapping
+					 <nobr class="literal">*.xsql</nobr> to the servlet "nickname" of
+					 <nobr class="literal">oraclexsql</nobr> you defined above.</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/servletexec-step3.gif">
+                  </td>
+               </tr>
+            </table> 
+				  <p></p> 
+				</li> 
+				<li> 
+				  <p><i><b><u>Map an <nobr class="literal">/xsql/</nobr> virtual
+					 directory</u>
+                  </b>
+               </i>
+            </p> 
+				  <p>Use the IIS Admin console to create an
+					 <nobr class="literal">/xsql</nobr> virtual directory and map it to
+					 <nobr class="literal">C:\xdk902\xdk\demo\java\xsql</nobr> as shown here:</p> 
+				  <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td><img src="images/servletexec-step4.gif">
+                  </td>
+               </tr>
+            </table> 
+				</li> 
+			 </ol>
+      <p>Restart the IIS server and browse the URL:</p>
+      <pre>http://localhost/xsql/index.html</pre><a name="ID5165">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Setting Up the Demo Data</h4>
+      </a>
+      <p>To setup the data for the demos do the following:</p>
+      <ol> 
+			 <li> 
+				<p> Change directory to the <nobr class="literal">.\xsql\demo</nobr>
+				  directory on your machine. </p> 
+			 </li> 
+			 <li> 
+				<p> In this directory, run SQLPLUS. Connect to your database as
+				  <nobr class="literal">CTXSYS/CTXSYS</nobr> (the schema owner for Intermedia Text
+				  packages) and issue the command </p> 
+				<pre>GRANT EXECUTE ON CTX_DDL TO SCOTT;</pre>
+
+			 </li> 
+			 <li> 
+				<p> Connect to your database as
+				  <nobr class="literal">SYSTEM/MANAGER</nobr> and issue the command: </p> 
+				<pre>GRANT QUERY REWRITE TO SCOTT;</pre>
+				<p>This allows SCOTT to create a functional index that one of
+				  the demos uses to perform case-insensitive queries on descriptions of
+				  airports.</p> 
+			 </li> 
+			 <li> 
+				<p> Connect to your database as <nobr class="literal">SCOTT/TIGER</nobr>.
+				  </p> 
+			 </li> 
+			 <li> 
+				<p> Run the script <nobr class="literal">install.sql</nobr> in the
+				  <nobr class="literal">./xsql/demo</nobr> directory. This script will, in turn, run all
+				  the SQL scripts for all the demos. </p> 
+			 </li> 
+			 <li> 
+				<p> Change directory to the <nobr class="literal">doyouxml</nobr>
+				  subdirectory, and run the command <nobr class="literal">imp scott/tiger
+				  file=doyouxml.dmp</nobr> to import some sample data for the "Do You XML?
+				  Site" demo. </p> 
+			 </li> 
+		  </ol><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>To properly experience the Scalable Vector Graphics
+				demonstration, you need to install an SVG plugin into your browser like the 
+				<a href="http://beta1.adobe.com/svgpreview_alpha/SVG/download/download.html">Adobe
+				  SVG Plugin</a>.</p> 
+		  </td>
+         </tr>
+      </table><br><a name="ID5300">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Additional Technical Tips</h2>
+      </a><a name="ID5307">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Producing XML from SQL with Nested Structure</h3>
+      </a>
+      <p> In addition to "flat" database query results, using the techniques
+		  described in this section you can easily produce XML from database query with
+		  nested structure by selecting information from <i>structured</i>
+		  columns in your XSQL page. Structured columns can be one of three types:</p>
+      <ol> 
+		  <li> 
+			 <p>Strongly Typed, User-Defined Object</p> 
+		  </li> 
+		  <li> 
+			 <p>Strongly Typed, User-Defined Collection</p> 
+		  </li> 
+		  <li> 
+			 <p>Untyped Collection based on a SQL statement</p> 
+		  </li> 
+		</ol>
+      <p>Since the underlying Oracle XML SQL Utility for Java natively
+		  supports all of these combinations for producing richly structure XML from SQL
+		  statements that make use of these features, your Oracle XSQL Pages gain this
+		  capability for "free". We'll look at two simple examples...</p><a name="ID5356">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Using User-Defined Object Types</h4>
+      </a>
+      <p>If you have used the object/relational capabilities of
+			 Oracle8<i>i</i> to create a user-defined object type called
+			 <nobr class="literal">POINT</nobr> using the command:</p>
+      <pre>CREATE TYPE POINT AS OBJECT (X NUMBER, Y NUMBER);</pre>
+      <p>and have used your new <nobr class="literal">POINT</nobr> type as the
+			 datatype of the <nobr class="literal">ORIGIN</nobr> column in your
+			 <nobr class="literal">LOCATION</nobr> table with the DDL statement:</p>
+      <pre>CREATE TABLE LOCATION (
+  NAME   VARCHAR2(80),
+  ORIGIN POINT
+);</pre>
+      <p> and have inserted a row into this <nobr class="literal">LOCATION</nobr>
+			 table using an <nobr class="literal">INSERT</nobr> statement with the
+			 <nobr class="literal">POINT()</nobr> constructor like...</p>
+      <pre>INSERT INTO LOCATION VALUES ( 'Someplace', POINT(11,17) );
+COMMIT;</pre>
+      <p>Then, an XSQL page like <nobr class="literal">point.xsql</nobr> below that
+			 does a query over the <nobr class="literal">LOCATION</nobr> table like...</p>
+      <pre>&lt;xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql"&gt;
+  SELECT name, origin
+    FROM location loc
+   WHERE loc.origin.x = {@x-coord}
+&lt;/xsql:query&gt; </pre>
+      <p>...when requested using a URL like:</p>
+      <pre>http://yourmachine.com/xsql/demo/point.xsql?x-coord=11</pre>
+      <p>produces the output:</p>
+      <pre>&lt;ROWSET&gt;
+   &lt;ROW num="1"&gt;
+      &lt;NAME&gt;Someplace&lt;/NAME&gt;
+      &lt;ORIGIN&gt;
+         &lt;X&gt;11&lt;/X&gt;
+         &lt;Y&gt;17&lt;/Y&gt;
+      &lt;/ORIGIN&gt;
+   &lt;/ROW&gt;
+&lt;/ROWSET&gt;</pre>
+      <p>This demonstrates how the nested <nobr class="literal">X</nobr> and
+			 <nobr class="literal">Y</nobr> attributes in the <nobr class="literal">POINT</nobr> datatype
+			 structure of the <nobr class="literal">ORIGIN</nobr> column appear automatically as
+			 nested <span class="literal">
+            <nobr>&lt;X></nobr>
+         </span> and <span class="literal">
+            <nobr>&lt;Y></nobr>
+         </span> elements in the XML
+			 output. This is about the simplest possible example of using a user-defined
+			 type to get more richly structured XML output from your object/relational
+			 database. See the included <i>Insurance Claim Demo</i> for a much
+			 more detailed example combining both object types and object views. Take a look
+			 at the the associated SQL script in
+			 <nobr class="literal">./xsql/demo/insclaim/insclaim.sql</nobr> to see the SQL syntax for
+			 creating the object types and object views used by the demo. 
+			 <br>
+         <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+               <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+               </td>
+               <td valign="top"><b><u>Note</u>
+                  </b>: 
+				<p>See the supplied
+				  <nobr class="literal">./xsql/demo/point/point.sql</nobr> script to create the example
+				  type and table above on your database. Also in the
+				  <nobr class="literal">./xsql/demo</nobr> directory, see the
+				  <nobr class="literal">./empdept/empdeptobjs.sql</nobr>,
+				  <nobr class="literal">./classerr/invalidclasses.sql</nobr>, and
+				  <nobr class="literal">./insclaim/insclaim.sql</nobr> files for additional object view
+				  examples.</p> 
+			 </td>
+            </tr>
+         </table><br>
+      </p><a name="ID5540">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Using the CURSOR Operator for Nested Rowsets</h4>
+      </a>
+      <p>If you have not created object types that contain a
+			 <i>pre</i>-defined structure, you can still introduce nested
+			 structure into your SQL queries using the <nobr class="literal">CURSOR</nobr> operator
+			 allows you to select a nested rowset as a column in the
+			 <nobr class="literal">SELECT</nobr> list of a query. While almost
+			 <i>any</i> nested query is legal to include inside the
+			 <nobr class="literal">CURSOR</nobr> operator in the <nobr class="literal">SELECT</nobr> list, the
+			 most useful is a query that selects a nested set of <i>detail</i>
+			 rows for the current "master" row.</p>
+      <p>Taking the familar <nobr class="literal">DEPT</nobr> and
+			 <nobr class="literal">EMP</nobr> tables as an example, the following XSQL Page contains a
+			 query that selects the <nobr class="literal">DNAME</nobr> column from the
+			 <nobr class="literal">DEPT</nobr> table, and for each row returned a nested rowset of the
+			 <nobr class="literal">EMPLOYEES</nobr> from the EMP table who work in that
+			 department:</p>
+      <pre>&lt;xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql"&gt;
+  SELECT dname,
+         CURSOR( SELECT ename,sal
+                   FROM emp
+                  WHERE emp.deptno = dept.deptno) as employees /* Column Alias */
+    FROM dept
+   WHERE deptno = {@department}
+&lt;/xsql:query&gt;
+</pre>
+      <p>Requesting this </p>
+      <pre>http://yourserver.com/xsql/demo/empdept.xsql?department=10</pre>
+      <p>produces the resulting XML "datapage":</p>
+      <pre>&lt;ROWSET&gt;
+   &lt;ROW num="1"&gt;
+      &lt;DNAME&gt;ACCOUNTING&lt;/DNAME&gt;
+      &lt;EMPLOYEES&gt;
+         &lt;EMPLOYEES_ROW num="1"&gt;
+            &lt;ENAME&gt;CLARK&lt;/ENAME&gt;
+            &lt;SAL&gt;2450&lt;/SAL&gt;
+         &lt;/EMPLOYEES_ROW&gt;
+         &lt;EMPLOYEES_ROW num="2"&gt;
+            &lt;ENAME&gt;KING&lt;/ENAME&gt;
+            &lt;SAL&gt;5000&lt;/SAL&gt;
+         &lt;/EMPLOYEES_ROW&gt;
+         &lt;EMPLOYEES_ROW num="3"&gt;
+            &lt;ENAME&gt;MILLER&lt;/ENAME&gt;
+            &lt;SAL&gt;1300&lt;/SAL&gt;
+         &lt;/EMPLOYEES_ROW&gt;
+      &lt;/EMPLOYEES&gt;
+   &lt;/ROW&gt;
+&lt;/ROWSET&gt;</pre>
+      <p>Note that the second column in the <nobr class="literal">SELECT</nobr>
+			 statement is the expression using the <nobr class="literal">CURSOR()</nobr> operator to
+			 select the details. Since it is a column like any other, it can be aliased to
+			 the column name <nobr class="literal">EMPLOYEES</nobr> by using the <nobr class="literal">AS 
+			 <i>COLUMNALIAS</i>
+         </nobr> syntax as shown
+			 above.</p>
+      <p>Since the <nobr class="literal">EMPLOYEES</nobr> column is a nested rowset,
+			 it appears as a set of <span class="literal">
+            <nobr>&lt;ROW></nobr>
+         </span> elements nested within its parent
+			 <span class="literal">
+            <nobr>&lt;ROW></nobr>
+         </span>. Given the facts that:</p>
+      <ul> 
+			 <li> 
+				<p>One or more <nobr class="literal">CURSOR</nobr> operators can be used
+				  in the <nobr class="literal">SELECT</nobr> list of any SQL statement,</p> 
+			 </li> 
+			 <li> 
+				<p>One or more <nobr class="literal">CURSOR</nobr> operators can be used
+				  in the <nobr class="literal">SELECT</nobr> list of SQL statements that appear
+				  <i>inside</i> any <nobr class="literal">CURSOR</nobr> operator (to any
+				  level of nesting),</p> 
+			 </li> 
+			 <li> 
+				<p>The SQL statement that may appear within the
+				  <nobr class="literal">CURSOR</nobr> operator can be virtually any valid SQL statment
+				  (including GROUP BY and ORDER BY, etc), and that</p> 
+			 </li> 
+			 <li> 
+				<p>Any SQL statement can be included in an
+				  <span class="literal">
+                  <nobr>&lt;xsql:query></nobr>
+               </span> tag in an XSQL Page</p> 
+			 </li> 
+		  </ul>
+      <p>you can quickly see how powerful, structured information can be
+			 created on the fly to get almost any structure you are looking for. This allows
+			 the processing speed of the database to be exploited for sorting and grouping
+			 instead of having to rely on slower techniques that would attempt these
+			 operations on <i>flat</i> data from within the XSLT
+			 stylesheet.</p>
+      <p>Of course, by using these query techniques in the
+			 <span class="literal">
+            <nobr>&lt;xsql:query></nobr>
+         </span> tags of an XSQL Page, you can combine rich
+			 master/detail XML "datapages" with powerful database sorting and grouping
+			 applied to them by the SQL engine before <i>subsequently</i>
+			 applying an XSLT Transformation to the resulting datapage as we learned above
+			 to transform the resulting datapage into any "presentation" format you
+			 need.</p><a name="ID5775">
+         <h3 style="color:#000066"><img src="images/line4.gif" width="200" height="9"><br>Inserting XML Into Any Table You Require </h3>
+      </a>
+      <p> Oracle provides all the ingredients necessary to accomplish this
+		  task. The approach you take depends on whether you need to accomplish the
+		  insert from within your own Java program, or whether you want a simple,
+		  declarative way of inserting the target document.</p><a name="ID5786">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Overview</h4>
+      </a>
+      <p>The Oracle XML SQL Utility for Java contains the
+			 <nobr class="literal">OracleXMLQuery</nobr> class that we used above to get SQL query
+			 results out of the database. It also contains a companion class called
+			 <nobr class="literal">OracleXMLSave</nobr> that performs the
+			 <i>opposite</i> job of putting XML information back
+			 <i>into</i> Oracle tables or views.</p>
+      <p>The <nobr class="literal">OracleXMLSave</nobr> class understands how to
+			 <i>insert</i> any information which
+			 <nobr class="literal">OracleXMLQuery</nobr> knows how to <i>produce</i>.
+			 Said another way, the canonical structure of the <i>output</i>
+			 from <nobr class="literal">OracleXMLQuery</nobr> defines the kinds of structures for
+			 <i>input</i> which OracleXMLSave can automatically insert for
+			 us.</p>
+      <p>The fact that <nobr class="literal">OracleXMLSave</nobr> can only insert
+			 XML documents that look like XML documents produced by
+			 <nobr class="literal">OracleXMLQuery</nobr> may at first sound like a drastic limitation.
+			 However, this is not the case by any stretch of the imaginition. By taking
+			 advantage of an appropriate XSL transformation, virtually any XML document can
+			 be transformed to have the canonical format required by
+			 <nobr class="literal">OracleXMLSave</nobr>. This means that given:</p>
+      <ul> 
+			 <li> 
+				<p>An arbitrary XML document <nobr class="literal">X</nobr>, and</p> 
+			 </li> 
+			 <li> 
+				<p>A database table <nobr class="literal">T</nobr> where you want to
+				  insert it</p> 
+			 </li> 
+		  </ul>
+      <p>You can create an XSL Transformation that transforms the
+			 <i>source</i> document <nobr class="literal">X</nobr> into a
+			 <i>target</i> document <nobr class="literal">X2</nobr> having precisely the
+			 structure needed for automatic insertion into table
+			 <nobr class="literal">T</nobr>.</p>
+      <p>Let's say that the source document is an XML news feed like what
+			 you'll see if you browse the following URL from 
+			 <a href="http://www.moreover.com">www.moreover.com</a>
+			 ...</p>
+      <pre><a href="http://www.moreover.com/cgi-local/page?index_xml+xml">http://www.moreover.com/cgi-local/page?index_xml+xml</a>
+      </pre>
+      <p>A shortened version of such a resulting XML document looks like
+			 this: </p>
+      <p> 
+			 <pre>&lt;?xml version="1.0"?&gt;
+   &lt;!DOCTYPE moreovernews SYSTEM "http://www.moreover.com/xml/moreovernews.dtd"&gt;
+   &lt;moreovernews&gt;
+      &lt;article id="4227581"&gt;
+         &lt;url&gt;http://d.moreover.com/click/here.pl?x4227575&lt;/url&gt;
+         &lt;headline_text&gt;Austin: webMethods gets deal with Dell&lt;/headline_text&gt;
+         &lt;source&gt;dbusiness.com&lt;/source&gt;
+         &lt;media_type&gt;text&lt;/media_type&gt;
+         &lt;cluster&gt;XML and metadata news&lt;/cluster&gt;
+         &lt;tagline&gt;Austin&lt;/tagline&gt;
+         &lt;document_url&gt;http://washington.dbusiness.com/&lt;/document_url&gt;
+         &lt;harvest_time&gt;Oct 30 1999  7:08AM&lt;/harvest_time&gt;
+         &lt;access_registration&gt; &lt;/access_registration&gt;
+         &lt;access_status&gt; &lt;/access_status&gt;
+      &lt;/article&gt;
+      &lt;article id="4212701"&gt;
+         &lt;url&gt;http://d.moreover.com/click/here.pl?x4212698&lt;/url&gt;
+         &lt;headline_text&gt;Microsoft continues XML push with resource kit&lt;/headline_text&gt;
+         &lt;source&gt;InfoWorld&lt;/source&gt;
+         &lt;media_type&gt;text&lt;/media_type&gt;
+         &lt;cluster&gt;XML and metadata news&lt;/cluster&gt;
+         &lt;tagline&gt;&lt;/tagline&gt;
+         &lt;document_url&gt;http://www.infoworld.com/&lt;/document_url&gt;
+         &lt;harvest_time&gt;Oct 29 1999  7:27AM&lt;/harvest_time&gt;
+         &lt;access_registration&gt; &lt;/access_registration&gt;
+         &lt;access_status&gt; &lt;/access_status&gt;
+      &lt;/article&gt;
+      &lt;article id="4202251"&gt;
+         &lt;url&gt;http://d.moreover.com/click/here.pl?x4202247&lt;/url&gt;
+         &lt;headline_text&gt;IBM Brings XML To MQSeries&lt;/headline_text&gt;
+         &lt;source&gt;Internet Week&lt;/source&gt;
+         &lt;media_type&gt;text&lt;/media_type&gt;
+         &lt;cluster&gt;XML and metadata news&lt;/cluster&gt;
+         &lt;tagline&gt;&lt;/tagline&gt;
+         &lt;document_url&gt;http://www.internetwk.com/&lt;/document_url&gt;
+         &lt;harvest_time&gt;Oct 28 1999  4:28PM&lt;/harvest_time&gt;
+         &lt;access_registration&gt; &lt;/access_registration&gt;
+         &lt;access_status&gt; &lt;/access_status&gt;
+      &lt;/article&gt;
+      &lt;article id="4082434"&gt;
+         &lt;url&gt;http://d.moreover.com/click/here.pl?x4082432&lt;/url&gt;
+         &lt;headline_text&gt;XML leader OnDisplay's travel clients praised&lt;/headline_text&gt;
+         &lt;source&gt;Web Travel News&lt;/source&gt;
+         &lt;media_type&gt;text&lt;/media_type&gt;
+         &lt;cluster&gt;XML and metadata news&lt;/cluster&gt;
+         &lt;tagline&gt;&lt;/tagline&gt;
+         &lt;document_url&gt;http://www.webtravelnews.com/&lt;/document_url&gt;
+         &lt;harvest_time&gt;Oct 20 1999  7:34AM&lt;/harvest_time&gt;
+         &lt;access_registration&gt; &lt;/access_registration&gt;
+         &lt;access_status&gt; &lt;/access_status&gt;
+      &lt;/article&gt;
+    &lt;/moreovernews&gt;
+</pre>
+			 Next, let's say that you have a table called
+			 <nobr class="literal">newsstory</nobr> that you created with the following DDL statement.
+			 
+		  </p>
+      <pre>CREATE TABLE newsstory(
+ id     NUMBER PRIMARY KEY,
+ title  VARCHAR2(200),
+ url    VARCHAR2(200),
+ source VARCHAR2(200)
+);</pre>
+      <p>And further, let's suppose that you want to insert information
+			 from the XML news feed from Moreover.com into this table.</p>
+      <p>So, we need to produce an XSL transformation that transforms the
+			 information in the XML news feed from Moreover.com into the canonical format
+			 that <nobr class="literal">OracleXMLSave</nobr> knows how to insert into the
+			 <nobr class="literal">newsstory</nobr> table.</p>
+      <p>We start by using an XSQL page to quickly produce one row of
+			 canonical query results from the <nobr class="literal">newstory</nobr> table. We can
+			 produce this with the XSQL Page:</p>
+      <pre>&lt;?xml version="1.0"?&gt;
+&lt;query connection="demo" max-rows="1"&gt;
+
+ SELECT *
+   FROM NEWSTORY
+
+&lt;/query&gt;</pre>
+      <p>We can either request this page through the webserver, or more
+			 conveninently for this job, use the XSQL Command Line Utility to quickly put
+			 the XSQL Page's output into a file:</p>
+      <pre>xsql newstory.xsql newsstory.xml</pre>
+      <p>This command processes the <nobr class="literal">newsstory.xsql</nobr> page
+			 above and writes the output to the file named <nobr class="literal">newsstory.xml</nobr>.
+			 The contents of the newsstory.xml file will look like:</p>
+      <pre>&lt;?xml version = '1.0'?&gt;
+&lt;ROWSET&gt;
+   &lt;ROW num="1"&gt;
+      &lt;ID&gt;1911&lt;/ID&gt;
+      &lt;TITLE&gt;Some Title&lt;/TITLE&gt;
+      &lt;URL&gt;http://somemachine/somepage.html&lt;/URL&gt;
+      &lt;SOURCE&gt;SomeSource&lt;/SOURCE&gt;
+   &lt;/ROW&gt;
+&lt;/ROWSET&gt;</pre>
+      <p>We can take this one row of canonical output from a
+			 "<nobr class="literal">SELECT *</nobr>" query over the <nobr class="literal">newsstory</nobr> table
+			 and immediately turn it into our "insert transformation" by doing the following
+			 steps:</p>
+      <ol> 
+			 <li> 
+				<p>Add an <nobr class="literal">xsl</nobr> namespace declaration to the
+				  document element,</p> 
+			 </li> 
+			 <li> 
+				<p>Remove the <nobr class="literal">num="1"</nobr> attribute from the
+				  <span class="literal">
+                  <nobr>&lt;ROW></nobr>
+               </span> element, </p> 
+			 </li> 
+			 <li> 
+				<p>Remove any elements corresponding to columns whose values
+				  will be assigned by database triggers, like the ID column will be in this
+				  example, </p> 
+			 </li> 
+			 <li> 
+				<p>Surround the <span class="literal">
+                  <nobr>&lt;ROW></nobr>
+               </span> element with an
+				  <span class="literal">
+                  <nobr>&lt;xsl:for-each></nobr>
+               </span> that loops over the <span class="literal">
+                  <nobr>&lt;article></nobr>
+               </span>
+				  elements in the <i>source</i> document from Moreover.com,
+				  and</p> 
+			 </li> 
+			 <li> 
+				<p>Replace the literal text between the
+				  <span class="literal">
+                  <nobr>&lt;TITLE></nobr>
+               </span>, <span class="literal">
+                  <nobr>&lt;URL></nobr>
+               </span>, and <span class="literal">
+                  <nobr>&lt;SOURCE></nobr>
+               </span>
+				  elements with an appropriate <span class="literal">
+                  <nobr>&lt;xsl:value-of></nobr>
+               </span> element to plug-in
+				  the appropriate information from the <i>current</i>
+				  <span class="literal">
+                  <nobr>&lt;article></nobr>
+               </span> we're looping over in the enclosing
+				  <span class="literal">
+                  <nobr>&lt;xsl:for-each></nobr>
+               </span> loop.</p> 
+			 </li> 
+		  </ol>
+      <p>The result of applying the changes outlined in the three steps
+			 above to the sample output of the:</p>
+      <p>
+         <nobr class="literal"> SELECT * FROM NEWSSTORY</nobr>
+      </p>
+      <p>query produces the following XSL Transformation:</p>
+      <pre>&lt;?xml version = '1.0'?&gt;
+&lt;ROWSET xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+   &lt;xsl:for-each select="moreovernews/article"&gt;
+   &lt;ROW&gt;
+      &lt;TITLE&gt;&lt;xsl:value-of select="headline_text"/&gt;&lt;/TITLE&gt;
+      &lt;URL&gt;&lt;xsl:value-of select="url"/&gt;&lt;/URL&gt;
+      &lt;SOURCE&gt;Moreover.com&lt;/SOURCE&gt;
+   &lt;/ROW&gt;
+   &lt;/xsl:for-each&gt;
+&lt;/ROWSET&gt;</pre>
+      <p>Which illustrates that we have:</p>
+      <ul> 
+			 <li> 
+				<p>Added the <nobr class="literal">xsl</nobr> namespace declaration to the
+				  <span class="literal">
+                  <nobr>&lt;ROWSET></nobr>
+               </span> element:</p> 
+				<pre>&lt;ROWSET xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;</pre>
+
+			 </li> 
+			 <li> 
+				<p>Added the <span class="literal">
+                  <nobr>&lt;xsl:for-each></nobr>
+               </span> element to loop
+				  over each <span class="literal">
+                  <nobr>&lt;article></nobr>
+               </span> element that is a child of the
+				  <span class="literal">
+                  <nobr>&lt;moreovernews></nobr>
+               </span> element in the source document:</p> 
+				<pre>&lt;xsl:for-each select="moreovernews/article"&gt;</pre>
+				<p>so that for each <span class="literal">
+                  <nobr>&lt;article></nobr>
+               </span> we find in the
+				  <i>source</i>, we create a <span class="literal">
+                  <nobr>&lt;ROW></nobr>
+               </span> in the
+				  <i>target</i>.</p> 
+			 </li> 
+			 <li> 
+				<p>Removed the <span class="literal">
+                  <nobr>&lt;ID></nobr>
+               </span> element since its value
+				  will be assigned by our database trigger that assign new story id's from a
+				  database sequence.</p> 
+			 </li> 
+			 <li> 
+				<p>Changed the:</p> 
+				<pre>&lt;TITLE&gt;Some Title&lt;/TITLE&gt;
+&lt;URL&gt;http://somemachine/somepage.html&lt;/URL&gt;</pre>
+				<p>tags to:</p> 
+				<pre>&lt;TITLE&gt;&lt;xsl:value-of select="headline_text"/&gt;&lt;/TITLE&gt;
+&lt;URL&gt;&lt;xsl:value-of select="url"/&gt;&lt;/URL&gt;</pre>
+				<p>to<i> plug-in</i> the value of the current
+				  <span class="literal">
+                  <nobr>&lt;headline_text></nobr>
+               </span> and <span class="literal">
+                  <nobr>&lt;url></nobr>
+               </span> for the current
+				  <span class="literal">
+                  <nobr>&lt;article></nobr>
+               </span>.</p> 
+
+			 </li> 
+			 <li> 
+				<p>Hard-coded the value of the <span class="literal">
+                  <nobr>&lt;SOURCE></nobr>
+               </span> element
+				  to Moreover.com to indicate where this news feed came from.</p> 
+			 </li> 
+		  </ul>
+      <p>If we rename the now-edited <nobr class="literal">newsstory.xml</nobr> file
+			 to <nobr class="literal">moreover-to-newsstory.xsl</nobr>, we can use the command-line
+			 <nobr class="literal">oraxsl</nobr> utility to test our transformation: </p>
+      <pre>java oracle.xml.parser.v2.oraxsl moreover.xml moreover-to-newsstory.xsl out.xml</pre><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>Since the <nobr class="literal">moreover.xml</nobr> file includes
+				the:</p> 
+			 <pre>&lt;!DOCTYPE moreovernews 
+          SYSTEM "http://www.moreover.com/xml/moreovernews.dtd"&gt;</pre>
+			 <p>declaration with an <nobr class="literal">http://</nobr> reference to the
+				MoreoverNews DTD that is outside of Oracle's firewall, you need to provide the
+				following three extra Java VM parameters to allow the Oracle XML Parser to
+				properly find and parse the DTD through our Proxy server:</p> 
+			 <pre>java <i>-DproxySet=true 
+     -DproxyHost=proxyServerName 
+     -DproxyPort=80</i> oracle.xml.parser.v2.oraxsl ...</pre>
+
+
+		  </td>
+         </tr>
+      </table><br>
+      <p>If we use Internet Explorer to browse the resulting
+			 <nobr class="literal">out.xml</nobr> file, we can see the results of the
+			 transformation:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+         <tr>
+            <td><img src="images/outdotxml.gif">
+            </td>
+         </tr>
+      </table>
+      <p>If we pass this resulting target document to the
+			 <nobr class="literal">OracleXMLSave</nobr> class, as we'll do below, it will effortlessly
+			 insert all of the Moreover.com data into our <nobr class="literal">newsstory</nobr>
+			 table.</p>
+      <p>The last step before showing how to tie it all together using
+			 Java or XSQL Pages is to create the database trigger to automatically assign
+			 the value of the ID column on insert. Assuming we have a sequence named
+			 newsstory_id_seq lying around, the code looks like:</p>
+      <p> 
+			 <pre>CREATE TRIGGER newsstory_autoid
+BEFORE INSERT ON newsstory FOR EACH ROW
+BEGIN
+  SELECT newsstory_id_seq.nextval
+    INTO :new.id
+    FROM dual;
+END;</pre>
+
+		  </p><a name="ID6405">
+         <h4 style="color:#000044"><img src="images/line4.gif" width="150" height="7"><br>Inserting Posted XML into the Database</h4>
+      </a>
+      <p>The general steps for inserting XML into the database are:</p>
+      <ol> 
+			 <li> 
+				<p>Choose the table or view you want to use for inserting the
+				  XML information,</p> 
+			 </li> 
+			 <li> 
+				<p>Create an XSL Transformation that transforms the inbound
+				  document into the canonical format for this table or view,</p> 
+				<p>We saw a "cookbook" approach above for how to do this easily
+				  based on a <nobr class="literal">SELECT *</nobr> query against the target table or
+				  view,</p> 
+			 </li> 
+			 <li> 
+				<p>Transform the inbound document into the canonical format for
+				  the table or view into which you want to insert it, and</p> 
+			 </li> 
+			 <li> 
+				<p>Let <nobr class="literal">OracleXMLSave</nobr> insert the transformed
+				  document into your table or view.</p> 
+			 </li> 
+		  </ol>
+      <p>Oracle XSQL Pages support a simple <span class="literal">
+            <nobr>&lt;xsql:insert-request></nobr>
+         </span>
+			 tag that automates these four steps for you when you need to post XML documents
+			 to be inserted into the database to your webserver over HTTP. Given the name of
+			 the table or view to use as the insert target and the name of the XSL
+			 transformation to use to transform the inbound document into the canonical
+			 format for this table or view, you can add the tag:</p>
+      <pre>&lt;xsql:insert-request 
+      table="tableorviewname"
+      transform="transformname.xsl"/&gt;</pre>
+      <p>to the top of your XSQL page to perform the four steps above
+			 automatically. So, for example, the following XSQL Page would accept
+			 information posted through HTTP in the Moreover.com moreovernews format, and
+			 insert it into the <nobr class="literal">newsstory</nobr> table:</p>
+      <pre>&lt;?xml version="1.0?&gt;
+&lt;xsql:insert-request xmlns:xsql="urn:oracle-xsql" 
+      connection="demo" 
+      table="newsstory"
+      transform="moreover-to-newsstory.xsl"/&gt;</pre>
+      <p>Running this program retrieves the newsstories and inserts them
+			 into our <nobr class="literal">NEWSSTORY</nobr> table.</p>
+      <p>Due to the nature of this news feed, news stories stay in the
+			 feed for a few days. If we want to avoid inserting the same story over and over
+			 again, we can easily do that by making sure we don't insert a story unless its
+			 Title and URL are a unique combination in our <nobr class="literal">NEWSSTORY</nobr>
+			 table.</p>
+      <p> Let's implement this behavior using a database <nobr class="literal">INSTEAD
+			 OF INSERT</nobr> trigger. Creating an <nobr class="literal">INSTEAD OF INSERT</nobr>
+			 trigger allows us to write code which will be executed in the database whenever
+			 an INSERT of any kind is performed. In the code of the <nobr class="literal">INSTEAD OF
+			 INSERT</nobr> trigger, we can check for uniqueness of the newsstory and only
+			 <i>really</i> insert it if it <i>is</i>
+			 unique.</p>
+      <p>Since <nobr class="literal">INSTEAD OF</nobr> triggers can only be defined
+			 on database <i>views</i> in Oracle8<i>i</i>, we
+			 simply need to create the <nobr class="literal">newstoryview</nobr> as follows:</p>
+      <p> 
+			 <pre>CREATE VIEW newsstoryview AS
+SELECT *
+  FROM newsstory</pre>
+
+		  </p>
+      <p>Then we can create the <nobr class="literal">INSTEAD OF INSERT</nobr>
+			 trigger from the SQL*Plus command line using code like:</p>
+      <pre>CREATE OR REPLACE TRIGGER insteadOfIns_newsstoryview
+INSTEAD OF INSERT ON newsstoryview FOR EACH ROW
+DECLARE
+  notThere BOOLEAN := TRUE;
+  tmp      VARCHAR2(1);
+  CURSOR chk IS SELECT 'x'
+                  FROM newsstory
+                 WHERE title = :new.title
+                  AND url   = :new.url;
+BEGIN
+  OPEN chk;
+  FETCH chk INTO tmp;
+  notThere := chk%NOTFOUND;
+  CLOSE chk;
+  IF notThere THEN
+    INSERT INTO newsstory(title,url,source)
+         VALUES (:new.title,:new.url,:new.source);
+  END IF;
+END;</pre>
+      <p>Here we are assuming that "uniqueness" of a story is defined by
+			 the combination of its <nobr class="literal">TITLE</nobr> and its <nobr class="literal">URL</nobr>
+			 columns. To make the check fast, we can create a unique index on the
+			 <nobr class="literal">(TITLE,URL)</nobr> combination with the command:</p>
+      <p> 
+			 <pre>CREATE UNIQUE INDEX newsstory_unique_title_url on newsstory(title,url);</pre>
+
+		  </p>
+      <p>We've written the body of the trigger in PL/SQL to demonstrate
+			 that you can mix and match PL/SQL and Java in this solution, but in Oracle8i we
+			 could have also written the INSTEAD OF trigger to call a Java Stored Procedures
+			 as well to perform the uniqueness check. </p>
+      <p>Finally, the only thing left to do is to change the
+			 xsql:insert-request action element above to use the
+			 <nobr class="literal">NEWSSTORYVIEW</nobr> instead of the <nobr class="literal">NEWSTORY</nobr>
+			 table by changing the line:</p>
+      <pre>&lt;?xml version="1.0?&gt;
+&lt;xsql:insert-request xmlns:xsql="urn:oracle-xsql" 
+      connection="demo" 
+      table="newsstoryview"
+      transform="moreover-to-newsstory.xsl"/&gt;</pre>
+      <p>Now, only <i>unique</i> newstories from the
+			 Moreover XML news feed will be inserted.</p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>Using the same <nobr class="literal">INSTEAD OF INSERT</nobr> trigger
+				technique above, it would be quite straightforward to support automatically
+				<i>updating</i> XML information in the database as well. While
+				<nobr class="literal">OracleXMLSave</nobr> can only perform <i>insert</i>
+				operations, the <nobr class="literal">INSTEAD OF INSERT</nobr> trigger on your view could
+				check for existience of a primary key, and if it exists, actually perform an
+				<nobr class="literal">UPDATE</nobr> <i>instead of</i> an
+				<nobr class="literal">INSERT</nobr>.</p> 
+		  </td>
+         </tr>
+      </table><br>
+      <p>The <span class="literal">
+            <nobr>&lt;xsql:insert-request></nobr>
+         </span> tag can be combined
+			 with <span class="literal">
+            <nobr>&lt;xsql:query></nobr>
+         </span> tags in your XSQL page to
+			 <i>first</i> insert any posted XML document (if there is any),
+			 then return some data from queries. For example:</p>
+      <pre>&lt;?xml version="1.0"?&gt;
+&lt;page connection="demo" xmlns:xsql="urn:oracle-xsql"&gt;
+  &lt;xsql:insert-request table="newsstoryview" transform="moreover-to-newsstory.xsl"/&gt;
+  &lt;lateststories&gt;
+    &lt;xsql:query tag-case="lower" max-rows="5" rowset-element="" row-element="story" &gt;
+      select * 
+        from newsstory
+      order by id desc
+    &lt;/xsql:query&gt;
+  &lt;/lateststories&gt;
+&lt;/page&gt;</pre>
+      <p>The XSQL page above inserts any posted XML document containing
+			 <nobr class="literal">moreovernews/article</nobr> elements (as we did programmatically
+			 above), and then returns the XML datagram to the requester that looks like this
+			 viewed "raw" in the Internet Explorer 5.0 browser:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+         <tr>
+            <td><img src="images/afterinsert.gif">
+            </td>
+         </tr>
+      </table>
+      <p>When XML is posted to a web server through HTTP, it's ContentType
+			 is <nobr class="literal">text/xml</nobr> by convention. Sometimes, it's convenient to
+			 accept posted information as a set of HTML <span class="literal">
+            <nobr>&lt;FORM></nobr>
+         </span> parameters.
+			 When an HTML form is posted, the server receives it with a ContentType of
+			 <nobr class="literal">application/x-www-form-urlencoded</nobr>. When the XSQL Servlet
+			 receives an HTTP request with <nobr class="literal">method="POST"</nobr> from such a
+			 form, it internally converts the form parameters into an XML document that
+			 looks like:</p>
+      <pre>&lt;request&gt;
+  &lt;parameters&gt;
+    &lt;<i>firstparamname</i>>firstparamvalue&lt;/<i>firstparamname</i>>
+       :
+    &lt;<i>lastparamname</i>>lastparamvalue&lt;/<i>lastparamname</i>>
+  &lt;/parameters&gt;
+  &lt;session&gt;
+    &lt;<i>firstparamname</i>>firstsessionparamvalue&lt;/<i>firstparamname</i>>
+       :
+    &lt;<i>lastparamname</i>>lastsessionparamvalue&lt;/<i>lastparamname</i>>
+  &lt;/session&gt;
+  &lt;cookies&gt;
+    &lt;<i>firstcookie</i>>firstcookievalue&lt;/<i>firstcookiename</i>>
+       :
+    &lt;<i>lastcookie</i>>firstcookievalue&lt;/<i>lastcookiename</i>>
+  &lt;/cookies&gt;
+&lt;/request&gt;</pre>
+      <p>and then allows an <span class="literal">
+            <nobr>&lt;xsql:insert-request></nobr>
+         </span> tag to
+			 treat this document as the posted input document.</p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>If multiple parameters are posted with the same name, then they
+				will automatically be "row-ified" to make subsequent processing easier. This
+				means, for example, that a request which posts or includes the following
+				parameters:</p> 
+			 <ul> 
+				<li> 
+				  <p>
+                        <nobr class="literal">id=101</nobr>
+                     </p> 
+				</li> 
+				<li> 
+				  <p>
+                        <nobr class="literal">name=Steve</nobr>
+                     </p> 
+				</li> 
+				<li> 
+				  <p>
+                        <nobr class="literal">id=102</nobr>
+                     </p> 
+				</li> 
+				<li> 
+				  <p>
+                        <nobr class="literal">name=Sita</nobr>
+                     </p> 
+				</li> 
+				<li> 
+				  <p>
+                        <nobr class="literal">operation=update</nobr>
+                     </p> 
+				</li> 
+			 </ul> 
+			 <p>Will create a "row-ified" set of parameters like:</p> 
+			 <pre>&lt;request&gt;
+  &lt;parameters&gt;
+    &lt;<i>row</i>>
+      &lt;id&gt;101&lt;/id&gt;
+      &lt;name&gt;Steve&lt;/name&gt;
+    &lt;/<i>row</i>>
+    &lt;<i>row</i>>
+      &lt;id&gt;102&lt;/id&gt;
+      &lt;name&gt;Sita&lt;/name&gt;
+    &lt;/<i>row</i>>
+    &lt;operation&gt;update&lt;/operation&gt;
+  &lt;/parameters&gt;
+       :
+&lt;/request&gt;</pre>
+
+		  </td>
+         </tr>
+      </table><br>
+      <p>Using an <span class="literal">
+            <nobr>&lt;xsql:insert-request></nobr>
+         </span> tag like:</p>
+      <pre>&lt;xsql:insert-request 
+      table="newsstoryview" 
+      transform="<i>request</i>-to-newsstoryview.xsl"/</pre>
+      <p>and by referencing the name of the
+			 <nobr class="literal">request-to-newsstoryview.xsl</nobr> transform that looks
+			 like:</p>
+      <p> 
+			 <pre>&lt;?xml version = '1.0'?&gt;
+&lt;ROWSET xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="1.0"&gt;
+   &lt;xsl:for-each select="request/parameters"&gt;
+   &lt;ROW&gt;
+      &lt;TITLE&gt;&lt;xsl:value-of select="title_field"/&gt;&lt;/TITLE&gt;
+      &lt;URL&gt;&lt;xsl:value-of select="url_field"/&gt;&lt;/URL&gt;
+      &lt;SOURCE&gt;User-Submitted&lt;/SOURCE&gt;
+   &lt;/ROW&gt;
+   &lt;/xsl:for-each&gt;
+&lt;/ROWSET&gt;</pre>
+
+		  </p>
+      <p>If the above XSQL page were saved as
+			 <nobr class="literal">insertnewsform.xsql</nobr>, it can be used as the target of an HTML
+			 <span class="literal">
+            <nobr>&lt;FORM></nobr>
+         </span> element that includes fields named
+			 <nobr class="literal">title_field</nobr> and <nobr class="literal">url_field</nobr> by simply
+			 setting the forms's <nobr class="literal">ACTION="insertnewsform.xsql"</nobr> attribute.
+			 The following newsform.html file demonstrate this:</p>
+      <pre>&lt;html&gt;
+&lt;body&gt;
+  Insert a new news story...
+  &lt;form action="insertnewsform.xsql" method="post"&gt;
+    &lt;b&gt;Title&lt;/b&gt;&lt;input type="text" name="title_field" size="30"&gt;&lt;br&gt;
+    &lt;b&gt;URL&lt;/b&gt;&lt;input type="text" name="url_field" size="30"&gt;&lt;br&gt;
+    &lt;br&gt;
+    &lt;input type="submit"&gt;
+  &lt;/form&gt;
+&lt;body&gt;
+&lt;/html&gt;</pre>
+      <p>If we let a user fill-out and post the form as-is, they will get
+			 raw XML as a response from the <nobr class="literal">insertnewform.xsql</nobr> page,
+			 listing the five most recent news stories entered as show above. However, we
+			 can easily improve on that for better usability.</p>
+      <p>Using the mechanism we learned in the previous section for
+			 associating XSL Stylesheets with XSQL Pages, we can include an
+			 <span class="literal">
+            <nobr>&lt;?xml-stylesheet?></nobr>
+         </span> processing instruction at the top of the
+			 <nobr class="literal">insertnewsform.xsql</nobr> that refers to the
+			 <nobr class="literal">lateststories.xsl</nobr> XSL Stylesheet below:</p>
+      <pre>&lt;html xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Latest Stories&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h2&gt;Thanks for your Story!&lt;/h2&gt;
+  Here's a list of the latest stories we've received...
+    &lt;table border="0" cellspacing="0"&gt;
+      &lt;xsl:for-each select="page/lateststories/story"&gt;
+        &lt;tr&gt;
+         &lt;td&gt;&lt;a href="{url}"&gt;&lt;xsl:value-of select="title"/&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/xsl:for-each&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p>This means the <nobr class="literal">insertnewsform.xsql</nobr> now will
+			 look like:</p>
+      <pre>&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="lateststories.xsl"?&gt;
+&lt;page connection="demo" xmlns:xsql="urn:oracle-xsql"&gt;
+  &lt;xsql:insert-request table="newsstoryview" transform="request-to-newsstory.xsl"/&gt;
+  &lt;lateststories&gt;
+    &lt;xsql:query tag-case="lower" max-rows="5" rowset-element="" row-element="story" &gt;
+      select * 
+        from newsstory
+      order by id desc
+    &lt;/xsql:query&gt;
+  &lt;/lateststories&gt;
+&lt;/page&gt;</pre>
+      <p>Now when the user browses the <nobr class="literal">newsform.html</nobr>
+			 page and enters her story...</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+         <tr>
+            <td><img src="images/insertyourstory.gif">
+            </td>
+         </tr>
+      </table>
+      <p>...then rather than seeing the raw XML datagram returned by the
+			 <nobr class="literal">insertnewsform.xsql</nobr> page, this will be transformed using the
+			 <nobr class="literal">lateststories.xsl</nobr> stylesheet so that it shows up in her
+			 browser like:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+         <tr>
+            <td><img src="images/thanksforyourstory.gif">
+            </td>
+         </tr>
+      </table>
+      <p>as an HTML page instead of as raw XML.</p>
+      <p>So in addition to being possible for developers by using Java
+			 programs that leverage the Oracle XML SQL Utility directly, we've seen that
+			 it's easy to insert XML-based information into Oracle database tables or views
+			 without programming using XSQL Pages and XSLT Transformations.</p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+			 <p>Here we've used simple examples with simple tables, however
+				<nobr class="literal">OracleXMLQuery</nobr> and <nobr class="literal">OracleXMLSave</nobr> work
+				well with any kind of richly structured object and with all supported
+				datatypes. This means that, while not shown here, the same techniques described
+				in this paper can be applied used to:</p> 
+			 <ul> 
+				<li> 
+				  <p>Insert richly strutured information into an Object View
+					 with nested types and nested collections</p> 
+				</li> 
+				<li> 
+				  <p>Insert "fragments" or "chunks" of XML elements and their
+					 content (from an entire document to any desired granularity of sub-structure)
+					 into a CLOB column or an object type with a CLOB attribute.</p> 
+				</li> 
+			 </ul> 
+			 <p>The <nobr class="literal">./xsql/demo/empdeptobjs.sql </nobr>script shows
+				a working example of an a "department" object view ( based over the familiar
+				<nobr class="literal">EMP</nobr> and <nobr class="literal">DEPT</nobr> tables) and an accompanying
+				<nobr class="literal">INSTEAD OF INSERT</nobr> trigger on the object view to allow
+				structured inserting of multiple departments and nested employees.</p> 
+		  </td>
+         </tr>
+      </table><br><a name="demos"></a><a name="ID7116">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Demos Included with This Release</h2>
+      </a>
+      <p> The following demo files are part of this release. Instructions for
+		installing the demos are included in the Installation section of these release
+		notes. 
+		<table border="0" cellpadding="3" cellspacing="0">
+            <tr>
+               <td class="tabletitle" colspan="2" align="center"><b> Description of Demonstrations</b>
+                  <hr>
+               </td>
+            </tr>  
+		  <tr class="tableheader">
+               <td nowrap=""> Demonstration Name
+				  (<nobr class="literal">directory</nobr>)</td>
+               <td> Comments </td>
+            </tr> 
+		  <tr class="ro">
+               <td nowrap="">Hello World
+				  (<nobr class="literal">helloworld</nobr>)</td>
+               <td>Simplest possible XSQL page. </td>
+            </tr>
+            <tr class="re">
+               <td nowrap="">Do You XML Site
+				  (<nobr class="literal">doyouxml</nobr>)</td>
+               <td> 
+				  <p> XSQL page which shows how a simple, data-driven web site
+					 can be built using an XSQL page which makes clever use of SQL,
+					 XSQL-substitution variables in the queries, and XSLT for formatting the site.
+					 </p> 
+				  <p>Demonstrates using substitution parameters in both the body
+					 of SQL query statements within <span class="literal">
+                        <nobr>&lt;xsql:query></nobr>
+                     </span> tags, as well as
+					 withing the attributes to <span class="literal">
+                        <nobr>&lt;xsql:query></nobr>
+                     </span> tags to control things
+					 like how many records to display and to skip (for "paging" through query
+					 results in a stateless way).</p>
+               </td>
+            </tr>
+            <tr class="ro">
+               <td nowrap=""> Employee Page (<nobr class="literal">emp</nobr>)</td>
+               <td> 
+				  <p> XSQL page showing XML data from the EMP table, using XSQL
+					 page parameters to control what employees are returned and what column(s) to
+					 use for the database sort. Uses an associated XSLT Stylesheet for format the
+					 results as an HTML Form containing the emp.xsql page as the form
+					 <nobr class="literal">action</nobr> so the user can refine their search
+					 criteria.</p>
+               </td>
+            </tr>
+            <tr class="re">
+               <td nowrap=""> Insurance Claim Page (<nobr class="literal">insclaim</nobr>)</td>
+               <td> 
+				  <p>Demonstrates a number of sample queries over the
+					 richly-structured, Insurance Claim object view. The
+					 <nobr class="literal">insclaim.sql</nobr> sets up the
+					 <nobr class="literal">INSURANCE_CLAIM_VIEW</nobr> object view and populates some sample
+					 data. </p>
+               </td>
+            </tr>
+            <tr class="ro">
+               <td nowrap="">Invalid Classes Page (<nobr class="literal">classerr</nobr>)</td>
+               <td> 
+				  <p> XSQL Page which uses <nobr class="literal">invalidclasses.xsl</nobr>
+					 to format a "live" list of current Java class compilation errors in your
+					 schema. The accompanying <nobr class="literal">.sql</nobr> script sets up the
+					 <nobr class="literal">XSQLJavaClassesView</nobr> object view used by the demo. The
+					 master/detail information from the object view is formatted into HTML by the
+					 <nobr class="literal">invalidclasses.xsl</nobr> stylesheet in the server.</p>
+               </td>
+            </tr>
+            <tr class="re">
+               <td nowrap="">Airport Code Validation (<nobr class="literal">airport</nobr>)</td>
+               <td> 
+				  <p> XSQL page which returns a "datagram" of information about
+					 airports based on their three-letter code. Demonstrates using the
+					 <span class="literal">
+                        <nobr>&lt;xsql:no-rows-query></nobr>
+                     </span> to attempt alternative queries when
+					 initial queries return no rows. In this case, after attempting an exact match
+					 on the airport code passed in, the page tries a fuzzy match on the airport
+					 description. </p> 
+				  <p>The <nobr class="literal">airport.htm</nobr> page demonstrates how to
+					 use the XML results of the <nobr class="literal">airport.xsql</nobr> page
+					 programmatically from within a web page using JavaScript to exploit the
+					 built-in XML Document Object Model functionality in the Internet Explorer 5.0
+					 browser.</p> 
+				  <p>When you type in a three-leter airport code into this web
+					 page, some JavaScript under the covers fetches the XML datagram from the XSQL
+					 Servlet over the web corresponding to information for the airport code you
+					 typed in. If the return indicates that there was no exact match, the builds up
+					 a dynamic "picklist" of possible matches based on the information returned in
+					 the XML "datagram" from the XSQL Servlet.</p>
+               </td>
+            </tr>
+            <tr class="ro">
+               <td nowrap="">Airport Code Display (<nobr class="literal">airport</nobr>)</td>
+               <td> 
+				  <p> Demonstrates using the same XSQL page as the previous
+					 example but supplying an XSLT Stylesheet name in the request. This causes the
+					 airport information to be formatted as an HTML form instead of being returned
+					 as raw XML. </p>
+               </td>
+            </tr>
+            <tr class="re">
+               <td nowrap="">Airport Code Display (<nobr class="literal">airport</nobr>)</td>
+               <td> 
+				  <p> Demonstrates returning Airport information as a SOAP
+					 Service.</p>
+               </td>
+            </tr>
+            <tr class="ro">
+               <td nowrap="">Emp/Dept Object View Demo
+				  (<nobr class="literal">empdept</nobr>)</td>
+               <td>Demonstrates using an object view to group
+				  master/detail information from two existing "flat" tables like EMP and DEPT.
+				  The <nobr class="literal">empdeptobjs.sql</nobr> script creates the object view (along
+				  with <nobr class="literal">INSTEAD OF INSERT</nobr> triggers allowing the master/detail
+				  view to be used as an insert target of xsql:insert-request). 
+				  <p>The <nobr class="literal">empdept.xsl</nobr> stylesheet illustrates
+					 an example of the "simple form" of an XSLT stylesheet that can look just like
+					 an HTML page without the extra xsl:stylesheet or xsl:transform at the top. This
+					 is part of the XSLT 1.0 specification called using a 
+					 <a href="http://www.w3.org/TR/xslt#result-element-stylesheet">Literal Result
+						Element as Stylesheet</a>. It also demonstrates how to generate an HTML
+					 page that includes the <span class="literal">
+                        <nobr>&lt;link rel="stylesheet"></nobr>
+                     </span> to allow the
+					 generated HTML to fully leverage CSS for centralized HTML style information,
+					 found in the <nobr class="literal">coolcolors.css</nobr> file.</p>
+               </td>
+            </tr>
+            <tr class="re">
+               <td nowrap="">Adhoc Query Visualization
+				  (<nobr class="literal">adhocsql</nobr>)</td>
+               <td>Demonstrates passing the entire SQL query and
+				  XSLT Stylesheet to use as parameters to the server.</td>
+            </tr>
+            <tr class="ro">
+               <td nowrap="">XML Document Demo (<nobr class="literal">document</nobr>)</td>
+               <td>Demonstrates inserting XML documents into
+				  relational tables. The <nobr class="literal">docdemo.sql</nobr> script creates a
+				  user-defined type called XMLDOCFRAG containing an attribute of type CLOB. 
+				  <p>Try inserting the text of the document in
+					 <nobr class="literal">./xsql/demo/xml99.xml</nobr> and providing the name
+					 <nobr class="literal">xml99.xsl</nobr> as the stylesheet, as well as
+					 <nobr class="literal">./xsql/demo/JDevRelNotes.xml</nobr> with the stylesheet
+					 <nobr class="literal">relnotes.xsl</nobr>.</p> 
+				  <p>The <nobr class="literal">docstyle.xsql</nobr> page illustrates an
+					 example of the <span class="literal">
+                        <nobr>&lt;xsql:include-xsql></nobr>
+                     </span> action element to include
+					 the output of the <nobr class="literal">doc.xsql</nobr> page into its own page before
+					 transforming the final output using a client-supplied stylesheet name.</p> 
+				  <p>The demo uses the client-side XML features of Internet
+					 Explorer 5.0 to check the document for well-formedness before allowing it to be
+					 posted to the server.</p> </td>
+            </tr>
+            <tr class="re">
+               <td nowrap="">XML Insert Request Demo
+				  (<nobr class="literal">insertxml</nobr>)</td>
+               <td>Demonstrates posting XML from a client to an
+				  XSQL Page that handles inserting the posted XML information into a database
+				  table using the <span class="literal">
+                     <nobr>&lt;xsql:insert-request></nobr>
+                  </span> action element. The demo
+				  is setup to accept XML documents in the 
+				  <a href="http://www.moreover.com/site/products/xml/">moreover.com</a> XML-based
+				  news format. 
+				  <p>In this case, the program doing the posting of the XML is a
+					 client-side web page using Internet Explorer 5.0 and the <nobr class="literal"><a href="http://msdn.microsoft.com/xml/reference/scriptref/XMLHttpRequest_object.asp">XMLHttpRequest</a>
+                     </nobr>
+					 object from JavaScript. If you look at the source for the insertnewsstory.xsql
+					 page, you'll see it's specifying a table name and an XSLT Transform name. The
+					 <nobr class="literal">moreover-to-newsstory.xsl</nobr> stylesheet transforms the incoming
+					 XML information into the canonical format that the OracleXMLSave utility knows
+					 how to insert.</p> 
+				  <p>Try copying and pasting the example
+					 <span class="literal">
+                        <nobr>&lt;article></nobr>
+                     </span> element several times within the
+					 <span class="literal">
+                        <nobr>&lt;moreovernews></nobr>
+                     </span> element to insert several new articles in one
+					 shot.</p> 
+				  <p>The <nobr class="literal">newsstory.sql</nobr> script shows how
+					 INSTEAD OF triggers can be used on the database views into which you ask XSQL
+					 Pages to insert to the data to customize how incoming data is handled, default
+					 primary key values, etc.</p>
+               </td>
+            </tr>
+            <tr class="ro">
+               <td nowrap="">SVG Demo (<nobr class="literal">svg</nobr>)</td>
+               <td>The <nobr class="literal">deptlist.xsql </nobr>page
+				  displays a simple list of departments with hyperlinks to the
+				  <nobr class="literal">SalChart.xsql</nobr> page. The <nobr class="literal">SalChart.xsql</nobr>
+				  page queries employees for a given department passed in as a parameter and uses
+				  the associated <nobr class="literal">SalChart.xsql</nobr> stylesheet to format the result
+				  into a Scalable Vector Graphics drawing, a bar chart comparing salaries of the
+				  employees in that department.</td>
+            </tr> 
+		</table> Then, browse the URL 
+		<a href="http://localhost/xsql/index.xsql">http://localhost/xsql/index.html</a>
+		to see a list of all the demos. </p><a name="colophon"></a><a name="ID7660">
+         <h2 style="color:#000088"><img src="images/line3.gif" width="300" height="11"><br x="">Closing Comments</h2>
+      </a>
+      <p> Once you've understood what the XSQL Page Processor running inside the XSQL Servlet
+		does, you'll realize that Oracle XSQL Pages is really just a very thin layer of
+		convenience functionality allowing you to leverage the tremendous flexibility
+		and power of SQL, XML, and XSLT to really do the "heavy lifting". </p><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td valign="top" align="right" bgcolor="yellow"><img src="images/point.gif">
+            </td>
+            <td valign="top"><b><u>Note</u>
+               </b>: 
+		<p>Some of the material included in this document is excerpted from 
+		  <a href="http://www.oreilly.com/catalog/orxmlapp">Building Oracle
+			 XML Applications</a> by permission of 
+		  <a href="http://www.oreilly.com">O'Reilly and Associates</a>.
+		  </p> 
+	 </td>
+         </tr>
+      </table><br>
+   </body>
+</html>

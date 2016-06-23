@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheeet type="text/xsl" href="empdept.xsl"?>
+<xsql:query connection="demo" null-attribute-indicator="true" xmlns:xsql="urn:oracle-xsql">
+
+  select * from department
+
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:48:57 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/empdept/empdept-xsql.xml.mkelem $
+| $Revision: /main/0 $
++-->
+

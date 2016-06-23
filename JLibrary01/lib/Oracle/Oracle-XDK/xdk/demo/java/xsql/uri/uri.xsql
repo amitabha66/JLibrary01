@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="none.xsl"?>
+<xsql:ora-uri connection="demo" uri="ora://scott/dept[deptno=10]/dname" href="ora:/{@uri}"
+         xmlns:xsql="urn:oracle-xsql"/>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:56:58 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/uri/uri.xsql.mkelem $
+| $Revision: /main/0 $
++-->

@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Oracle XML C++ Datatype Index</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Ctx.html">Ctx</a></b>
+ | <b><a href="Package-Dom.html">Dom</a></b>
+ | <b><a href="Package-IO.html">IO</a></b>
+ | <b><a href="Package-OracleXml.html">OracleXml</a></b>
+ | <b><a href="Package-Parser.html">Parser</a></b>
+ | <b><a href="Package-Tools.html">Tools</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-Xsl.html">Xsl</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Oracle XML C++ Datatype Index</h1>
+<table summary="Oracle XML C++ Datatype Index" cellspacing=0>
+	 <tr><td><a href="#Ctx::encoding"><tt><b>Ctx::encoding</b></tt></a><td></tr>
+	 <tr><td><a href="#Ctx::encodings"><tt><b>Ctx::encodings</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::AcceptNodeCodes"><tt><b>Dom::AcceptNodeCodes</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::CompareHowCode"><tt><b>Dom::CompareHowCode</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::DOMExceptionCode"><tt><b>Dom::DOMExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::DOMNodeType"><tt><b>Dom::DOMNodeType</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::RangeExceptionCode"><tt><b>Dom::RangeExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#Dom::WhatToShowCode"><tt><b>Dom::WhatToShowCode</b></tt></a><td></tr>
+	 <tr><td><a href="#IO::InputSourceType"><tt><b>IO::InputSourceType</b></tt></a><td></tr>
+	 <tr><td><a href="#Parser::DOMParserIdType"><tt><b>Parser::DOMParserIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#Parser::ParserExceptionCode"><tt><b>Parser::ParserExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#Parser::SAXParserIdType"><tt><b>Parser::SAXParserIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#Parser::SchValidatorIdType"><tt><b>Parser::SchValidatorIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#Tools::FactoryExceptionCode"><tt><b>Tools::FactoryExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#XPath::XPathCompIdType"><tt><b>XPath::XPathCompIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#XPath::XPathExceptionCode"><tt><b>XPath::XPathExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#XPath::XPathObjType"><tt><b>XPath::XPathObjType</b></tt></a><td></tr>
+	 <tr><td><a href="#XPath::XPathPrIdType"><tt><b>XPath::XPathPrIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#XPointer::XppExceptionCode"><tt><b>XPointer::XppExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#XPointer::XppLocType"><tt><b>XPointer::XppLocType</b></tt></a><td></tr>
+	 <tr><td><a href="#XPointer::XppPrIdType"><tt><b>XPointer::XppPrIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#Xsl::XslCompIdType"><tt><b>Xsl::XslCompIdType</b></tt></a><td></tr>
+	 <tr><td><a href="#Xsl::XslExceptionCode"><tt><b>Xsl::XslExceptionCode</b></tt></a><td></tr>
+	 <tr><td><a href="#Xsl::XslTrIdType"><tt><b>Xsl::XslTrIdType</b></tt></a><td></tr>
+</table></center><br>
+<hr noshade size=1><br>
+<h2 align=center><a name="Ctx::encoding">Ctx::encoding</a></h2>
+<table summary="XML datatype 'Ctx::encoding' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Ctx::encoding</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>a particular supported encoding</tr>
+	   <tr><th scope=row width="10%">Description<td>    The following kinds of encodings (or encoding names) are supported:
+    "data_encoding", "default_input_encoding", "input_encoding" - overwrites
+    the previous one, "error_language" - gets overwritten by the language of
+    the error handler, if any</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef struct encoding {
+      oratext *encname;
+      oratext *encvalue;
+    } encoding;</pre></tr>
+</table><br>
+<h2 align=center><a name="Ctx::encodings">Ctx::encodings</a></h2>
+<table summary="XML datatype 'Ctx::encodings' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Ctx::encodings</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>Array of encodings</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines an array of encodings</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef struct encodings {
+      unsigned  num;
+      encoding *enc;
+    } encodings;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::AcceptNodeCodes">Dom::AcceptNodeCodes</a></h2>
+<table summary="XML datatype 'Dom::AcceptNodeCodes' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::AcceptNodeCodes</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>values returned by node filters</tr>
+	   <tr><th scope=row width="10%">Description<td>    Node filters are used by node iterators and tree wlakers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum AcceptNodeCode {
+      FILTER_ACCEPT   = 1,
+      FILTER_REJECT   = 2,
+      FILTER_SKIP     = 3
+    } AcceptNodeCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::CompareHowCode">Dom::CompareHowCode</a></h2>
+<table summary="XML datatype 'Dom::CompareHowCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::CompareHowCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>codes to identify the comparison kind</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines which points of two ranges to compare</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum CompareHowCode {
+      START_TO_START  = 0,
+      START_TO_END    = 1,
+      END_TO_END      = 2,
+      END_TO_START    = 3
+    } CompareHowCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::DOMExceptionCode">Dom::DOMExceptionCode</a></h2>
+<table summary="XML datatype 'Dom::DOMExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::DOMExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>codes for DOM exceptions</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines DOM exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum DOMExceptionCode {
+      UNDEFINED_ERR               = 0,
+      INDEX_SIZE_ERR              = 1,
+      DOMSTRING_SIZE_ERR          = 2,
+      HIERARCHY_REQUEST_ERR       = 3,
+      WRONG_DOCUMENT_ERR          = 4,
+      INVALID_CHARACTER_ERR       = 5,
+      NO_DATA_ALLOWED_ERR         = 6,
+      NO_MODIFICATION_ALLOWED_ERR = 7,
+      NOT_FOUND_ERR               = 8,
+      NOT_SUPPORTED_ERR           = 9,
+      INUSE_ATTRIBUTE_ERR         = 10,
+      INVALID_STATE_ERR           = 11,
+      SYNTAX_ERR                  = 12,
+      INVALID_MODIFICATION_ERR    = 13,
+      NAMESPACE_ERR               = 14,
+      INVALID_ACCESS_ERR          = 15
+    } DOMExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::DOMNodeType">Dom::DOMNodeType</a></h2>
+<table summary="XML datatype 'Dom::DOMNodeType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::DOMNodeType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>DOM node types</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines types of DOM nodes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum DOMNodeType {
+      UNDEFINED_NODE              = 0, // just some node, maybe erroneous
+      ELEMENT_NODE                = 1,
+      ATTRIBUTE_NODE              = 2,
+      TEXT_NODE                   = 3,
+      CDATA_SECTION_NODE          = 4,
+      ENTITY_REFERENCE_NODE       = 5,
+      ENTITY_NODE                 = 6,
+      PROCESSING_INSTRUCTION_NODE = 7,
+      COMMENT_NODE                = 8,
+      DOCUMENT_NODE               = 9,
+      DOCUMENT_TYPE_NODE          = 10,
+      DOCUMENT_FRAGMENT_NODE      = 11,
+      NOTATION_NODE               = 12
+    } DOMNodeType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::RangeExceptionCode">Dom::RangeExceptionCode</a></h2>
+<table summary="XML datatype 'Dom::RangeExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::RangeExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>codes for DOM 2 Range exceptions</tr>
+	   <tr><th scope=row width="10%">Description<td>    The Range interface throws both DOM and Range exceptions</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum RangeExceptionCode {
+      RANGE_UNDEFINED_ERR         = 0,
+      BAD_BOUNDARYPOINTS_ERR      = 1,
+      INVALID_NODE_TYPE_ERR       = 2
+    } RangeExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Dom::WhatToShowCode">Dom::WhatToShowCode</a></h2>
+<table summary="XML datatype 'Dom::WhatToShowCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Dom::WhatToShowCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>codes to filter certain node types</tr>
+	   <tr><th scope=row width="10%">Description<td>    They are used by node iterators and tree walkers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef unsigned long WhatToShowCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="IO::InputSourceType">IO::InputSourceType</a></h2>
+<table summary="XML datatype 'IO::InputSourceType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>IO::InputSourceType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>input source types</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines different input source types</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum InputSourceType {
+      ISRC_URI             = 1,
+      ISRC_FILE            = 2,
+      ISRC_BUFFER          = 3,
+      ISRC_DOM             = 4,
+      ISRC_CSTREAM         = 5
+    } InputSourceType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Parser::DOMParserIdType">Parser::DOMParserIdType</a></h2>
+<table summary="XML datatype 'Parser::DOMParserIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Parser::DOMParserIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>DOM parser identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines DOM parser identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum DOMParserIdType {
+      DOMParCXml         = 1
+    } DOMParserIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Parser::ParserExceptionCode">Parser::ParserExceptionCode</a></h2>
+<table summary="XML datatype 'Parser::ParserExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Parser::ParserExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>parser exceptions</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines parser exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum ParserExceptionCode {
+      PARSER_UNDEFINED_ERR               = 0,
+      PARSER_VALIDATION_ERR              = 1,
+      PARSER_VALIDATOR_ERR               = 2,
+      PARSER_BAD_ISOURCE_ERR             = 3,
+      PARSER_CONTEXT_ERR                 = 4,
+      PARSER_PARAMETER_ERR               = 5,
+      PARSER_PARSE_ERR                   = 6,
+      PARSER_SAXHANDLER_SET_ERR          = 7,
+      PARSER_VALIDATOR_SET_ERR           = 8
+    } ParserExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Parser::SAXParserIdType">Parser::SAXParserIdType</a></h2>
+<table summary="XML datatype 'Parser::SAXParserIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Parser::SAXParserIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>SAX parser identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines SAX parser identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum SAXParserIdType {
+      SAXParCXml         = 1
+    } SAXParserIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Parser::SchValidatorIdType">Parser::SchValidatorIdType</a></h2>
+<table summary="XML datatype 'Parser::SchValidatorIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Parser::SchValidatorIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>defines validator identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>   Defines identifiers for the validator implementations. These
+   identifiers are used as parameters to the XML tools factory
+   when a particular validator object has to be created.</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum SchValidatorIdType {
+      SchValCXml        = 1
+    } SchValidatorIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Tools::FactoryExceptionCode">Tools::FactoryExceptionCode</a></h2>
+<table summary="XML datatype 'Tools::FactoryExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Tools::FactoryExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>Tool Factory exceptions</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines tool factory exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum FactoryExceptionCode {
+      FACTORY_UNDEFINED_ERR               = 0,
+      FACTORY_OTHER_ERR                   = 1
+    } FactoryExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPath::XPathCompIdType">XPath::XPathCompIdType</a></h2>
+<table summary="XML datatype 'XPath::XPathCompIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPath::XPathCompIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath compiler identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPath compiler identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XPathCompIdType {
+      XvmXPathCompCXml         = 1
+    } XPathCompIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPath::XPathExceptionCode">XPath::XPathExceptionCode</a></h2>
+<table summary="XML datatype 'XPath::XPathExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPath::XPathExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath related exception codes</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPath exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XPathExceptionCode {
+      XPATH_UNDEFINED_ERR       = 0,
+      XPATH_OTHER_ERR           = 1
+    } XPathExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPath::XPathObjType">XPath::XPathObjType</a></h2>
+<table summary="XML datatype 'XPath::XPathObjType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPath::XPathObjType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>object types</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPath 1.0 object types</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XPathObjType {
+      XPOBJ_TYPE_UNKNOWN = 0,
+      XPOBJ_TYPE_NDSET   = 1,
+      XPOBJ_TYPE_BOOL    = 2,
+      XPOBJ_TYPE_NUM     = 3,
+      XPOBJ_TYPE_STR     = 4
+    } XPathObjType;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPath::XPathPrIdType">XPath::XPathPrIdType</a></h2>
+<table summary="XML datatype 'XPath::XPathPrIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPath::XPathPrIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPath processor identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPath processor identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XPathPrIdType {
+      XPathPrCXml       = 1,
+      XvmPrCXml         = 2
+    } XPathPrIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPointer::XppExceptionCode">XPointer::XppExceptionCode</a></h2>
+<table summary="XML datatype 'XPointer::XppExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPointer::XppExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer related exception codes</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPointer exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XppExceptionCode {
+      XPP_UNDEFINED_ERR       = 0,
+      XPP_OTHER_ERR           = 1
+    } XppExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPointer::XppLocType">XPointer::XppLocType</a></h2>
+<table summary="XML datatype 'XPointer::XppLocType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPointer::XppLocType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer location types</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPointer location types</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XppLocType {
+      XPPLOC_TYPE_UNKNOWN = 0,
+      XPPLOC_TYPE_NODE    = 1,
+      XPPLOC_TYPE_POINT   = 2,
+      XPPLOC_TYPE_RANGE   = 3,
+      XPPLOC_TYPE_BOOL    = 4,
+      XPPLOC_TYPE_NUM     = 5,
+      XPPLOC_TYPE_STR     = 6
+    } XppLocType;</pre></tr>
+</table><br>
+<h2 align=center><a name="XPointer::XppPrIdType">XPointer::XppPrIdType</a></h2>
+<table summary="XML datatype 'XPointer::XppPrIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>XPointer::XppPrIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XPointer processor identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XPointer processor identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XppPrIdType {
+      XPtrPrCXml         = 1
+    } XppPrIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Xsl::XslCompIdType">Xsl::XslCompIdType</a></h2>
+<table summary="XML datatype 'Xsl::XslCompIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Xsl::XslCompIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL compiler identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XSL compiler identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XslCompIdType {
+      XvmCompCXml         = 1
+    } XslCompIdType;</pre></tr>
+</table><br>
+<h2 align=center><a name="Xsl::XslExceptionCode">Xsl::XslExceptionCode</a></h2>
+<table summary="XML datatype 'Xsl::XslExceptionCode' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Xsl::XslExceptionCode</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSLT related exceptions</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XSLT exception codes</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XslExceptionCode {
+      XSL_UNDEFINED_ERR               = 0,
+      XSL_OTHER_ERR                   = 1
+    } XslExceptionCode;</pre></tr>
+</table><br>
+<h2 align=center><a name="Xsl::XslTrIdType">Xsl::XslTrIdType</a></h2>
+<table summary="XML datatype 'Xsl::XslTrIdType' details" width="100%" border cellspacing=1 bgcolor="#EEEEEE">
+	   <tr><th scope=row width="10%">Type<td><code><b>Xsl::XslTrIdType</b></code></tr>
+	   <tr><th scope=row width="10%">Purpose<td>XSL transformer identifiers</tr>
+	   <tr><th scope=row width="10%">Description<td>    It defines XSL transformer identifiers</tr>
+	   <tr><th scope=row width="10%">Definition<td><pre>
+    typedef enum XslTrIdType {
+      XslTrCXml         = 1,
+      XvmTrCXml         = 2
+    } XslTrIdType;</pre></tr>
+</table><br>
+</body>
+</html>

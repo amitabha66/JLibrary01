@@ -1,0 +1,11 @@
+<?xml version="1.0"?> <!-- Simple general test -->
+<doc>
+	<a>a0 in doc element</a>
+	<a>a1 in doc element</a>
+	<a test="true">a2 in doc element</a>
+	<a>a3 in doc element with <emph>mixed</emph> text</a>	<b><b1><b2>Some <emph>mixed</emph> text inside of b2 which is inside of b1 which is inside of b</b2></b1></b>	<b>Some <emph>mixed</emph> text inside of b</b>	<c>
+		<a test="true">a0 in c0 element</a>
+		<a test="false">a1 in c0 element</a>		<a test="true">a2 in c0 element</a>		<a>a2 in c0 element with <emph>mixed</emph> text</a>		<d><e><f>f inside of e</f></e></d>
+		<d><f>f inside of d</f></d>
+	</c>
+</doc>

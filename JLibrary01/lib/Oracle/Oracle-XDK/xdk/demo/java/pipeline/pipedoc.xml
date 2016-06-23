@@ -1,0 +1,40 @@
+<pipeline xmlns="http://www.w3.org/2002/02/xml-pipeline"
+                     xml:base="http://example.org/">
+
+  <param name="target" select="myresult.html"/>
+
+  <processdef name="domparser.p" definition="oracle.xml.pipeline.processes.DOMParserProcess"/>
+  <processdef name="xslstylesheet.p" definition="oracle.xml.pipeline.processes.XSLStylesheetProcess"/>
+  <processdef name="xslprocess.p" definition="oracle.xml.pipeline.processes.XSLProcess"/>
+
+
+   <process id="p2" type="xslstylesheet.p" ignore-errors="false">
+     <input name="xsl" label="book.xsl"/>
+     <outparam name="stylesheet" label="xslstyle"/>
+   </process>
+
+   <process id="p3" type="xslprocess.p" ignore-errors="false">
+     <param name="stylesheet" label="xslstyle"/>
+     <input name="document" label="xmldoc"/>
+     <output name="result" label="myresult.html"/>
+   </process> 
+
+  <process id="p1" type="domparser.p" ignore-errors="true">
+     <input name="xmlsource" label="book.xml "/>
+     <output name="dom" label="xmldoc"/>
+     <param name="preserveWhitespace" select="true"></param>
+     <error name="dom">
+       <html xmlns="http://www/w3/org/1999/xhtml">
+         <head>
+            <title>DOMParser Failure!</title>
+         </head>
+         <body>
+           <h1>Error parsing document</h1>
+         </body>
+       </html>
+     </error>
+  </process>
+
+
+</pipeline>
+  

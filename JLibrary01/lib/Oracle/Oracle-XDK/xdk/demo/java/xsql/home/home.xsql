@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="home.xsl"?>
+<site elt="query" xmlns:xsql="urn:oracle-xsql">
+
+  <!--
+   | Pass the values of current "tab" parameter (if passed in explicitly),
+   | the "lasttab" cookie (if set), and the name of this page to the
+   | XSLT stylesheet that renders the tab bar.
+   +-->
+
+  <xsql:set-stylesheet-param name="thispage" value="home.xsql"/>
+  <xsql:set-stylesheet-param name="tab" value="{@tab}" ignore-empty-value="yes"/>
+  <xsql:set-stylesheet-param name="lasttab" value="{@lasttab}" ignore-empty-value="yes"/>
+
+  <!-- 
+   | Remember the last tab clicked in an HTTP Cookie 
+   +-->
+  <xsql:set-cookie name="lasttab" value="{@tab}" ignore-empty-value="yes"/>
+
+  <!-- 
+   | This is static XML that provides the tab structure.
+   +-->
+  <tabs initial="Demos">
+     <tab id="Demos" name="Demos"/>
+     <tab id="Help" name="Help"/>
+     <tab id="Relnotes" url="/xdk/java/xsql/readme.html" name="Release&#160;Notes"/>
+     <tab id="Javadoc" url="/xdk/java/javadoc" name="Javadoc"/>
+  </tabs>     
+</site>

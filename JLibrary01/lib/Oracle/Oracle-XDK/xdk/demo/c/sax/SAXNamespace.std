@@ -1,0 +1,42 @@
+SAX Namespace example.
+Parsing 'NSExample.xml' ...
+
+EVENT: StartDocument
+
+EVENT: StartElement (doc)
+
+    ELEM Qualified Name: "doc"
+    ELEM     Local Name: "doc"
+    ELEM      Namespace: "http://www.w3c.org"
+
+    ATTR Qualified Name: "nsprefix:a1"
+    ATTR         Prefix: "nsprefix"
+    ATTR     Local Name: "a1"
+    ATTR      Namespace: "http://www.oracle.com"
+    ATTR          Value: "v1"
+
+    ATTR Qualified Name: "xmlns"
+    ATTR         Prefix: Nil
+    ATTR     Local Name: "xmlns"
+    ATTR      Namespace: Nil
+    ATTR          Value: "http://www.w3c.org"
+
+    ATTR Qualified Name: "xmlns:nsprefix"
+    ATTR         Prefix: "xmlns"
+    ATTR     Local Name: "nsprefix"
+    ATTR      Namespace: "http://www.w3.org/XML/1998/namespace"
+    ATTR          Value: "http://www.oracle.com"
+
+EVENT: StartElement (child)
+
+    ELEM Qualified Name: "child"
+    ELEM     Local Name: "child"
+    ELEM      Namespace: "http://www.w3c.org"
+
+EVENT: EndElement (child)
+
+EVENT: EndElement (doc)
+
+EVENT: EndDocument
+
+Parse succeeded.

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!-- Bind an atomic datatype -->
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+            xmlns:exp="http://www.oracle.com/sample6/"
+            targetNamespace="http://www.oracle.com/sample6/"
+            elementFormDefault="qualified">
+
+
+   <element name="datatype">
+      <complexType>
+         <attribute name="myduration" type="duration"/>
+         <attribute name="mydateTime" type="dateTime"/>
+         <attribute name="mytime" type="time"/>
+         <attribute name="mydate" type="date"/>
+         <attribute name="mygYearMonth" type="gYearMonth"/>
+         <attribute name="mygYear" type="gYear"/>
+         <attribute name="mygMonthDay" type="gMonthDay"/>
+         <attribute name="mygDay" type="gDay"/>
+         <attribute name="mygMonth" type="gMonth"/>
+
+         <attribute name="myboolean" type="boolean"/>
+         <attribute name="mybase64Binary" type="base64Binary"/>
+         <attribute name="myhexBinary" type="hexBinary"/>
+         <attribute name="myfloat" type="float"/>
+         <attribute name="mydouble" type="double"/>
+         <attribute name="myanyURI" type="anyURI"/>
+         <attribute name="myQName" type="QName"/>
+
+         <attribute name="mystring" type="string"/>
+         <attribute name="mynormalizedString" type="normalizedString"/>
+         <attribute name="mytoken" type="token"/>
+         <attribute name="mylanguage" type="language"/>
+         <attribute name="myName" type="Name"/>
+         <attribute name="myNMTOKEN" type="NMTOKEN"/>
+         <attribute name="myNCName" type="NCName"/>
+         <attribute name="myID" type="ID"/>
+         <attribute name="myIDREF" type="IDREF"/>
+
+         <attribute name="mydecimal" type="decimal"/>
+         <attribute name="myinteger" type="integer"/>
+         <attribute name="mynonPositiveInteger" type="nonPositiveInteger"/>
+         <attribute name="mynegativeInteger" type="negativeInteger"/>
+         <attribute name="mylong" type="long"/>
+         <attribute name="myint" type="int"/>
+         <attribute name="myshort" type="short"/>
+         <attribute name="mybyte" type="byte"/>
+         <attribute name="mynonNegativeInteger" type="nonNegativeInteger"/>
+         <attribute name="myunsignedLong" type="unsignedLong"/>
+         <attribute name="myunsignedInt" type="unsignedInt"/>
+         <attribute name="myunsignedShort" type="unsignedShort"/>
+         <attribute name="myunsignedByte" type="unsignedByte"/>
+         <attribute name="mypositiveInteger" type="positiveInteger"/>
+      </complexType>
+   </element>
+
+
+</schema>
+

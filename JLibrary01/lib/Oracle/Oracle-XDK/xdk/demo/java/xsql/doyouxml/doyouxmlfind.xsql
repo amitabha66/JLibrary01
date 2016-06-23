@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="doyouxml.xsl" ?>
+<datapage connection="demo" xmlns:xsql="urn:oracle-xsql">
+
+<xsql:query rowset-element="" row-element="INFO"><![CDATA[
+
+       select count(*) as "TOTAL", '{@cat}' as cat, '{@find}' as find
+         from site_entry
+        where (UPPER(title) like UPPER('%{@find}%')
+           or UPPER(description) like UPPER('%{@find}%'))
+          and permanent is null
+
+]]>
+</xsql:query>
+
+<xsql:query rowset-element="SiteStructure" row-element="Category" ><![CDATA[
+
+       SELECT name "Name",
+              icon "Icon"
+	 FROM site_category
+        ORDER BY id
+
+]]>
+</xsql:query>
+
+<xsql:query 
+   category="NEWS" 
+   rowset-element="MAINITEMS" 
+   row-element="ITEM"
+   max-rows="6"
+   skip="0"
+   skip-rows="{@skip}" ><![CDATA[
+
+       select title,id,description,url,to_char(timestamp,'Mon DD') timestamp
+         from site_entry
+        where (UPPER(title) like UPPER('%{@find}%')
+           or UPPER(description) like UPPER('%{@find}%'))
+          and permanent is null
+      order by id desc
+
+]]>
+</xsql:query>
+
+<xsql:query
+   rowset-element="SIDEBARITEMS" 
+   row-element="ITEM"
+      max-rows="5"
+   category="NEWS"><![CDATA[
+
+       select title,id,description,url,to_char(timestamp,'DD-MON-YYYY') timestamp
+         from site_entry
+        where categories like '%'||UPPER('{@cat}')||'%'
+        and permanent > 0
+      order by id desc
+
+]]>
+</xsql:query>
+</datapage>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:46:18 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/doyouxml/doyouxmlfind.xsql.mkelem $
+| $Revision: /main/0 $
++-->

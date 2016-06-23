@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class generated</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Class-XMLClassGenerator.html">Previous Class</a>]</pre>
+<hr>
+<h1>Class: <i>generated</i></h1>
+
+All generated classes are enclosed in a C++ namespace with the same
+name as the generated files (i.e. Foo.cpp will contain namespace Foo).<p>
+
+A <i>generated</i> class is produced for each element in the Schema.
+It has the same name as the element, except for local elements which
+have the parent element's name prefixed.<p>
+
+If an element (or attribute) name cannot be used directly as a C++
+identifier, it is mapped to a valid identifier by converting it
+to the compiler character set (ASCII or EBCDIC) and then replacing
+unmappable characters with the two-letter hex for their code points.
+For example, the element name "Curaçao" maps to "Curacao", but
+"kþorn" maps to "kFEorn".  If the remapped name is already used,
+digits are appended to the end to make it unique ("Curacao0", etc).<p>
+
+Note that elements and attributes created by the generated classes
+will have the original names.  The remapping only applies to the
+generated code itself (so that it will be syntactically correct C++),
+not to the XML elements and data which are constructed by them.<p>
+
+Constructors are provided which create an empty element, or to make it
+with an initial set of children or data.  Methods are provided to add
+children or data after construction, and to set attributes.
+
+There are two styles of creation: make an empty element, then add the
+children one at a time, or construct the element with initial data or
+children.  For example, assuming C++ namespace Queue, and given the
+element declaration<p>
+
+<ul><pre>
+&lt;element name="foo"&gt;
+    &lt;complexType content="mixed"&gt;
+	&lt;element ref="thing" minOccurs="0"/&gt;   
+	&lt;attribute name="bar" use="required" type="int"/&gt;
+    &lt;/complexType&gt;
+&lt;/element&gt;
+</pre></ul>
+
+the following constructors will be provided:
+
+<ul><pre>
+foo(Document *doc)
+foo(Document *doc, DOMString s)
+foo(Document *doc, Queue::thing *the_thing)
+</pre></ul>
+
+The first constructor just makes an empty element with no children.  The
+second initializes it with PCDATA (since the element's type content is
+mixed), and the third with a single child node of element thing.
+
+An element like foo which may contain PCDATA is also given a method to
+add the data post-construction:<p>
+
+<ul><pre>
+void foo::addData(Document *doc, DOMString s)
+</pre></ul>
+
+Each possible child element of foo also is given an "assembler", like so:
+
+<ul><pre>
+void foo::addNode(Queue::thing *the_thing)
+</pre></ul>
+
+The following usages are equivalent:<p>
+
+<ul><pre>f = new Queue::foo("data");</pre></ul>
+and
+<ul><pre>
+f = new Queue::foo();
+f->addData("data");
+</pre></ul>
+
+Similarly, the following are also equivalent:<p>
+
+<ul><pre>
+f = new Queue::foo(...);
+t = new Queue::thing(...);
+</pre></ul>
+and
+<ul><pre>
+f = new Queue::foo(...);
+t = new Queue::thing(...);
+f->addNode(t);
+</pre></ul>
+
+Not all possible combinations of initial elements are provided constructors,
+especially considering variable occurances.  If no constructor fits the bill,
+you must build up the element assembly-style.  For example, given the element
+definition
+
+<ul><pre>
+&lt;element name="map_data"&gt;
+    &lt;complexType content="mixed"&gt;
+	&lt;element ref="aq:item" minOccurs="0" maxOccurs="*"/&gt;
+    &lt;/complexType&gt;
+&lt;/element&gt;
+</pre></ul>
+
+A map_data element may contain any number of aq:item children.  In such a
+case, a constructor is provided which allows on one occurance; additional
+occurances must be assembled in, like the following example which needs four:
+
+<ul><pre>
+md = new Queue::map_data(doc, i1);
+md->addNode(i2);
+md->addNode(i3);
+md->addNode(i4);
+<pre></ul>
+
+See the sample program AQ.cpp (in the samples/ directory) for a complete
+example.
+
+For each attribute for an element, a method is provided to set its value,
+named set_<i>attrname</i>.  For example, for the element declaration<p>
+
+<ul><pre>
+&lt;element name="client_operation"&gt;
+    &lt;complexType content="mixed"&gt;
+	&lt;element name="txid" type="string" minOccurs="0"/&gt;
+	&lt;attribute name="opcode" use="required" type="aq:opcode_type"/&gt;
+    &lt;/complexType&gt;
+&lt;/element>
+</pre></ul>
+
+a method would be provided to set the attribute:
+
+<ul><pre>
+Attr* client_operation::set_opcode(DOMString s)
+</pre></ul>
+
+<b>Note</b>: The constructed element is not tested for validity as it is
+being made.  The user to explicitly call the XMLSchema's <tt>validate</tt>
+method on the final element.<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#constructors"><b><i>constructors</i></b></a></td>
+    <td>Constructors for the class</td>
+  </tr>
+  <tr>
+    <td><a href="#addData"><b>addData</b></a></td>
+    <td>Adds PCDATA to the element</td>
+  </tr>
+  <tr>
+    <td><a href="#addNode"><b>addNode</b></a></td>
+    <td>Adds a node to the element</td>
+  </tr>
+  <tr>
+    <td><a href="#setattr"><b>set_<i>attribute</i></b></a></td>
+    <td>Sets one of the element's attributes</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="constructors"><h2><b><i>constructors</i></b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Constructs an element which will belong to the given document.
+	The first form makes the element with no children (use <tt>addData</tt>
+	and <tt>addNode</tt> as appropriate to fill it out).  The second
+	variable form is used to provide initial data or children, the exact
+	choices of which depend on the element definition.  See the example
+	at the beginning of this document.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt><i>class</i>(Document *doc)</tt>
+    <dd> <tt><i>class</i>(Document *doc, ...)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>doc</tt> -- document which the element belongs to
+    <dd><tt>...</tt> -- varying arguments depending on the element definition<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="addData"><hr><h2><b>addData</b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Adds data to the element.  That is, appends to it a PCDATA subnode
+	with the given value.  If multiple addData calls are made, the node
+	will have multiple PCDATA subnodes, which should be normalized when
+	construction is finished.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void addData(Document *doc, String data)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>doc</tt> -- document which the element belongs to
+    <dd><tt>data</tt> -- data to be added<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="addNode"><hr><h2><b>addNode</b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Adds (append) a child node to the element.  No effort is made to
+	validate the resulting element structure at this time; it is the
+	user's responsibility to form the element properly, which may be
+	verified with <tt>XMLParser::validate</tt>.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void addNode(<i>node</i> the_<i>node</i>)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>the <i>node</i></tt> -- node to be added<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="setattr"><hr><h2><b>set_<i>attribute</i></b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Sets the element's attribute with the given value.  One method is
+	provided for each attribute, named after the attribute as
+	<tt>set_<i>attribute</i></tt>.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>Attr* set_<i>attribute</i>(String value)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>value</tt> -- the attribute's value<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>Attr*</tt> -- the created attribute
+  </dl></dd>
+</dl>
+
+</body>
+</html>

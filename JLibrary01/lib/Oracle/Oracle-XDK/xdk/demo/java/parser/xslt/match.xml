@@ -1,0 +1,45 @@
+<?xml version="1.0"?> 
+<!DOCTYPE doc [
+<!ELEMENT doc (a|b|c)*>
+<!ATTLIST doc id ID #IMPLIED>
+<!ELEMENT a (#PCDATA|a|b|c)*>
+<!ATTLIST a id ID #IMPLIED>
+<!ELEMENT b (#PCDATA|a|b|c|d)*>
+<!ATTLIST b id ID #IMPLIED>
+<!ELEMENT c (#PCDATA|a|b|c)*>
+<!ATTLIST c id ID #IMPLIED>
+<!ATTLIST c name CDATA #IMPLIED>
+<!ELEMENT d (#PCDATA)>
+<!ATTLIST d id ID #IMPLIED>
+]>
+<!-- Test for ID selection and pattern matching -->
+<doc id="id0">
+	<a id="id1">
+		*id1*
+		<a id="id2">*id2*
+			<a id="id3">*id3*</a>
+			<b id="id4">*id4*</b>
+			<c id="id5" name="id16">*id5*</c>
+		</a>
+		<b id="id6">*id6*</b>
+		<c id="id7" name="id16">*id7*</c>
+	</a>
+	<b id="id8">
+		*id8*
+		<a id="id9">*id9*</a>
+		<b id="id10">*id10*
+			<a id="id11">*id11*</a>
+			<b id="id12">*id12*</b>
+			<c id="id13" name="id16">*id13*</c>
+		</b>
+		<c id="id14" name="id16">*id14*</c>
+		<d id="id15">*id15*</d>
+	</b>
+	<c id="id16" name="id16">
+		*id16*
+		<a id="id17">*id17*</a>
+		<b id="id18">*id18*</b>
+		<c id="id19" name="id16">*id19*</c>
+
+	</c>
+</doc>

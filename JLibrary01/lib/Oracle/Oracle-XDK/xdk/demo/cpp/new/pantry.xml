@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<pantry>
+    <shelf>
+        <supplies>
+    	    <paper_goods supplier="Rite-Aid">
+        	<paper_good>paper towels</paper_good>
+		<paper_good>paper plates</paper_good>
+    	    </paper_goods>
+	</supplies>
+        <snack_foods supplier="Safeway">
+            <snack_food>popcorn</snack_food>
+    	    <snack_food>chips</snack_food>
+	</snack_foods>
+    </shelf>
+    <shelf>
+        <supplies>
+    	    <paper_goods supplier="Big-Store">
+        	<paper_good>napkins</paper_good>
+		<paper_good>paper sheets</paper_good>
+    	    </paper_goods>
+	</supplies>
+        <snack_foods supplier="Nob Hill">
+            <snack_food>dried fruits</snack_food>
+    	    <snack_food>candies</snack_food>
+	</snack_foods>
+    </shelf>
+</pantry>

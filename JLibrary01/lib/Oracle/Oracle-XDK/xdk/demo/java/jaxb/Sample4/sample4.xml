@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<PurchaseOrder xmlns = "http://www.oracle.com/sample4/"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://www.oracle.com/sample4/ sample4.xsd"
+           orderDate="02-02-2002">
+
+  <shipTo> 
+     <name> Siddarth Vaidyanathan </name>
+     <street> 27 Cove Lane </street>
+     <city> Redwood City </city>
+  </shipTo>
+
+  <billTo> 
+     <name> Shyam Vaidyanathan  </name>
+     <street> Cisco Parkway </street>
+     <city> San Jose  </city>
+  </billTo>
+
+  <comment> This is a secret document </comment>
+  
+</PurchaseOrder>
+

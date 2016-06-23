@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheeet type="text/xsl" href="invalidclasses.xsl"?>
+<xsql:query connection="demo" tag-case="lower" xmlns:xsql="urn:oracle-xsql">
+
+  select * from "XSQLJavaClassErrorView"
+
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:38:22 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/classerr/invalidclasses-xsql.xml.mkelem $
+| $Revision: /main/0 $
++-->
+

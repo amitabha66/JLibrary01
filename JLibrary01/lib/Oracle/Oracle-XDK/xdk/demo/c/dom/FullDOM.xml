@@ -1,0 +1,11 @@
+<!DOCTYPE doc [
+    <!ELEMENT p (#PCDATA)>
+    <!ATTLIST p xml:space (preserve|default) 'preserve'>
+    <!NOTATION notation1 SYSTEM "file.txt">
+    <!NOTATION notation2 PUBLIC "some notation">
+    <!ELEMENT doc (p*)>
+    <!ENTITY example "<p>An ampersand (&#38;#38;) may be escaped
+numerically (&#38;#38;#38;) or with a general entity
+(&amp;amp;).</p>">
+]>
+<doc xml:lang="foo">&example;</doc>

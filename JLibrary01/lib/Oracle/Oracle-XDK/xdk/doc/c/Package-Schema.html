@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Schema APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package Schema</h1></center>
+
+    This C implementation of the XML schema validator follows the W3C XML 
+    Schema specification (rev REC-xmlschema-1-20010502) and implements the
+    required behavior of an schema validator in terms of how multiple schema
+    documents can be assembled into a schema and be used to validate a specific
+    instance document.<p>
+
+<br><hr noshade size=1><center><h2><a name="Schema">Interface Schema</a></h2></center>
+	   <center><h3>Function Index</h3>
+<table summary="Interface 'Schema' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XmlSchemaClean"><b>XmlSchemaClean</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaCreate"><b>XmlSchemaCreate</b></a></td>
+	       <td>Create and return a schema context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaDestroy"><b>XmlSchemaDestroy</b></a></td>
+	       <td>Destroy a schema context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaErrorWhere"><b>XmlSchemaErrorWhere</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaLoad"><b>XmlSchemaLoad</b></a></td>
+	       <td>Load a schema document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaLoadedList"><b>XmlSchemaLoadedList</b></a></td>
+	       <td>Return the size and/or list of loaded schema documents. </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaSetErrorHandler"><b>XmlSchemaSetErrorHandler</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaSetValidateOptions"><b>XmlSchemaSetValidateOptions</b></a></td>
+	       <td>Set option(s) to be used in the next validation session</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaTargetNamespace"><b>XmlSchemaTargetNamespace</b></a></td>
+	       <td>Return target namespace of a given schema document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaUnload"><b>XmlSchemaUnload</b></a></td>
+	       <td>Unload a schema document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaValidate"><b>XmlSchemaValidate</b></a></td>
+	       <td>Validate an element node against a schema</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSchemaVersion"><b>XmlSchemaVersion</b></a></td>
+	       <td>Return the version of this schema implementation</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XmlSchemaClean">XmlSchemaClean</a></h2>
+
+<table summary="Function 'XmlSchemaClean' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaClean</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>void&nbsp;XmlSchemaClean(xsdctx&nbsp;*sctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaClean' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  schema context to be cleaned</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        void</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Clean up loaded schemas in a schema context and recycle the schema
+        context.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>...<br>
+xctx&nbsp;=&nbsp;XmlCreate(&xerr,&nbsp;(oratext&nbsp;*)&nbsp;"tlsx2",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data_encoding",&nbsp;outcoding,&nbsp;NULL);<br>
+if&nbsp;(xerr)<br>
+</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Failed&nbsp;to&nbsp;initialze&nbsp;XML&nbsp;meta&nbsp;context,&nbsp;error&nbsp;%u\n",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unsigned)&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1;<br>
+</i><tt><br>
+...<br>
+if&nbsp;(!(scctx&nbsp;=&nbsp;XmlSchemaCreate(xctx,&nbsp;&xerr,&nbsp;NULL)))<br>
+</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Failed,&nbsp;code&nbsp;%u!\n",&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;2;<br>
+</i><tt><br>
+for&nbsp;(i&nbsp;=&nbsp;startNo;&nbsp;i&nbsp;&lt;=&nbsp;endNo;&nbsp;i++)<br>
+</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sprintf(schema,&nbsp;"tlsx%d.xsd",&nbsp;i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sprintf(doc,&nbsp;"tlsx%d.xml",&nbsp;i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(xerr&nbsp;=&nbsp;XmlSchemaLoad(scctx,&nbsp;(oratext&nbsp;*)schema,&nbsp;NULL))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Assessement&nbsp;of&nbsp;%s&nbsp;failed,&nbsp;error&nbsp;%u\n",&nbsp;schema,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unsigned)&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlSchemaClean(scctx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(docnode&nbsp;=&nbsp;XmlLoadDom(xctx,&nbsp;&xerr,&nbsp;"uri",&nbsp;doc,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"default_input_encoding",&nbsp;incoding,&nbsp;NULL)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Parse&nbsp;of&nbsp;%s&nbsp;failed,&nbsp;error&nbsp;%u\n",&nbsp;doc,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unsigned)&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlFreeDocument(xctx,&nbsp;docnode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlSchemaClean(scctx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;XmlDomGetDocElem(xctx,&nbsp;docnode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(xerr&nbsp;=&nbsp;XmlSchemaValidate(scctx,&nbsp;xctx,&nbsp;root))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Validation&nbsp;of&nbsp;%s&nbsp;failed,&nbsp;error&nbsp;%u\n",&nbsp;doc,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unsigned)&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;stlptf("Document&nbsp;%s&nbsp;is&nbsp;valid.\n",&nbsp;doc);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;XmlFreeDocument(xctx,&nbsp;docnode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;XmlSchemaClean(scctx);<br>
+</i><tt><br>
+XmlSchemaDestroy(scctx);<br>
+XmlDestroy(xctx);<br>
+return&nbsp;0;</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaCreate"><tt>XmlSchemaCreate</tt></a>, <a href="Package-Schema.html#XmlSchemaDestroy"><tt>XmlSchemaDestroy</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaCreate">XmlSchemaCreate</a></h2>
+
+<table summary="Function 'XmlSchemaCreate' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaCreate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create and return a schema context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xsdctx&nbsp;*XmlSchemaCreate(xmlctx&nbsp;*xctx,&nbsp;xmlerr&nbsp;*err,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaCreate' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context </td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> returned error code</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xsdctx *)</b></tt> schema context</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Return a schema context to be used in other validator APIs.  This
+        needs to be paired with an XmlSchemaDestroy.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaDestroy"><tt>XmlSchemaDestroy</tt></a>, <a href="Package-XML.html#XmlCreate"><tt>XmlCreate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaDestroy">XmlSchemaDestroy</a></h2>
+
+<table summary="Function 'XmlSchemaDestroy' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaDestroy</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Destroy a schema context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>void&nbsp;XmlSchemaDestroy(xsdctx&nbsp;*sctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaDestroy' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  schema context to be freed</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Destroy a schema context and free up all its resources.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaCreate"><tt>XmlSchemaCreate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaErrorWhere">XmlSchemaErrorWhere</a></h2>
+
+<table summary="Function 'XmlSchemaErrorWhere' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaErrorWhere</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaErrorWhere(xsdctx&nbsp;*sctx,&nbsp;ub4&nbsp;*line,&nbsp;oratext&nbsp;**path);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaErrorWhere' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>      schema context</td></tr>
+<tr><td scope=row><tt>line</tt></td>
+<td>&nbsp;<b>(IN/OUT)</b>&nbsp;</td>
+<td>  line number where error occured</td></tr>
+<tr><td scope=row><tt>path</tt></td>
+<td>&nbsp;<b>(IN/OUT)</b>&nbsp;</td>
+<td>  URL/filespec where error occured</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns the location (line#, path) where an error occured.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaSetErrorHandler"><tt>XmlSchemaSetErrorHandler</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaLoad">XmlSchemaLoad</a></h2>
+
+<table summary="Function 'XmlSchemaLoad' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaLoad</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Load a schema document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaLoad(xsdctx&nbsp;*sctx,&nbsp;oratext&nbsp;*uri,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaLoad' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema context</td></tr>
+<tr><td scope=row><tt>uri</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> URL of schema document [<i>compiler encoding</i>]</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Load up a schema document to be used in the next validation session.
+        Schema documents can be incrementally loaded into a schema context
+        as long as every loaded schema document is valid.  When the last 
+        loaded schema turns out to be invalid, you need to clean up the 
+        schema context by calling XmlSchemaClean and reload everyting all 
+        over again including the last schema with appropriate correction.
+ 
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaUnload"><tt>XmlSchemaUnload</tt></a>, <a href="Package-Schema.html#XmlSchemaLoadedList"><tt>XmlSchemaLoadedList</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaLoadedList">XmlSchemaLoadedList</a></h2>
+
+<table summary="Function 'XmlSchemaLoadedList' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaLoadedList</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Return the size and/or list of loaded schema documents. </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>ub4&nbsp;XmlSchemaLoadedList(xsdctx&nbsp;*sctx,&nbsp;oratext&nbsp;**list);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaLoadedList' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  schema context</td></tr>
+<tr><td scope=row><tt>list</tt></td>
+<td>&nbsp;<b>(I/O)</b>&nbsp;</td>
+<td> address of a pointer buffer</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(ub4)</b></tt> list size </tr>
+<tr><th scope=row><i>Description</i>
+<td>        Return only the size of loaded schema documents if <tt>list</tt> is NULL.
+        If <tt>list</tt> is NOT NULL, a list of URL pointers are returned in the
+        user-provided pointer buffer.  Note that its user's responsibility
+        to provide a buffer with big enough size.  <p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>listSize&nbsp;=&nbsp;XmlSchemaLoadedList(scctx,&nbsp;(oratext&nbsp;**)NULL);<br>
+DISCARD&nbsp;printf("There&nbsp;are&nbsp;%d&nbsp;target&nbsp;namespace(s)&nbsp;loaded.\n",&nbsp;listSize);<br>
+DISCARD&nbsp;printf("And,&nbsp;they&nbsp;are:\n");</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaLoad"><tt>XmlSchemaLoad</tt></a>, <a href="Package-Schema.html#XmlSchemaUnload"><tt>XmlSchemaUnload</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaSetErrorHandler">XmlSchemaSetErrorHandler</a></h2>
+
+<table summary="Function 'XmlSchemaSetErrorHandler' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaSetErrorHandler</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaSetErrorHandler(xsdctx&nbsp;*sctx,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XML_ERRMSG_F((*errhdl),&nbsp;ectx,&nbsp;msg,&nbsp;err),&nbsp;void&nbsp;*errctx);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaSetErrorHandler' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  schema context</td></tr>
+<tr><td scope=row><tt>errhdl</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  error message handler</td></tr>
+<tr><td scope=row><tt>errctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  error handler context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets an error message handler and its associated context in a schema
+        context.  To retrieve useful location information on errors, the 
+        address of the schema context must be provided in the error handler 
+        context.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>XML_ERRMSG_F(schema_err_handler,&nbsp;msgctx,&nbsp;msg,&nbsp;errcode)<br>
+</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xsdctx&nbsp;*sctx&nbsp;=&nbsp;(xsdctx&nbsp;*)msgctx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ub4&nbsp;line;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*path;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;XmlSchemaErrorWhere(sctx,&nbsp;&line,&nbsp;&path);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Line&nbsp;Number=%d\n",&nbsp;line);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Errcode=%d\n",&nbsp;errcode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Msg=%s\n",&nbsp;msg);<br>
+</i><tt><br>
+main(int&nbsp;argc,&nbsp;char&nbsp;*argv[])<br>
+</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(scctx&nbsp;=&nbsp;XmlSchemaCreate(xctx,&nbsp;&xerr,&nbsp;NULL)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Failed&nbsp;to&nbsp;initialize&nbsp;XML&nbsp;parser,&nbsp;error&nbsp;%d\n",&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlFreeDocument(xctx,&nbsp;docnode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlDestroy(xctx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(xerr&nbsp;=&nbsp;XmlSchemaSetErrorHandler(scctx,&nbsp;schema_err_handler,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scctx))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</tt><i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCARD&nbsp;printf("Failed&nbsp;to&nbsp;set&nbsp;error&nbsp;handler,&nbsp;error&nbsp;%d\n",&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xerr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlFreeDocument(xctx,&nbsp;docnode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlSchemaDestroy(scctx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XmlDestroy(xctx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;4;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</i><tt><br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+</i><tt></tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaCreate"><tt>XmlSchemaCreate</tt></a>, <a href="Package-Callback.html#XML_ERRMSG_F"><tt>XML_ERRMSG_F</tt></a>, <a href="Package-Schema.html#XmlSchemaErrorWhere"><tt>XmlSchemaErrorWhere</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaSetValidateOptions">XmlSchemaSetValidateOptions</a></h2>
+
+<table summary="Function 'XmlSchemaSetValidateOptions' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaSetValidateOptions</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set option(s) to be used in the next validation session</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaSetValidateOptions(xsdctx&nbsp;*sctx,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaSetValidateOptions' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema context</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> variable argument list, with final NULL </td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Set options to be used in the next validation session.  Previously
+        set options will remain effective until they are overwritten or reset. <p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>XmlSchemaSetValidateOptions(scctx,&nbsp;"ignore_id_constraint",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(boolean)TRUE,&nbsp;NULL);</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaValidate"><tt>XmlSchemaValidate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaTargetNamespace">XmlSchemaTargetNamespace</a></h2>
+
+<table summary="Function 'XmlSchemaTargetNamespace' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaTargetNamespace</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Return target namespace of a given schema document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlSchemaTargetNamespace(xsdctx&nbsp;*sctx,&nbsp;oratext&nbsp;*uri);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaTargetNamespace' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema context to be queried</td></tr>
+<tr><td scope=row><tt>uri</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> URL of the schema document to be queried</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> target namespace string; NULL if given document not</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Return target namespace of a given schema document identified by its
+        URI.  All currently loaded schema documents can be queried.  Currently
+        loaded schema documents include the ones loaded via XmlSchemaLoad's and
+        the ones loaded via schemaLocation or noNamespaceSchemaLocation hints.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaLoadedList"><tt>XmlSchemaLoadedList</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaUnload">XmlSchemaUnload</a></h2>
+
+<table summary="Function 'XmlSchemaUnload' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaUnload</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Unload a schema document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaUnload(xsdctx&nbsp;*sctx,&nbsp;oratext&nbsp;*uri,&nbsp;...);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaUnload' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema context</td></tr>
+<tr><td scope=row><tt>uri</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> URL of schema document [<i>compiler encoding</i>]</td></tr>
+<tr><td scope=row><tt>...</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> variable arguments, with final NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Unload a schema document from the validator.  All previously loaded
+        schema documents will remain loaded until they are unloaded.  To
+        unload all loaded schema documents, set uri to be NULL (this is 
+        equivalent to XmlSchemaClean).  Note that all children schemas 
+        associated with the given schema are also unloaded.  In this 
+        implementation, it only support the following scenarios: 
+        1. load, load, ... 2. load, load, load, unload, unload, unload, clean,
+        and then repeat.  It doesn't not support: load, load, unload, load, 
+        ....<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>xerr&nbsp;=&nbsp;XmlSchemaLoad(scctx,&nbsp;schema1,&nbsp;NULL);<br>
+...<br>
+xerr&nbsp;=&nbsp;XmlSchemaUnload(scctx,&nbsp;schema1,&nbsp;NULL);</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaLoad"><tt>XmlSchemaLoad</tt></a>, <a href="Package-Schema.html#XmlSchemaLoadedList"><tt>XmlSchemaLoadedList</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaValidate">XmlSchemaValidate</a></h2>
+
+<table summary="Function 'XmlSchemaValidate' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaValidate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Validate an element node against a schema</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSchemaValidate(xsdctx&nbsp;*sctx,&nbsp;xmlctx&nbsp;*xctx,&nbsp;xmlelemnode&nbsp;*elem);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSchemaValidate' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema context</td></tr>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML top-level context</td></tr>
+<tr><td scope=row><tt>elem</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> an element node in "doc" to be validated</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, XMLERR_OK [<i>0</i>] on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Validates an element node against a schema.  Schemas used in current
+        session consists of all schema documents specified through 
+        XmlSchemaLoad and provided as hint(s) through schemaLocation or 
+        noNamespaceSchemaLocation in the instance document. After the 
+        invokation of this routine, all loaded schema documents remain loaded
+        and can be queried by XmlSchemaLoadedList.  However, they will remain
+        inactive. In the next validation session, inactive schema documents
+        can be activated by specifying them via XmlSchemaLoad or providing
+        them as hint(s) via schemaLocation or noNamespaceSchemaLocation in
+        the new instance document.  To unload a schema document and all
+        its descendants (documents included or imported nestedly), use
+        XmlSchemaUnload.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Schema.html#XmlSchemaSetValidateOptions"><tt>XmlSchemaSetValidateOptions</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSchemaVersion">XmlSchemaVersion</a></h2>
+
+<table summary="Function 'XmlSchemaVersion' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSchemaVersion</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Schema">Schema</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Return the version of this schema implementation</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>oratext&nbsp;*XmlSchemaVersion(void);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> version string [<i>compiler encoding</i>]</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Return the version of this schema implementation.<p>
+</tr>
+</table>
+</body>
+</html>

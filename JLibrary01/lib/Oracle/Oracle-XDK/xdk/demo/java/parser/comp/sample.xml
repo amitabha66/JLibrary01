@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema xmlns = "http://www.w3.org/1999/XMLSchema"
+targetNamespace = "http://www.CarDealers.com/" elementFormDefault="qualified">
+<element name="Car">
+  <complexType>
+    <element name="Model">
+      <simpleType base="string">
+        <enumeration value = "Ford"/>
+        <enumeration value = "Saab"/>
+        <enumeration value = "Audi"/>
+      </simpleType>
+    </element>
+    <element name="Make">
+       <simpleType base="string">
+         <minLength value = "1"/>
+         <maxLength value = "30"/>
+       </simpleType>
+    </element>
+    <element name="Year">
+       <complexType content="mixed">
+          <attribute name="PreviouslyOwned" type="string" use="required"/>
+          <attribute name="YearsOwned" type="integer" use="optional"/>
+       </complexType>
+    </element>
+    <element name="OwnerName" type="string" minOccurs="0" maxOccurs="unbounded"/>
+    <element name="Condition">
+       <complexType base="string" derivedBy="extension">
+          <attribute name="Automatic">
+            <simpleType base="string">
+               <enumeration value = "Yes"/>
+               <enumeration value = "No"/>
+            </simpleType>
+          </attribute>
+       </complexType>
+    </element>
+    <element name="Mileage">
+      <simpleType base="integer">
+        <minInclusive value="0"/>
+        <maxInclusive value="20000"/>
+      </simpleType>
+    </element>
+    <attribute name="RequestDate" type="date"/>
+  </complexType>
+ </element>
+</schema>

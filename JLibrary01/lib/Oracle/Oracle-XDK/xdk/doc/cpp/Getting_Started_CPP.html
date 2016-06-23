@@ -1,0 +1,1602 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./Getting_Started_CPP_files/filelist.xml">
+<link rel=Edit-Time-Data href="./Getting_Started_CPP_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Getting started with XDK C++ Components</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>user</o:Author>
+  <o:LastAuthor>user</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>45</o:TotalTime>
+  <o:Created>2003-12-15T23:41:00Z</o:Created>
+  <o:LastSaved>2003-12-15T23:45:00Z</o:LastSaved>
+  <o:Pages>9</o:Pages>
+  <o:Words>2826</o:Words>
+  <o:Characters>16109</o:Characters>
+  <o:Company>none</o:Company>
+  <o:Lines>134</o:Lines>
+  <o:Paragraphs>32</o:Paragraphs>
+  <o:CharactersWithSpaces>19782</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href="..\images\blafdoc.css">
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:"Courier New";
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:#663300;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:#996633;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-ascii-font-family:Courier;
+	mso-fareast-font-family:"Courier New";
+	mso-hansi-font-family:Courier;
+	mso-bidi-font-family:"Courier New";
+	color:black;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+tt
+	{mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.headercode, li.headercode, div.headercode
+	{mso-style-name:headercode;
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Arial;
+	font-weight:bold;}
+p.guitag, li.guitag, div.guitag
+	{mso-style-name:guitag;
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.oracopyright, li.oracopyright, div.oracopyright
+	{mso-style-name:oracopyright;
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.rowodd, li.rowodd, div.rowodd
+	{mso-style-name:rowodd;
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	background:#E9E9E9;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.roweven, li.roweven, div.roweven
+	{mso-style-name:roweven;
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	background:#F8F8F8;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+span.Emphasis1
+	{mso-style-name:Emphasis1;
+	color:#880000;
+	font-style:italic;}
+span.Emphasis2
+	{mso-style-name:Emphasis2;
+	color:#880000;
+	font-style:italic;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:715083139;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-832523828 1752465670 717800700 1810675316 -36643962 660127286 -1711251412 -830424488 1745544418 826862630;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1057630217;
+	mso-list-type:hybrid;
+	mso-list-template-ids:574490020 -451382878 -761508942 1468805160 -751563842 -780623892 -1804536400 -158983592 544797094 -143652724;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#663300" vlink="#996633" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<div style='border:solid #CCCC99 .25pt;border-bottom:solid #CCCC99 .75pt;
+padding:0in 0in 0in 0in'>
+
+<h1>Getting started with XDK C++ Components</h1>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>March 24, 2003<o:p></o:p></span></p>
+
+<div style='border:solid #CCCC99 .25pt;border-bottom:solid #CCCC99 .75pt;
+padding:0in 0in 0in 0in'>
+
+<h2>1. Introduction</h2>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>XDK C++
+Components contain the basic building blocks for reading, manipulating,
+transforming, and validating XML documents. The Oracle XDK C++ components are:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l1 level1 lfo3;tab-stops:.5in'><span style='font-family:
+     Arial'>XML Parser: supports parsing XML documents with the DOM or SAX
+     interfaces.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l1 level1 lfo3;tab-stops:.5in'><span style='font-family:
+     Arial'>XSL Processor: supports transforming XML documents.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l1 level1 lfo3;tab-stops:.5in'><span style='font-family:
+     Arial'>XML Schema Processor: supports parsing and validating XML files
+     against an XML Schema definition file (.xsd).<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l1 level1 lfo3;tab-stops:.5in'><span style='font-family:
+     Arial'>Class Generator for C++: generates a set of C++ source files based
+     on an input DTD or XML Schema. The generated classes are then used in a
+     C++ program to construct XML documents conforming to the DTD or XML
+     schema.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>This document
+describes how to use and install the XDK C++ components and how to set up the
+environment.<o:p></o:p></span></p>
+
+<div style='border:solid #CCCC99 .25pt;border-bottom:solid #CCCC99 .75pt;
+padding:0in 0in 0in 0in'>
+
+<h2>2. Installation of XDK C++ Components</h2>
+
+</div>
+
+<p><span style='color:black'>On Windows NT, Visual C++ 6.0 was used to build
+the XDK. On Sun Solaris, Sparcworks for C++ 6.1 was used to build the XDK. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>First, install
+the XDK package.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>If you install
+the Oracle Database or iAS (Application Server), you should have the XDK
+installed and can skip the following steps. Note that the XDK directory will be
+referred to as $XDK_HOME or %XDK_HOME% and that the Oracle home will be
+referred to as $ORACLE_HOME or %ORACLE_HOME% in later sections.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>Otherwise, you need to download the XDK from OTN. You'll
+need to follow the steps listed below: <o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:blue;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Visit <u>http://otn.oracle.com/tech/xml/xdk/content.html</u><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Click on the Software icon on the right-hand side of the page<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Log in with your OTN username and password (registration is free if
+     you don't already have an account).<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Select the NT or Unix download<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Acknowledge the licensing agreement and complete the download
+     survey<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Click on the appropriate *.tar.gz or *.zip file<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo6;tab-stops:.5in'><span style='font-family:
+     Arial'>Extract the Files in the distribution:<o:p></o:p></span></li>
+ <ul type=disc>
+  <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+      auto;mso-list:l0 level2 lfo6;tab-stops:list 1.0in'><span
+      style='font-family:Arial'>Choose a directory under which you would like
+      the ./xdk directory and subdirectories to go (e.g. C:\)<o:p></o:p></span></li>
+  <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+      auto;mso-list:l0 level2 lfo6;tab-stops:list 1.0in'><span
+      style='font-family:Arial'>Change the directory to C:\ then extract the
+      XDK for Java download archive file. For example:<o:p></o:p></span></li>
+ </ul>
+</ul>
+
+<pre style='margin-left:1.5in'><tt><span style='font-family:"Courier New";
+color:black'>UNIX: tar xvfz xdk_xxx.tar.gz&nbsp;&nbsp;</span></tt><tt><span
+style='font-family:"Courier New"'><o:p></o:p></span></tt></pre><pre
+style='margin-left:1.5in'><tt><span style='font-family:"Courier New";
+color:black'>Windows: use the </span></tt><span style='font-family:"Courier New";
+color:black'><a href="http://www.winzip.com/"><span style='font-size:12.0pt;
+font-family:Arial'>WinZip</span></a><tt> visual archive extraction tool</tt></span><span
+style='color:black'><o:p></o:p></span></pre>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>After installing
+the UNIX version of XDK C++ Components, you should see the following&nbsp;
+directory structure related to the C++ components:<o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>-$XDK_HOME</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp; |- bin: executable files</span></tt><span
+style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp; |- lib: library files.</span></tt><span
+style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp; |- nls/data: NLS data files (*.nlb)</span></tt><span
+style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp; |- xdk</span></tt><span style='font-family:
+Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - demo/cpp: demonstration code</span></tt><span style='font-family:Arial;
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - doc/cpp: documentation</span></tt><span style='font-family:Arial;
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - include: header files</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - mesg: message files (*.msb)</span></tt><span style='font-family:Arial;
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'><br>
+&nbsp; <o:p></o:p></span></p>
+
+<div style='border:solid #CCCC99 .25pt;border-bottom:solid #CCCC99 .75pt;
+padding:0in 0in 0in 0in'>
+
+<h2>3. Setup the Environment</h2>
+
+</div>
+
+<h3>3.1 UNIX Setup of XDK C++ Components</h3>
+
+<h4>3.1.1 XDK C++ Components</h4>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>The following
+tables list all the libraries found in the UNIX version of the XDK C++
+components:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'><br>
+&nbsp; <o:p></o:p></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='margin-left:-.75pt;
+ border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td colspan=3 style='padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>&nbsp;<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=623 colspan=3 valign=top style='width:467.55pt;padding:0in 3.75pt 0in 3.75pt'>
+  <h5 align=center style='text-align:center'><span style='font-family:Arial;
+  color:black'>Table 3.1: Libraries of XDK C++ Components<o:p></o:p></span></h5>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Component</span></b><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td width=108 valign=top style='width:81.0pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Library</span></b><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td width=401 valign=top style='width:301.05pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Notes</span></b><span style='font-family:
+  Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='height:11.65pt'>
+  <td width=114 valign=top style='width:85.5pt;border-top:none;border-left:
+  double windowtext 2.25pt;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>XML Parser and<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>XSL Processor<o:p></o:p></span></p>
+  </td>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>libxml10.a<o:p></o:p></span></p>
+  </td>
+  <td width=401 valign=top style='width:301.05pt;border:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>XML Parser for
+  C++, which includes DOM, SAX, XPath, and XSLT APIs<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>XML Schema
+  Validator<o:p></o:p></span></p>
+  </td>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>libxsd10.a<o:p></o:p></span></p>
+  </td>
+  <td width=401 valign=top style='width:301.05pt;border:double windowtext 2.25pt;
+  border-left:none;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>XML Schema
+  Validator for C++<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-top:none;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Class
+  Generator<o:p></o:p></span></p>
+  </td>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>libxmlg10.a<o:p></o:p></span></p>
+  </td>
+  <td width=401 valign=top style='width:301.05pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Class Generator
+  for C++<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='color:black'>The XDK C++ Components depend on the Oracle CORE
+and NLS libraries, which are listed in the following table: <br>
+&nbsp; <o:p></o:p></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='margin-left:-.75pt;
+ border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td colspan=3 style='padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-line-height-alt:
+  6.0pt'><b><span style='font-family:Arial;color:black'>&nbsp;<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=623 colspan=3 valign=top style='width:467.55pt;padding:0in 3.75pt 0in 3.75pt'>
+  <h5 align=center style='text-align:center'><span style='font-family:Arial;
+  color:black'>Table 3.2: Libraries of dependent XDK C++ Components<o:p></o:p></span></h5>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Library</span></b><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td width=138 valign=top style='width:103.5pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Package Name</span></b><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td width=371 valign=top style='width:278.55pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:Arial;color:black'>Notes</span></b><span style='font-family:
+  Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='height:11.65pt'>
+  <td width=114 valign=top style='width:85.5pt;border-top:none;border-left:
+  double windowtext 2.25pt;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>CORE Library<o:p></o:p></span></p>
+  </td>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>libcore10.a<o:p></o:p></span></p>
+  </td>
+  <td width=371 valign=top style='width:278.55pt;border:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Oracle CORE
+  library<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='height:6.0pt'>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-bottom:none;padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='font-family:
+  Arial;color:black'>NLS Library<o:p></o:p></span></p>
+  </td>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='font-family:
+  Arial;color:black'>libnls10.a<o:p></o:p></span></p>
+  </td>
+  <td width=371 valign=top style='width:278.55pt;border-top:double windowtext 2.25pt;
+  border-left:none;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='font-family:
+  Arial;color:black'>Oracle NLS common library<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='height:6.0pt'>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-top:none;padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><span
+  style='font-size:6.0pt;mso-bidi-font-size:12.0pt;font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='font-family:
+  Arial;color:black'>libunls10.a<o:p></o:p></span></p>
+  </td>
+  <td width=371 valign=top style='width:278.55pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='font-family:
+  Arial;color:black'>Oracle NLS library for Unicode support<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<h4>3.1.2 Environment Setup for Command Line Usage</h4>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>The XML parser and
+XSLT processor may be called as an executable by invoking </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>bin/xml</span></tt><span
+style='font-family:Arial;color:black'> which has the following options: <o:p></o:p></span></p>
+
+<table border=0 cellpadding=0 style='mso-cellspacing:1.5pt;margin-left:.5in;
+ mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-c</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>C</span></b><span
+  style='font-family:Arial;color:black'>onformance check only, no validation<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-e <i>encoding</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Specify
+  default input file <b>e</b>ncoding (&quot;incoding&quot;)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-E <i>encoding</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Specify
+  DOM/SAX <b>e</b>ncoding (&quot;outcoding&quot;)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-f</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>File -
+  Interpret <document>as filespec, not URI<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-h</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>H</span></b><span
+  style='font-family:Arial;color:black'>elp - show usage help and full list of
+  flags<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-i <i>n</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Number of
+  times to iterate the XSLT processing<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-l <i>language</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Language for
+  error reporting<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-n</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>N</span></b><span
+  style='font-family:Arial;color:black'>umber - DOM traverse and report number
+  of elements<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-o <i>XSLoutfile</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Specify output
+  file of XSLT processor<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-p</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>P</span></b><span
+  style='font-family:Arial;color:black'>rint document after parse<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>-</span><tt><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'>r</span></tt><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Do not ignore
+  &lt;xsl:output&gt; instruction in XSLT processing<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-s <i>stylesheet</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Style sheet - specifies
+  the XSL style sheet<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-v</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>V</span></b><span
+  style='font-family:Arial;color:black'>ersion - display parser version then
+  exit<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-V <i>var</i> <i>value</i></span></tt><span style='font-family:
+  Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>To test top
+  level variables in CXSLT<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-w</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>W</span></b><span
+  style='font-family:Arial;color:black'>hitespace - preserve all whitespace<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-W</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Warning - stop
+  parsing after a warning<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-x</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>SA<b>X</b> - exercise
+  SAX interface and print document<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='color:black'>The Schema Validator may be called as an
+executable by invoking </span><tt><span style='font-size:10.0pt;font-family:
+"Courier New";color:black'>bin/schema</span></tt><span style='color:black'>
+which takes two arguments: the XML instance document and optionally a default schema
+to apply. It has the following options: <o:p></o:p></span></p>
+
+<table border=0 cellpadding=0 style='mso-cellspacing:1.5pt;margin-left:.5in;
+ mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-0</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Always exit
+  with code <b>0</b> (success)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-e <i>encoding</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Specify
+  default input file <b>e</b>ncoding (&quot;incoding&quot;)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-E <i>encoding</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Specify
+  output/data/presentation <b>e</b>ncoding (&quot;outcoding&quot;)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-i</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>I</span></b><span
+  style='font-family:Arial;color:black'>gnore provided schema file<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-o <i>num</i></span></tt><span style='font-family:Arial;
+  color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Validation <b>o</b>ptions<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-p</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>P</span></b><span
+  style='font-family:Arial;color:black'>rint instance document to stdout on
+  success<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-u</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-family:Arial;color:black'>Force the <b>U</b>nicode
+  code path<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><tt><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>-v</span></tt><span style='font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b><span style='font-family:Arial;color:black'>V</span></b><span
+  style='font-family:Arial;color:black'>ersion - display version then exit<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>The standalone class generator may be called as an executable
+by invoking </span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>bin/xmlcg</span></tt><span style='color:black'>: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>xmlcg [flags]
+&lt;input file</span></tt><span style='color:black'>&gt; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>where the optional flags are as follows: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -d name <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DTD - Input is an external DTD; generates name.cpp and name.h<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-o directory<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output - Output directory for generated files (default is current directory)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-e encoding<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Encoding - Default input file encoding<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-h<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Help - show this usage help<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-v<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Version - show the Class Generator version<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-s name<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Schema - input is a Schema; generates name.cpp and name.h<o:p></o:p></span></p>
+
+<p><span style='color:black'>In order to run the command line executables, you
+need to first check if the environment variable </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>ORA_NLS10</span></tt><span
+style='color:black'> is set to point to the location of the NLS encoding
+definition files. If you install the Oracle database, you can set it to be: <o:p></o:p></span></p>
+
+<pre><span style='color:black'>setenv ORA_NLS10 ${ORACLE_HOME}/nls/data<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>If there is no
+Oracle database is installed, you can use the NLS encoding definition files
+which come with the XDK release (which are a subset&nbsp; of what is in the
+Oracle database release) by: <o:p></o:p></span></p>
+
+<pre><span style='color:black'>setenv ORA_NLS10 ${XDK_HOME}/nls/data<o:p></o:p></span></pre>
+
+<p><a name=error><span style='color:black'>Error message files are provided in
+the </span></a><span style='mso-bookmark:error'><tt><span style='font-size:
+10.0pt;font-family:"Courier New";color:black'>xdk/mesg/</span></tt><span
+style='color:black'> subdirectory. Files ending in </span></span><span
+style='mso-bookmark:error'><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>.msb</span></tt><span style='color:black'> are machine-readable
+and needed at runtime; files ending in </span></span><span style='mso-bookmark:
+error'><tt><span style='font-size:10.0pt;font-family:"Courier New";color:black'>.msg</span></tt><span
+style='color:black'> are human-readable and include cause and action
+descriptions for each error. The messages files also exist in the </span></span><span
+style='mso-bookmark:error'><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>$ORACLE_HOME/xdk/mesg</span></tt><span style='color:black'>
+directory. If no Oracle database is installed, you should set the environment
+variable </span></span><span style='mso-bookmark:error'><tt><b><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>ORA_XML_MESG</span></b></tt><span
+style='color:black'> to point to the <strong><i>absolute path</i></strong> of
+the </span></span><span style='mso-bookmark:error'><tt><span style='font-size:
+10.0pt;font-family:"Courier New";color:black'>xdk/mesg/</span></tt><span
+style='color:black'> subdirectory in XDK release: <o:p></o:p></span></span></p>
+
+<pre><span style='mso-bookmark:error'><span style='color:black'>setenv ORA_XML_MESG ${XDK_HOME}/xdk/mesg<o:p></o:p></span></span></pre>
+
+<p><span style='mso-bookmark:error'><span style='color:black'>The XDK
+components may also be invoked by writing code to use the supplied APIs. The
+code must be compiled using the headers in the </span></span><span
+style='mso-bookmark:error'><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>xdk/include/</span></tt><span style='color:black'> subdirectory
+and linked against the libraries in the </span></span><span style='mso-bookmark:
+error'><tt><span style='font-size:10.0pt;font-family:"Courier New";color:black'>lib/</span></tt><span
+style='color:black'> subdirectory. See </span></span><span style='mso-bookmark:
+error'><tt><span style='font-size:10.0pt;font-family:"Courier New";color:black'>Makefile</span></tt><span
+style='color:black'> in the </span></span><span style='mso-bookmark:error'><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>xdk/demo/</span></tt><span
+style='color:black'> subdirectory for full details of how to build your
+program. <o:p></o:p></span></span></p>
+
+<h3><span style='mso-bookmark:error'>3.2 Windows NT Setup of XDK C++ Components</span></h3>
+
+<h4><span style='mso-bookmark:error'>3.2.1 Components</span></h4>
+
+<p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+Arial;color:black'>The following tables list all the libraries found in the
+Windows NT version of the XDK C++ components:<o:p></o:p></span></span></p>
+
+<p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+Arial;color:black'><br>
+&nbsp; <o:p></o:p></span></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='margin-left:-.75pt;
+ border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td colspan=3 style='padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>&nbsp;<o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=623 colspan=3 valign=top style='width:467.55pt;padding:0in 3.75pt 0in 3.75pt'>
+  <h5 align=center style='text-align:center'><span style='mso-bookmark:error'><span
+  style='font-family:Arial;color:black'>Table 3.3: Libraries of XDK C++
+  Components<o:p></o:p></span></span></h5>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Component</span></b></span><span
+  style='mso-bookmark:error'><span style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=108 valign=top style='width:81.0pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Library</span></b></span><span
+  style='mso-bookmark:error'><span style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=401 valign=top style='width:301.05pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Notes</span></b></span><span
+  style='mso-bookmark:error'><span style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr style='height:11.65pt'>
+  <td width=114 valign=top style='width:85.5pt;border-top:none;border-left:
+  double windowtext 2.25pt;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>XML Parser and<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>XSLT Processor<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxml10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxml10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=401 valign=top style='width:301.05pt;border:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>XML Parser for C++, which includes DOM, SAX, XPath, and
+  XSLT APIs<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>XML Schema Validator<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxsd10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxsd10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=401 valign=top style='width:301.05pt;border:double windowtext 2.25pt;
+  border-left:none;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>XML Schema Processor for C++<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-top:none;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>Class Generator<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=108 valign=top style='width:81.0pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxmlg10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraxmlg10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=401 valign=top style='width:301.05pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>Class Generator for C++<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+</table>
+
+<p><span style='mso-bookmark:error'><span style='color:black'>The XDK C++ Components
+depend on the Oracle CORE and NLS libraries, which are listed in the following
+table: <br>
+&nbsp; <o:p></o:p></span></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='margin-left:-.75pt;
+ border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr>
+  <td colspan=3 style='padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-line-height-alt:
+  6.0pt'><span style='mso-bookmark:error'><b><span style='font-family:Arial;
+  color:black'>&nbsp;<o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=623 colspan=3 valign=top style='width:467.55pt;padding:0in 3.75pt 0in 3.75pt'>
+  <h5 align=center style='text-align:center'><span style='mso-bookmark:error'><span
+  style='font-family:Arial;color:black'>Table 3.4: Libraries of dependent XDK
+  C++ Components<o:p></o:p></span></span></h5>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Library</span></b></span><span
+  style='mso-bookmark:error'><span style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=138 valign=top style='width:103.5pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Package
+  Name</span></b></span><span style='mso-bookmark:error'><span
+  style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=371 valign=top style='width:278.55pt;border:double windowtext 2.25pt;
+  border-left:none;background:silver;padding:0in 3.75pt 0in 3.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:error'><b><span style='font-family:Arial;color:black'>Notes</span></b></span><span
+  style='mso-bookmark:error'><span style='font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr style='height:11.65pt'>
+  <td width=114 valign=top style='width:85.5pt;border-top:none;border-left:
+  double windowtext 2.25pt;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>CORE Library<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oracore10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oracore10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=371 valign=top style='width:278.55pt;border:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:11.65pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>Oracle CORE library<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr style='height:6.0pt'>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-bottom:none;padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='mso-bookmark:
+  error'><span style='font-family:Arial;color:black'>NLS Library<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oranls10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='mso-bookmark:
+  error'><span style='font-family:Arial;color:black'>oranls10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=371 valign=top style='width:278.55pt;border-top:double windowtext 2.25pt;
+  border-left:none;border-bottom:none;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='mso-bookmark:
+  error'><span style='font-family:Arial;color:black'>Oracle NLS common library<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+ <tr style='height:6.0pt'>
+  <td width=114 valign=top style='width:85.5pt;border:double windowtext 2.25pt;
+  border-top:none;padding:0in 3.75pt 0in 3.75pt;height:6.0pt'><span
+  style='mso-bookmark:error'></span>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><span
+  style='mso-bookmark:error'><span style='font-size:6.0pt;mso-bidi-font-size:
+  12.0pt;font-family:Arial;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=138 valign=top style='width:103.5pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+  Arial;color:black'>oraunls10.lib<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='mso-bookmark:
+  error'><span style='font-family:Arial;color:black'>oraunls10.dll<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+  <td width=371 valign=top style='width:278.55pt;border-top:none;border-left:
+  none;border-bottom:double windowtext 2.25pt;border-right:double windowtext 2.25pt;
+  padding:0in 3.75pt 0in 3.75pt;height:6.0pt'>
+  <p class=MsoNormal style='mso-line-height-alt:6.0pt'><span style='mso-bookmark:
+  error'><span style='font-family:Arial;color:black'>Oracle NLS library for
+  Unicode support<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:error'></span>
+ </tr>
+</table>
+
+<h4><span style='mso-bookmark:error'>3.2.2 Environment Setup for Command Line
+Usage</span></h4>
+
+<p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+Arial;color:black'>The XML parser and XSLT processor may be called as an
+executable by invoking </span></span><span style='mso-bookmark:error'><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>bin\xml.exe</span></tt></span><span
+style='mso-bookmark:error'><span style='font-family:Arial;color:black'>. The
+options are listed in Section 3.1.2. <o:p></o:p></span></span></p>
+
+<p><span style='mso-bookmark:error'><span style='color:black'>The Schema
+Validator may be called as an executable by invoking </span></span><span
+style='mso-bookmark:error'><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>bin\schema.exe</span></tt><span style='color:black'> which takes
+two arguments: the XML instance document and optionally a default schema to
+apply. The options are listed in Section 3.1.2. <o:p></o:p></span></span></p>
+
+<p><span style='mso-bookmark:error'><span style='color:black'>In order to run
+the command line executables, you need to first check if the environment
+variable </span></span><span style='mso-bookmark:error'><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>ORA_NLS10</span></tt><span
+style='color:black'> is set to point to the location of the NLS encoding definition
+files. If you install the Oracle database, you can set it to be: <o:p></o:p></span></span></p>
+
+<pre><span style='mso-bookmark:error'><span style='color:black'>set ORA_NLS10=%ORACLE_HOME%\nls\data<o:p></o:p></span></span></pre>
+
+<p class=MsoNormal><span style='mso-bookmark:error'><span style='font-family:
+Arial;color:black'>If there is no Oracle database is installed, you can use the
+NLS encoding definition files which come with the XDK release (which are a
+subset&nbsp; of what is in the Oracle database release) by: <o:p></o:p></span></span></p>
+
+<pre><span style='mso-bookmark:error'><span style='color:black'>set ORA_NLS10=%XDK_HOME%\nls\data<o:p></o:p></span></span></pre><span
+style='mso-bookmark:error'></span>
+
+<p><span style='color:black'>Error message files are provided in the </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>xdk\mesg/</span></tt><span
+style='color:black'> subdirectory. Files ending in </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>.msb</span></tt><span
+style='color:black'> are machine-readable and needed at runtime; files ending
+in </span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>.msg</span></tt><span style='color:black'> are human-readable and
+include cause and action descriptions for each error. The messages files also
+exist in the </span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>%ORACLE_HOME%\xdk\mesg</span></tt><span style='color:black'>
+directory. If no Oracle database is installed, you should set the environment
+variable </span><tt><b><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ORA_XML_MESG</span></b></tt><span style='color:black'> to point to
+the <strong><i>absolute path</i></strong> of the </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>xdk\mesg\</span></tt><span
+style='color:black'> subdirectory in XDK release: <o:p></o:p></span></p>
+
+<pre><span style='color:black'>set ORA_XML_MESG=%XDK_HOME%\xdk\mesg<o:p></o:p></span></pre>
+
+<p><span style='color:black'>The XDK components may also be invoked by writing
+code to use the supplied APIs. The code must be compiled using the headers in
+the </span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>xdk\include\</span></tt><span style='color:black'> subdirectory
+and linked against the libraries in the </span><tt><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>lib\</span></tt><span style='color:black'>
+subdirectory. See </span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>Make.bat</span></tt><span style='color:black'> in the </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>xdk\demo\</span></tt><span
+style='color:black'> subdirectory for full details of how to build your
+program. <o:p></o:p></span></p>
+
+<p><span style='color:black'>To compile the code in the command line
+environment, you need to set the path for cl compiler. <o:p></o:p></span></p>
+
+<pre><span style='color:black'>&nbsp; <o:p></o:p></span></pre><pre
+style='text-align:center'><span style='color:black'><img border=0 width=405
+height=460 id="_x0000_i1025" src="..\images\image004_cpp.jpg" NOSAVE
+u1:shapes="_x0000_i1026"><o:p></o:p></span></pre><pre style='text-align:center'><span
+style='color:black'>Figure 3-1: Setup Path for cl compiler<o:p></o:p></span></pre><pre
+style='text-align:center'><span style='color:black'>&nbsp;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Go to the Start
+Menu and select Settings -&gt;Control Panel. In the pop up window of Control
+Panel, select the System icon and double click. A window named System
+Properties will pop up. Select Environment Tab and add the path of cl.exe to
+the PATH variable shown in Figure 3-1. <o:p></o:p></span></p>
+
+<p><span style='color:black'>In addition, you need to update the Make.bat&nbsp;
+by adding the path of the libraries and header files to the compiling and
+linking commands: For example: Make.bat <o:p></o:p></span></p>
+
+<pre><span style='color:black'>:COMPILE<o:p></o:p></span></pre><pre><span
+style='color:black'>set filename=%1<o:p></o:p></span></pre><pre><span
+style='color:black'>cl -c -Fo%filename%.obj %opt_flg%&nbsp; /DCRTAPI1=_cdecl /DCRTAPI2=_cdecl /nologo /Zl /Gy /DWIN32 /D_WIN32 /DWIN_NT&nbsp;<o:p></o:p></span></pre><pre><span
+style='color:black'>/DWIN32COMMON /D_DLL /D_MT /D_X86_=1 /Doratext=OraText -I. -I..\..\..\include&nbsp;<o:p></o:p></span></pre><pre><b><span
+style='color:black'>-ID:\Progra~1\Micros~1\VC98\Include</span></b><span
+style='color:black'> %filename%.cpp<o:p></o:p></span></pre><pre><span
+style='color:black'>goto :EOF<o:p></o:p></span></pre><pre><span
+style='color:black'>:LINK&nbsp;<o:p></o:p></span></pre><pre><span
+style='color:black'>set filename=%1<o:p></o:p></span></pre><pre><span
+style='color:black'>link %link_dbg% /out:..\..\..\..\bin\%filename%.exe /libpath:%ORACLE_HOME%\lib <b>/libpath:D:\Progra~1\Micros~1<o:p></o:p></b></span></pre><pre><b><span
+style='color:black'>\VC98\lib</span></b><span style='color:black'> /libpath:..\..\..\..\lib&nbsp; %filename%.obj oraxml9.lib oracore9.lib oranls9.lib oraunls9.lib user32.lib&nbsp;<o:p></o:p></span></pre><pre><span
+style='color:black'>kernel32.lib msvcrt.lib ADVAPI32.lib oldnames.lib winmm.lib<o:p></o:p></span></pre><pre><span
+style='color:black'>:EOF<o:p></o:p></span></pre><pre><span style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<o:p></o:p></span></pre><pre><span
+style='color:black'>D:\Progra~1\Micros~1\VC98\Include: is the path for header files<o:p></o:p></span></pre><pre><span
+style='color:black'>D:\Progra~1\Micros~1\VC98\lib: is the path for library files<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Then, you should
+be able to use the Make.bat to compile and link the demo code and start
+programming using XDK C++ components. <o:p></o:p></span></p>
+
+<h4>3.2.3 Using XDK C++ Components with Visual C ++</h4>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>If you use Microsoft
+Visual C++ as your compiler, you need to make sure that the environment
+variable ORA_NLS10 is set as discussed above. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>In order for
+Visual C++ to be able to take the environment variable, you need to use the
+system setup for windows NT to define the environment variable. Go to the Start
+Menu and select Settings-&gt;Control Panel. In the pop up window of Control
+Panel, select the System icon and double click. A window named System
+Properties will pop up. Select Environment Tab and enter ORA_NLS10.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'><br>
+&nbsp; <br>
+&nbsp; <o:p></o:p></span></p>
+
+<p align=center style='text-align:center'><span style='color:black'><img
+border=0 width=411 height=467 id="_x0000_i1026" src="..\images\image006_cpp.jpg"
+u1:shapes="_x0000_i1027"><o:p></o:p></span></p>
+
+<p align=center style='text-align:center'><span style='color:black'>Figure 3-2:
+Setup ORA_NLS33 Environment Variable<o:p></o:p></span></p>
+
+<p style='margin-bottom:12.0pt'><span style='color:black'><br style='mso-special-character:
+line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]><o:p></o:p></span></p>
+
+<p><span style='color:black'>You need to make sure that the environment
+variable ORA_XML_MESG is set as discussed above. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>In order for
+Visual C++ to be able to take the environment variable, you need to use the
+system setup for windows NT to define the environment variable. Go to the Start
+Menu and select Settings-&gt;Control Panel. In the pop up window of Control
+Panel, select the System icon and double click. A window named System
+Properties will pop up. Select Environment Tab and enter ORA_XML_MESG.<o:p></o:p></span></p>
+
+<pre><span style='color:black'>&nbsp;<o:p></o:p></span></pre><pre
+style='text-align:center'><span style='color:black'><img border=0 width=404
+height=462 id="_x0000_i1027" src="..\images\image008_cpp.jpg"
+u1:shapes="_x0000_i1028"><o:p></o:p></span></pre><pre style='text-align:center'><span
+style='color:black'>Figure 3-3: Setup ORA_XML_MESG Environment Variable<o:p></o:p></span></pre>
+
+<p style='tab-stops:.5in'><span style='color:black'>To set up the PATH for
+*.dll, please refer to the following figure: <br>
+&nbsp; <br>
+&nbsp; <o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'><img border=0 width=403 height=461 id="_x0000_i1028"
+src="..\images\image010_cpp.jpg" u1:shapes="_x0000_i1029"><o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'>Figure 3-4: Setup ORA_NLS33 Environment Variable<o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>After opening a workspace
+in Visual C++ and including the *.cpp files for the project, you need to set
+the path for the project. Please go to the Tools menu in the menu bar and
+select Options. A window will pop up. Please select the Directory tab and set
+your include path and library path as shown in the following figure: <o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'><img border=0 width=413 height=317 id="_x0000_i1029"
+src="..\images\image012_cpp.jpg" u1:shapes="_x0000_i1030"><o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'>Figure 3-5: Setup include path in Visual C++ <o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'><img border=0 width=416 height=320 id="_x0000_i1030"
+src="..\images\image014_cpp.jpg" u1:shapes="_x0000_i1031"><o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'>Figure 3-6: Setup static library path in Visual C++<o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>After setting the paths for
+the static libraries in %XDK_HOME\lib, you also need to set the library name in
+the compilation environment of Visual C++. <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>Go to the Project menu in
+the menu bar and select Settings. A window will pop up. Please select the Link
+tab in the Object/Library Modules field put the name of XDK C++ components'
+libraries: <o:p></o:p></span></p>
+
+<p align=center style='text-align:center;tab-stops:.5in'><span
+style='color:black'><img border=0 width=578 height=372 id="_x0000_i1031"
+src="..\images\image016_cpp.jpg" u1:shapes="_x0000_i1032"><br>
+Figure 3-7: Setup static library in Visual C++ Project<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+tab-stops:.5in'><span style='color:black'>After completing all of the above
+steps, you can compile and run the demos provided for XDK C++ Components. <o:p></o:p></span></p>
+
+<h3 style='tab-stops:.5in'>3.3 Class Generator Usage</h3>
+
+<h4 style='tab-stops:.5in'>Input</h4>
+
+<p class=MsoNormal style='tab-stops:.5in'><span style='font-family:Arial;
+color:black'>Input is an XML document containing or referencing a DTD, an
+external DTD directly (<b>-d</b> option), or an XML Schema (<b>-s</b> option).
+If a complete XML document is provided, the document body itself is ignored;
+only the DTD is relevant, though the document must conform to the DTD. <o:p></o:p></span></p>
+
+<h4 style='tab-stops:.5in'>Output</h4>
+
+<p class=MsoNormal style='tab-stops:.5in'><span style='font-family:Arial;
+color:black'>Output is a pair of C++ source files, .cpp and .h, named after the
+DOCTYPE if a complete XML document is input. For an external DTD or Schema, the
+name of the generated files must be provided. Constructors are provided for
+each class (element) that allow an object to be created in two different ways:
+initially empty, then adding the children or data after the initial creation,
+or created with the initial full set of children or initial data. A method is
+provided for #PCDATA (and Mixed) elements to set the data and, when
+appropriate, set an element's attributes. <o:p></o:p></span></p>
+
+<h3>3.4 New API and old API</h3>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>This release
+includes new C++ API (see xml.hpp and xmlctx.hpp). The primary difference of
+new API is an introduction of interfaces to various XDK tools. These interfaces
+will replace old C++ API in future releases. The mapping of old C++ classes
+into new C++ interfaces is as follows:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Class
+XMLParser<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>-&gt;<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>DOMParser and SAXParser
+interfaces (abstract classes)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>DOM classes
+(Node, etc.)<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;
+</span>-&gt;<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>References to DOM nodes
+(NodeRef, AttrRef, etc.)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Class
+XSLProcessor<span style="mso-spacerun: yes">&nbsp;&nbsp; </span><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-&gt;<span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Interfaces (abstract classes)<span style="mso-spacerun: yes">&nbsp;
+</span>Xsl::Transformer, Xsl::CompTransformer, Xsl::Compiler<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Class XPath<span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>-&gt;<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Interfaces (abstract classes) XPath::Processor, XPath::CompProcessor,
+XPath::Compiler<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:black'>Class
+XMLSchema<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-&gt;<span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Interface
+(abstract class) SchemaValidator<o:p></o:p></span></p>
+
+<div style='border:solid #CCCC99 .25pt;border-bottom:solid #CCCC99 .75pt;
+padding:0in 0in 0in 0in'>
+
+<h2 style='tab-stops:.5in'>4. NLS Support</h2>
+
+</div>
+
+<p class=MsoNormal style='tab-stops:.5in'><span style='font-family:Arial;
+color:black'>The parser supports over 300 IANA character sets. These character
+sets include the following: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;tab-stops:.5in'><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>UTF-8, UTF-16,
+UTF16-BE, UTF16-LE, US-ASCII, ISO-10646-UCS-2, ISO-8859-{1-9, 13-15}, EUC-JP,
+SHIFT_JIS, BIG5, GB2312, GB_2312-80, HZ-GB-2312, KOI8-R, KSC5601, EUC-KR,
+ISO-2022-CN, ISO-2022-JP, ISO-2022-KR, WINDOWS-{1250-1258},
+EBCDIC-CP-{US,CA,NL,WT,DK,NO,FI,SE,IT,ES,GB,FR,HE,BE,CH,ROECE,YU,IS,AR1},
+IBM{037,273,277,278,280,284,285,297,420,424,437,500,775,850,852,855,857,00858,
+860,861,863,865,866,869,870,871,1026,
+01140,01141,01142,01143,01144,01145,01146,01147,01148} </span></tt><span
+style='font-family:Arial;color:black'><o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>Any alias of the above
+character sets that is found <a
+href="http://www.iana.org/assignments/character-sets">here</a> may also be
+used. In addition, any character set specified in Appendix A, Character Sets,
+of the Oracle National Language Support Guide may be used with the exception of
+IW7IS960. However, it is recommended that you use IANA character set names for
+interoperability with other XML parsers. Also note that XML parsers are only
+required to support UTF-8 and UTF-16 so those character sets should be
+preferred. <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>In order to be able to use
+these encodings, you should have the </span><tt><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>ORACLE_HOME</span></tt><span
+style='color:black'> environment variable set to the location of your Oracle
+installation. This will enable the use of the NLS data files which contain data
+for all supported encodings. NLS data files are usually located in </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>$ORACLE_HOME/nls/data</span></tt><span
+style='color:black'>. If you don't have an Oracle installation (no
+$ORACLE_HOME), you must set the environment variable </span><tt><b><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>ORA_NLS10</span></b></tt><span
+style='color:black'> to the <strong><i>absolute path</i></strong> of the </span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>nls/data/</span></tt><span
+style='color:black'> directory in the XDK installation. <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>Using this XDK with an
+Oracle 8i installation is not supported. If you wish to try it on Windows
+anyway, you should copy the CORE and NLS DLLs and the NLSDATA files that are
+supplied with this XDK to your Oracle 8i home. In addition, you should set the
+environment variable NLS_TIME_TZ_FORMAT to HH.MI.SSXFF AM TZH:TZM and the
+enviroment variable NLS_TIMESTAMP_TZ_FORMAT to DD-MON-RR HH.MI.SSXFF AM
+TZH:TZM. <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>The default input encoding
+(&quot;</span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>default_input_encoding</span></tt><span style='color:black'>&quot;)
+is UTF-8. That is, if an input document's encoding is not self-evident (by HTTP
+charset, Byte Order Mark, XMLDecl, etc), then the default input encoding will
+be assumed. It is recommended that you set the default encoding explicitly if
+using only single byte character sets (such as US-ASCII or any of the ISO-8859
+character sets) since single-byte performance is by far the fastest. To force
+all documents to be read as a certain encoding, specify it as &quot;</span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>input_encoding</span></tt><span
+style='color:black'>&quot; (i.e. without the &quot;</span><tt><span
+style='font-size:10.0pt;font-family:"Courier New";color:black'>default</span></tt><span
+style='color:black'>&quot;). A forced encoding overrides BOM and XMLDecl, but
+not protocol declarations (such as HTTP charset). <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>The data encoding for DOM
+and SAX (&quot;</span><tt><span style='font-size:10.0pt;font-family:"Courier New";
+color:black'>data_encoding</span></tt><span style='color:black'>&quot;) should
+be chosen carefully. Single-byte encodings are the fastest, but can represent
+only a very limited set of characters. Next fastest is Unicode (UTF-16), and
+slowest are the multibyte encodings such as UTF-8. If input data cannot be
+converted to the data encoding without loss, an error will occur. So for
+maximum utility, a Unicode-based data encoding should be used, since Unicode
+can represent any character. If </span><tt><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>data_encoding</span></tt><span
+style='color:black'> is not specified, it defaults to the input encoding of the
+first document parsed. <o:p></o:p></span></p>
+
+<p style='tab-stops:.5in'><span style='color:black'>The XML Schema validator supports
+various encodings.&nbsp; The schema file and instance XML document can be in
+different encodings.&nbsp; When a schema context is created via the function <b>schemaInitialize</b>,
+an internal encoding, which is single byte or Unicode, is chosen based on the
+setting of the provided parser's context (i.e., xmlctx).&nbsp; If the error
+message &quot;LSX-0016: schema and instance document have incompatible
+character sets&quot; is shown when validation is attempted, a new schema
+context with a new parser context in a multibyte encoding (i.e., UTF-8, UTF-16,
+etc.) needs to be created to proceed.&nbsp; Specifically, a new xmlctx needs to
+be created with its &quot;outencoding&quot; parameter set to the
+above-mentioned multibyte encoding and used in the new schema context's
+creation. <br>
+&nbsp; <o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

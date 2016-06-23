@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class XSLProcessor</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-xsl.html">This Package</a>]</pre>
+<hr>
+<h1>Class: <i>XSLProcessor</i></h1>
+
+This class contains top-level methods for invoking the XSL processor.
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#xslprocess"><b>xslprocess</b></a></td>
+    <td>Process an XSL stylesheet with an XML document source</td>
+  </tr>
+</table>
+
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="xslprocess"></a>
+<h3><b>xslprocess</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd>Process an XSL stylesheet with an XML document source<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <pre> uword xslprocess(XMLParser *docctx, XMLParser *xslctx, XMLParser *resctx, Node **result);</pre><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd>
+      <tt>docctx</tt> (IN/OUT) -- The XML document context <br>
+      <tt>xslctx</tt> (IN) -- The XSL stylesheet context <br>
+      <tt>resctx</tt> (IN) -- The result document fragment context <br>
+      <tt>result</tt> (IN/OUT) -- The result document fragment node <p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>uword</tt> -- Numeric error code, 0 meaning success
+  </dl></dd>
+</dl>
+
+</body>
+</html>

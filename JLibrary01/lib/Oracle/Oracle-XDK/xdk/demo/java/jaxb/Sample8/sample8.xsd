@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<!-- The element declaration type is a complex type definition -->
+
+<xsd:schema xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://generated/sample8/"
+    xmlns:po="http://generated/sample8/"
+    xmlns:io="http://generated/sample8-1/"
+    elementFormDefault="qualified">
+  
+     <xsd:import namespace="http://generated/sample8-1/"
+      schemaLocation="sample8-1.xsd" />
+
+     <xsd:complexType name="PurchaseOrderType">
+       <xsd:sequence>
+         <xsd:element name="shipTo" type="po:Address"/>
+         <xsd:element name="billTo" type="io:USAddress"/>
+       </xsd:sequence>
+     </xsd:complexType>
+
+     <xsd:complexType name="Address">
+       <xsd:sequence>
+         <xsd:element name="name"   type="xsd:string"/>
+         <xsd:element name="street" type="xsd:string"/>
+         <xsd:element name="city"   type="xsd:string"/>
+         <xsd:element name="state"  type="xsd:string"/>
+         <xsd:element name="country" type="xsd:string"/>
+         <xsd:element name="zip"    type="xsd:decimal"/>
+       </xsd:sequence>
+     </xsd:complexType>
+
+     <xsd:element name="PurchaseOrder" type="po:PurchaseOrderType"/>
+
+</xsd:schema>

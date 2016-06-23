@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<xsql:include-xml bind-params="id" connection="demo" 
+       xmlns:xsql="urn:oracle-xsql">
+
+  select x.document.contents doc
+    from xmldoc x
+  where x.docid = ?
+
+</xsql:include-xml>

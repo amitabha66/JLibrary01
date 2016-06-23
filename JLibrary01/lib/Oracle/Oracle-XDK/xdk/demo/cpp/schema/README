@@ -1,0 +1,40 @@
+This directory contains a sample XML Schema application to show how to use
+the Oracle XML Schema Processor via its API.
+
+This directory contains:
+
+    Make.bat            Batch file for building sample programs
+
+    xsdtest.cpp         Trivial program which invokes the Schema API
+
+    car.{xsd,xml,std}   Sample Schema, instance document, and expected
+                        output after running xsdtest on them.
+
+    aq.{xsd,xml,std}    Second sample Schema
+
+    pub.{xsd,xml,std}   Third sample Schema
+
+A batch file, Make.bat, is provided to build and run the sample, just type
+"Make".  Note that the executables are placed in ..\bin but should be run
+from the sample directory (where the input data files can be found).
+
+An error message file is provided in the mesg subdirectory.  Currently, the
+only message file is in English although message files for other languages
+may be supplied in future releases.  You should set the environment variable 
+ORA_XML_MESG to point to the absolute path of the mesg subdirectory.
+Alternately, if you have an $ORACLE_HOME installed, you may copy the contents
+of the mesg subdirectory to the $ORACLE_HOME\xdk\mesg directory.
+
+In addition, the environment variable ORA_NLS10 must be set to point to the
+location of the NLS data files.  By default, this is usually
+$ORACLE_HOME/nls/data.  Starting with version 10.1.0.0.0, C and C++ XDK
+releases that are downloaded from OTN contain an nls/data subdirectory.  You
+must set the environment variable ORA_NLS10 to the absolute path of the
+nls/data subdirectory if you don't have an Oracle installation.
+
+The following program will be built:
+
+    xsdtest <document> [schema]
+                        A sample application using the Schema API.  Given an
+                        instance and optionally a Schema, loads the instance
+                        and Schema validates.

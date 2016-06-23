@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+        targetNamespace = "http://www.somewhere.org/BookCatalogue"
+        xmlns:cat = "http://www.somewhere.org/BookCatalogue"
+        elementFormDefault="qualified">
+
+    <complexType name="Pub">
+      <sequence>
+        <element name="Title" type="cat:titleType" maxOccurs="unbounded"/>
+        <element name="Author" type="string" maxOccurs="unbounded"/>
+        <element name="Date" type="gYearMonth"/>
+      </sequence>
+      <attribute name="language" type="string" default="English"/>
+      <anyAttribute namespace="##local"/>
+    </complexType>
+
+    <element name="Publication" type="cat:Pub"  abstract="true"/>
+
+    <element name="Book" substitutionGroup="cat:Publication">
+        <complexType>
+           <complexContent>
+               <extension base="cat:Pub" >
+                  <sequence>
+                     <element name="ISBN" type="string" default="123456789"/>
+                     <element name="Publisher" type="string"/>
+                  </sequence>
+               </extension>
+           </complexContent> 
+       </complexType>
+    </element>
+
+    <complexType name="titleType">
+       <simpleContent>
+          <extension base="string" >
+             <attribute name="old" type="string" default="false"/>
+          </extension>
+       </simpleContent>
+    </complexType>
+
+    <element name="Magazine" substitutionGroup="cat:Publication">
+        <complexType>
+           <complexContent>
+              <extension base="cat:Pub">
+                  <sequence>
+                     <element name="Volume" type="cat:VolumeType"/>
+                     <element name="htmlTable">
+                        <complexType>
+                           <sequence>
+                               <any namespace="##other"
+                                   processContents="skip"
+                                   minOccurs="0" maxOccurs="2"/>
+                            </sequence>
+                        </complexType>
+                      </element>
+                  </sequence>
+              </extension>
+           </complexContent>
+        </complexType>
+    </element>
+
+    <simpleType name="VolumeType">
+       <restriction base="integer" >
+          <minInclusive value = "1"/>
+          <maxInclusive value = "12"/>
+       </restriction>
+    </simpleType>
+
+    <element name="Catalogue">
+        <complexType>
+           <sequence>
+             <element ref="cat:Publication" minOccurs="0" maxOccurs="unbounded"/>
+           </sequence>   
+        </complexType>
+    </element>
+</schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<xsql:query bind-params="airport" xmlns:xsql="urn:oracle-xsql"
+     connection="demo" 
+     airport="SFO" 
+     rowset-element="Ok" 
+     max-rows="1" 
+     row-element="Airport" >
+
+       SELECT tla "Code", description "Description"
+	 FROM AIRPORT
+	WHERE tla = UPPER(?)
+
+  <xsql:no-rows-query bind-params="airport"
+     max-rows="10" 
+     rowset-element="Error" 
+     row-element="Airport" >
+
+       SELECT tla "Code", description "Description"
+	 FROM AIRPORT
+	WHERE UPPER(description) LIKE UPPER('%'||?||'%')
+        ORDER BY tla
+  </xsql:no-rows-query>
+
+</xsql:query>

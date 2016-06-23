@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class Element</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-DOMImplementation.html">Previous Class</a>]  [<a href="Class-Entity.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>Element</i></h1>
+
+This class contains methods pertaining to element nodes.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#getTagName"><b>getTagName</b></a></td>
+    <td>Return the node's tag name</td>
+  </tr>
+  <tr>
+    <td><a href="#getAttribute"><b>getAttribute</b></a></td>
+    <td>Select an attribute given its name</td>
+  </tr>
+  <tr>
+    <td><a href="#setAttribute"><b>setAttribute</b></a></td>
+    <td>Create a new attribute given its name and value</td>
+  </tr>
+  <tr>
+    <td><a href="#removeAttribute"><b>removeAttribute</b></a></td>
+    <td>Remove an attribute given its name</td>
+  </tr>
+  <tr>
+    <td><a href="#getAttributeNode"><b>getAttributeNode</b></a></td>
+    <td>Remove an attribute given its name</td>
+  </tr>
+  <tr>
+    <td><a href="#setAttributeNode"><b>setAttributeNode</b></a></td>
+    <td>Add a new attribute node</td>
+  </tr>
+  <tr>
+    <td><a href="#removeAttributeNode"><b>removeAttributeNode</b></a></td>
+    <td>Remove an attribute node</td>
+  </tr>
+  <tr>
+    <td><a href="#getElementsByTagName"><b>getElementsByTagName</b></a></td>
+    <td>Return a list of element nodes with the given tag name</td>
+  </tr>
+  <tr>
+    <td><a href="#getElementsByTagNameNS"><b>getElementsByTagNameNS</b></a></td>
+    <td>Return a list of element nodes with the given tag name (namespace aware)</td>
+  </tr>
+  <tr>
+    <td><a href="#normalize"><b>normalize</b></a></td>
+    <td>"Normalize" an element (merge adjacent text nodes)</td>
+  </tr>
+  <tr>
+    <td><a href="#initialize"><b>initialize</b></a></td>
+    <td>Initialize a new element node</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="getTagName"></a>
+<h3><b>getTagName</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Return the tag name of the element.  The DOM says: "...even though
+	there is a generic nodeName attribute on the Node interface, there
+	is still a tagName attribute on the Element interface; these two
+	attributes must contain the same value, but the Working Group
+	considers it worthwhile to support both, given the different
+	constituencies the DOM API must satisfy<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>DOMString getTagName()</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>DOMString</tt> -- Tag name of node
+  </dl></dd>
+</dl>
+
+<a name="getAttribute"><hr></a>
+<h3><b>getAttribute</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return "value" (definition) of named attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>DOMString getAttribute(DOMString name)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> <tt>name</tt> -- name of attribute
+    <dt> <b>Returns:</b>
+    <dd> Value of attribute<p>
+  </dl></dd>
+</dl>
+
+<a name="setAttribute"><hr></a>
+<h3><b>setAttribute</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Create a new attribute</dd>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>Attr* setAttribute(DOMString name, DOMString value)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> <tt>name</tt> -- name of new attribute
+    <dd> <tt>value</tt> -- value of new attribute
+    <dt> <b>Returns:</b>
+    <dd> Pointer to create attribute<p>
+  </dl></dd>
+</dl>
+
+<a name="removeAttribute"><hr></a>
+<h3><b>removeAttribute</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Removes the named attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void removeAttribute(DOMString name)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>name</tt> -- name of attribute to remove<p>
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="getAttributeNode"><hr></a>
+<h3><b>getAttributeNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return pointer to named attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>Attr* getAttributeNode(DOMString name)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>name</tt> -- name of attribute<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>Attr*</tt> -- pointer to attribute, or NULL if none such<p>
+  </dl></dd>
+</dl>
+
+<a name="setAttributeNode"><hr></a>
+<h3><b>setAttributeNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Set (add) new attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>boolean setAttributeNode(Attr* newAttr, Attr** oldAttr)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>newAttr</tt> -- pointer to new attribute
+    <dd><tt>oldAttr</tt> -- returned pointer to replaced attribute<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>boolean</tt> -- success<p>
+  </dl></dd>
+</dl>
+
+<a name="removeAttributeNode"><hr></a>
+<h3><b>removeAttributeNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Remove the named attribute<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>Attr* removeAttributeNode(Attr* oldAttr)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>oldAttr</tt> -- attribute to remove<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>Attr*</tt> -- oldAttr passed back<p>
+  </dl></dd>
+</dl>
+
+<a name="getElementsByTagName"><hr></a>
+<h3><b>getElementsByTagName</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Create a list of matching elements<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>NodeList* getElementsByTagName(DOMString name)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>name</tt> -- tagname to match, "*" for all<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>NodeList*</tt> -- list of matches<p>
+  </dl></dd>
+</dl>
+
+<a name="getElementsByTagNameNS"><hr></a>
+<h3><b>getElementsByTagNameNS</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Create a list of matching elements<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>NodeList* getElementsByTagNameNS(DOMString nspuri, DOMString local)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>nspuri</tt> -- namespace URI
+    <dd><tt>local</tt> -- local name to match, "*" for all<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>NodeList*</tt> -- list of matches<p>
+  </dl></dd>
+</dl>
+
+<a name="normalize"><hr></a>
+<h3><b>normalize</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Normalize an element, i.e. merge all adjacent TEXT nodes<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void normalize(void)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> None</dd><p>
+    <dt> <b>Returns:</b>
+    <dd> None</dd>
+  </dl></dd>
+</dl>
+
+<a name="initialize"><hr></a>
+<h3><b>initialize</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Initialize a newly allocated  element node<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>uword initialize(Document *doc, DOMString nspuri, DOMString qname)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>doc</tt> -- XML document
+    <dd><tt>nspuri</tt> -- namespace URI
+    <dd><tt>qname</tt> -- qualified name<p>
+    <dt> <b>Returns:</b>
+    <dd> 0 on success or an error code on failure</dd>
+  </dl></dd>
+</dl>
+
+</body>
+</html>

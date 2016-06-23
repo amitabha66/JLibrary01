@@ -1,0 +1,21 @@
+XML C++ XSLT sample
+Initializing context
+Initializing Tools Factory
+Creating XSL Transformer
+Create file source for the XSLT document
+Set the XSLT document to the transformer
+Create file source for the instance document
+Transforming 'class.xml' ...
+Dump the tree
+No Name Node
+ Node Name: course
+ Node Name: Name
+ Node Name: Dept
+ Node Name: Instructor
+ Node Name: Name
+ Node Name: Student
+ Node Name: Name
+ Node Name: Name
+ Node Name: Name
+Delete the DOM tree
+Finished

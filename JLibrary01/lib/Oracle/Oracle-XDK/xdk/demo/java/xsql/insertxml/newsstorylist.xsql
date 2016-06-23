@@ -1,0 +1,12 @@
+<?xml version = '1.0'?>
+<?xml-stylesheet type="text/xsl" href="newsstorylist.xsl"?>
+<page connection="demo" xmlns:xsql="urn:oracle-xsql">
+  <xsql:insert-request table="newsstory" transform="moreover-to-newsstory.xsl"/>
+  <latestnews>
+    <xsql:query max-rows="10">
+      SELECT id, title, url as h_url
+      FROM newsstory
+      ORDER BY id DESC
+    </xsql:query>
+  </latestnews>
+</page>

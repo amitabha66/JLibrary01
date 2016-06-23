@@ -1,0 +1,248 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; U) [Netscape]">
+   <title>Class XMLSchema</title>
+</head>
+<body>
+
+<pre>[<a href="packages.html">All Packages</a>]&nbsp; [<a href="Package-schema.html">This Package</a>]</pre>
+
+<hr>
+<h1>
+Class: <i>XMLSchema</i></h1>
+This class contains top-level methods for invoking the schema processor.
+<p>
+<hr>
+<h2>
+<img SRC="method-index.gif" ALT="Method Index" height=38 width=207></h2>
+
+<table>
+<tr>
+<td><b><a href="#xsdinit">initialize</a></b></td>
+
+<td>Initialize Schema Processor</td>
+</tr>
+
+<tr>
+<td><b><a href="#xsdload">load</a></b></td>
+
+<td>Load an additional Schema file</td>
+</tr>
+
+<tr>
+<td><b><a href="#xsdtarget">target</a></b></td>
+
+<td>Return target namespace URI</td>
+</tr>
+
+<tr>
+<td><b><a href="#xsdterm">terminate</a></b></td>
+
+<td>Terminate Schema Processor</td>
+</tr>
+
+<tr>
+<td><b><a href="#xsdval">validate</a></b></td>
+
+<td>Validate an instance document against a Schema</td>
+</tr>
+</table>
+
+<hr><a NAME="methods"></a>
+<h2>
+<img SRC="methods.gif" ALT="Methods" height=38 width=151></h2>
+<a NAME="xsdinit"></a>
+<h3>
+<b>initialize</b></h3>
+
+<dl>
+<dl>
+<dt>
+<b><i>Function:</i></b></dt>
+
+<dd>
+Initialize Schema Processor</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Prototype:</i></b></dt>
+
+<dd>
+<tt>uword initialize(XMLParser *parser)</tt></dd>
+
+<br>&nbsp;
+<dt>
+<b>Arguments:</b></dt>
+
+<dd>
+<tt>parser</tt> -- XMLParser object used for allocating memory</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Returns:</i></b></dt>
+
+<dd>
+<tt>uword</tt> -- Error code, 0 for success</dd>
+</dl>
+</dl>
+<a NAME="xsdload"></a>
+<hr>
+<h3>
+<b>load</b></h3>
+
+<dl>
+<dl>
+<dt>
+<b><i>Function:</i></b></dt>
+
+<dd>
+Explicitly load a schema (if not already loaded); returns a pointer to
+the schema, new or old. It is not usually necessary to use this method,
+as the URL of a default schema may be passed directly to the <tt>validate</tt>
+method.</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Prototype:</i></b></dt>
+
+<dd>
+<tt>uword load(oratext *uri, oratext *nsp, Schema **schema)</tt></dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Arguments:</i></b></dt>
+
+<dd>
+<tt>uri</tt> -- URI of Schema</dd>
+
+<dd>
+<tt>nsp</tt> -- Namespace of Schema (may be NULL)</dd>
+
+<dd>
+<tt>schema</tt> -- Returned pointed to schema</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Returns:</i></b></dt>
+
+<dd>
+<tt>uword</tt> -- Error code, 0 for success</dd>
+</dl>
+</dl>
+<a NAME="xsdval"></a>
+<hr>
+<h3>
+<b>validate</b></h3>
+
+<dl>
+<dl>
+<dt>
+<b><i>Function:</i></b></dt>
+
+<dd>
+Validates an instance document against a Schema</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Prototype:</i></b></dt>
+
+<dd>
+<tt>uword validate(Element *root, oratext *url)</tt></dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Arguments:</i></b></dt>
+
+<dd>
+root -- root element of the document returned by parser.getDocumentElement()</dd>
+
+<dd>
+<tt>url</tt> -- URL of default schema (optional)</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Returns:</i></b></dt>
+
+<dd>
+<tt>uword</tt> -- Error code, 0 on success</dd>
+
+<br>&nbsp;
+</dl>
+</dl>
+<a NAME="xsdtarget"></a>
+<hr>
+<h3>
+<b>target</b></h3>
+
+<dl>
+<dl>
+<dt>
+<b><i>Function:</i></b></dt>
+
+<dd>
+Return its target namespace URI given a Schema handle (returned by load())</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Prototype:</i></b></dt>
+
+<dd>
+<tt>oratext *target(Schema *schema)</tt></dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Arguments:</i></b></dt>
+
+<dd>
+schema -- Schema handle as returned by load() method</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Returns:</i></b></dt>
+
+<dd>
+<tt>target namespace URI</tt></dd>
+
+<dl>&nbsp;</dl>
+</dl>
+<a NAME="xsdterm"></a>
+<hr>
+<h3>
+<b>terminate</b></h3>
+
+<dl>
+<dl>
+<dt>
+<b><i>Function:</i></b></dt>
+
+<dd>
+Terminate Schema Processor, tear down, free memory, etc</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Prototype:</i></b></dt>
+
+<dd>
+<tt>void terminate(void)</tt></dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Arguments:</i></b></dt>
+
+<dd>
+None</dd>
+
+<br>&nbsp;
+<dt>
+<b><i>Returns:</i></b></dt>
+
+<dd>
+<tt>void</tt></dd>
+
+<br>&nbsp;</dl>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+JavaActivation
+JavaMail
+Oracle

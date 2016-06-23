@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ROWSET>
+ <ROW num="1">
+  <EMPNO>7369</EMPNO>
+  <ENAME>SMITH</ENAME>
+  <JOB>CLERK</JOB>
+ </ROW>
+ <ROW num="2">
+  <EMPNO>7499</EMPNO>
+  <ENAME>ALLEN</ENAME>
+  <JOB>SALESMAN</JOB>
+ </ROW>
+ <ROW num="3">
+  <EMPNO>7521</EMPNO>
+  <ENAME>WARD</ENAME>
+  <JOB>SALESMAN</JOB>
+ </ROW>
+</ROWSET>
+

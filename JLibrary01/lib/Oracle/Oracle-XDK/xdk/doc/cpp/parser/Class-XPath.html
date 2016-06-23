@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class XPath</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-xsl.html">This Package</a>]</pre>
+
+<hr>
+<h1>Class: <i>XPath</i></h1>
+
+This class contains top-level methods for invoking the XPath processor.
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+
+<table>
+  <tr>
+    <td><a href="#xpath"><b>XPath</b></a></td>
+    <td>XPath constructor</td>
+  </tr>
+  <tr>
+    <td><a href="#dxpath"><b>~XPath</b></a></td>
+    <td>Deletes the XPath object</td>
+  </tr>
+
+  <tr>
+    <td><a href="#parsexpathexpr"><b>parsexpathexpr</b></a></td>
+    <td>Parses an XPath expression</td>
+  </tr>
+  <tr>
+    <td><a href="#evalxpathexpr"><b>evalxpathexpr</b></a></td>
+    <td>Evaluates an already parsed XPath expression</td>
+  </tr>
+</table>
+
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<hr>
+<a name="xpath"></a>
+<h3><b>XPath</b></h3>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Creates an XPath object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+XPath (xmlctx *ctx, xmlnode *xslnode, 
+       xmlnode* xml_node, oratext* baseURI, 
+       size_t nctxels, xmlnode ** ctxnodes);
+</pre><p>
+<dt><b><i>Parameters</b></i><p>
+<dd><pre>
+ctx      (IN) - XSL context. Could be NULL. 
+xslnode  (IN) - The XSL node to be used for namespace expansion. 
+                Could be set to NULL.
+xmlnode  (IN) - The context node. Set to NULL for parsing.
+baseURI  (IN) - The base URI for parsing.
+nctxels  (IN) - The number of nodes in the current node set. 
+ctxnodes (IN) - The current node set.
+</pre>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+An XPath object. This call never fails.  
+</pre>
+</dl>
+
+<hr>
+<a name="dxpath"></a>
+<h3><b>~XPath</b></h3>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Deletes an XPath object.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+delete ();
+</pre><p>
+</dl>
+
+<hr>
+<a name="parsexpathexpr"></a>
+<h3><b>parsexpathexpr</b></h3>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Parses an XPath expression.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+xpexpr *parsexpathexpr (oratext *expr, sword *err);
+</pre><p>
+<dt><b><i>Parameters</b></i><p>
+<dd><pre>
+expr (IN)     - The expression in the form of a string.
+err  (OUT)    - The error code.
+</pre>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+On success, returns the expression tree. On failure, returns <b>NULL</b>.  
+</pre>
+</dl>
+
+<hr>
+<h3><a name="evalxpathexpr">evalxpathexpr</h3></a>
+<dl>
+<dt><b><i>Purpose</b></i><p>
+<dd>Evaluates an XPath expression.<p>
+<dt><b><i>Syntax</b></i>
+<dd><pre>
+XPObject *evalxpathexpr (xpexpr *exprtree, sword *err);
+</pre><p>
+<dt><b><i>Parameters</b></i><p>
+<dd><pre>
+exprtree (IN)     - The expression in the form of a tree.
+err      (OUT)    - The error code.
+</pre>
+<dt><b><i>Returns</b></i><p>
+<dd><pre>
+On success, returns the result object. On failure, returns <b>NULL</b>.  
+</pre>
+<dt><b><i>Notes</b></i><p>
+<dd><pre>
+The type of the result object is one of the following:
+<p>
+  <b>XPOBJTYP_BOOL</b>
+  <b>XPOBJTYP_NUM</b>
+  <b>XPOBJTYP_STR</b>
+  <b>XPOBJTYP_NSET</b>
+  <b>XPOBJTYP_RTFRAG</b>
+<p>
+The object type can be obtained using <b><i>getxpobjtyp</b></i>.
+</pre>
+
+</body>
+</html>

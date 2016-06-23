@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class DOMImplementation</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-DocumentType.html">Previous Class</a>]  [<a href="Class-Element.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>DOMImplementation</i></h1>
+
+This class contains methods relating to the specific DOM implementation
+supported by the parser.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#createDocument"><b>createDocument</b></a></td>
+    <td>Create and return a DOCUMENT node</td>
+  </tr>
+  <tr>
+    <td><a href="#createDocumentType"><b>createDocumentType</b></a></td>
+    <td>Create and return a DOCUMENT_TYPE (DTD) node</td>
+  </tr>
+  <tr>
+    <td><a href="#hasFeature"><b>hasFeature</b></a></td>
+    <td>Detect if the named feature is supported</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="createDocument"></a>
+<h3><b>createDocument</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Creates and returns a DOCUMENT node.  When doctype is not null, its
+   Node.ownerDocument attribute is set to the document being created.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>Document *createDocument(DOMString uri, DOMString qname, DocumentType *dtd)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>uri</tt> -- namespace URI of the new document element
+    <dd> <tt>qname</tt> -- qualified name of the new document element
+    <dd> <tt>dtd</tt> -- document type (DTD)<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>Document*</tt> -- pointer to created Document node
+  </dl></dd>
+</dl>
+
+<a name="createDocumentType"></a>
+<h3><b>createDocumentType</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Creates and returns a DOCUMENT_TYPE (DTD) node.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>DocumentType *createDocumentType(DOMString qname, DOMString pubid, DOMString sysid)<p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>qname</tt> -- qualified name of the new document type
+    <dd> <tt>pubid</tt> -- external subset public identifier
+    <dd> <tt>sysid</tt> -- external subset system identifier<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>DocumentType*</tt> -- pointer to created DOCUMENT_TYPE (DTD) node
+  </dl></dd>
+</dl>
+
+<a name="hasFeature"></a>
+<h3><b>hasFeature</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Test if the DOM implementation implements a specific feature.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>boolean hasFeature(DOMString feature, DOMString version)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> <tt>feature</tt> -- The package name of the feature to test. In
+                            Level 1, the legal values are "HTML" and "XML"
+                            (case-insensitive)
+    <dd> <tt>version</tt> -- This is the version number of the package name
+                            to test. In Level 1, this is the string "1.0".
+                            If the version is not specified, supporting any
+                            version of the feature will cause the method to
+                            return true.<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>boolean</tt> -- feature is supported
+  </dl></dd>
+</dl>
+
+</body>
+</html>

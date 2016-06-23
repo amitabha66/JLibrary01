@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tools APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Ctx.html">Ctx</a></b>
+ | <b><a href="Package-Dom.html">Dom</a></b>
+ | <b><a href="Package-IO.html">IO</a></b>
+ | <b><a href="Package-OracleXml.html">OracleXml</a></b>
+ | <b><a href="Package-Parser.html">Parser</a></b>
+ | <b><a href="Package-Tools.html">Tools</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-Xsl.html">Xsl</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package Tools</h1></center>
+
+    Tools is the namespace (sub-space of OracleXml) for types and
+    interfaces related to the creation and instantiation of Oracle
+    XML tools.<p>
+<ul>
+    <li><a href="#functions"><b>Member Function Index</b></a>
+    <li><a href="#Factory">Interface <b>Factory</b></a> (XML tools factory)
+    <li><a href="#FactoryException">Interface <b>FactoryException</b></a> (Exceptions for Tools namespace)
+</ul>
+
+<hr noshade size=1><center><h2><a name="functions">Member Function Index</a></h2></center>
+<center><table summary="Package 'Tools' function index" cellspacing=0 cellpadding=0>
+<tr bgcolor="#9090F0"><th scope=col>Interface<th scope=col>Function<th scope=col>Description</tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::Factory">Factory</a></b>&nbsp;</tt></td>
+
+    <td>Default constructor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::Factory_1">Factory</a></b>&nbsp;</tt></td>
+
+    <td>Constructor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createDOMParser">createDOMParser</a></b>&nbsp;</tt></td>
+
+    <td>Create DOMParser</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createSAXParser">createSAXParser</a></b>&nbsp;</tt></td>
+
+    <td>Create SAXParser</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createSchemaValidator">createSchemaValidator</a></b>&nbsp;</tt></td>
+
+    <td>Create schema validator</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXPathCompProcessor">createXPathCompProcessor</a></b>&nbsp;</tt></td>
+
+    <td>Create extended XPath processor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXPathCompiler">createXPathCompiler</a></b>&nbsp;</tt></td>
+
+    <td>Create XPath compiler</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXPathProcessor">createXPathProcessor</a></b>&nbsp;</tt></td>
+
+    <td>Create XPath processor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXPointerProcessor">createXPointerProcessor</a></b>&nbsp;</tt></td>
+
+    <td>Create XPointer processor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXslCompiler">createXslCompiler</a></b>&nbsp;</tt></td>
+
+    <td>Create Xsl compiler</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXslExtendedTransformer">createXslExtendedTransformer</a></b>&nbsp;</tt></td>
+
+    <td>Create XSL extended trnasformer</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::createXslTransformer">createXslTransformer</a></b>&nbsp;</tt></td>
+
+    <td>Create XSL trnasformer</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::getContext">getContext</a></b>&nbsp;</tt></td>
+
+    <td>Get factory's context</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#Factory">Factory</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::Factory::~Factory">~Factory</a></b>&nbsp;</tt></td>
+
+    <td>Default destructor</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#FactoryException">FactoryException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::FactoryException::getCode">getCode</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#FactoryException">FactoryException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::FactoryException::getFactoryCode">getFactoryCode</a></b>&nbsp;</tt></td>
+
+    <td>Get Factory exception code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#FactoryException">FactoryException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::FactoryException::getMesLang">getMesLang</a></b>&nbsp;</tt></td>
+
+    <td>Get current language (encoding) of error messages</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#FactoryException">FactoryException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Tools::FactoryException::getMessage">getMessage</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error message</td>
+  </tr>
+</table></center>
+
+<br><hr noshade size=1><center><h2><a name="Factory">Interface Factory</a> (XML tools factory)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'Factory' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::Factory"><b>Factory</b></a></td>
+	       <td>Default constructor</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::Factory_1"><b>Factory</b></a></td>
+	       <td>Constructor</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createDOMParser"><b>createDOMParser</b></a></td>
+	       <td>Create DOMParser</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createSAXParser"><b>createSAXParser</b></a></td>
+	       <td>Create SAXParser</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createSchemaValidator"><b>createSchemaValidator</b></a></td>
+	       <td>Create schema validator</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXPathCompProcessor"><b>createXPathCompProcessor</b></a></td>
+	       <td>Create extended XPath processor</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXPathCompiler"><b>createXPathCompiler</b></a></td>
+	       <td>Create XPath compiler</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXPathProcessor"><b>createXPathProcessor</b></a></td>
+	       <td>Create XPath processor</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXPointerProcessor"><b>createXPointerProcessor</b></a></td>
+	       <td>Create XPointer processor</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXslCompiler"><b>createXslCompiler</b></a></td>
+	       <td>Create Xsl compiler</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXslExtendedTransformer"><b>createXslExtendedTransformer</b></a></td>
+	       <td>Create XSL extended trnasformer</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::createXslTransformer"><b>createXslTransformer</b></a></td>
+	       <td>Create XSL trnasformer</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::getContext"><b>getContext</b></a></td>
+	       <td>Get factory's context</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::Factory::~Factory"><b>~Factory</b></a></td>
+	       <td>Default destructor</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="FactoryException">Interface FactoryException</a> (Exceptions for Tools namespace)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'FactoryException' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Tools::FactoryException::getCode"><b>getCode</b></a></td>
+	       <td>Get Oracle XML error code embedded in the exception </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::FactoryException::getFactoryCode"><b>getFactoryCode</b></a></td>
+	       <td>Get Factory exception code embedded in the exception </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::FactoryException::getMesLang"><b>getMesLang</b></a></td>
+	       <td>Get current language (encoding) of error messages</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Tools::FactoryException::getMessage"><b>getMessage</b></a></td>
+	       <td>Get Oracle XML error message</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="Tools::Factory::Factory">Factory</a></h2>
+
+<table summary="Function 'Tools::Factory::Factory' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>Factory</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Default constructor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Factory()&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Factory)</b></tt> object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::Factory_1">Factory</a></h2>
+
+<table summary="Function 'Tools::Factory::Factory_1' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>Factory</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Constructor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Factory(&nbsp;Context*&nbsp;ctx_ptr)&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::Factory_1' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Factory)</b></tt> object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates factory object given a Context object<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createDOMParser">createDOMParser</a></h2>
+
+<table summary="Function 'Tools::Factory::createDOMParser' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createDOMParser</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create DOMParser</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;DOMParser<&nbsp;Context,&nbsp;Node>*&nbsp;createDOMParser&nbsp;(<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMParserIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createDOMParser' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> parser Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(DOMParser*)</b></tt> pointer to the parser object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates DOM parser
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createSAXParser">createSAXParser</a></h2>
+
+<table summary="Function 'Tools::Factory::createSAXParser' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createSAXParser</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create SAXParser</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;SAXParser<&nbsp;Context>*&nbsp;createSAXParser&nbsp;(&nbsp;SAXParserIdType&nbsp;id_type,<br>				&nbsp;&nbsp;&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createSAXParser' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> parser Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(SAXParser*)</b></tt> pointer to the parser object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates SAX parser
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createSchemaValidator">createSchemaValidator</a></h2>
+
+<table summary="Function 'Tools::Factory::createSchemaValidator' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createSchemaValidator</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create schema validator</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;SchemaValidator<&nbsp;Node>*&nbsp;createSchemaValidator&nbsp;(<br>		&nbsp;&nbsp;SchValidatorIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createSchemaValidator' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> validator Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(SchemaValidator*)</b></tt> pointer to the validator object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates schema validator
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXPathCompProcessor">createXPathCompProcessor</a></h2>
+
+<table summary="Function 'Tools::Factory::createXPathCompProcessor' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXPathCompProcessor</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create extended XPath processor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;CompProcessor<&nbsp;Context,&nbsp;Node>*&nbsp;createXPathCompProcessor&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XPathPrIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXPathCompProcessor' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> processor Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(CompProcessor*)</b></tt> pointer to the processor object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates extended XPath processor; takes XvmPrCXml value only
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXPathCompiler">createXPathCompiler</a></h2>
+
+<table summary="Function 'Tools::Factory::createXPathCompiler' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXPathCompiler</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create XPath compiler</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;XPath::Compiler<&nbsp;Context,&nbsp;Node>*&nbsp;createXPathCompiler&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XPathCompIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXPathCompiler' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> compiler Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(XPathCompiler*)</b></tt> pointer to the compiler object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates XPath compiler
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXPathProcessor">createXPathProcessor</a></h2>
+
+<table summary="Function 'Tools::Factory::createXPathProcessor' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXPathProcessor</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create XPath processor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;XPath::Processor<&nbsp;Context,&nbsp;Node>*&nbsp;createXPathProcessor&nbsp;(<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XPathPrIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXPathProcessor' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> processor Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Processor*)</b></tt> pointer to the processor object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates XPath processor
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXPointerProcessor">createXPointerProcessor</a></h2>
+
+<table summary="Function 'Tools::Factory::createXPointerProcessor' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXPointerProcessor</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create XPointer processor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;XPointer::Processor<&nbsp;Context,&nbsp;Node>*&nbsp;createXPointerProcessor&nbsp;(<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XppPrIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);<br>};<br>&nbsp;&nbsp;}</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXPointerProcessor' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> processor Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Processor*)</b></tt> pointer to the processor object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates XPointer processor
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXslCompiler">createXslCompiler</a></h2>
+
+<table summary="Function 'Tools::Factory::createXslCompiler' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXslCompiler</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create Xsl compiler</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Xsl::Compiler<&nbsp;Context,&nbsp;Node>*&nbsp;createXslCompiler&nbsp;(<br>		XslCompIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXslCompiler' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> compiler Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Compiler*)</b></tt> pointer to the compiler object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates Xsl compiler
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXslExtendedTransformer">createXslExtendedTransformer</a></h2>
+
+<table summary="Function 'Tools::Factory::createXslExtendedTransformer' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXslExtendedTransformer</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create XSL extended trnasformer</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;CompTransformer<&nbsp;Context,&nbsp;Node>*&nbsp;createXslExtendedTransformer&nbsp;(<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XslTrIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXslExtendedTransformer' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> transformer Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(CompTrasformer*)</b></tt> pointer to the transformer object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates XSL extended trnasformer; takes XvmTrCXml value only 
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::createXslTransformer">createXslTransformer</a></h2>
+
+<table summary="Function 'Tools::Factory::createXslTransformer' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>createXslTransformer</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Create XSL trnasformer</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Transformer<&nbsp;Context,&nbsp;Node>*&nbsp;createXslTransformer&nbsp;(<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XslTrIdType&nbsp;id_type,&nbsp;Context*&nbsp;ctx_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(FactoryException);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Tools::Factory::createXslTransformer' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>id_type</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> transformer Id type</td></tr>
+<tr><td scope=row><tt>ctx_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to a Context object</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Trasformer*)</b></tt> pointer to the transformer object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Creates XSL trnasformer
+        
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::getContext">getContext</a></h2>
+
+<table summary="Function 'Tools::Factory::getContext' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getContext</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get factory's context</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Context*&nbsp;getContext()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Context*)</b></tt> pointer to the contextobject</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns factory's context<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::Factory::~Factory">~Factory</a></h2>
+
+<table summary="Function 'Tools::Factory::~Factory' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>~Factory</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Factory">Factory</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Default destructor</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;~Factory();</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::FactoryException::getCode">getCode</a></h2>
+
+<table summary="Function 'Tools::FactoryException::getCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#FactoryException">FactoryException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;unsigned&nbsp;getCode()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(unsigned)</b></tt> numeric error code (0 on success)</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::FactoryException::getFactoryCode">getFactoryCode</a></h2>
+
+<table summary="Function 'Tools::FactoryException::getFactoryCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getFactoryCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#FactoryException">FactoryException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Factory exception code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;FactoryExceptionCode&nbsp;getFactoryCode()&nbsp;const&nbsp;=&nbsp;0;<br>};</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(FactoryExceptionCode)</b></tt> exception code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype
+	for implementation defined member functions returning
+	exception codes specific to the Tools namespace, defined
+	in FactoryExceptionCode, of the exceptional situations during
+	execution<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::FactoryException::getMesLang">getMesLang</a></h2>
+
+<table summary="Function 'Tools::FactoryException::getMesLang' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMesLang</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#FactoryException">FactoryException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMesLang()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext*)</b></tt> Current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Tools::FactoryException::getMessage">getMessage</a></h2>
+
+<table summary="Function 'Tools::FactoryException::getMessage' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMessage</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#FactoryException">FactoryException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error message</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMessage()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> Error message</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+</body>
+</html>

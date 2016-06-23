@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>CORE XML: C++ SAX API</title></head>
+<body>
+<a name="_top_"></a>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">Previous Package</a>]</pre>
+<hr>
+<h1>C++ <i>SAX</i> API</h1>
+<hr>
+The SAX API is based on callbacks.  Instead of the entire document being
+parsed and turned into a data structure which may be referenced (by the
+DOM interface), the SAX interface is serial.  As the document is processed,
+appropriate SAX user callback functions are invoked.  Each callback function
+returns an error code, zero meaning success, any non-zero value meaning
+failure.  If a non-zero code is returned, document processing is stopped.<p>
+To use SAX, an <tt>xmlsaxcb</tt>
+structure is initialized with function pointers and passed to the
+<tt>xmlinit()</tt> call.  A pointer to a user-defined context structure
+may also be included; that context pointer will be passed to each SAX
+function.<p>
+
+Note this SAX functionality is identical to the C version.<p>
+<hr>
+<h2>SAX callback structure</h2>
+
+<pre>
+typedef struct
+{
+   sword (*<a href="#startDocument">startDocument</a>)(void *ctx);
+   sword (*<a href="#endDocument">endDocument</a>)(void *ctx);
+   sword (*<a href="#startElement">startElement</a>)(void *ctx, const oratext *name, const struct xmlnodes *attrs);
+   sword (*<a href="#endElement">endElement</a>)(void *ctx, const oratext *name);
+   sword (*<a href="#characters">characters</a>)(void *ctx, const oratext *ch, size_t len);
+   sword (*<a href="#ignorableWhitespace">ignorableWhitespace</a>)(void *ctx, const oratext *ch, size_t len);
+   sword (*<a href="#processingInstruction">processingInstruction</a>)(void *ctx, const oratext *target, const oratext *data);
+   sword (*<a href="#notationDecl">notationDecl</a>)(void *ctx, const oratext *name,
+                         const oratext *publicId, const oratext *systemId);
+   sword (*<a href="#unparsedEntityDecl">unparsedEntityDecl</a>)(void *ctx, const oratext *name, const oratext *publicId,
+                               const oratext *systemId, const oratext *notationName);
+   sword (*<a href="#nsStartElement">nsStartElement</a>)(void *ctx, const oratext *qname, const oratext *local,
+                           const oratext *nsp, const struct xmlnodes *attrs);
+   sword (*<a href="#comment">comment</a>)(void *ctx, const oratext *data);
+   sword (*<a href="#elementDecl">elementDecl</a>)(void *ctx, const oratext *name, const oratext *content);
+   sword (*<a href="#attributeDecl">attributeDecl</a>)(void *ctx, const oratext *elem,
+                          const oratext *attr, const oratext *body);
+   sword (*<a href="#xmlDecl">xmlDecl</a>)(void *ctx, const oratext *version, boolean encoding);
+
+} xmlsaxcb;
+</pre>
+
+<a name="startDocument"><hr></a>
+ 
+<h3><b>startDocument</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once when document processing is first starting<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><tt>sword startDocument(void *ctx)</tt><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="endDocument"><hr></a>
+
+<h3><b>endDocument</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once when document processing is finished<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><tt>sword endDocument(void *ctx)</tt><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="startElement"><hr></a>
+
+<h3><b>startElement</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once for each new document element<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword startElement(void *ctx, const oratext *name, const struct xmlnodes *attrs)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>name</tt> -- name of node<br>
+    <dd><tt>attrs</tt> -- array of node's attributes<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="endElement"><hr></a>
+
+<h3><b>endElement</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once when each document element closes<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><tt>sword endElement(void *ctx, const oratext *name)</tt><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>name</tt> -- name of node<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="characters"><hr></a>
+
+<h3><b>characters</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called for each piece of literal text<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><tt>sword characters(void *ctx, const oratext *ch, size_t len)</tt><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>ch</tt> -- pointer to text<br>
+    <dd><tt>len</tt> -- number of character in text<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="ignorableWhitespace"><hr></a>
+
+<h3><b>IgnorableWhitespace</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called for each piece of ignorable (non-significant) whitespace<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><tt>sword ignorableWhitespace(void *ctx, const oratext *ch, size_t len)</tt><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>ch</tt> -- pointer to whitespace text<br>
+    <dd><tt>len</tt> -- number of characters of whitespace<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="processingInstruction"><hr></a>
+
+<h3><b>processingInstruction</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once for each PI (Processing Instruction)<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword processingInstruction(void *ctx, const oratext *target,
+                            const oratext *data)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>target</tt> -- PI target<br>
+    <dd><tt>data</tt> -- PI data<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="notationDecl"><hr></a>
+
+<h3><b>notationDecl</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once for each NOTATION<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword notationDecl(void *ctx, const oratext *name,
+                   const oratext *publicId, const oratext *systemId)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>name</tt> -- name of notation<br>
+    <dd><tt>publicId</tt> -- Public ID<br>
+    <dd><tt>systemId</tt> -- System ID<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="unparsedEntityDecl"><hr></a>
+
+<h3><b>unparsedEntityDecl</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Called once for each unparsed entity declaration<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword unparsedEntityDecl(void *ctx, const oratext *name, const oratext *publicId,
+                         const oratext *systemId, const oratext *notationName)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>name</tt> -- name of entity<br>
+    <dd><tt>publicId</tt> -- Public ID<br>
+    <dd><tt>systemId</tt> -- System ID<br>
+    <dd><tt>notationName</tt> -- notation name<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="nsStartElement"><hr></a>
+
+<h3><b>nsStartElement</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Namespace variant of startElement: Called once for each new
+document element, when the element uses uses an explicit namespace<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword startElement(void *ctx, const oratext *qname,
+                   const oratext *local, const oratext *namespace,
+                   const struct xmlnodes *attrs)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>qname</tt> -- qualified namespace<br>
+    <dd><tt>local</tt> -- element local name<br>
+    <dd><tt>namespace</tt> -- element namespace<br>
+    <dd><tt>attrs</tt> -- specified or defaulted attributes<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="comment"><hr></a>
+
+<h3><b>comment</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Receives notification about an XML source comment.<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword comment(void *ctx, const oratext *data)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>data</tt> -- body of comment<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="elementDecl"><hr></a>
+
+<h3><b>elementDecl</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Receives notification about an element declaration.<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword elementDecl(void *ctx, const oratext *name, const oratext *content)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>name</tt> -- name of element being declared<br>
+    <dd><tt>content</tt> -- content model for element<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="attributeDecl"><hr></a>
+
+<h3><b>attributeDecl</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Receives notification about an element's attribute declaration.<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword attributeDecl(void *ctx, const oratext *elem,
+                    const oratext *attr, const oratext *body)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>elem</tt> -- name of element that attribute is being declared for<br>
+    <dd><tt>attr</tt> -- name of attribute being declared<br>
+    <dd><tt>body</tt> -- body of attribute declaration<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.
+  </dl></dd>
+</dl>
+
+<a name="xmlDecl"><hr></a>
+
+<h3><b>xmlDecl</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b><p>
+    <dd>Receives notification about an XML declaration (XMLDecl).<p>
+    <dt><b><i>Prototype:</i></b><p>
+    <dd><pre>sword xmlDecl(void *ctx, const oratext *version, boolean encoding)</pre><p>
+    <dt><b><i>Arguments:</i></b><p>
+    <dd><tt>ctx</tt> -- User-defined context as passed to initialize()<br>
+    <dd><tt>version</tt> -- version number specfied in declaration<br>
+    <dd><tt>encoding</tt> -- flag indicating if encoding was specified<p>
+    <dt><b><i>Returns:</i></b><p>
+    <dd><tt>sword</tt> -- Error code, 0 for success, non-0 for error.<p>
+    <dt><b><i>Notes:</i></b><p>
+    <dd>If an encoding was specified in the XMLDecl, <tt>encoding</tt> will be
+        TRUE.  Since the document's data will be converted to the chosen
+        data encoding, there is no point in providing the original encoding.
+        Instead, the data encoding can get retrieved with getEncoding().  Any
+        new XMLDecl written out will specify the data encoding.
+  </dl></dd>
+</dl>
+
+</body>
+</html>

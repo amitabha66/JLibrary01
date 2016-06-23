@@ -1,0 +1,638 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; SunOS 5.6 sun4u) [Netscape]">
+   <title>Getting Started with XDK C Components</title>
+<!-- saved from url=(0072)http://methane.us.oracle.com:8888/xdkus/doc/xdkdoc_html/xdk_c_start.html -->
+<link rel="stylesheet" href="../s/blafdoc.css" type="text/css">
+</head>
+<body bgcolor="#FFFFFF" link="#000000" vlink="#800080" lang="EN-US">
+
+<div class=Section1>
+<h1>
+Getting Started with XDK C Components</h1>
+
+<div class="MsoNormal">August 4, 2003</div>
+
+<h2 class="MsoNormal">
+1. Introduction</h2>
+
+<div class="MsoNormal">XDK C components contain the basic building blocks
+for reading, manipulating, transforming and validating XML documents.
+The Oracle XDK C components are:</div>
+</div>
+
+<ul>
+<div class=Section1>
+<li>
+XML Parser: checks if an XML document is well-formed, and optionally validates
+it against a DTD. The parser constructs an object tree which can be
+accessed via a DOM interface or operates serially via a SAX interface.</li>
+</div>
+
+<div class=Section1>
+<li>
+XSLT Processor: provides the ability to format an XML document according
+to a stylesheet and is bundled with the parser.</li>
+</div>
+
+<div class=Section1>
+<li>
+XSLT VM: high performance XSLT transformation engine.</li>
+</div>
+
+<div class=Section1>
+<li>
+XML Schema Processor: supports parsing and validating XML files against
+an XML Schema definition file.</li>
+</div>
+</ul>
+
+<div class=Section1>
+<div class="MsoNormal">This document describes how to use and install the XDK 
+C components and how to set up the environment.</div>
+
+<h2>
+2. Installation of XDK C Components</h2>
+
+<p><div class="MsoNormal">If you have installed the Oracle Database or iAS 
+(Application Server), you already have the XDK installed.  You can also 
+download the latest version of the XDK from OTN by following the steps below.
+
+<p> Note that the XDK directory will be referred to as
+$XDK_HOME or %XDK_HOME% and that the Oracle home will be referred to as
+$ORACLE_HOME or %ORACLE_HOME% in later sections.
+</div>
+
+<ul>
+<div class=Section1>
+<li>
+Visit <u>http://otn.oracle.com/tech/xml/xdk/content.html</u></li>
+</div>
+
+<div class=Section1>
+<li>
+Click on the Software link in the right-hand bar</li>
+</div>
+
+<li>Log in with your OTN username and password
+(registration is free if you don't already have an account)</li>
+
+<div class=Section1>
+<li>
+Select the NT or Unix download</li>
+</div>
+
+<div class=Section1>
+<li>
+Accept all conditions in the licensing agreement</li>
+</div>
+
+<div class=Section1>
+<li>
+Click on the appropriate *.tar.gz or *.zip file</li>
+</div>
+
+<div class=Section1>
+<li>
+Extract the files in the distribution:</li>
+</div>
+
+<ul>
+<div class=Section1>
+<li>
+Choose a directory under which you would like the xdk directory and subdirectories
+to go</li>
+</div>
+
+<div class=Section1>
+<li>
+Change to that directory and then extract the XDK download archive file using:
+</li>
+</div>
+</ul>
+
+<pre class="MsoNormal" style="MARGIN-LEFT: 1in"><tt><font face="Courier New, Courier, mono"><font size=+0>UNIX: tar xvfz xdk_xxx.tar.gz&nbsp;&nbsp;
+Windows: use the </font></font></tt><font face="Courier New, Courier, mono"><font size=+0><a href="http://www.winzip.com/">WinZip</a><tt> visual archive extraction tool</tt></font></font></pre>
+</ul>
+
+<div class="MsoNormal">After installing the UNIX version of XDK, the 
+directory structure is:</div>
+
+<div class="MsoNormal"><tt>-$XDK_HOME</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp; |- bin: executable files</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp; |- lib: library files</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp; |- nls/data: NLS data files (*.nlb)</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp; |- xdk</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - demo/c: demonstration code</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - doc/c: documentation</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - include: header files</tt></div>
+
+<div class="MsoNormal"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| - mesg: message files (*.msb)</tt></div>
+
+<br>&nbsp;
+<h2>
+3. Setup the Environment</h2>
+
+<h3>
+3.1 UNIX Setup of XDK C Components</h3>
+
+<h4>
+3.1.1 XDK C Components</h4>
+
+<p>The C XDK components are in libxml10.a.  Previous releases had additional
+libraries but now there is only one library for all components.
+
+<p>The XDK C Components package depends on the Oracle CORE and NLS libraries,
+which are listed in the following table:
+<table BORDER CELLSPACING=0 CELLPADDING=0 >
+<caption>&nbsp;</caption>
+
+<tr>
+<td VALIGN=TOP COLSPAN="3" WIDTH="623">
+<center>
+<h5>
+Table 3.2:  Libraries of dependent XDK C Components</h5></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<center><b>Library</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+<center><b>Package Name</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<center><b>Notes</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<div class="MsoNormal">CORE Library</div>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+<div class="MsoNormal">libcore10.a</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle CORE library</div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<div class="MsoNormal">NLS Library</div>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+<div class="MsoNormal">libnls10.a</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle NLS common library</div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="138">
+<div class="MsoNormal">libunls10.a</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle NLS library for Unicode support</div>
+</td>
+</tr>
+</table>
+
+<h4>
+3.1.2 Environment Setup for Command Line Usage</h4>
+The XML parser and XSLT processor may be called as an executable by invoking 
+<tt>bin/xml</tt> which has the following options:
+
+<ul>
+    <table>
+	<tr><td><tt>-c</tt></td>
+	    <td><b>C</b>onformance check only, no validation</td>
+	</tr>
+	<tr><td><tt>-e <i>encoding</i></tt></td>
+	    <td>Specify default input file <b>e</b>ncoding ("incoding")</td>
+	</tr>
+	<tr><td><tt>-E <i>encoding</i></tt></td>
+	    <td>Specify DOM/SAX <b>e</b>ncoding ("outcoding")</td>
+	</tr>
+	<tr><td><tt>-f</tt></td>
+	    <td>File - Interpret <document> as filespec, not URI</td>
+	</tr>
+	<tr><td><tt>-h</tt></td>
+	    <td><b>H</b>elp - show usage help and full list of flags</td>
+	</tr>
+	<tr><td><tt>-i <i>n</i></tt></td>
+	    <td>Number of times to iterate the XSLT processing</td>
+	</tr>
+	<tr><td><tt>-l <i>language</i></tt></td>
+	    <td>Language for error reporting</td>
+	</tr>
+	<tr><td><tt>-n</tt></td>
+	    <td><b>N</b>umber - DOM traverse and report number of elements</td>
+	</tr>
+	<tr><td><tt>-o <i>XSLoutfile</i></tt></td>
+	    <td>Specify output file of XSLT processor</td>
+	</tr>
+	<tr><td><tt>-p</tt></td>
+	    <td><b>P</b>rint document after parse</td>
+	</tr>
+	<tr><td>-<tt>r</tt></td>
+	    <td>Do not ignore &lt;xsl:output> instruction in XSLT processing</td>
+	</tr>
+	<tr><td><tt>-s <i>stylesheet</i></tt></td>
+	    <td>Style sheet - specifies the XSL style sheet</td>
+	</tr>
+	<tr><td><tt>-v</tt></td>
+	    <td><b>V</b>ersion - display parser version then exit</td>
+	</tr>
+	<tr><td><tt>-V <i>var</i> <i>value</i></tt></td>
+	    <td>To test top level variables in CXSLT</td>
+	</tr>
+	<tr><td><tt>-w</tt></td>
+	    <td><b>W</b>hitespace - preserve all whitespace</td>
+	</tr>
+	<tr><td><tt>-W</tt></td>
+	    <td>Warning - stop parsing after a warning</td>
+	</tr>
+	<tr><td><tt>-x</tt></td>
+	    <td>SA<b>X</b> - exercise SAX interface and print document</td>
+	</tr>
+    </table>
+</ul>
+
+<p>The Schema Validator may be called as an executable by invoking 
+<tt>bin/schema</tt> which takes two arguments: the XML instance document and
+optionally a default schema to apply.  It has the following options:
+
+<ul>
+    <table>
+	<tr><td><tt>-0</tt></td>
+	    <td>Always exit with code <b>0</b> (success)</td>
+	</tr>
+	<tr><td><tt>-e <i>encoding</i></tt></td>
+	    <td>Specify default input file <b>e</b>ncoding ("incoding")</td>
+	</tr>
+	<tr><td><tt>-E <i>encoding</i></tt></td>
+	    <td>Specify output/data/presentation <b>e</b>ncoding ("outcoding")</td>
+	</tr>
+	<tr><td><tt>-i</tt></td>
+	    <td><b>I</b>gnore provided schema file</td>
+	</tr>
+	<tr><td><tt>-o <i>num</i></tt></td>
+	    <td>Validation <b>o</b>ptions</td>
+	</tr>
+	<tr><td><tt>-p</tt></td>
+	    <td><b>P</b>rint instance document to stdout on success</td>
+	</tr>
+	<tr><td><tt>-u</tt></td>
+	    <td>Force the <b>U</b>nicode code path</td>
+	</tr>
+	<tr><td><tt>-v</tt></td>
+	    <td><b>V</b>ersion - display version then exit</td>
+	</tr>
+    </table>
+</ul>
+
+<p>In order to run the command line executables, you need to first check
+if the environment variable <tt>ORA_NLS10</tt> is set to point to the location
+of the NLS encoding definition files. If you install the Oracle database,
+you can set it to be:
+<pre>setenv ORA_NLS10 ${ORACLE_HOME}/nls/data</pre>
+If there is no Oracle database is installed, you can use the NLS encoding
+definition files which come with the XDK release (which are a subset&nbsp; of 
+what is in the Oracle database release) by:
+<pre>setenv ORA_NLS10 ${XDK_HOME}/nls/data</pre>
+<p><a NAME="error"></a>Error message files are provided in the <tt>xdk/mesg/</tt>
+subdirectory.  Files ending in <tt>.msb</tt> are machine-readable and needed
+at runtime; files ending in <tt>.msg</tt> are human-readable and include cause
+and action descriptions for each error.  The messages files also exist in the
+<tt>$ORACLE_HOME/xdk/mesg</tt> directory.  If no Oracle database is installed,
+you should set the environment variable <b><tt>ORA_XML_MESG</tt></b> to point 
+to the <strong><i>absolute path</i></strong> of the <tt>xdk/mesg/</tt> 
+subdirectory in XDK release:
+<pre>setenv ORA_XML_MESG ${XDK_HOME}/xdk/mesg</pre>
+
+<p>The XDK components may also be invoked by writing code to use the supplied APIs.
+The code must be compiled using the headers in the <tt>xdk/include/</tt>
+subdirectory and linked against the libraries in the <tt>lib/</tt>
+subdirectory.  See <tt>Makefile</tt> in the <tt>xdk/demo/</tt> subdirectory
+for full details of how to build your program.
+
+<h3 style=" ">
+3.2 Windows NT Setup of XDK C Components</h3>
+
+<h4 style=" ">
+3.2.1 XDK C Components</h4>
+
+<p>The C XDK components are in libxml10.lib and libxml10.dll.  Previous 
+releases had additional libraries and DLLs but now there is only one library 
+and DLL for all components.
+
+<p style=" ">The XDK C Components&nbsp; depend on the Oracle CORE and NLS
+libraries, which are listed in the following table:
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=0 >
+<caption>&nbsp;</caption>
+
+<tr>
+<td VALIGN=TOP COLSPAN="3" WIDTH="623">
+<center>
+<h5>
+Table 3.4: Libraries of dependent XDK C Components</h5></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<center><b>Library</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+<center><b>Package Name</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<center><b>Notes</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<div class="MsoNormal">CORE Library</div>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+
+<div class="MsoNormal">oracore10.dll</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle CORE library</div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">
+<div class="MsoNormal">NLS Library</div>
+</td>
+
+<td VALIGN=TOP WIDTH="138">
+
+<div class="MsoNormal">oranls10.dll</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle NLS common library</div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="114">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="138">
+
+<div class="MsoNormal">oraunls10.dll</div>
+</td>
+
+<td VALIGN=TOP WIDTH="371">
+<div class="MsoNormal">Oracle NLS library for Unicode support</div>
+</td>
+</tr>
+</table>
+
+<h4 style=" ">
+3.2.2 Environment Setup for Command Line Usage</h4>
+The XML parser and XSLT processor may be called as an executable by invoking 
+<tt>bin\xml.exe</tt>.  The options are listed in Section 3.1.2.
+
+<p>The Schema Validator may be called as an executable by invoking 
+<tt>bin\schema.exe</tt> which takes two arguments: the XML instance document 
+and optionally a default schema to apply. The options are listed in Section 
+3.1.2.
+
+<p>In order to run the command line executables, you need to first check
+if the environment variable <tt>ORA_NLS10</tt> is set to point to the location
+of the NLS encoding definition files. If you install the Oracle database,
+you can set it to be:
+<pre>set ORA_NLS10=%ORACLE_HOME%\nls\data</pre>
+If there is no Oracle database is installed, you can use the NLS encoding
+definition files which come with the XDK release (which are a subset&nbsp; of 
+what is in the Oracle database release) by:
+<pre>set ORA_NLS10=%XDK_HOME%\nls\data</pre>
+<p><a NAME="error"></a>Error message files are provided in the <tt>xdk\mesg/</tt>
+subdirectory.  Files ending in <tt>.msb</tt> are machine-readable and needed
+at runtime; files ending in <tt>.msg</tt> are human-readable and include cause
+and action descriptions for each error.  The messages files also exist in the
+<tt>%ORACLE_HOME%\xdk\mesg</tt> directory.  If no Oracle database is installed,
+you should set the environment variable <b><tt>ORA_XML_MESG</tt></b> to point 
+to the <strong><i>absolute path</i></strong> of the <tt>xdk\mesg\</tt> 
+subdirectory in XDK release:
+<pre>set ORA_XML_MESG=%XDK_HOME%\xdk\mesg</pre>
+
+<p>The XDK components may also be invoked by writing code to use the supplied APIs.
+The code must be compiled using the headers in the <tt>xdk\include\</tt>
+subdirectory and linked against the libraries in the <tt>lib\</tt>
+subdirectory.  See <tt>Make.bat</tt> in the <tt>xdk\demo\</tt> subdirectory
+for full details of how to build your program.
+
+<p>In order to compile the sample code in a command line
+environment, you need to set the path for the cl compiler.
+<center><pre style="TEXT-ALIGN: center"><img SRC="../images/image004_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1026" height=460 width=405></pre></center>
+
+<center><pre style="TEXT-ALIGN: center; ">Figure 3-1: Setup Path for cl compiler</pre></center>
+
+<pre style="TEXT-ALIGN: center; ">&nbsp;</pre>
+Go to the Start Menu and select Settings ->Control Panel. In the pop up window
+of Control Panel, select the System icon and double click. A window named 
+System Properties will pop up. Select Environment Tab and add the path
+of cl.exe to the PATH variable shown in Figure 3-1.
+<p>In addition, you need to update the Make.bat&nbsp; by adding the path
+of the libraries and header files to the compiling and linking commands:
+For example: Make.bat
+<pre>:COMPILE
+set filename=%1
+cl -c -Fo%filename%.obj %opt_flg%&nbsp; /DCRTAPI1=_cdecl /DCRTAPI2=_cdecl /nologo /Zl /Gy /DWIN32 /D_WIN32 /DWIN_NT&nbsp;
+/DWIN32COMMON /D_DLL /D_MT /D_X86_=1 /Doratext=OraText -I. -I..\..\..\include&nbsp;
+<b>-ID:\Progra~1\Micros~1\VC98\Include</b> %filename%.c</pre>
+
+<pre>goto :EOF</pre>
+
+<pre>:LINK&nbsp;
+set filename=%1
+link %link_dbg% /out:..\..\..\..\bin\%filename%.exe /libpath:%ORACLE_HOME%\lib <b>/libpath:D:\Progra~1\Micros~1
+\VC98\lib</b> /libpath:..\..\..\..\lib&nbsp; %filename%.obj oraxml10.lib oracore10.lib oranls10.lib oraunls10.lib user32.lib&nbsp;
+kernel32.lib msvcrt.lib ADVAPI32.lib oldnames.lib winmm.lib
+:EOF
+&nbsp;&nbsp;&nbsp;&nbsp;
+D:\Progra~1\Micros~1\VC98\Include: is the path for header files
+D:\Progra~1\Micros~1\VC98\lib: is the path for library files</pre>
+Then, you should be able to use the Make.bat to compile and link the
+demo code and start programming using XDK C components.
+<h4 style=" ">
+3.2.3 Using XDK C Components with Visual C ++</h4>
+
+<div class="MsoNormal" style=" ">If you use Microsoft Visual C++ as your 
+compiler, you need to make sure that the environment variable ORA_NLS10 is set
+as discussed above.
+
+<p><div class="MsoBodyTextIndent2" style=" ">In order for Visual C++ to be
+able to take the environment variable, you need to use the system setup
+for windows NT to define the environment variable.  Go to the Start Menu and 
+select Settings->Control Panel. In the pop up window of Control Panel, select
+the System icon and double click. A window named System Properties will pop up.
+Select Environment Tab and enter ORA_NLS10.</div>
+
+<center><img SRC="../images/image006_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1027" height=467 width=411>
+<p>Figure 3-2: Setup ORA_NLS10 Environment Variable</center>
+
+<p>You need to make sure that the environment variable ORA_XML_MESG is set as
+discussed above.
+
+<p><div class="MsoBodyTextIndent2" style=" ">In order for Visual C++ to be
+able to take the environment variable, you need to use the system setup
+for windows NT to define the environment variable.  Go to the Start Menu and 
+select Settings->Control Panel. In the pop up window of Control Panel, select
+the System icon and double click. A window named System Properties will pop up.
+Select Environment Tab and enter ORA_XML_MESG.</div>
+
+<pre>&nbsp;</pre>
+
+<center><pre style="TEXT-ALIGN: center; "><img SRC="../images/image008_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1028" height=462 width=404></pre></center>
+
+<center><pre style="MARGIN-LEFT: 0in; TEXT-ALIGN: center; ">Figure 3-3: Setup ORA_XML_MESG Environment Variable
+
+</pre></center>
+<p>To set up the PATH for *.dll, please refer to the following figure:
+<br>&nbsp;
+<br>&nbsp;
+<br>
+<center>
+<p><img SRC="../images/image010_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1029" height=461 width=403>
+<p>Figure 3-4: Setup Path Environment Variable</center>
+
+<p>After opening a workspace in Visual C++ and including the *.c files for
+the project, you need to set the path for the project. Please go to the Tools
+menu in the menu bar and select Options. A window will pop up. Please select
+the Directory tab and set your include path and library path as shown in
+the following figure:
+<center>
+<p><img SRC="../images/image012_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1030" height=317 width=413>
+<p>Figure 3-5: Setup include path in Visual C++
+<p><img SRC="../images/image014_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1031" height=320 width=416>
+<p>Figure 3-6: Setup static library path in Visual C++</center>
+
+<p>After setting the paths for the static libraries in %XDK_HOME\lib, you
+also need to set the library name in the compilation environment of Visual
+C++.
+<p>Go to the Project menu in the menu bar and select Settings. A window
+will pop up. Please select the Link tab in the Object/Library Modules field
+put the name of XDK C components' libraries:
+<center>
+<p><img SRC="../images/image016_c.jpg" NOSAVE BORDER=0 v:shapes="_x0000_i1032" height=372 width=578>
+<p>Figure 3-7: Setup static library in Visual C++ Project</center>
+
+
+<p class="MsoNormal">After completing all of the above steps, you can compile 
+and run the demos provided for XDK C Components.
+<br>&nbsp;
+<h2 class="MsoNormal">
+4. NLS Support</h2>
+The parser supports over 300 IANA character sets. These character sets
+include the following:
+<ul><tt>UTF-8, UTF-16, UTF16-BE, UTF16-LE,
+US-ASCII, ISO-10646-UCS-2, ISO-8859-{1-9, 13-15}, EUC-JP, SHIFT_JIS, BIG5,
+GB2312, GB_2312-80, HZ-GB-2312, KOI8-R, KSC5601, EUC-KR, ISO-2022-CN, 
+ISO-2022-JP, ISO-2022-KR, WINDOWS-{1250-1258},
+EBCDIC-CP-{US,CA,NL,WT,DK,NO,FI,SE,IT,ES,GB,FR,HE,BE,CH,ROECE,YU,IS,AR1},
+IBM{037,273,277,278,280,284,285,297,420,424,437,500,775,850,852,855,857,00858,
+860,861,863,865,866,869,870,871,1026,
+01140,01141,01142,01143,01144,01145,01146,01147,01148}
+</tt>
+</ul>
+
+<p>Any alias of the above character sets that is found
+<a href="http://www.iana.org/assignments/character-sets">here</a> may also 
+be used.  In addition, any character set specified in Appendix A, Character 
+Sets, of the Oracle National Language Support Guide may be used with the 
+exception of IW7IS960.  However, it is recommended that you use IANA
+character set names for interoperability with other XML parsers.  Also note
+that XML parsers are only required to support UTF-8 and UTF-16 so those
+character sets should be preferred.
+
+<p>In order to be able to use these encodings, you should have the 
+<tt>ORACLE_HOME</tt> environment variable set to the location of your 
+Oracle installation.  This will enable the use of the NLS data files which 
+contain data for all supported encodings. NLS data files are usually located 
+in <tt>$ORACLE_HOME/nls/data</tt>.  If you don't have an Oracle installation 
+(no $ORACLE_HOME), you must set the environment variable 
+<b><tt>ORA_NLS10</tt></b> to the <strong><i>absolute path</i></strong>
+of the <tt>nls/data/</tt> directory in the XDK installation.
+
+<p>Using this XDK with an Oracle 8i installation is not supported. If you
+wish to try it on Windows anyway, you should copy the CORE and NLS DLLs
+and the NLSDATA files that are supplied with this XDK to your Oracle 8i
+home. In addition, you should set the environment variable NLS_TIME_TZ_FORMAT 
+to HH.MI.SSXFF AM TZH:TZM and the enviroment variable NLS_TIMESTAMP_TZ_FORMAT 
+to DD-MON-RR HH.MI.SSXFF AM TZH:TZM.
+
+<p>The default input encoding ("<tt>default_input_encoding</tt>") is UTF-8.
+That is, if an input document's encoding is not self-evident (by HTTP charset,
+Byte Order Mark, XMLDecl, etc), then the default input encoding will be
+assumed.  It is recommended that you set the default encoding explicitly
+if using only single byte character sets (such as US-ASCII or any of the
+ISO-8859 character sets) since single-byte performance is by far the
+fastest.  To force all documents to be read as a certain encoding, specify
+it as "<tt>input_encoding</tt>" (i.e. without the "<tt>default</tt>").  A
+forced encoding overrides BOM and XMLDecl, but not protocol declarations
+(such as HTTP charset).
+
+<p>The data encoding for DOM and SAX ("<tt>data_encoding</tt>") should be
+chosen carefully.  Single-byte encodings are the fastest, but can represent
+only a very limited set of characters.  Next fastest is Unicode (UTF-16),
+and slowest are the multibyte encodings such as UTF-8.  If input data cannot
+be converted to the data encoding without loss, an error will occur.  So for
+maximum utility, a Unicode-based data encoding should be used, since Unicode
+can represent any character.  If <tt>data_encoding</tt> is not specified, it 
+defaults to the input encoding of the first document parsed.
+
+<p>The XML Schema validator supports various encodings.&nbsp; The schema file and
+instance XML document can be in different encodings.&nbsp; When a schema
+context is created via the function <b>XmlSchemaCreate</b>, an internal
+encoding, which is single byte or Unicode, is chosen based on the setting
+of the provided parser's context (i.e., xmlctx).&nbsp; If the error message
+"LSX-0016: schema and instance document have incompatible character sets"
+is shown when validation is attempted, a new schema context with a new
+parser context in a multibyte encoding (i.e., UTF-8, UTF-16, etc.) needs
+to be created to proceed.&nbsp; Specifically, a new xmlctx needs to be
+created with its "outencoding" parameter set to the above-mentioned multibyte
+encoding and used in the new schema context's creation.
+
+<br>&nbsp;
+<h2>
+
+</body>
+</html>

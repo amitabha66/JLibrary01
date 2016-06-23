@@ -1,0 +1,1378 @@
+<?xml version="1.0"?>
+<!--
+ | This XSQL Page is all static XML containing structured
+ | help information for each built-in XSQL Action Element.
+ |
+ | The "homecontent.xsql" page uses <xsql:include-xsql>
+ | to include this XML content dynamically when the
+ | current tab page is "Help".
+ |  
+ | The "homecontent.xsl" stylesheet imports the
+ | "help.xsl" stylesheet that handles help-specific
+ | formatting.
+ | 
+ | NOTE: Whitespace in the <eg> elements containing
+ |       the examples is significant!
+ |
+ | smuench 08/25/02 - Added if-param and error-param
+ +-->
+<page-content name="Help">
+  <element name="dml" requires-connection="yes">
+     <help>
+
+       Execute a SQL DML statement or PL/SQL anonymous block.
+
+     </help>
+     <content type="SQL"/>
+     <content type="PLSQL"/>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-statement" required="no" default="yes" type="boolean">
+       <help>
+
+         If set to "no", suppresses the inclusion of the offending
+         SQL statement in any &lt;xsql-error> element generated.
+
+       </help>
+     </attribute>
+     <attribute name="commit" required="no" default="no" type="boolean">
+       <help>
+
+         If set to "yes", calls commit on the current connection
+         after a successful execution of the DML statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Single DML statement"
+><![CDATA[<xsql:dml>
+  INSERT INTO dept( deptno, dname ) VALUES ({@dept},'{@dname}');
+</xsql:dml>]]></eg>
+
+<eg comment="Single stored procedure"
+><![CDATA[<xsql:dml>
+  my_package.my_procedure({@dname});
+</xsql:dml>]]></eg>
+
+<eg comment="Anonymous block to combine statements"
+><![CDATA[<xsql:dml>
+  BEGIN
+    INSERT INTO dept( deptno, dname ) VALUES ({@dept},'{@dname}');
+    my_package.my_procedure({@dname});
+  END;
+</xsql:dml>]]></eg>
+
+  </element>
+
+  <element name="include-owa" requires-connection="yes">
+     <help>
+
+       Execute a PL/SQL stored procedure that uses the OWA packages to
+       generate XML content and include the resulting XML produced.
+
+     </help>
+     <content type="PLSQL"/>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-statement" required="no" default="yes" type="boolean">
+       <help>
+
+         If set to "no", suppresses the inclusion of the offending
+         SQL statement in any &lt;xsql-error> element generated.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Single stored procedure"
+><![CDATA[<xsql:include-owa>
+  my_package.my_procedure({@dname});
+</xsql:include-owa>]]></eg>
+
+<eg comment="Anonymous block to combine statements"
+><![CDATA[<xsql:include-owa>
+  BEGIN
+    my_package.my_procedure({@dname});
+    my_other_package.another_procedure;
+  END;
+</xsql:include-owa>]]></eg>
+
+  </element>
+
+  <element name="include-posted-xml">
+     <help>
+
+       Include posted XML content in the data page.
+
+     </help>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg><![CDATA[<xsql:include-posted-xml/>]]></eg>
+  </element>
+
+  <element name="include-request-params">
+     <help>
+
+       Include XML fragment representing the names and values of all
+       HTTP parameters, cookies, and session variables.
+
+     </help>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg><![CDATA[<xsql:include-request-params/>]]></eg>
+  </element>
+
+  <element name="include-xml">
+      <help>
+
+       Include an external XML document by URL.
+
+     </help>
+     <content type="SQL"/>
+     <attribute name="href" required="no" type="url">
+       <help>
+
+         Relative or absolute URL of XML resource to be included.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Include XML from CLOB or VARCHAR2"
+><![CDATA[<xsql:include-xml bind-params="id">
+  select xml_column from table where pk = ?
+</xsql:include-xml>]]></eg>
+<eg comment="Include XML from another site"
+><![CDATA[<xsql:include-xml href="http://stock.com/quotes?symbol={@symbols}"/>]]></eg>
+<eg comment="Include XML from an XML file (relative URL)"
+><![CDATA[<xsql:include-xml href="list-of-states.xml"/>]]></eg>
+<eg comment="Include XML from parametrized URL"
+><![CDATA[<xsql:include-xml href="{@pagename}"/>]]></eg>
+
+  </element>
+
+  <element name="include-xsql">
+     <help>
+
+       Include the XML output of another XSQL page.
+
+     </help>
+     <attribute name="href" required="yes" type="url">
+       <help>
+
+         Relative or absolute URL of XSQL page to be included.
+
+       </help>
+     </attribute>
+     <attribute name="reparse" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether output of included XSQL page should be
+         reparsed before it is included. Useful if included XSQL page
+         is selecting the text of an XML document fragment that the
+         including page wants to treat as elements.         
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Include XSQL page result (relative URL)"
+><![CDATA[<xsql:include-xsql href="order/orders.xsql"/>]]></eg>
+<eg comment="Include XSQL page result, passing params"
+><![CDATA[<xsql:include-xsql href="orders.xsql?cust={@id}"/>]]></eg>
+<eg comment="Include XSQL page, parametrized name"
+><![CDATA[<xsql:include-xsql href="{@pagename}?cust={@id}"/>]]></eg>
+
+  </element>
+
+  <element name="insert-param">
+     <help>
+
+       Insert the (optionally transformed) value of a parameter
+       into a database table or view. Useful when client is
+       posting a well-formed XML document as text in an HTTP parameter
+       or individual HTML form field.
+
+     </help>
+     <attribute name="name" required="yes" type="param">
+       <help>
+
+         Name of parameter whose value contains XML markup
+         for insert.
+
+       </help>
+     </attribute>
+     <attribute name="table" required="yes" type="table">
+       <help>
+
+         Name of the table, view, or synonym to be used
+         for SQL INSERT.
+
+       </help>
+     </attribute>
+     <attribute name="transform" required="no" type="url">
+       <help>
+
+         Relative or absolute URL of the XSLT transformation
+         to use to transform the document to be inserted into
+         canonical ROWSET/ROW format.
+
+       </help>
+     </attribute>
+     <attribute name="date-format" required="no" type="string">
+       <help>
+
+         Date format mask to use for interpreting date field
+         values in XML being inserted. Valid values are those
+         documented for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.SimpleDateFormat.html">java.text.SimpleDateFormat</a>.
+
+       </help>
+     </attribute>
+     <attribute name="commit-batch-size" required="no" type="number">
+       <help>
+
+         If a positive, non-zero number N is specified, then
+         after each batch of N inserted records, a commit will
+         be issued. Default batch size is zero (0) if not
+         specified, meaning not to commit interim batches.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Parse/transform contents of parameter xmlfield for database insert"
+><![CDATA[
+<xsql:insert-param name="xmlfield"
+                  table="image_metadata_table"
+              transform="field-to-rowset.xsl"/>]]></eg>
+
+  </element>
+
+  <element name="insert-request">
+     <help>
+
+       Insert the (optionally transformed) XML document that has been
+       posted in the request into a database table or view. If HTML
+       Form has been posted, then posted XML document is materialized
+       from HTTP request parameters, cookies, and session variables.
+
+     </help>
+     <attribute name="table" required="yes" type="table">
+       <help>
+
+         Name of the table, view, or synonym to be used
+         for SQL INSERT.
+
+       </help>
+     </attribute>
+     <attribute name="transform" required="no" type="url">
+       <help>
+
+         Relative or absolute URL of the XSLT transformation
+         to use to transform the document to be inserted into
+         canonical ROWSET/ROW format.
+
+       </help>
+     </attribute>
+     <attribute name="date-format" required="no" type="string">
+       <help>
+
+         Date format mask to use for interpreting date field
+         values in XML being inserted. Valid values are those
+         documented for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.SimpleDateFormat.html">java.text.SimpleDateFormat</a>.
+
+       </help>
+     </attribute>
+     <attribute name="columns" required="no" type="string">
+       <help>
+
+         Space-separated or comma-separated list of one or more
+         column names whose values will be inserted. If supplied,
+         then only these columns will be inserted.
+
+       </help>
+     </attribute>
+     <attribute name="commit-batch-size" required="no" type="number">
+       <help>
+
+         If a positive, non-zero number N is specified, then
+         after each batch of N inserted records, a commit will
+         be issued. Default batch size is zero (0) if not
+         specified, meaning not to commit interim batches.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Parse/transform contents of posted XML document or HTML Form for insert"
+><![CDATA[<xsql:insert-request table="purchase_order"
+                 transform="purchseorder-to-rowset.xsl"/>]]></eg>
+
+  </element>
+
+  <element name="query">
+     <help>
+
+       Execute an arbitrary SQL statement and include its
+       result set in canonical XML format.
+
+     </help>
+     <attribute name="max-rows" required="no" type="integer">
+       <help>
+
+         Maximum number of rows to fetch, after optionally skipping
+         the number of rows indicated by the skip-rows attribute. If
+         not specified, default is to fetch all rows.
+
+       </help>
+     </attribute>
+     <attribute name="skip-rows" required="no" type="integer">
+       <help>
+
+         Number of rows to skip before fetching rows from the result
+         set. Can be combined with max-rows for stateless paging
+         through query results.
+
+       </help>
+     </attribute>
+     <attribute name="rowset-element" required="no" type="string">
+       <help>
+
+         XML element name to use instead of the default "ROWSET"
+         element name for the entire rowset of query results. Set to
+         the empty-string to suppress generating a containing ROWSET
+         element.
+
+       </help>
+     </attribute>
+     <attribute name="row-element" required="no" type="string">
+       <help>
+
+         XML element name to use instead of the default "ROW" element
+         name for the entire rowset of query results. Set to the
+         empty-string to suppress generating a containing ROW
+         element for each row in the result set.
+
+       </help>
+     </attribute>
+     <attribute name="id-attribute" required="no" type="string">
+       <help>
+
+         XML attribute name to use instead of the default "num"
+         attribute for uniquely identifying each row in the result
+         set.
+
+       </help>
+     </attribute>
+     <attribute name="id-attribute-column" required="no" type="string">
+       <help>
+
+         Column name whose value should be used in each row as the
+         value of the id-attribute. Default is to use the row count.
+
+       </help>
+     </attribute>
+     <attribute name="fetch-size" required="no" type="integer">
+       <help>
+
+         Number of records to fetch in each round-trip to the
+         database. If not set, the default value is used as specified
+         by the <lit>/XSQLConfig/processor/default-fetch-size</lit> configuration
+         setting in <lit>XSQLConfig.xml</lit>
+
+       </help>
+     </attribute>
+     <attribute name="null-indicator" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether to signal that a column's value is NULL by
+         including the NULL="Y" attribute on the element for the
+         column. By default, columns with NULL values are omitted from
+         the output.
+
+       </help>
+     </attribute>
+     <attribute name="tag-case" required="no" type="string">
+       <help>
+
+         Valid values are "lower" and "upper". If not specified, the
+         default is to use the case of column names as specified in
+         the query as corresponding XML element names.
+
+       </help>
+     </attribute>
+     <attribute name="date-format" required="no" type="string">
+       <help>
+
+         Date format mask to use for formatted date column/attribute
+         values in XML being queried. Valid values are those
+         documented for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.SimpleDateFormat.html">java.text.SimpleDateFormat</a>.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="include-schema" required="no" default="no" type="boolean">
+       <help>
+
+         If set to "yes", includes an inline XML Schema that describes
+         the structure of the result set. (Requires XML SQL Utility 2.1.0
+         or greater).
+
+       </help>
+     </attribute>
+     <attribute name="error-statement" required="no" default="yes" type="boolean">
+       <help>
+
+         If set to "no", suppresses the inclusion of the offending
+         SQL statement in any &lt;xsql-error> element generated.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Execute SQL query and include XML for results"
+><![CDATA[
+<xsql:query max-rows="5" tag-case="lower" null-indicator="yes">
+  SELECT carrier, flightno, TO_CHAR(arrival_time,'HH24:MI') as arrives
+    FROM todays_flights
+   WHERE arrival_airport = UPPER('{@airport}')
+     AND arrival_time > SYSDATE
+   ORDER BY arrival_time
+</xsql:query>]]></eg>
+
+  </element>
+
+  <element name="ref-cursor-function">
+     <help>
+
+       Execute an arbitrary stored function returning REF CURSOR and
+       include the result set of the in canonical XML format.
+
+     </help>
+     <attribute name="max-rows" required="no" type="integer">
+       <help>
+
+         Maximum number of rows to fetch, after optionally skipping
+         the number of rows indicated by the skip-rows attribute. If
+         not specified, default is to fetch all rows.
+
+       </help>
+     </attribute>
+     <attribute name="skip-rows" required="no" type="integer">
+       <help>
+
+         Number of rows to skip before fetching rows from the result
+         set. Can be combined with max-rows for stateless paging
+         through query results.
+
+       </help>
+     </attribute>
+     <attribute name="rowset-element" required="no" type="string">
+       <help>
+
+         XML element name to use instead of the default "ROWSET"
+         element name for the entire rowset of query results. Set to
+         the empty-string to suppress generating a containing ROWSET
+         element.
+
+       </help>
+     </attribute>
+     <attribute name="row-element" required="no" type="string">
+       <help>
+
+         XML element name to use instead of the default "ROW" element
+         name for the entire rowset of query results. Set to the
+         empty-string to suppress generating a containing ROW
+         element for each row in the result set.
+
+       </help>
+     </attribute>
+     <attribute name="id-attribute" required="no" type="string">
+       <help>
+
+         XML attribute name to use instead of the default "num"
+         attribute for uniquely identifying each row in the result
+         set.
+
+       </help>
+     </attribute>
+     <attribute name="id-attribute-column" required="no" type="string">
+       <help>
+
+         Column name whose value should be used in each row as the
+         value of the id-attribute. Default is to use the row count.
+
+       </help>
+     </attribute>
+     <attribute name="null-indicator" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether to signal that a column's value is NULL by
+         including the NULL="Y" attribute on the element for the
+         column. By default, columns with NULL values are omitted from
+         the output.
+
+       </help>
+     </attribute>
+     <attribute name="tag-case" required="no" type="string">
+       <help>
+
+         Valid values are "lower" and "upper". If not specified, the
+         default is to use the case of column names as specified in
+         the query as corresponding XML element names.
+
+       </help>
+     </attribute>
+     <attribute name="date-format" required="no" type="string">
+       <help>
+
+         Date format mask to use for formatted date column/attribute
+         values in XML being queried. Valid values are those
+         documented for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.SimpleDateFormat.html">java.text.SimpleDateFormat</a>.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="include-schema" required="no" default="no" type="boolean">
+       <help>
+
+         If set to "yes", includes an inline XML Schema that describes
+         the structure of the result set. (Requires XML SQL Utility 2.1.0
+         or greater).
+
+       </help>
+     </attribute>
+     <attribute name="error-statement" required="no" default="yes" type="boolean">
+       <help>
+
+         If set to "no", suppresses the inclusion of the offending
+         SQL statement in any &lt;xsql-error> element generated.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Execute stored function returning REF Cursor and include XML for results"
+><![CDATA[
+<xsql:ref-cursor-function max-rows="5" tag-case="lower" null-indicator="yes">
+  flight_schedule.flights_left_today_for(UPPER('{@airport}'));
+</xsql:ref-cursor-function>]]></eg>
+  </element>
+
+  <element name="include-param">
+     <help>
+
+       Include XML representing the name and value of a specified
+       parameter.
+
+     </help>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the parameter whose value you want included.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Include param name and value as XML element"
+><![CDATA[<xsql:include-param name="rows-skipped">]]></eg>
+
+  </element>
+
+  <element name="set-cookie">
+     <help>
+
+       Set the value of an HTTP Cookie, optionally specifying the
+       maximum age and domain of the cookie.  Value of the cookie can
+       be set by supplying the optional "value" attribute, or by
+       including a SQL statement as the element content. If the SQL
+       statement is provided, then the "value" attribute must not be
+       present and the value of the first column of the first row
+       retrieved is used as the cookie value.
+
+     </help>
+     <attribute name="value" required="no" type="string">
+       <help>
+
+         Value to assign to the cookie.
+
+       </help>
+     </attribute>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the HTTP Cookie whose value you want to set.
+         Either this attribute or the 'names' attribute must
+         be specified.
+
+       </help>
+     </attribute>
+     <attribute name="names" required="yes" type="string">
+       <help>
+
+         Space-separated list of one or more parameter names to whose
+         value(s) you want to set. If two or more parameter names are
+         present in the list, then you must include an embedded SQL
+         statement with as many columns in the select list as there
+         are parameter names. Either this attribute or the 'names'
+         attribute must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="path" required="no" type="string">
+       <help>
+
+         Relative URL path within domain in which cookie value is
+         valid and readable. If path is not set explicitly, then it
+         defaults to the URL path of the document creating the cookie.
+
+       </help>
+     </attribute>
+     <attribute name="domain" required="no" type="string">
+       <help>
+
+         Domain in which cookie value is valid and readable. If domain
+         is not set explicitly, then it defaults to the full domain of
+         the document creating the cookie.
+
+       </help>
+     </attribute>
+     <attribute name="max-age" required="no" type="integer">
+       <help>
+
+         Sets the maximum age of the cookie in seconds. Default
+         is to set the cookie to expire when users current browser
+         session terminates.
+
+       </help>
+     </attribute>
+     <attribute name="only-if-unset" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the cookie assignment should
+         only occur when the cookie currently does not exists.
+
+       </help>
+     </attribute>
+     <attribute name="ignore-empty-value" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the cookie assignment should
+         be ignored if the value to which it is being assigned
+         is an empty string.
+
+       </help>
+     </attribute>
+     <attribute name="immediate" required="no" default="no" type="boolean">
+       <help>
+
+         Since cookies are sent to the client as part of the HTTP response,
+         by design cookies set during the current request are not readable
+         until the next request. If you want the cookie value being set to be 
+         immediately available to other action handlers in your current
+         XSQL page, set this attribute to 'true'.
+
+       </help>
+     </attribute>     
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+     <content type="SQL" required="no"/>
+<eg comment="Set HTTP Cookie to the value of the parameter named 'choice'."
+><![CDATA[<xsql:set-cookie name="last_selection" value="{@choice}"/>]]></eg>
+<eg comment="Set HTTP Cookie to a value selected from the database."
+><![CDATA[<xsql:set-cookie name="shopping_cart_id">
+  SELECT cartmgr.new_cart_id(UPPER('{@user}')) FROM dual
+</xsql:set-cookie>]]></eg>
+  </element>
+
+  <element name="set-page-param">
+     <help>
+
+       Set the value of a page-level parameter. Useful for fetching
+       the value of a parameter from a SQL statement, then referring
+       to the parameter in subsequent action elements in the
+       page. Value of the parameter can be set by supplying the
+       optional "value" attribute, or by including a SQL statement as
+       the element content. If the SQL statement is provided, then the
+       "value" attribute must not be present and the value of the
+       first column of the first row retrieved is used as the
+       parameter value.
+
+     </help>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the page-level parameter whose value you want to set.
+         Either this attribute or the 'names' attribute must be
+         specified.
+
+       </help>
+     </attribute>
+     <attribute name="names" required="yes" type="string">
+       <help>
+
+         Space-separated list of one or more parameter names to whose
+         value(s) you want to set. If two or more parameter names are
+         present in the list, then you must include an embedded SQL
+         statement with as many columns in the select list as there
+         are parameter names. Either this attribute or the 'names'
+         attribute must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="value" required="no" type="string">
+       <help>
+
+         Value to assign to the page parameter.
+
+       </help>
+     </attribute>
+     <attribute name="ignore-empty-value" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the page-level parameter assignment should
+         be ignored if the value to which it is being assigned
+         is an empty string.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="treat-list-as-array" required="no" type="boolean">
+       <help>
+
+         If set to true, causes value being set to be tokenized into an
+         array of strings (using comma as the delimiter, or space if no
+         commas present). Default is yes for assigning array-named parameters
+         (e.g. myparam[]) and no for assigning simple string-valued parameters.
+
+       </help>
+     </attribute>
+     <attribute name="quote-array-values" required="no" type="boolean">
+       <help>
+
+         When setting a simple string-valued parameter, if the 
+         treat-list-as-array="yes" is used, then setting this to "yes"
+         causes the array list values to be quoted with single quotes
+         before being separated by commas in the resulting string value.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+     <content type="SQL" required="no"/>
+<eg comment="Set page-level parameter to value selected from database, then use later"
+><![CDATA[<xsql:set-page-param name="max-rows-pref">
+  SELECT max_rows
+    FROM user_profile
+   WHERE userid = {@userid}
+</xsql:set-page-param>
+<xsql:query max-rows="{@max-rows-pref}">
+  SELECT title, url
+    FROM newsstory
+  ORDER BY date_entered DESC
+</xsql:query>]]></eg>
+  </element>
+
+  <element name="set-session-param">
+     <help>
+
+       Set the value of a session-level parameter. Value of the
+       parameter can be set by supplying the optional "value"
+       attribute, or by including a SQL statement as the element
+       content. If the SQL statement is provided, then the "value"
+       attribute must not be present and the value of the first column
+       of the first row retrieved is used as the parameter value.
+
+     </help>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the session-level parameter whose value you want to
+         set. Either this attribute or the 'names'
+         attribute must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="names" required="yes" type="string">
+       <help>
+
+         Space-separated list of one or more parameter names to whose
+         value(s) you want to set. If two or more parameter names are
+         present in the list, then you must include an embedded SQL
+         statement with as many columns in the select list as there
+         are parameter names. Either this attribute or the 'names'
+         attribute must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="value" required="no" type="string">
+       <help>
+
+         Value to assign to the session parameter.
+
+       </help>
+     </attribute>
+     <attribute name="ignore-empty-value" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the session parameter assignment should
+         be ignored if the value to which it is being assigned
+         is an empty string.
+
+       </help>
+     </attribute>
+     <attribute name="only-if-unset" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the session variable assignment should
+         only occur when the session variable currently does not exists.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="treat-list-as-array" required="no" type="boolean">
+       <help>
+
+         If set to true, causes value being set to be tokenized into an
+         array of strings (using comma as the delimiter, or space if no
+         commas present). Default is yes for assigning array-named parameters
+         (e.g. myparam[]) and no for assigning simple string-valued parameters.
+
+       </help>
+     </attribute>
+     <attribute name="quote-array-values" required="no" type="boolean">
+       <help>
+
+         When setting a simple string-valued parameter, if the 
+         treat-list-as-array="yes" is used, then setting this to "yes"
+         causes the array list values to be quoted with single quotes
+         before being separated by commas in the resulting string value.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+     <content type="SQL" required="no"/>
+<eg comment="Set HTTP Session parameter to the value of the parameter named 'userid'."
+><![CDATA[<xsql:set-session-param name="current_user" value="{@userid}"/>]]></eg>
+<eg comment="Set HTTP Session parameter to a value selected from the database."
+><![CDATA[<xsql:set-session-param name="current_user">
+  SELECT member_id
+    FROM member_session_info
+   WHERE session_id = {@sessionCookie}
+</xsql:set-session-param>]]></eg>
+  </element>
+
+  <element name="set-stylesheet-param">
+     <help>
+
+       Set the value of a top-level XSLT stylesheet parameter. Value
+       of the parameter can be set by supplying the optional "value"
+       attribute, or by including a SQL statement as the element
+       content. If the SQL statement is provided, then the "value"
+       attribute must not be present and the value of the first column
+       of the first row retrieved is used as the stylesheet parameter
+       value.
+
+     </help>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the top-level stylesheet parameter whose value you
+         want to set. Either this attribute or the 'names' attribute
+         must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="names" required="yes" type="string">
+       <help>
+
+         Space-separated list of one or more parameter names to whose
+         value(s) you want to set. If two or more parameter names are
+         present in the list, then you must include an embedded SQL
+         statement with as many columns in the select list as there
+         are parameter names. Either this attribute or the 'names'
+         attribute must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="value" required="no" type="string">
+       <help>
+
+         Value to assign to the stylesheet parameter.
+
+       </help>
+     </attribute>
+     <attribute name="ignore-empty-value" required="no" default="no" type="boolean">
+       <help>
+
+         Indicates whether the stylesheet parameter assignment should
+         be ignored if the value to which it is being assigned
+         is an empty string.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+     <content type="SQL" required="no"/>
+
+<eg comment="Set stylesheet parameter to the value of the parameter named 'cat'."
+><![CDATA[<xsql:set-stylesheet-param name="current_category" value="{@cat}"/>]]></eg>
+<eg comment="Set stylesheet parameter to a value selected from the database."
+><![CDATA[<xsql:set-stylesheet-param name="security_level">
+  SELECT role_name
+    FROM user_profile
+   WHERE userid = {@userid}
+</xsql:set-stylesheet-param>]]></eg>
+  </element>
+
+  <element name="action">
+     <help>
+
+       Invoke a user-defined action handler. The handler must implement
+       the <lit>oracle.xml.xsql.XSQLActionHandler</lit> interface. It may
+       extend the <lit>oracle.xml.xsql.XSQLActionHandlerImpl</lit> class
+       to make use of a number of helper-functions that are useful
+       to any action handler implementation. Handlers get access to
+       the action element so they can use XML attributes on the element
+       or any part of the element's content as input to the action. All
+       of the built-in action elements supported by XSQL Pages are
+       implemented as XSQL Action Handlers.
+
+     </help>
+     <attribute name="handler" required="yes" type="string">
+       <help>
+
+         Fully-qualified name of the Java class that implements
+         the action handler.
+
+       </help>
+     </attribute>
+     <attribute name="bind-params" required="no" type="string">
+       <help>
+
+         Ordered, space-separated list of one or more XSQL parameter names
+         whose values will be used to bind to the JDBC bind variable in
+         the appropriate sequential position in the SQL statement. Action
+         handler can call the <lit>handleBindVariables</lit> method
+         in <lit>XSQLActionHandlerImpl</lit> to handle bind variable
+         processing for any SQL statements that it needs to execute.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+<eg comment="Call the ExampleDBDateHandler action handler."
+><![CDATA[<xsql:action handler-"oracle.xml.xsql.actions.ExampleDBDateHandler"/>]]></eg>
+<eg comment="Call a handler, passing parameters in XML attributes."
+><![CDATA[<xsql:action handler="your.package.CoolHandler" x="1" y="10">
+  Text and <elements/> can go
+  here which the <action-handler/> can
+  reference at invocation time.
+</xsql:action>]]></eg>
+  </element>
+
+  <element name="update-request">
+     <help>
+
+       Update the rows represented in the (optionally transformed)
+       XML document that has been posted in the request. If an
+       HTML Form has been posted, then the posted XML document
+       is materialized from HTTP request parameters, cookies,
+       and session variables.
+
+     </help>
+     <attribute name="table" required="yes" type="table">
+       <help>
+
+         Name of the table, view, or synonym to be used
+         for SQL UPDATE.
+
+       </help>
+     </attribute>
+     <attribute name="key-columns" required="yes" type="string">
+       <help>
+
+         Space-separated or comma-separated list of one or more
+         column names whose values in the posted document should
+         be used to identify the existing rows in the table for
+         update.
+
+       </help>
+     </attribute>
+     <attribute name="columns" required="no" type="string">
+       <help>
+
+         Space-separated or comma-separated list of one or more
+         column names whose values will be updated. If supplied,
+         then only these columns will be updated.
+
+       </help>
+     </attribute>
+     <attribute name="transform" required="no" type="url">
+       <help>
+
+         Relative or absolute URL of the XSLT transformation
+         to use to transform the document to be inserted into
+         canonical ROWSET/ROW format.
+
+       </help>
+     </attribute>
+     <attribute name="date-format" required="no" type="string">
+       <help>
+
+         Date format mask to use for interpreting date field
+         values in XML being updated. Valid values are those
+         documented for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.SimpleDateFormat.html">java.text.SimpleDateFormat</a>.
+
+       </help>
+     </attribute>
+     <attribute name="commit-batch-size" required="no" type="number">
+       <help>
+
+         If a positive, non-zero number N is specified, then
+         after each batch of N updated records, a commit will
+         be issued. Default batch size is zero (0) if not
+         specified, meaning not to commit interim batches.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Update columns in dept table based on 'deptno' key."
+><![CDATA[<xsql:update-request table="dept" transform="doc-to-dept.xsl"
+                     key-columns="deptno"/>]]></eg>
+<eg comment="Update only DNAME column in dept table based on 'deptno' key."
+><![CDATA[<xsql:update-request table="dept" transform="doc-to-dept.xsl"
+                     key-columns="deptno columns="dname"/>]]></eg>
+  </element>
+  <element name="delete-request">
+     <help>
+
+       Delete the rows represented in the (optionally transformed)
+       XML document that has been posted in the request. If an
+       HTML Form has been posted, then the posted XML document
+       is materialized from HTTP request parameters, cookies,
+       and session variables.
+
+     </help>
+     <attribute name="table" required="yes" type="table">
+       <help>
+
+         Name of the table, view, or synonym to be used
+         for SQL DELETE.
+
+       </help>
+     </attribute>
+     <attribute name="key-columns" required="yes" type="string">
+       <help>
+
+         Space-separated or comma-separated list of one or more
+         column names whose values in the posted document should
+         be used to identify the existing rows in the table for
+         delete.
+
+       </help>
+     </attribute>
+     <attribute name="transform" required="no" type="url">
+       <help>
+
+         Relative or absolute URL of the XSLT transformation
+         to use to transform the document to be inserted into
+         canonical ROWSET/ROW format.
+
+       </help>
+     </attribute>
+     <attribute name="commit-batch-size" required="no" type="number">
+       <help>
+
+         If a positive, non-zero number N is specified, then
+         after each batch of N deleted records, a commit will
+         be issued. Default batch size is zero (0) if not
+         specified, meaning not to commit interim batches.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Delete rows in dept table based on 'deptno' key."
+><![CDATA[<xsql:delete-request table="dept" transform="doc-to-dept.xsl"
+                     key-columns="deptno"/>]]></eg>
+  </element>
+  <element name="if-param">
+     <help>
+
+       Conditionally includes nested actions and/or literal XML
+       content if some condition based on the indicated parameter
+       value is true. 
+
+     </help>
+     <attribute name="name" required="yes" type="string">
+       <help>
+
+         Name of the parameter who value should be used for evaluating
+         the condition. Exactly one of the exists, equals, not-equals,
+         in-list, or not-in-list attributes must be specified.
+
+       </help>
+     </attribute>
+     <attribute name="exists" required="no" type="boolean">
+       <help>
+
+         Test whether the indicated parameter exists (or not).
+
+       </help>
+     </attribute>
+     <attribute name="equals" required="no" type="string">
+       <help>
+
+         Compares value of parameter to the value provided. Evaluates
+         to true if the values are equal. For array-valued parameters,
+         evaluates to true if any element in the array matches.
+
+       </help>
+     </attribute>
+     <attribute name="not-equals" required="no" type="string">
+       <help>
+
+         Compares value of parameter to the value provided. Evaluates
+         to true if the values are not equal. For array-valued parameters,
+         evaluates to true if none of the elements in the array matches.
+
+       </help>
+     </attribute>
+     <attribute name="in-list" required="no" type="string">
+       <help>
+
+         Compares value of parameter to the comma-or-space-separated
+         list of values provided. Evaluates to true if the parameter
+         value matches any element in the list. For array-valued
+         parameters, evaluates to true if any element in the array
+         matches any element in the list.
+
+       </help>
+     </attribute>
+     <attribute name="not-in-list" required="no" type="string">
+       <help>
+
+         Compares value of parameter to the comma-or-space-separated
+         list of values provided. Evaluates to true if the parameter
+         value does not match any element in the list. For array-valued
+         parameters, evaluates to true if no element in the array
+         matches any element in the list.
+
+       </help>
+     </attribute>
+     <attribute name="ignore-case" required="no" type="boolean">
+       <help>
+
+         Causes string comparisons to be done case-insensitively.
+
+       </help>
+     </attribute>
+     <attribute name="error-param" required="no" type="string">
+       <help>
+
+         Name of a parameter that should be set to the string 'Error' if a non-fatal
+         error occurs while processing this action.
+
+       </help>
+     </attribute>
+
+<eg comment="Delete rows in dept table based on 'deptno' key."
+><![CDATA[<xsql:delete-request table="dept" transform="doc-to-dept.xsl"
+                     key-columns="deptno"/>]]></eg>
+  </element>
+
+</page-content>

@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Oracle C XML API Migration Chart</title>
+</head>
+<body bgcolor=white>
+
+<center>
+
+<table>
+    <tr><td colspan=2 bgcolor=green align=center>
+	<font face=helvetica color=white size=8>
+	    <b>Oracle C XML API Migration Chart</b></font></td></tr>
+    <tr><th bgcolor=black><font face=helvetica color=white size=8>
+	    <b>OLD</b></font></th>
+	<th bgcolor=black><font face=helvetica color=white size=8>
+	    <b>NEW</b></font></th>
+    </tr>
+    <tr valign=top><td>
+	<font size=6>
+	<ul><li><font color=red><tt><b>oraxml.h</b></tt></font>
+	    <li>One xmlctx per document.
+	    <li>One "current document" per xmlctx.
+	    <li>APIs inconsistent; not always xmlctx!
+	</ul>
+	</font>
+	<td>
+	<font size=6>
+	<ul>
+	    <li><font color=red><tt><b>xml.h</b></tt></font>
+	    <li>Multiple documents share an xmlctx.
+	    <li>Multiple independent documents per xmlctx.
+	    <li>Regular APIs; always an xmlctx
+	</ul>
+	</font>
+    </tr>
+    <tr><th bgcolor=black>
+	    <font face=helvetica color=white size=6><b>Old Initialize & Parse Sequence</b></font><br>
+	    <font face=helvetica color=white size=4><b>One Document at a Time</b></font></th>
+	<th bgcolor=black>
+	    <font face=helvetica color=white size=6><b>New Initialize & Parse Sequence</b></font><br>
+	    <font face=helvetica color=white size=4><b>One Document at a Time</b></font></th>
+    </tr>
+    <tr>
+<tr valign=top><td>
+
+<pre>
+#include &lt;<font color=red><b>oraxml.h</b></font>&gt;
+uword err;
+xmlctx *ctx = <font color=blue><b>xmlinit</b></font>(&err, <i>options</i>);
+for (;;) {
+    err = <font color=green><b>xmlparse</b></font>(ctx, <i>URI</i>, <i>options</i>);
+    /* <i>...do DOM operations here...</i> */
+    <font color=green><b>xmlclear</b></font>(ctx); /* <i>recycle memory from document</i> */
+}
+<font color=blue><b>xmlterm</b></font>(ctx);
+</pre></td>
+<td><pre>
+#include &lt;<font color=red><b>xml.h</b></font>&gt;
+xmlerr err; xmldocnode *doc;
+xmlctx *xctx = <font color=blue><b>XmlCreate</b></font>(&err, <i>name</i>, <i>options</i>, NULL);
+for (;;) {
+    doc = <font color=green><b>XmlLoadDom</b></font>(xctx, &err, "uri", <i>URI</i>, NULL);
+    /* <i>...do DOM operations here...</i> */
+    <font color=green><b>XmlFreeDocument</b></font>(xctx, doc); /* <i>destroy document</i> */
+}
+<font color=blue><b>XmlDestroy</b></font>(xctx);
+</pre></td>
+</tr>
+<tr><th bgcolor=black>
+	<font face=helvetica color=white size=6><b>Old Initialize & Parse Sequence</b></font><br>
+	<font face=helvetica color=white size=4><b>Multiple Documents; Simultaneous DOM Access</b></font></th>
+    <th bgcolor=black>
+	<font face=helvetica color=white size=6><b>New Initialize & Parse Sequence</b></font><br>
+	<font face=helvetica color=white size=4><b>Multiple Documents; Simultaneous DOM Access</b></font></th>
+</tr>
+
+<tr valign=top>
+<td><pre>
+xmlctx *ctx1 = <font color=blue><b>xmlinitenc</b></font>(&err, <i>options</i>),
+       *ctx2 = <font color=blue><b>xmlinitenc</b></font>(&err, <i>options</i>);
+err = <font color=green><b>xmlparse</b></font>(ctx1, <i>URI1</i>, <i>options</i>);
+err = <font color=green><b>xmlparse</b></font>(ctx2, <i>URI2</i>, <i>options</i>);
+/* ...do DOM operations on both documents here... */
+<font color=blue><b>xmlterm</b></font>(ctx1);
+<font color=blue><b>xmlterm</b></font>(ctx2);
+</pre></td>
+
+<td><pre>
+xmldocnode *doc1, *doc2;
+xmlctx *xctx = <font color=blue><b>XmlCreate</b></font>(&err, <i>name</i>, <i>options</i>, NULL);
+doc1 = <font color=green><b>XmlLoadDom</b></font>(xctx, &err, "uri", <i>URI1</i>, NULL);
+doc2 = <font color=green><b>XmlLoadDom</b></font>(xctx, &err, "uri", <i>URI2</i>, NULL);
+/* ...do DOM operations on both documents here... */
+<font color=green><b>XmlFreeDocument</b></font>(doc1);
+<font color=green><b>XmlFreeDocument</b></font>(doc2);
+...
+<font color=blue><b>XmlDestroy</b></font>(xctx);
+</pre></td>
+</tr>
+
+<tr><th bgcolor=black>
+	<font face=helvetica color=white size=6><b>Old Initialize & Parse Sequence</b></font><br>
+	<font face=helvetica color=white size=3><b>Multiple Docs; Data Valid for All,
+		but only DOM Access to Last</b></font></th>
+    <th bgcolor=black>
+	<font face=helvetica color=white size=6><b>New Initialize & Parse Sequence</b></font><br>
+	<font face=helvetica color=white size=3><b>Multiple Docs; Data Valid for All,
+		but only DOM Access to Last</b></font></th>
+</tr>
+
+<tr valign=top>
+<td><pre><br>
+xmlctx *ctx = <font color=blue><b>xmlinitenc</b></font>(&err, <i>options</i>);
+err = <font color=green><b>xmlparse</b></font>(ctx, <i>URI1</i>, <i>options</i>);
+/* Get DOC 1's data with DOM calls here */
+err = <font color=green><b>xmlparse</b></font>(ctx, <i>URI2</i>, <i>options</i>);
+/* NOTE: NO CALL xmlclean() BETWEEN PARSES!! */
+/* Get DOC 2's data with DOM calls here */
+/* DOC 1's data valid here, but no DOM access */
+<font color=green><b>xmlclear</b></font>(ctx);
+/* data for DOC 1 and DOC 2 now recycled */
+...
+<font color=blue><b>xmlterm</b></font>(ctx);
+</pre></td>
+
+<td align=center valign=center><font size=8><b>Obsolete</b></font><p>
+<font size=6>All documents are fully independent now.<p>
+Each can be accessed simultaneously by DOM until explicitly
+destroyed by <tt><b>XmlFreeDocument</b><tt>.
+</font></td>
+</tr>
+
+<tr>
+<th bgcolor=black>
+    <font face=helvetica color=white size=6><b>Old Datatype</b></font>
+</th>
+<th bgcolor=black>
+    <font face=helvetica color=white size=6><b>New Datatype</b></font>
+</th>
+</tr>
+<tr><td>xmlctx, xmlsaxcb, xmlnode,
+    xmlattrnode, xmlcdatanode, xmlcommentnode, xmldocnode,
+    xmldtdnode, xmlelemnode, xmlentnode, xmlentrefnode, xmlfragnode,
+    xmlnotenode, xmlpinode, xmltextnode, xmlacctype, xmlihdl,
+    xslctx, xpctx, xpexpr, xpobj</td>
+    <td align=center><font color=green size=8><b>UNCHANGED</b></font></td></tr>
+<tr bgcolor="#F0F0F0"><td>xmldomimp</td>
+    <td>Obsolete, use xmlctx</td></tr>
+<tr><td>xpnset, xpnsetele</td>
+    <td>Obsolete, use XmlXPathGetObjectNSetNum() and
+		XmlXPathGetObjectNSetNode()</td></tr>
+<tr bgcolor="#F0F0F0"><td>xmlflags, xmlpflags</td>
+    <td><font color=red><b>ub4</b></font></td></tr>
+<tr><td>xmlmemcb</td><td>Obsolete, use individual XmlCreate properties</td></tr>
+<tr bgcolor="#F0F0F0"><td>xmlnodes</td>
+    <td>xmlnodelist, xmlnamedmap</td>
+<tr><td>xmlntype</td>
+    <td>xmlnodetype (gratuitous?)</td></tr>
+<tr bgcolor="#F0F0F0"><td>xmlstream</td>
+    <td>xmlistream, xmliostream</td>
+<tr><td>xpobjtyp</td>
+    <td>xmlxslobjtype</td></tr>
+<tr bgcolor="#F0F0F0"><td>xsloutputmethod</td>
+    <td>xmlxsloutputmethod</td></tr>
+</tr>
+
+<tr>
+<th bgcolor=black>
+    <font face=helvetica color=white size=6><b>Old API -- oraxml.h</b></font>
+</th>
+<th bgcolor=black>
+    <font face=helvetica color=white size=6><b>New API -- xml.h</b></font>
+</th>
+</tr>
+    <tr><td>appendChild</td><td>XmlDomAppendChild</td></tr>
+    <tr bgcolor="#F0F0F0"><td>appendData</td><td>XmlDomAppendData</td></tr>
+    <tr><td>cloneNode</td><td>XmlDomCloneNode</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createAttribute</td><td>XmlDomCreateAttr</td></tr>
+    <tr><td>createAttributeNS</td><td>XmlDomCreateAttrNS</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createCDATASection</td><td>XmlDomCreateCDATA</td></tr>
+    <tr><td>createComment</td><td>XmlDomCreateComment</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createDocument</td><td>XmlCreateDocument</td></tr>
+    <tr><td>createDocumentFragment</td><td>XmlDomCreateFragment</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createDocumentNS</td><td>XmlCreateDocument</td></tr>
+    <tr><td>createDocumentType</td><td>XmlCreateDTD</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createElement</td><td>XmlDomCreateElem</td></tr>
+    <tr><td>createElementNS</td><td>XmlDomCreateElemNS</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createEntityReference</td><td>XmlDomCreateEntityRef</td></tr>
+    <tr><td>createProcessingInstruction</td><td>XmlDomCreatePI</td></tr>
+    <tr bgcolor="#F0F0F0"><td>createTextNode</td><td>XmlDomCreateText</td></tr>
+    <tr><td>deleteData</td><td>XmlDomDeleteData</td></tr>
+    <tr bgcolor="#F0F0F0"><td>freeElements</td><td>XmlDomFreeNodeList</td></tr>
+    <tr><td>getAttribute</td><td>XmlDomGetAttr</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getAttributeIndex</td><td>XmlDomGetAttrs, XmlDomGetNodeMapItem</td></tr>
+    <tr><td>getAttributeNode</td><td>XmlDomGetAttrNode</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getAttributes</td><td>XmlDomGetAttrs</td></tr>
+    <tr><td>getAttrLocal</td><td>XmlDomGetAttrLocal, XmlDomGetAttrLocalLen</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getAttrName</td><td>XmlDomGetAttrName</td></tr>
+    <tr><td>getAttrNamespace</td><td>XmlDomGetAttrURI, XmlDomGetAttrURILen</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getAttrPrefix</td><td>XmlDomGetAttrPrefix</td></tr>
+    <tr><td>getAttrQualifiedName</td><td>XmlDomGetAttrName</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getAttrSpecified</td><td>XmlDomGetAttrSpecified</td></tr>
+    <tr><td>getAttrValue</td><td>XmlDomGetAttrValue</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getCharData</td><td>XmlDomGetCharData</td></tr>
+    <tr><td>getCharLength</td><td>XmlDomGetCharDataLength</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getChildNode</td><td>XmlDomGetChildNode</td></tr>
+    <tr><td>getChildNodes</td><td>XmlDomGetChildNodes</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getContentModel</td><td>XmlDomGetContentModel</td></tr>
+    <tr><td>getDocType</td><td>XmlDomGetDTD</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getDocTypeEntities</td><td>XmlDomGetDTDEntities</td></tr>
+    <tr><td>getDocTypeName</td><td>XmlDomGetDTDName</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getDocTypeNotations</td><td>XmlDomGetDTDNotations</td></tr>
+    <tr><td><font color=red><b>getDocument</b></font></td><td>Obsolete, document is returned by <b>Load</b> functions</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getDocumentElement</td><td>XmlDomGetDocElem</td></tr>
+    <tr><td>getElementByID</td><td>XmlDomGetDocElemByID</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getElementsByTagName</td><td>XmlDomGetElemsByTag</td></tr>
+    <tr><td>getElementsByTagNameNS</td><td>XmlDomGetElemsByTagNS</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getEncoding</td><td>XmlGetEncoding</td></tr>
+    <tr><td>getEntityNotation</td><td>XmlDomGetEntityNotation</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getEntityPubID</td><td>XmlDomGetEntityPubID</td></tr>
+    <tr><td>getEntitySysID</td><td>XmlDomGetEntitySysID</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getFirstChild</td><td>XmlDomGetFirstChild</td></tr>
+    <tr><td><font color=red><b>getImplementation</b></font></td><td>Obsolete, DOMImplementation is not used; it's <b>xmlctx</b> instead</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getLastChild</td><td>XmlDomGetLastChild</td></tr>
+    <tr><td>getNamedItem</td><td>XmlDomGetNamedItem</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNextSibling</td><td>XmlDomGetNextSibling</td></tr>
+    <tr><td>getNodeLocal</td><td>XmlDomGetNodeLocal, XmlDomGetNodeLocalLen</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNodeMapLength</td><td>XmlDomGetNodeMapLength</td></tr>
+    <tr><td>getNodeName</td><td>XmlDomGetNodeName, XmlDomGetNodeNameLen</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNodeNamespace</td><td>XmlDomGetNodeURI, XmlDomGetNodeURILen</td></tr>
+    <tr><td>getNodePrefix</td><td>XmlDomGetNodePrefix</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNodeQualifiedName</td><td>XmlDomGetNodeName, XmlDomGetNodeNameLen</td></tr>
+    <tr><td>getNodeType</td><td>XmlDomGetNodeType</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNodeValue</td><td>XmlDomGetNodeValue, XmlDomGetNodeValueLen</td></tr>
+    <tr><td>getNotationPubID</td><td>XmlDomGetNotationPubID</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getNotationSysID</td><td>XmlDomGetNotationSysID</td></tr>
+    <tr><td>getOwnerDocument</td><td>XmlDomGetOwnerDocument</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getParentNode</td><td>XmlDomGetParentNode</td></tr>
+    <tr><td>getPIData</td><td>XmlDomGetPIData</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getPITarget</td><td>XmlDomGetPITarget</td></tr>
+    <tr><td>getPreviousSibling</td><td>XmlDomGetPrevSibling</td></tr>
+    <tr bgcolor="#F0F0F0"><td>getTagName</td><td>XmlDomGetTag</td></tr>
+    <tr><td>hasAttributes</td><td>XmlDomHasAttrs</td></tr>
+    <tr bgcolor="#F0F0F0"><td>hasChildNodes</td><td>XmlDomHasChildNodes</td></tr>
+    <tr><td>hasFeature</td><td>XmlHasFeature</td></tr>
+    <tr bgcolor="#F0F0F0"><td>importNode</td><td>XmlDomImportNode</td>
+    <tr><td>insertBefore</td><td>XmlDomInsertBefore</td></tr>
+    <tr bgcolor="#F0F0F0"><td>insertData</td><td>XmlDomInsertData</td></tr>
+    <tr><td>isSingleChar</td><td>XmlIsSimple</td></tr>
+    <tr bgcolor="#F0F0F0"><td>isStandalone</td><td>XmlDomGetDecl</td></tr>
+    <tr><td>isUnicode</td><td>XmlIsUnicode</td></tr>
+    <tr bgcolor="#F0F0F0"><td>nodeValid</td><td>XmlDomValidate</td></tr>
+    <tr><td>normalize</td><td>XmlDomNormalize</td></tr>
+    <tr bgcolor="#F0F0F0"><td>numAttributes</td><td>XmlDomNumAttrs</td></tr>
+    <tr><td>numChildNodes</td><td>XmlDomNumChildNodes</td></tr>
+    <tr bgcolor="#F0F0F0"><td>prefixToURI</td><td>XmlDomPrefixToURI</td></tr>
+    <tr><td>printBuffer</td><td>XmlSaveDomBuffer</td></tr>
+    <tr bgcolor="#F0F0F0"><td>printBufferEnc</td><td>XmlSaveDomBuffer</td></tr>
+    <tr><td>printCallback</td><td>XmlSaveDomStream</td></tr>
+    <tr bgcolor="#F0F0F0"><td>printCallbackEnc</td><td>XmlSaveDomStream</td></tr>
+    <tr><td>printSize</td><td>XmlSaveDomSize</td></tr>
+    <tr bgcolor="#F0F0F0"><td>printSizeEnc</td><td>XmlSaveDomSize</td></tr>
+    <tr><td>printStream</td><td>XmlSaveDomStdio</td></tr>
+    <tr bgcolor="#F0F0F0"><td>printStreamEnc</td><td>XmlSaveDomStdio</td></tr>
+    <tr><td>removeAttribute</td><td>XmlDomRemoveAttr</td></tr>
+    <tr bgcolor="#F0F0F0"><td>removeAttributeNode</td><td>XmlDomRemoveAttrNode</td></tr>
+    <tr><td>removeChild</td><td>XmlDomRemoveChild</td></tr>
+    <tr bgcolor="#F0F0F0"><td>removeNamedItem</td><td>XmlDomRemoveNamedItem</td></tr>
+    <tr><td>replaceChild</td><td>XmlDomReplaceChild</td></tr>
+    <tr bgcolor="#F0F0F0"><td>replaceData</td><td>XmlDomReplaceData</td></tr>
+    <tr><td>saveString2</td><td>XmlDomSaveString2</td></tr>
+    <tr bgcolor="#F0F0F0"><td>saveString</td><td>XmlDomSaveString</td></tr>
+    <tr><td>setAttribute</td><td>XmlDomSetAttr</td></tr>
+    <tr bgcolor="#F0F0F0"><td>setAttributeNode</td><td>XmlDomSetAttrNode</td></tr>
+    <tr><td>setAttrValue</td><td>XmlDomSetAttrValue</td></tr>
+    <tr bgcolor="#F0F0F0"><td>setCharData</td><td>XmlDomSetCharData</td></tr>
+    <tr><td>setNamedItem</td><td>XmlDomSetNamedItem</td></tr>
+    <tr bgcolor="#F0F0F0"><td>setNodeValue</td><td>XmlDomSetNodeValue, XmlDomSetNodeValueLen</td></tr>
+    <tr><td>setPIData</td><td>XmlDomSetPIData</td></tr>
+    <tr bgcolor="#F0F0F0"><td>splitText</td><td>XmlDomSplitText</td></tr>
+    <tr><td>substringData</td><td>XmlDomSubstringData</td></tr>
+    <tr bgcolor="#F0F0F0"><td><font color=red><b>xmlaccess</b></font></td><td>XmlAccess</font></td></tr>
+    <tr><td>xmlinit, xmlinitenc</td><td>XmlCreate</td></tr>
+    <tr bgcolor="#F0F0F0"><td><font color=red><b>xmlLocation</b></font></td><td><font color=red><b>MISSING</b></font></td></tr>
+    <tr><td>xmlparse</td><td>XmlLoadDom, XmlLoadSax</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xmlparsebuf</td><td>XmlLoadDom, XmlLoadSax</td></tr>
+    <tr><td><font color=red><b>xmlparsedtd</b></font></td><td>Obsolete, use <b>dtd_only</b> property in <b>Load</b> calls</tr>
+    <tr bgcolor="#F0F0F0"><td>xmlparsefile</td><td>XmlLoadDom, XmlLoadSax</td></tr>
+    <tr><td>xmlparsestream</td><td>XmlLoadDom, XmlLoadSax</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xmlterm</td><td>XmlFreeDocument, XmlDestroy</td></tr>
+    <tr><td><font color=red><b>xmlwhere</b></font></td><td><font color=red><b>MISSING</b></font></td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpevalxpathexpr</td><td>XmlXPathEval</td></tr>
+    <tr><td>xpfreexpathctx</td><td>XmlXPathDestroyCtx</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpgetbooleanval</td><td>XmlXPathGetObjectBoolean</td></tr>
+    <tr><td>xpgetfirstnsetelem</td><td>XmlXPathGetObjectNSetNum</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpgetnextnsetelem</td><td>XmlXPathGetObjectNSetNum</td></tr>
+    <tr><td>xpgetnsetelemnode</td><td>XmlXPathGetObjectNSetNum</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpgetnsetval</td><td>XmlXPathGetObjectNSetNum</td></tr>
+    <tr><td>xpgetnumval</td><td>XmlXPathGetObjectNumber</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpgetrtfragval</td><td>XmlXslGetOutput</td></tr>
+    <tr><td>xpgetstrval</td><td>XmlXPathGetObjectString</font></td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpgetxpobjtyp</td><td>XmlXPathGetObjectType</td></tr>
+    <tr><td>xpmakexpathctx</td><td>XmlXPathCreateCtx</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xpparsexpathexpr</td><td>XmlXPathParse</td></tr>
+    <tr><td>xslgetbaseuri</td><td>XmlXslGetBaseURI</td></tr>
+    <tr bgcolor="#F0F0F0"><td><font color=red><b>xslgetoutputdomctx</b></font></td><td>Obsolete, unnecessary</td></tr>
+    <tr><td><font color=red><b>xslgetoutputsax</b></font></td><td>Obsolete, unnecessary</td></tr>
+    <tr bgcolor="#F0F0F0"><td><font color=red><b>xslgetoutputstream</b></font></td><td>Obsolete, unnecessary</td></tr>
+    <tr><td>xslgetresultdocfrag</td><td>XmlXslGetOutput</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslgettextparam</td><td>XmlXslGetTextParam</td></tr>
+    <tr><td><font color=red><b>xslgetxslctx</b></font></td><td>Obsolete, unnecessary</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslinit</td><td>XmlXslCreate</td></tr>
+    <tr><td>xslprocess</td><td>XmlXslProcess</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslprocessex</td><td>XmlXslProcess</td></tr>
+    <tr><td>xslprocessxml</td><td>XmlXslProcess</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslprocessxmldocfrag</td><td>XmlXslProcess</td></tr>
+    <tr><td>xslresetallparams</td><td>XmlXslResetAllParams</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslsetoutputdomctx</td><td>XmlXslSetOutputDom</td></tr>
+    <tr><td>xslsetoutputencoding</td><td>XmlXslSetOutputEncoding</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslsetoutputmethod</td><td>XmlXslSetOutputMethod</td></tr>
+    <tr><td>xslsetoutputsax</td><td>XmlXslSetOutputSax</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslsetoutputsaxctx</td><td>XmlXslSetOutputSax</td></tr>
+    <tr><td>xslsetoutputstream</td><td>XmlXslSetOutputStream</td></tr>
+    <tr bgcolor="#F0F0F0"><td>xslsettextparam</td><td>XmlXslSetTextParam</td></tr>
+    <tr><td>xslterm</td><td>XmlXslDestroy</td></tr>
+</table>
+</center>
+
+</body>
+</html>

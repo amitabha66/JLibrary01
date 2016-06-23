@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<Catalogue xmlns = "http://www.somewhere.org/BookCatalogue"
+	   xmlns:cat = "http://www.somewhere.org/BookCatalogue"
+	   xmlns:html = "http://www.somewhere.org/HTMLCatalogue"
+	   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation =
+                      "http://www.somewhere.org/BookCatalogue pub.xsd">
+
+        <cat:Magazine>
+                <Title>Natural Health</Title>
+                <Author>October</Author>
+                <Date>1999-12</Date>
+                <Volume>12</Volume>
+                <htmlTable>
+                   <table  xmlns = "http://www.somewhere.org/HTMLCatalogue">
+                      <tr>....</tr>
+                   </table>
+                   <html:table>
+                      <html:tr>....</html:tr>
+                   </html:table>
+                </htmlTable>
+        </cat:Magazine>
+
+        <Book>
+                <Title>Illusions The Adventures of a Reluctant Messiah</Title>
+                <Author>Richard Bach</Author>
+                <Date>1977-01</Date>
+                <ISBN></ISBN>
+                <Publisher>Dell Publishing Co.</Publisher>
+        </Book>
+
+        <Book>
+                <Title>The First and Last Freedom</Title>
+                <Author>J. Krishnamurti</Author>
+                <Date>1954-01</Date>
+                <ISBN>0-06-064831-7</ISBN>
+                <Publisher>Harper &amp; Row</Publisher>
+        </Book>
+
+</Catalogue>

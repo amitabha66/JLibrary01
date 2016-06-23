@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="newclobinsform.xsl"?>
+<page connection="demo" xmlns:xsql="urn:oracle-xsql">
+<xsql:insert-request table="xmldoc" transform="newclobins.xsl"/>
+<data>
+<xsql:query null-indicator="yes" max-rows="4">
+  select title, author, to_char(created,'DD-MON-YYYY HH24:MI:SS') created, stylesheet formatted, docid
+    from xmldoc
+   order by docid desc
+</xsql:query>
+</data>
+</page>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:42:37 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/document/newclobins.xsql.mkelem $
+| $Revision: /main/0 $
++-->
+

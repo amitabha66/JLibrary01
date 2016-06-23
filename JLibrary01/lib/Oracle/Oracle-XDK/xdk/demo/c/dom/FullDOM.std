@@ -1,0 +1,581 @@
+*** C XML Full Unified DOM Test ***
+
+--- ASCII ENCODING ---
+
+Creating XML context (ascii encoding)...
+
+Creating new document with root element 'ROOT'...
+DOM from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT/>
+DOM from element 'ROOT':
+    <ROOT/>
+
+Adding 7 children to element 'ROOT'...
+Document w/BOM from doc node with its 7 children:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Gibberish
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+Document wo/BOM from doc node with its 7 children:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Gibberish
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing node insertion...
+Adding 'Pre-Gibberish' text node...
+Adding 'Ask about the weather' comment node ...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing nextSibling links starting at first child...
+    Pre-Gibberish
+    Gibberish
+    <!--Ask about the weather:-->
+    <!--Bit warm today, innit?-->
+    <?target PI-contents?>
+    <![CDATA[See DATA]]>
+    &EntRef;
+    <FISH/>
+    <FOOD/>
+
+Testing previousSibling links starting at last child...
+    <FOOD/>
+    <FISH/>
+    &EntRef;
+    <![CDATA[See DATA]]>
+    <?target PI-contents?>
+    <!--Bit warm today, innit?-->
+    <!--Ask about the weather:-->
+    Gibberish
+    Pre-Gibberish
+
+Testing setting node value...
+Original node:
+    <?target PI-contents?>
+Node after new value:
+    <?target New PI contents?>
+
+Adding another element level, i.e., 'SUB' ...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target New PI contents?>
+        <SUB>Lengthy SubText</SUB>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Adding a second 'SUB' element...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target New PI contents?>
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Getting all SUB nodes...
+    <SUB>Lengthy SubText</SUB>
+    <SUB/>
+
+Testing parent links...
+    Lengthy SubText
+        <SUB/>
+            <ROOT/>
+<?xml version="1.0" encoding="US-ASCII"?>
+                <ROOT/>
+
+Testing owner document of node...
+    Lengthy SubText
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT/>
+
+Testing node replacement...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing node removal...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Normalizing...
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <ROOT>
+        Pre-GibberishGibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Creating and populating document fragment...
+    <FragElem/>
+    FragText
+Insert document fragment...
+    <ROOT>
+        Pre-GibberishGibberish
+        <!--Ask about the weather:-->
+        <FragElem/>
+        FragText
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Create two attributes...
+Setting attributes...
+    <SUB Attr1="Value1" Attr2="Value2">Lengthy SubText</SUB>
+
+Altering attribute1 value...
+    <SUB Attr1="New1" Attr2="Value2">Lengthy SubText</SUB>
+
+Fetching attribute by name (Attr2)...
+    Attr2="Value2"
+
+Removing attribute by name (Attr1)...
+    <SUB Attr2="Value2">Lengthy SubText</SUB>
+
+Adding new attribute...
+    <SUB Attr2="Value2" Attr3="Value3">Lengthy SubText</SUB>
+
+Removing attribute by pointer (Attr2)...
+    <SUB Attr3="Value3">Lengthy SubText</SUB>
+
+Adding new attribute w/same name (test replacement)...
+    <SUB Attr3="Value3">Lengthy SubText</SUB>
+    <SUB Attr3="Zoo3">Lengthy SubText</SUB>
+
+Testing node (attr) set by name ...
+Adding 'GLEEP' attribute...
+    <SUB Attr3="Zoo3" GLEEP="gleep1">Lengthy SubText</SUB>
+
+Testing node set by name ...
+Replacing 'GLEEP' attribute...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+Replaced node was:
+    GLEEP="gleep1"
+
+Original SubROOT...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+Cloned SubROOT (not deep)...
+    <SUB Attr3="Zoo3" GLEEP="gleep2"/>
+Cloned SubROOT (deep)...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+
+Splitting text...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+    <SUB Attr3="Zoo3" GLEEP="gleep2">
+        Leng
+        thy SubText
+    </SUB>
+
+Testing string operations...
+    CharData = "Leng"
+Setting new data...
+    CharData = "0123456789"
+    CharLength = 10
+    Substring(0,5) = "01234"
+    Substring(8,2) = "89"
+Appending data...
+    CharData = "0123456789ABCDEF"
+Inserting data...
+    CharData = "0123456789*foo*ABCDEF"
+Deleting data...
+    CharData = "*foo*ABCDEF"
+Replacing data...
+    CharData = "*bamboozle*ABCDEF"
+FINISHED!
+
+*** Parsing test document ***
+
+Document from doc node:
+<?xml version="1.0" encoding="US-ASCII"?>
+    <!DOCTYPE doc [
+        <!ELEMENT p (#PCDATA)>
+        <!ATTLIST p xml:space (preserve | default) 'preserve'>
+        <!NOTATION notation1 SYSTEM "file.txt">
+        <!NOTATION notation2 PUBLIC "some notation">
+        <!ELEMENT doc (p*)>
+        <!ENTITY example "<p>An ampersand (&#38;) may be escaped
+numerically (&#38;#38;) or with a general entity
+(&amp;amp;).</p>">
+    ]>
+    <doc xml:lang="foo">
+        <p xml:space="preserve">An ampersand (&amp;) may be escaped
+numerically (&amp;#38;) or with a general entity
+(&amp;amp;).</p>
+    </doc>
+Testing DTD notations...
+# of notations = 2
+    <!NOTATION notation1 SYSTEM "file.txt">
+    <!NOTATION notation2 PUBLIC "some notation">
+Testing DTD entities...
+# of entities = 1
+    <!ENTITY example "<p>An ampersand (&#38;) may be escaped
+numerically (&#38;#38;) or with a general entity
+(&amp;amp;).</p>">
+
+--- UTF-8 ENCODING ---
+
+Creating XML context (utf-8 encoding)...
+
+Creating new document with root element 'ROOT'...
+DOM from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT/>
+DOM from element 'ROOT':
+    <ROOT/>
+
+Adding 7 children to element 'ROOT'...
+Document w/BOM from doc node with its 7 children:
+﻿<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Gibberish
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+Document wo/BOM from doc node with its 7 children:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Gibberish
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing node insertion...
+Adding 'Pre-Gibberish' text node...
+Adding 'Ask about the weather' comment node ...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target PI-contents?>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing nextSibling links starting at first child...
+    Pre-Gibberish
+    Gibberish
+    <!--Ask about the weather:-->
+    <!--Bit warm today, innit?-->
+    <?target PI-contents?>
+    <![CDATA[See DATA]]>
+    &EntRef;
+    <FISH/>
+    <FOOD/>
+
+Testing previousSibling links starting at last child...
+    <FOOD/>
+    <FISH/>
+    &EntRef;
+    <![CDATA[See DATA]]>
+    <?target PI-contents?>
+    <!--Bit warm today, innit?-->
+    <!--Ask about the weather:-->
+    Gibberish
+    Pre-Gibberish
+
+Testing setting node value...
+Original node:
+    <?target PI-contents?>
+Node after new value:
+    <?target New PI contents?>
+
+Adding another element level, i.e., 'SUB' ...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target New PI contents?>
+        <SUB>Lengthy SubText</SUB>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Adding a second 'SUB' element...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        <?target New PI contents?>
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Getting all SUB nodes...
+    <SUB>Lengthy SubText</SUB>
+    <SUB/>
+
+Testing parent links...
+    Lengthy SubText
+        <SUB/>
+            <ROOT/>
+<?xml version="1.0" encoding="UTF-8"?>
+                <ROOT/>
+
+Testing owner document of node...
+    Lengthy SubText
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT/>
+
+Testing node replacement...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        &EntRef;
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Testing node removal...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-Gibberish
+        Gibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Normalizing...
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <ROOT>
+        Pre-GibberishGibberish
+        <!--Ask about the weather:-->
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Creating and populating document fragment...
+    <FragElem/>
+    FragText
+Insert document fragment...
+    <ROOT>
+        Pre-GibberishGibberish
+        <!--Ask about the weather:-->
+        <FragElem/>
+        FragText
+        <!--Bit warm today, innit?-->
+        REPLACEMENT, 1/2 PRICE
+        <SUB>Lengthy SubText</SUB>
+        <SUB/>
+        <![CDATA[See DATA]]>
+        <FISH/>
+        <FOOD/>
+    </ROOT>
+
+Create two attributes...
+Setting attributes...
+    <SUB Attr1="Value1" Attr2="Value2">Lengthy SubText</SUB>
+
+Altering attribute1 value...
+    <SUB Attr1="New1" Attr2="Value2">Lengthy SubText</SUB>
+
+Fetching attribute by name (Attr2)...
+    Attr2="Value2"
+
+Removing attribute by name (Attr1)...
+    <SUB Attr2="Value2">Lengthy SubText</SUB>
+
+Adding new attribute...
+    <SUB Attr2="Value2" Attr3="Value3">Lengthy SubText</SUB>
+
+Removing attribute by pointer (Attr2)...
+    <SUB Attr3="Value3">Lengthy SubText</SUB>
+
+Adding new attribute w/same name (test replacement)...
+    <SUB Attr3="Value3">Lengthy SubText</SUB>
+    <SUB Attr3="Zoo3">Lengthy SubText</SUB>
+
+Testing node (attr) set by name ...
+Adding 'GLEEP' attribute...
+    <SUB Attr3="Zoo3" GLEEP="gleep1">Lengthy SubText</SUB>
+
+Testing node set by name ...
+Replacing 'GLEEP' attribute...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+Replaced node was:
+    GLEEP="gleep1"
+
+Original SubROOT...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+Cloned SubROOT (not deep)...
+    <SUB Attr3="Zoo3" GLEEP="gleep2"/>
+Cloned SubROOT (deep)...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+
+Splitting text...
+    <SUB Attr3="Zoo3" GLEEP="gleep2">Lengthy SubText</SUB>
+    <SUB Attr3="Zoo3" GLEEP="gleep2">
+        Leng
+        thy SubText
+    </SUB>
+
+Testing string operations...
+    CharData = "Leng"
+Setting new data...
+    CharData = "0123456789"
+    CharLength = 10
+    Substring(0,5) = "01234"
+    Substring(8,2) = "89"
+Appending data...
+    CharData = "0123456789ABCDEF"
+Inserting data...
+    CharData = "0123456789*foo*ABCDEF"
+Deleting data...
+    CharData = "*foo*ABCDEF"
+Replacing data...
+    CharData = "*bamboozle*ABCDEF"
+FINISHED!
+
+*** Parsing test document ***
+
+Document from doc node:
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE doc [
+        <!ELEMENT p (#PCDATA)>
+        <!ATTLIST p xml:space (preserve | default) 'preserve'>
+        <!NOTATION notation1 SYSTEM "file.txt">
+        <!NOTATION notation2 PUBLIC "some notation">
+        <!ELEMENT doc (p*)>
+        <!ENTITY example "<p>An ampersand (&#38;) may be escaped
+numerically (&#38;#38;) or with a general entity
+(&amp;amp;).</p>">
+    ]>
+    <doc xml:lang="foo">
+        <p xml:space="preserve">An ampersand (&amp;) may be escaped
+numerically (&amp;#38;) or with a general entity
+(&amp;amp;).</p>
+    </doc>
+Testing DTD notations...
+# of notations = 2
+    <!NOTATION notation1 SYSTEM "file.txt">
+    <!NOTATION notation2 PUBLIC "some notation">
+Testing DTD entities...
+# of entities = 1
+    <!ENTITY example "<p>An ampersand (&#38;) may be escaped
+numerically (&#38;#38;) or with a general entity
+(&amp;amp;).</p>">
+Freeing documents...
+
+Destroying contexts...
+Done, success.

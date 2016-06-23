@@ -1,0 +1,137 @@
+This directory contains some samples to show how to use the TransX Utility.
+---------------------------------------------------------------------------
+
+The following is the list of files:
+
+txdemo1.sql  - A SQL script to set up the sample database objects
+txdemo1.xml  - A sample dataset
+txdemo1.java - A sample Java application
+
+
+Environment Settings
+--------------------
+o Java
+
+  TransX works in Java runtime environment version 1.1.8 or 1.2.  
+
+o CLASSPATH
+
+  Your CLASSPATH has to include the followings:
+
+    - classes12.zip or classes111.zip for JDBC, depending on your JDK version
+    - xmlparserv2.jar for Oracle XML Parser
+    - xschema.jar for Oracle XML Schema Processor
+    - xsu12.jar or xsu111.jar for XSU, depending on your JDK version
+    - transx.zip for TransX
+    - xdb.jar may be needed (Some JREs are known to cause NoClassDefFoundError
+      on JDK 1.2.)
+    
+  Please do not include these components more than one times.
+
+o ORACLE_HOME
+
+  Your ORACLE_HOME should be set to a valid path to your Oracle Home directory.
+
+o PATH
+
+  Your PATH should include the path to your XDK bin directory. 
+
+o ORACLE_SID
+
+  It is recommended to specify the default database. 
+
+o Depending on the environment, additional settings may be necessary. For 
+  example, if you connect to the database with JDBC OCI driver on UNIX systems 
+  it needs to have its library specified on LD_LIBRARY_PATH. Please refer to 
+  respecitve component's documentation for details. 
+
+
+How to run the demo
+-------------------
+
+1. Set up the sample database objects by executing txdemo*.sql
+
+   > sqlplus scott/tiger
+   
+   SQL> @txdemo1.sql
+
+   XXX created. 
+       :
+       :
+   Commit complete.
+
+   The following query shows the target table is empty.
+
+   SQL> select * from i18n_messages;
+
+   no rows selected. 
+
+   Leave this terminal open for later use, so you can see if the data 
+   transfer is successful. 
+
+2. Run the TransX Utility from the command line
+
+   > transx "<host>:<port>:<sid>" <user> <pwd> <datasource>
+
+   Example:
+
+   > transx "localhost:1521:mydb" scott tiger txdemo1.xml
+
+   When the operation is susscessful, nothing is printed out on your terminal.
+
+3. See if the table has been successfully populated
+
+   From the SQL prompt used to set up, query the target table as follows. 
+
+   SQL> select * from i18n_messages ;
+
+   ... < records printed here > ...
+
+   7 rows selected.
+
+4. Clean up the table for another demo.
+
+   SQL> delete from i18n_messages ;
+
+   7 rows deleted.
+
+   SQL> commit;
+
+   Commit complete.
+
+5. Compile the Java demo
+
+   > javac txdemo1.java
+
+6. Execute the Java executable
+
+   > java txdemo1 "localhost:1521:mydb" scott tiger txdemo1.xml
+
+7. See if the table has been successfully populated
+
+   SQL> select * from i18n_messages ;
+
+   ... < records printed here > ...
+
+   7 rows selected.
+
+8. Clean up the table for another yet anoth
+
+   SQL> delete from i18n_messages ;
+
+   7 rows deleted.
+
+   SQL> commit;
+
+   Commit complete.
+
+9. Now, run the TransX Utility to unload data into the predefined XML format.
+
+   > transx -s "<host>:<port>:<sid>" <user> <pwd> <file> <table> [<column>...]
+
+   Example:
+
+   > transx -s "localhost:1521:mydb" scott tiger emp.xml emp
+
+   This command generates a file emp.xml that contains all data in the table 
+   emp. It should be identical to emp-dlf.xml provided in this directory. 

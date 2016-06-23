@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xsql:query xmlns:xsql="urn:oracle-xsql"
+     connection="demo" 
+     airport="SFO" 
+     rowset-element="Ok" 
+     max-rows="1" 
+     row-element="Airport" >
+
+       SELECT tla "Code", description "Description"
+	 FROM AIRPORT
+	WHERE tla = UPPER('{@airport}')
+
+  <xsql:no-rows-query 
+     max-rows="10" 
+     rowset-element="Error" 
+     row-element="Airport" >
+
+       SELECT tla "Code", description "Description"
+	 FROM AIRPORT
+	WHERE UPPER(description) LIKE UPPER('%{@airport}%')
+        ORDER BY tla
+  </xsql:no-rows-query>
+
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:36:37 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/airport/airport-xsql.xml.mkelem $
+| $Revision: /main/0 $
++-->
+

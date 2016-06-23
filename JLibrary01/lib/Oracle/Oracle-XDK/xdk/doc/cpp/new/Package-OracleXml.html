@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>OracleXml APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Ctx.html">Ctx</a></b>
+ | <b><a href="Package-Dom.html">Dom</a></b>
+ | <b><a href="Package-IO.html">IO</a></b>
+ | <b><a href="Package-OracleXml.html">OracleXml</a></b>
+ | <b><a href="Package-Parser.html">Parser</a></b>
+ | <b><a href="Package-Tools.html">Tools</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-Xsl.html">Xsl</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package OracleXml</h1></center>
+
+    OracleXml is the namespace for all XML C++ interaces.
+    It includes class XmlException, root exception interface for all
+    XML exceptions, and namespaces:
+      _:: Ctx    - namespace for TCtx related declarations
+      _:  Dom    - namespace for DOM related declarations
+      _:  Parser - namespace for parser and schema validator declarations
+      _:  IO     - namespace for input and output source declarations
+      _:  Xsl    - namespace for XSLT related declarations
+      _:  XPath  - namespace for XPath related declarations
+      _:  Tools  - namespace for Tools::Factory related declarations
+      _:_<p>    OracleXml is fully defined in this file, xml.hpp. Another
+    namespace, XmlCtxNS, visible to users is defined in xmlctx.hpp.
+    That namespace contains C++ definitions of datastructures
+    corresponding to C level definitions of the xmlctx context and
+    related data structures. While there is no need for users to
+    know details of that namespace, xmlctx.hpp needs to be included
+    in most application main modules (see demos for details)
+
+
+<br><hr noshade size=1><center><h2><a name="XmlException">Interface XmlException</a> (Interface one-line doc)</h2></center>
+<p>
+    This is the root interface for all XML exceptions<p><p>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'XmlException' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#OracleXml::XmlException::getCode"><b>getCode</b></a></td>
+	       <td>Get Oracle XML error code embedded in the exception </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#OracleXml::XmlException::getMesLang"><b>getMesLang</b></a></td>
+	       <td>Get current language (encoding) of error messages</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#OracleXml::XmlException::getMessage"><b>getMessage</b></a></td>
+	       <td>Get Oracle XML error message</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="OracleXml::XmlException::getCode">getCode</a></h2>
+
+<table summary="Function 'OracleXml::XmlException::getCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XmlException">XmlException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>virtual&nbsp;unsigned&nbsp;getCode()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(unsigned)</b></tt> numeric error code (0 on success)</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype
+	for implementation defined functions returning Oracle XML
+	error codes (like error codes defined in xml.h) of the
+	exceptional situations during execution<p>
+</tr>
+</table>
+
+<h2 align=center><a name="OracleXml::XmlException::getMesLang">getMesLang</a></h2>
+
+<table summary="Function 'OracleXml::XmlException::getMesLang' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMesLang</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XmlException">XmlException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>virtual&nbsp;oratext*&nbsp;getMesLang()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        Current language <tt><b>(encoding)</b></tt> of error messages</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype for
+	implementation defined functions returning current language
+	(encoding) of error messages for the exceptional situations
+	during execution<p>
+</tr>
+</table>
+
+<h2 align=center><a name="OracleXml::XmlException::getMessage">getMessage</a></h2>
+
+<table summary="Function 'OracleXml::XmlException::getMessage' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMessage</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XmlException">XmlException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error message</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>virtual&nbsp;oratext*&nbsp;getMessage()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> Error message</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype for
+	implementation defined functions returning Oracle XML
+	error messages of the exceptional situations during execution<p>
+</tr>
+</table>
+</body>
+</html>

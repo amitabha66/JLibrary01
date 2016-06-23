@@ -1,0 +1,41 @@
+This directory contains a sample Java file to show how to use the 
+XML JAXB Class Generator.
+-----------------------------------------------------------------
+
+To run the demo, it is required to set the ORACLE_HOME and JAVA_HOME 
+environment variables. 
+
+If XDK is not installed in ORACLE_HOME, then set the ORACLE_HOME
+to installation root. 
+
+The following is the list of files and directories
+
+Makefile - Makefile used to compile and run the demo in Unix
+Make.bat - Makefile used to compile and run the demo in WINDOWS
+
+The list of Samples:
+
+1. Sample1: This sample demonstrates the binding of top level elements 
+   and top level complexType's. 
+
+2. Sample2: This sample demonstrates the binding of a top level element
+   with an inline simpleType definition.
+
+3. Sample3: This sample demonstrates the binding of a top level complexType 
+   element which is derived by extension from another top level complexType 
+   definition.
+
+4. Sample4: This sample demonstrates the binding of content model within a 
+   complexType which refers to a top level named group.
+
+5. Sample5: This sample demonstrates the binding of 'choice' with maxOccurs 
+   unbounded within a complexType
+
+6. Sample6: This sample demonstrates the binding of atomic datatypes.
+
+7. Sample7: This sample demonstrates the binding a complex type definition 
+   which is of 'mixed' type.
+
+8. Sample8: This sample demonstrates the binding of elements and types that
+   are declared in two different namespaces.
+

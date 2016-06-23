@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class Node</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-NamedNodeMap.html">Previous Class</a>]  [<a href="Class-NodeList.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>Node</i></h1>
+
+This class contains methods for details about a document node
+<p>
+<hr>
+
+</dl>
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#appendChild"><b>appendChild</b></a></td>
+    <td>Append a new child to the end of the current node's list of children</td>
+  </tr>
+  <tr>
+    <td><a href="#cloneNode"><b>cloneNode</b></a></td>
+    <td>Clone an existing node and optionally all its children</td>
+  </tr>
+  <tr>
+    <td><a href="#getAttributes"><b>getAttributes</b></a></td>
+    <td>Return structure contains all defined node attributes</td>
+  </tr>
+  <tr>
+    <td><a href="#getChildNode"><b>getChildNode</b></a></td>
+    <td>Return specific indexed child of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#getChildNodes"><b>getChildNodes</b></a></td>
+    <td>Return structure contains all child nodes of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#getContext"><b>getContext</b></a></td>
+    <td>Get node's context</td>
+  </tr>
+  <tr>
+    <td><a href="#getFirstChild"><b>getFirstChild</b></a></td>
+    <td>Return first child of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#getLastChild"><b>getLastChild</b></a></td>
+    <td>Return last child of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#getLocal"><b>getLocal</b></a></td>
+    <td>Returns the local name of the node</td>
+  </tr>
+  <tr>
+    <td><a href="#getNamespace"><b>getNamespace</b></a></td>
+    <td>Return a node's namespace</td>
+  </tr>
+  <tr>
+    <td><a href="#getNextSibling"><b>getNextSibling</b></a></td>
+    <td>Return a node's next sibling</td>
+  </tr>
+  <tr>
+    <td><a href="#getName"><b>getName</b></a></td>
+    <td>Return name of node</td>
+  </tr>
+  <tr>
+    <td><a href="#getType"><b>getType</b></a></td>
+    <td>Return numeric type-code of node</td>
+  </tr>
+  <tr>
+    <td><a href="#getValue"><b>getValue</b></a></td>
+    <td>Return "value" (data) of node</td>
+  </tr>
+  <tr>
+    <td><a href="#getOwnerDocument"><b>getOwnerDocument</b></a></td>
+    <td>Return document node which contains a node</td>
+  </tr>
+  <tr>
+    <td><a href="#getParentNode"><b>getParentNode</b></a></td>
+    <td>Return parent node of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#getPrefix"><b>getPrefix</b></a></td>
+    <td>Returns the namespace prefix for the node</td>
+  </tr>
+  <tr>
+    <td><a href="#getPreviousSibling"><b>getPreviousSibling</b></a></td>
+    <td>Returns the previous sibling of the current node</td>
+  </tr>
+  <tr>
+    <td><a href="#getQualifiedName"><b>getQualifiedName</b></a></td>
+    <td>Return namespace qualified node of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#hasAttributes"><b>hasAttributes</b></a></td>
+    <td>Determine if node has any defined attributes</td>
+  </tr>
+  <tr>
+    <td><a href="#hasChildNodes"><b>hasChildNodes</b></a></td>
+    <td>Determine if node has children</td>
+  </tr>
+  <tr>
+    <td><a href="#insertBefore"><b>insertBefore</b></a></td>
+    <td>Insert new child node into a node's list of children</td>
+  </tr>
+  <tr>
+    <td><a href="#numChildNodes"><b>numChildNodes</b></a></td>
+    <td>Return count of number of child nodes of given node</td>
+  </tr>
+  <tr>
+    <td><a href="#print"><b>print</b></a></td>
+    <td>Format XML document to stream or buffer</td>
+  </tr>
+  <tr>
+    <td><a href="#printSize"><b>printSize</b></a></td>
+    <td>Determine size of formatted XML document (without outputting)</td>
+  </tr>
+  <tr>
+    <td><a href="#removeChild"><b>removeChild</b></a></td>
+    <td>Remove a node from the current node's list of children</td>
+  </tr>
+  <tr>
+    <td><a href="#replaceChild"><b>replaceChild</b></a></td>
+    <td>Replace a child node with another</td>
+  </tr>
+  <tr>
+    <td><a href="#setValue"><b>setValue</b></a></td>
+    <td>Sets a node's value (data)</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="appendChild"></a>
+<h3><b>appendChild</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Append a new child to the current node's list of children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* appendChild(Node *newChild)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>newChild</tt> -- new child node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- newChild is passed back
+  </dl></dd>
+</dl>
+
+<a name="cloneNode"><hr></a>
+<h3><b>cloneNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns a duplicate of this node, i.e., serves as a generic
+        copy constructor for nodes. The duplicate node has no parent
+        (parentNode returns NULL).<p>
+    <dd>Cloning an Element copies all attributes and their values,
+        including those generated by the XML processor to represent
+        defaulted attributes, but this method does not copy any text
+        it contains unless it is a deep clone, since the text is
+        contained in a child Text node. Cloning any other type of
+        node simply returns a copy of this node.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* cloneNode(boolean deep)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>deep</tt> -- recursion flag<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to new clone
+  </dl></dd>
+</dl>
+
+<a name="getAttributes"><hr></a>
+<h3><b>getAttributes</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return structure of all attributes for node<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>NamedNodeMap* getAttributes()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>NamedNodeMap*</tt> -- Pointer to structure describing all
+	attributes for node, or <tt>NULL</tt> if no attributes are defined
+  </dl></dd>
+</dl>
+
+<a name="getChildNode"><hr></a>
+<h3><b>getChildNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return one of the node's children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getChildNode(uword index)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>index</tt> -- child number, starting at 0<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to <tt>index</tt>'th child of node
+  </dl></dd>
+</dl>
+
+<a name="getChildNodes"><hr></a>
+<h3><b>getChildNodes</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return node's children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>NodeList* getChildNodes()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>NodeList*</tt> -- Pointer to structure describing all
+	the node's children
+  </dl></dd>
+</dl>
+
+<a name="getContext"><hr></a>
+<h3><b>getContext</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return node's context<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>xmlctx* getContext()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>xmlctx*</tt> -- Node's context
+  </dl></dd>
+</dl>
+
+<a name="getFirstChild"><hr></a>
+<h3><b>getFirstChild</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the node's first child<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getFirstChild()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to the node's first child
+  </dl></dd>
+</dl>
+
+<a name="getLastChild"><hr></a>
+<h3><b>getLastChild</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the node's last child<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getLastChild()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to the node's last child
+  </dl></dd>
+</dl>
+
+<a name="getLocal"><hr></a>
+<h3><b>getLocal</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the node's local name<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getLocal()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- node's local name
+  </dl></dd>
+</dl>
+
+<a name="getNamespace"><hr></a>
+<h3><b>getNamespace</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the node's namespace<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getNamespace()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- node's namespace (may be NULL)
+  </dl></dd>
+</dl>
+
+<a name="getNextSibling"><hr></a>
+<h3><b>getNextSibling</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns the next sibling of the node, that is, the child of its
+	parent which comes next<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getNextSibling()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Node's next sibling, NULL if last child
+  </dl></dd>
+</dl>
+
+<a name="getName"><hr></a>
+<h3><b>getName</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return name of node, or <tt>NULL</tt> if the node has no name<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getName()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- Node's name
+  </dl></dd>
+</dl>
+
+<a name="getType"><hr></a>
+<h3><b>getType</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return numeric type-code for node<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>short getType()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>short</tt> -- Node's numeric type code<p>
+    <dt><b><i>Type codes:</i></b>
+    <dd><tt>ELEMENT_NODE<br>ATTRIBUTE_NODE<br>TEXT_NODE<br>
+	CDATA_SECTION_NODE<br>ENTITY_REFERENCE_NODE<br>ENTITY_NODE<br>
+	PROCESSING_INSTRUCTION_NODE<br>COMMENT_NODE<br>DOCUMENT_NODE<br>
+	DOCUMENT_TYPE_NODE<br>DOCUMENT_FRAGMENT_NODE<br>NOTATION_NODE<br></tt>
+  </dl></dd>
+</dl>
+
+<a name="getValue"><hr></a>
+<h3><b>getValue</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return "value" (data) of node, or <tt>NULL</tt> if the node has
+        no value<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getValue()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- Node's "value"
+  </dl></dd>
+</dl>
+
+<a name="getOwnerDocument"><hr></a>
+<h3><b>getOwnerDocument</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return document node which contains the current node<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Document* getOwnerDocument()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Document*</tt> -- Pointer to document node
+  </dl></dd>
+</dl>
+
+<a name="getParentNode"><hr></a>
+<h3><b>getParentNode</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return node's parent<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getParentNode()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Pointer to the node's parent node<p>
+  </dl></dd>
+</dl>
+
+<a name="getPrefix"><hr></a>
+<h3><b>getPrefix</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the namespace prefix of node<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getPrefix()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- Node's namespace prefix, may be NULL
+  </dl></dd>
+</dl>
+
+<a name="getPreviousSibling"><hr></a>
+<h3><b>getPreviousSibling</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Returns the previous sibling of the node, that is, the child of its
+	parent which came before<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* getPreviousSibling()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- Node's previous sibling, NULL if first child
+  </dl></dd>
+</dl>
+
+<a name="getQualifiedName"><hr></a>
+<h3><b>getQualifiedName</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return the fully qualified (namespace) name of node<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>DOMString getQualifiedName()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>DOMString</tt> -- Node's qualified name
+  </dl></dd>
+</dl>
+
+<a name="hasAttributes"><hr></a>
+<h3><b>hasAttributes</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Determine if node has any defined attributes<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>boolean hasAttributes()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>boolean</tt> -- TRUE if node has attributes
+  </dl></dd>
+</dl>
+
+<a name="hasChildNodes"><hr></a>
+<h3><b>hasChildNodes</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Determine if node has any children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>boolean hasChildNodes()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>boolean</tt> -- TRUE if node has child nodes
+  </dl></dd>
+</dl>
+
+<a name="insertBefore"><hr></a>
+<h3><b>insertBefore</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Insert a new child node into the list of children of a parent,
+	before the reference node.  If refChild is NULL, appends the
+	new node to the end.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* insertBefore(Node *newChild, Node *refChild)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>newChild</tt> -- new node to insert
+    <dd><tt>refChild</tt> -- reference node; new node comes before<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- newChild passed back
+  </dl></dd>
+</dl>
+
+<a name="numChildNodes"><hr></a>
+<h3><b>numChildNodes</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return count of node's children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>uword numChildNodes()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>uword</tt> -- Number of children this node has (might be 0)
+  </dl></dd>
+</dl>
+
+<a name="print"><hr></a>
+<h3><b>print</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Format XML document to stream or buffer<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>void print(FILE *out = stdout, uword level = 0, uword step = 4)</tt>
+    <dd><tt>void print(DOMString buffer, size_t bufsize, uword level = 0, uword step = 4)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>out</tt> -- stdio output stream
+    <dd><tt>buffer</tt> -- destination buffer
+    <dd><tt>bufsize</tt> -- size of destination buffer
+    <dd><tt>level</tt> -- starting indentation level
+    <dd><tt>step</tt> -- spaces per indentation level<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>void</tt>
+  </dl></dd>
+</dl>
+
+<a name="printSize"><hr></a>
+<h3><b>printSize</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Return size (in bytes) of formatted XML document, without
+	actually outputting it.  Useful for determining final size
+	of document for buffer allocation purposes.  Caution, this
+	call is almost as expensive as really outputting the document!<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>size_t printSize(uword level = 0, uword step = 4)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>level</tt> -- starting indentation level
+    <dd><tt>step</tt> -- spaces per indentation level<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>size_t</tt> -- size of formatted document, in bytes
+  </dl></dd>
+</dl>
+
+<a name="removeChild"><hr></a>
+<h3><b>removeChild</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Remove a node from its parents' list of children<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* removeChild()</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd>None<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- removed node is passed back
+  </dl></dd>
+</dl>
+
+<a name="replaceChild"><hr></a>
+<h3><b>replaceChild</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Replace current node with another.<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>Node* replaceChild(Node *newChild)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>newChild</tt> -- new replacement node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>Node*</tt> -- original node is returned
+  </dl></dd>
+</dl>
+
+<a name="setValue"><hr></a>
+<h3><b>setValue</b></h3>
+<dl>
+  <dd><dl>
+    <dt><b><i>Function:</i></b>
+    <dd>Sets a node's "value" (data)<p>
+    <dt><b><i>Prototype:</i></b>
+    <dd><tt>void setValue(DOMString data)</tt><p>
+    <dt><b><i>Arguments:</i></b>
+    <dd><tt>data</tt> -- New data for node<p>
+    <dt><b><i>Returns:</i></b>
+    <dd><tt>void</tt>
+  </dl></dd>
+</dl>
+
+</body>
+</html>

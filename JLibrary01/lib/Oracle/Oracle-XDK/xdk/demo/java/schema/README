@@ -1,0 +1,42 @@
+This directory contains some sample XML applications to show how to use the 
+Oracle XML parser with XMLSchema processor.
+
+The following are the sample Java files in this directory:
+
+        XSDSample - A sample driver to process XML instance documents.
+        XSDSetSchema - A sample driver to process XML instance documents 
+                       by overriding the schemaLocation.
+        XSDLax - Same as XSDSetSchema but use Lax validation mode
+	DTD2Schema -  A sample driver to convert DTD to XML Schema
+
+To run the sample program:
+
+1) Use "make" to generate .class files.
+2) Add xmlparserv2.jar, xschema.jar and the current directory to the CLASSPATH.
+
+3) Run the sample program with *.xml files: 
+
+	java XSDSample report.xml
+        java XSDSetSchema report.xsd report.xml
+        java XSDLax embeded_xsql.xsd embeded_xsql.xml
+
+   Schema processor uses XMLSchema specification from "report.xsd" to 
+   validate the contents of "report.xml"
+     
+	java XSDSample catalogue.xml
+        java XSDSetSchema cat.xsd catalogue.xml
+
+   Schema processor uses XMLSchema specification from "cat.xsd" 
+   to validate the contents of "catalogue.xml"
+
+	java XSDSample catalogue_e.xml
+	java XSDSample report_e.xml
+
+   Examples with XMLSchema errors. Schema processor generates error messages.
+
+	java DTD2Schema dtd2schema.dtd dtd2schema.xml
+
+   Example for converting DTD to Schema.  This example converts a dtd (argument 1) 
+   into a schema and uses it to validate an xml file (argument2).
+
+

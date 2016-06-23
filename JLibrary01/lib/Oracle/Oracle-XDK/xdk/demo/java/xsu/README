@@ -1,0 +1,19 @@
+misc files	DESCRIPTION
+----------	-----------------------------------------
+sampdoc.xml	sample xml document used in samples that putXML
+samps.sql	SQL script to set up the schema used by some of the samples
+
+
+
+CLASSES		DESCRIPTION
+---------	-----------------------------------------
+
+samp1.java	simple example on using Oracle XMLSQL API to get XML doc 
+		given a SQL query.
+		
+samp2.java	very similar to samp1 except samp2 demonstrates the usage of
+		many customizations the user can use to shape the generated
+		XML document.
+
+samp10.java	simple example of using the OracleXMLSave class to insert data
+		from an XML document file into the database.

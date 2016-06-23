@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql">
+
+  SELECT 'Hello World' AS greeting FROM DUAL
+
+</xsql:query>
+<!--
+| $Author: kkarun $
+| $Date: 20-apr-00.23:50:22 $
+| $Source: /vobs/oracore3/demo/xdk/java/xsql/demo/helloworld/helloworld-xsql.xml.mkelem $
+| $Revision: /main/0 $
++-->
+

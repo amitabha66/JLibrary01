@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="SalChart.xsl" ?>
+<xsql:query deptno="0" bind-params="deptno" 
+       xmlns:xsql="urn:oracle-xsql" connection="hr"
+       allow-client-style="yes">
+
+  select last_name as ename, 
+         salary as sal 
+    from employees
+WHERE department_id = ?
+     order by salary desc
+</xsql:query>

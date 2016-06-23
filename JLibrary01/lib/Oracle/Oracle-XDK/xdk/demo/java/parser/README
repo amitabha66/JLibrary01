@@ -1,0 +1,68 @@
+This directory contains some sample XML applications to show how to use the 
+Oracle XML parser.
+
+The following are the sample Java files in the sub-directories:
+
+	XSLSample - A sample application using XSL APIs.
+
+        DOMSample - A sample application using DOM APIs.
+        DOMNamespace - A sample application using Namespace extensions
+                        to DOM APIs.
+        DOM2Namespace - A sample application using DOM Level 2.0 APIs
+        DOMRangeSample - A sample application using DOM Range APIs
+        EventSample - A sample application using DOM Event APIs
+        NodeIteratorSample - A sample application using DOM Iterator APIs
+        TreeWalkerSample - A sample application using DOM TreeWalker APIs
+
+
+        SAXSample - A sample application using SAX APIs.
+        SAXNamespace - A sample application using Namespace extensions 
+                        to SAX APIs.
+        SAX2Namespace - A sample application using SAX 2.0 
+
+        Tokenizer    - A sample application using XMLToken interface APIs.
+                       The Tokenizer application implements XMLToken interface,
+                       which must be registered using the setTokenHandler() 
+                       method.  A request for the XML tokens is registered 
+                       using the setToken() method.  During tokenizing,
+                       the parser doesn't validate the document and doesn't 
+                       include or read internal/external utilities. 
+        DOMCompression - A sample application to compress a DOM tree
+	DOMDeCompression - A sample to read back a DOM from a compressed stream
+
+	SAXCompression - A sample application to compress the SAX output 
+                       from a SAX Parser.
+	SAXDeCompression - A sample application to regenerate the SAX events
+                       from the compressed stream.
+        JAXPExamples - a few samples of using JAXP 1.1 API to run Oracle engine       
+ 
+To run these sample programs:
+
+1) Use "make" to generate .class files.
+2) Add xmlparserv2.jar and the current directory to the CLASSPATH.
+3A) Run the sample program for DOM/SAX APIs: 
+	java <classname> <sample xml file>.
+3B) Run the sample program for XSL APIs: 
+	java XSLSample <sample xsl file> <sample xml file>.
+3C) Run the sample program for Tokenizer APIs:
+        java Tokenizer <sample xml file> <token string>
+
+4A) Run the sample program for compressing a DOM tree
+	java DOMCompression sample.dat
+    The compressed output is generated in a file called "xml.ser"
+4B) Run the sample program to build the DOM tree from the compressed stream.
+    	java DeCompression xml.ser
+4C) Run the sample program for compressing the SAX events
+	java SAXCompression sample.dat
+4D) Run the sample program for regenerating the SAX events from the
+    compressed stream.
+	java SAXDeCompression xml.ser
+5A) Run the sample program for JAXP 1.1 API
+        java JAXPExamples
+        [the .xml and .xsl are given inside JAXPExamples.java]
+
+A few .xml and files are provided as test cases in directory 'common'. 
+The xsl stylesheet iden.xsl can be used to achieve an identity transformation
+of the xml files in 'common' dir.
+
+

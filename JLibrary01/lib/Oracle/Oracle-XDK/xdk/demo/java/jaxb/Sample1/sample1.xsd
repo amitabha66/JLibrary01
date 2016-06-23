@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!-- The element declaration type is a complex type definition -->
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.oracle.com/sample1/"
+    xmlns:xsd="http://www.oracle.com/sample1/"
+    elementFormDefault="qualified">
+
+     <complexType name="AComplexType">
+       <sequence>
+         <element name="A" type="int"/>
+         <element name="B" type="string"/>
+         <element name="C" type="xsd:CType"/>
+         <element ref="xsd:rElemOfSTypeInSameNs"/>
+         <element ref="xsd:rElemOfCTypeInSameNs"/>
+       </sequence>
+     </complexType>
+
+     <complexType name="CType">
+        <choice>
+           <element name="D" type="int"/>
+           <element name="E" type="string"/>
+        </choice>
+     </complexType>
+
+     <complexType name="RType">
+        <sequence>
+           <element name="F" type="int"/>
+        </sequence>
+     </complexType>
+
+     <element name="AnElement" type="xsd:AComplexType"/> 
+
+     <element name="rElemOfSTypeInSameNs" type="string"/>
+
+     <element name="rElemOfCTypeInSameNs" type="xsd:RType"/>
+
+</schema>
+

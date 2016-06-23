@@ -1,0 +1,296 @@
+XML C++ Full DOM test
+Initializing XML parser...
+
+Creating new document...
+Document from root node:
+    DOCUMENT
+
+Creating root element ('ROOT')...
+Setting as root element...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+Adding 7 children to 'ROOT' element...
+Document from 'ROOT' element with its 7 children:
+    ELEMENT "ROOT"
+        TEXT = "Gibberish"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "PI-contents"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Testing node insertion...
+Adding 'Pre-Gibberish' text node and 'Ask about the weather' comment node...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "PI-contents"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "PI-contents"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "PI-contents"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Testing nextSibling links starting at first child...
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "PI-contents"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Testing previousSibling links starting at last child...
+        ELEMENT "FOOD"
+        ELEMENT "FISH"
+        ENTREF "EntRef"
+        CDATA = "See DATA"
+        PI "target" = "PI-contents"
+        COMMENT = "Bit warm today, innit?"
+        COMMENT = "Ask about the weather:"
+        TEXT = "Gibberish"
+        TEXT = "Pre-Gibberish"
+
+Testing setting node value...
+Original node:
+        PI "target" = "PI-contents"
+Node after new value:
+        PI "target" = "New PI contents"
+
+Adding another element level, i.e., 'SUB'...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "New PI contents"
+        ELEMENT "SUB"
+            TEXT = "Lengthy SubText"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Adding a second 'SUB' element...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        PI "target" = "New PI contents"
+        ELEMENT "SUB"
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Getting all SUB nodes - note the distinct hex addresses...
+        ELEMENT "SUB"
+        ELEMENT "SUB"
+
+Testing parent links...
+        TEXT = "Lengthy SubText"
+            ELEMENT "SUB"
+                ELEMENT "ROOT"
+                    DOCUMENT
+
+Testing owner document of node...
+        TEXT = "Lengthy SubText"
+        DOCUMENT
+
+Testing node replacement...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        TEXT = "REPLACEMENT, 1/2 PRICE"
+        ELEMENT "SUB"
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB"
+        CDATA = "See DATA"
+        ENTREF "EntRef"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Testing node removal...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-Gibberish"
+        TEXT = "Gibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        TEXT = "REPLACEMENT, 1/2 PRICE"
+        ELEMENT "SUB"
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB"
+        CDATA = "See DATA"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Normalizing...
+Document from 'ROOT' element:
+    ELEMENT "ROOT"
+        TEXT = "Pre-GibberishGibberish"
+        COMMENT = "Ask about the weather:"
+        COMMENT = "Bit warm today, innit?"
+        TEXT = "REPLACEMENT, 1/2 PRICE"
+        ELEMENT "SUB"
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB"
+        CDATA = "See DATA"
+        ELEMENT "FISH"
+        ELEMENT "FOOD"
+
+Creating and populating document fragment...
+        DOCFRAG
+            ELEMENT "FragElem"
+            TEXT = "FragText"
+Insert document fragment...
+        ELEMENT "ROOT"
+            TEXT = "Pre-GibberishGibberish"
+            COMMENT = "Ask about the weather:"
+            ELEMENT "FragElem"
+            TEXT = "FragText"
+            COMMENT = "Bit warm today, innit?"
+            TEXT = "REPLACEMENT, 1/2 PRICE"
+            ELEMENT "SUB"
+                TEXT = "Lengthy SubText"
+            ELEMENT "SUB"
+            CDATA = "See DATA"
+            ELEMENT "FISH"
+            ELEMENT "FOOD"
+
+Create two attributes...
+Setting attributes...
+        ELEMENT "SUB" [Attr1*="Value1", Attr2*="Value2"]
+            TEXT = "Lengthy SubText"
+
+Altering attribute1 value...
+        ELEMENT "SUB" [Attr1*="New1", Attr2*="Value2"]
+            TEXT = "Lengthy SubText"
+
+Fetching attribute by name (Attr2)...
+        ATTRIBUTE "Attr2" = "Value2"
+
+Removing attribute by name (Attr1)...
+        ELEMENT "SUB" [Attr2*="Value2"]
+            TEXT = "Lengthy SubText"
+
+Adding new attribute...
+        ELEMENT "SUB" [Attr2*="Value2", Attr3*="Value3"]
+            TEXT = "Lengthy SubText"
+
+Removing attribute by pointer (Attr2)...
+        ELEMENT "SUB" [Attr3*="Value3"]
+            TEXT = "Lengthy SubText"
+
+Adding new attribute w/same name (test replacement)...
+        ELEMENT "SUB" [Attr3*="Value3"]
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+            TEXT = "Lengthy SubText"
+
+Testing node (attr) set by name...
+Adding 'GLEEP' attr and printing out hex addresses of node set
+    ELEMENT "SUB" [Attr3*="Zoo3", GLEEP*="GLEEP1"]
+        TEXT = "Lengthy SubText"
+
+Testing node (attr) set by name...
+Replacing 'GLEEP' element - note the changed hex address
+    ELEMENT "SUB" [Attr3*="Zoo3", GLEEP*="GLEEP2"]
+        TEXT = "Lengthy SubText"
+Replaced node was:
+        ATTRIBUTE "GLEEP" = "GLEEP1"
+
+Testing node removal by name...
+Removing 'GLEEP' attribute
+    ELEMENT "SUB" [Attr3*="Zoo3"]
+        TEXT = "Lengthy SubText"
+
+Original SubROOT...
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+            TEXT = "Lengthy SubText"
+Cloned SubROOT (not deep)...
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+Cloned SubROOT (deep)...
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+            TEXT = "Lengthy SubText"
+
+Splitting text...
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+            TEXT = "Lengthy SubText"
+        ELEMENT "SUB" [Attr3*="Zoo3"]
+            TEXT = "Leng"
+            TEXT = "thy SubText"
+
+Testing string operations...
+    CharData = "Leng"
+Setting new data...
+    CharData = "0123456789"
+    CharLength = 10
+    Substring(0,5) = "01234"
+    Substring(8,2) = "89"
+Appending data...
+    CharData = "0123456789ABCDEF"
+Inserting data...
+    CharData = "0123456789*foo*ABCDEF"
+Deleting data...
+    CharData = "*foo*ABCDEF"
+Replacing data...
+    CharData = "*bamboozle*ABCDEF"
+Cleaning up...
+Parsing test document...
+Document from root node:
+    DOCUMENT
+        DTD "doc"
+        ELEMENT "doc" [xml:lang*="foo"]
+            ELEMENT "p" [xml:space="preserve"]
+                TEXT = "An ampersand (&) may be escaped
+numerically (&#38;) or with a general entity
+(&amp;)."
+Testing getNotations...
+# of notations = 2
+        NOTATION "notation1"
+        NOTATION "notation2"
+Testing getEntities...
+# of entities = 1
+        ENTITY "example" = "<p>An ampersand (&#38;) may be escaped
+numerically (&#38;#38;) or with a general entity
+(&amp;amp;).</p>"
+Cleaning up...
+
+Terminating parser...
+Success.

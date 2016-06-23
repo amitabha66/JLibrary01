@@ -1,0 +1,2002 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Parser APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Ctx.html">Ctx</a></b>
+ | <b><a href="Package-Dom.html">Dom</a></b>
+ | <b><a href="Package-IO.html">IO</a></b>
+ | <b><a href="Package-OracleXml.html">OracleXml</a></b>
+ | <b><a href="Package-Parser.html">Parser</a></b>
+ | <b><a href="Package-Tools.html">Tools</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-Xsl.html">Xsl</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package Parser</h1></center>
+
+    Parser interfaces include: Parser exceptions, Validator, Parser,
+    DOMParser, SAXParser interfaces<p>
+<ul>
+    <li><a href="#functions"><b>Member Function Index</b></a>
+    <li><a href="#DOMParser">Interface <b>DOMParser</b></a> (DOM parser root class)
+    <li><a href="#GParser">Interface <b>GParser</b></a> (Root class for XML parsers)
+    <li><a href="#ParserException">Interface <b>ParserException</b></a> (Exception class for parser and validator)
+    <li><a href="#SAXHandler">Interface <b>SAXHandler</b></a> (root class for current SAX handler implementations)
+    <li><a href="#SAXHandlerRoot">Interface <b>SAXHandlerRoot</b></a> (root class for all SAX handlers)
+    <li><a href="#SAXParser">Interface <b>SAXParser</b></a> (root class for all SAX parsers)
+    <li><a href="#SchemaValidator">Interface <b>SchemaValidator</b></a> (XML schema aware validator)
+</ul>
+
+<hr noshade size=1><center><h2><a name="functions">Member Function Index</a></h2></center>
+<center><table summary="Package 'Parser' function index" cellspacing=0 cellpadding=0>
+<tr bgcolor="#9090F0"><th scope=col>Interface<th scope=col>Function<th scope=col>Description</tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::getContext">getContext</a></b>&nbsp;</tt></td>
+
+    <td>Returns parser's XML context (allocation and encodings)</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::getParserId">getParserId</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::parse">parse</a></b>&nbsp;</tt></td>
+
+    <td>Parse the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::parseDTD">parseDTD</a></b>&nbsp;</tt></td>
+
+    <td>Parse DTD document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::parseSchVal">parseSchVal</a></b>&nbsp;</tt></td>
+
+    <td>Parse and validate the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#DOMParser">DOMParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::DOMParser::setValidator">setValidator</a></b>&nbsp;</tt></td>
+
+    <td>Set the validator for this parser</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::SetWarnDuplicateEntity">SetWarnDuplicateEntity</a></b>&nbsp;</tt></td>
+
+    <td>Specifies if multiple entity declarations result in a warning</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getBaseURI">getBaseURI</a></b>&nbsp;</tt></td>
+
+    <td>Returns the base URI for the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getDiscardWhitespaces">getDiscardWhitespaces</a></b>&nbsp;</tt></td>
+
+    <td>Checks if whitespaces between elements are discarded</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getExpandCharRefs">getExpandCharRefs</a></b>&nbsp;</tt></td>
+
+    <td>Checks if character references are expanded</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getSchemaLocation">getSchemaLocation</a></b>&nbsp;</tt></td>
+
+    <td>Get schema location for this document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getStopOnWarning">getStopOnWarning</a></b>&nbsp;</tt></td>
+
+    <td>Get if document processing stops on warnings</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::getWarnDuplicateEntity">getWarnDuplicateEntity</a></b>&nbsp;</tt></td>
+
+    <td>Get if multiple entity declarations cause a warning</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::setBaseURI">setBaseURI</a></b>&nbsp;</tt></td>
+
+    <td>Sets the base URI for the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::setDiscardWhitespaces">setDiscardWhitespaces</a></b>&nbsp;</tt></td>
+
+    <td>Sets if formatting whitespaces should be discarded</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::setExpandCharRefs">setExpandCharRefs</a></b>&nbsp;</tt></td>
+
+    <td>Get if character references are expanded</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::setSchemaLocation">setSchemaLocation</a></b>&nbsp;</tt></td>
+
+    <td>Set schema location for this document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#GParser">GParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::GParser::setStopOnWarning">setStopOnWarning</a></b>&nbsp;</tt></td>
+
+    <td>Sets if document processing stops on warnings</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#ParserException">ParserException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::ParserException::getCode">getCode</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#ParserException">ParserException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::ParserException::getMesLang">getMesLang</a></b>&nbsp;</tt></td>
+
+    <td>Get current language (encoding) of error messages</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#ParserException">ParserException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::ParserException::getMessage">getMessage</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error message</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#ParserException">ParserException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::ParserException::getParserCode">getParserCode</a></b>&nbsp;</tt></td>
+
+    <td>Get parser exception code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::CDATA">CDATA</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of CDATA</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::XMLDecl">XMLDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of an XML declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::attributeDecl">attributeDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of attribute's declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::characters">characters</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of character data</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::comment">comment</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of a comment</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::elementDecl">elementDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of element's declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::endDocument">endDocument</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of the end of the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::endElement">endElement</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of element's end</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::notationDecl">notationDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of a notation declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::parsedEntityDecl">parsedEntityDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of a parsed entity declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::processingInstruction">processingInstruction</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of a processing instruction</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::startDocument">startDocument</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of the start of the document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::startElement">startElement</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of element's start</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::startElementNS">startElementNS</a></b>&nbsp;</tt></td>
+
+    <td>Receive namespace aware notification of element's start</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::unparsedEntityDecl">unparsedEntityDecl</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of a unparsed entity declaration</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXHandler">SAXHandler</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXHandler::whitespace">whitespace</a></b>&nbsp;</tt></td>
+
+    <td>Receive notification of whitespace characters</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXParser">SAXParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXParser::getContext">getContext</a></b>&nbsp;</tt></td>
+
+    <td>Returns parser's XML context (allocation and encodings)</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXParser">SAXParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXParser::getParserId">getParserId</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXParser">SAXParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXParser::parse">parse</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXParser">SAXParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXParser::parseDTD">parseDTD</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SAXParser">SAXParser</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SAXParser::setSAXHandler">setSAXHandler</a></b>&nbsp;</tt></td>
+
+    <td>Set SAX handler</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::getSchemaList">getSchemaList</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::getValidatorId">getValidatorId</a></b>&nbsp;</tt></td>
+
+    <td>Get validator identifier</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::loadSchema">loadSchema</a></b>&nbsp;</tt></td>
+
+    <td>Load up a schema document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::unloadSchema">unloadSchema</a></b>&nbsp;</tt></td>
+
+    <td>Unload a schema document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::validate">validate</a></b>&nbsp;</tt></td>
+
+    <td>Validate an element node against loaded schema(s)</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#SchemaValidator">SchemaValidator</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#Parser::SchemaValidator::validate_1">validate</a></b>&nbsp;</tt></td>
+
+    <td>Validate an element node against loaded schema(s)</td>
+  </tr>
+</table></center>
+
+<br><hr noshade size=1><center><h2><a name="DOMParser">Interface DOMParser</a> (DOM parser root class)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'DOMParser' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::getContext"><b>getContext</b></a></td>
+	       <td>Returns parser's XML context (allocation and encodings)</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::getParserId"><b>getParserId</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::parse"><b>parse</b></a></td>
+	       <td>Parse the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::parseDTD"><b>parseDTD</b></a></td>
+	       <td>Parse DTD document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::parseSchVal"><b>parseSchVal</b></a></td>
+	       <td>Parse and validate the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::DOMParser::setValidator"><b>setValidator</b></a></td>
+	       <td>Set the validator for this parser</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="GParser">Interface GParser</a> (Root class for XML parsers)</h2></center>
+<p>
+    This is the root class for all Oracle XML parsers. It handles all
+    options that can be set to any Oracle parser.
+<p>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'GParser' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::SetWarnDuplicateEntity"><b>SetWarnDuplicateEntity</b></a></td>
+	       <td>Specifies if multiple entity declarations result in a warning</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getBaseURI"><b>getBaseURI</b></a></td>
+	       <td>Returns the base URI for the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getDiscardWhitespaces"><b>getDiscardWhitespaces</b></a></td>
+	       <td>Checks if whitespaces between elements are discarded</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getExpandCharRefs"><b>getExpandCharRefs</b></a></td>
+	       <td>Checks if character references are expanded</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getSchemaLocation"><b>getSchemaLocation</b></a></td>
+	       <td>Get schema location for this document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getStopOnWarning"><b>getStopOnWarning</b></a></td>
+	       <td>Get if document processing stops on warnings</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::getWarnDuplicateEntity"><b>getWarnDuplicateEntity</b></a></td>
+	       <td>Get if multiple entity declarations cause a warning</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::setBaseURI"><b>setBaseURI</b></a></td>
+	       <td>Sets the base URI for the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::setDiscardWhitespaces"><b>setDiscardWhitespaces</b></a></td>
+	       <td>Sets if formatting whitespaces should be discarded</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::setExpandCharRefs"><b>setExpandCharRefs</b></a></td>
+	       <td>Get if character references are expanded</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::setSchemaLocation"><b>setSchemaLocation</b></a></td>
+	       <td>Set schema location for this document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::GParser::setStopOnWarning"><b>setStopOnWarning</b></a></td>
+	       <td>Sets if document processing stops on warnings</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="ParserException">Interface ParserException</a> (Exception class for parser and validator)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'ParserException' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::ParserException::getCode"><b>getCode</b></a></td>
+	       <td>Get Oracle XML error code embedded in the exception </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::ParserException::getMesLang"><b>getMesLang</b></a></td>
+	       <td>Get current language (encoding) of error messages</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::ParserException::getMessage"><b>getMessage</b></a></td>
+	       <td>Get Oracle XML error message</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::ParserException::getParserCode"><b>getParserCode</b></a></td>
+	       <td>Get parser exception code embedded in the exception </td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="SAXHandler">Interface SAXHandler</a> (root class for current SAX handler implementations)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'SAXHandler' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::CDATA"><b>CDATA</b></a></td>
+	       <td>Receive notification of CDATA</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::XMLDecl"><b>XMLDecl</b></a></td>
+	       <td>Receive notification of an XML declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::attributeDecl"><b>attributeDecl</b></a></td>
+	       <td>Receive notification of attribute's declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::characters"><b>characters</b></a></td>
+	       <td>Receive notification of character data</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::comment"><b>comment</b></a></td>
+	       <td>Receive notification of a comment</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::elementDecl"><b>elementDecl</b></a></td>
+	       <td>Receive notification of element's declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::endDocument"><b>endDocument</b></a></td>
+	       <td>Receive notification of the end of the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::endElement"><b>endElement</b></a></td>
+	       <td>Receive notification of element's end</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::notationDecl"><b>notationDecl</b></a></td>
+	       <td>Receive notification of a notation declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::parsedEntityDecl"><b>parsedEntityDecl</b></a></td>
+	       <td>Receive notification of a parsed entity declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::processingInstruction"><b>processingInstruction</b></a></td>
+	       <td>Receive notification of a processing instruction</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::startDocument"><b>startDocument</b></a></td>
+	       <td>Receive notification of the start of the document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::startElement"><b>startElement</b></a></td>
+	       <td>Receive notification of element's start</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::startElementNS"><b>startElementNS</b></a></td>
+	       <td>Receive namespace aware notification of element's start</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::unparsedEntityDecl"><b>unparsedEntityDecl</b></a></td>
+	       <td>Receive notification of a unparsed entity declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXHandler::whitespace"><b>whitespace</b></a></td>
+	       <td>Receive notification of whitespace characters</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="SAXHandlerRoot">Interface SAXHandlerRoot</a> (root class for all SAX handlers)</h2></center>
+<p>
+    This class provides the base for future non-virtual derivations
+<p>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'SAXHandlerRoot' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="SAXParser">Interface SAXParser</a> (root class for all SAX parsers)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'SAXParser' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::SAXParser::getContext"><b>getContext</b></a></td>
+	       <td>Returns parser's XML context (allocation and encodings)</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXParser::getParserId"><b>getParserId</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXParser::parse"><b>parse</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXParser::parseDTD"><b>parseDTD</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SAXParser::setSAXHandler"><b>setSAXHandler</b></a></td>
+	       <td>Set SAX handler</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="SchemaValidator">Interface SchemaValidator</a> (XML schema aware validator)</h2></center>
+<p>
+    This interface assumes that validator implementations follow the 
+    W3C XML Schema specification (rev REC-xmlschema-1-20010502) and
+    exibit the required behavior of an schema validator in terms of how
+    multiple schema documents can be assembled into a schema and be used
+    to validate a specific instance document.
+<p>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'SchemaValidator' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::getSchemaList"><b>getSchemaList</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::getValidatorId"><b>getValidatorId</b></a></td>
+	       <td>Get validator identifier</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::loadSchema"><b>loadSchema</b></a></td>
+	       <td>Load up a schema document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::unloadSchema"><b>unloadSchema</b></a></td>
+	       <td>Unload a schema document</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::validate"><b>validate</b></a></td>
+	       <td>Validate an element node against loaded schema(s)</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#Parser::SchemaValidator::validate_1"><b>validate</b></a></td>
+	       <td>Validate an element node against loaded schema(s)</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="Parser::DOMParser::getContext">getContext</a></h2>
+
+<table summary="Function 'Parser::DOMParser::getContext' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getContext</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns parser's XML context (allocation and encodings)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;Context*&nbsp;getContext()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Context*)</b></tt> pointer to parser's context</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Each parser object is allocated and executed in a particular
+	Oracle XML context. This member function returns a pointer
+	to this context.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::DOMParser::getParserId">getParserId</a></h2>
+
+<table summary="Function 'Parser::DOMParser::getParserId' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getParserId</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;DOMParserIdType&nbsp;getParserId()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(DOMParserIdType)</b></tt> Parser Id</tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::DOMParser::parse">parse</a></h2>
+
+<table summary="Function 'Parser::DOMParser::parse' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parse</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Parse the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;DocumentRef<&nbsp;Node>*&nbsp;parse(&nbsp;InputSource*&nbsp;isrc_ptr,<br>					&nbsp;boolean&nbsp;DTDvalidate&nbsp;=&nbsp;FALSE,<br>			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DocumentTypeRef<&nbsp;Node>*&nbsp;dtd_ptr&nbsp;=&nbsp;NULL,<br>					&nbsp;boolean&nbsp;no_mod&nbsp;=&nbsp;FALSE,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMImplementation<&nbsp;Node>*&nbsp;impl_ptr&nbsp;=&nbsp;NULL)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::DOMParser::parse' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>isrc_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>DTDvalidate</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>dtd_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>no_mod</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>new_domimpl</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(DocumentRef)</b></tt> document tree</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Parses the document and returns the tree root node<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::DOMParser::parseDTD">parseDTD</a></h2>
+
+<table summary="Function 'Parser::DOMParser::parseDTD' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parseDTD</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Parse DTD document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;DocumentRef<&nbsp;Node>*&nbsp;parseDTD(&nbsp;InputSource*&nbsp;src_ptr,<br>					&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;no_mod&nbsp;=&nbsp;FALSE,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMImplementation<&nbsp;Node>*&nbsp;impl_ptr&nbsp;=&nbsp;NULL)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::DOMParser::parseDTD' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>src_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>no_mod</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>new_domimpl</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(DocumentRef)</b></tt> DTD document tree</tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::DOMParser::parseSchVal">parseSchVal</a></h2>
+
+<table summary="Function 'Parser::DOMParser::parseSchVal' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parseSchVal</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Parse and validate the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;DocumentRef<&nbsp;Node>*&nbsp;parseSchVal(&nbsp;InputSource*&nbsp;src_par,<br>					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;no_mod&nbsp;=&nbsp;FALSE,<br>			&nbsp;&nbsp;&nbsp;&nbsp;DOMImplementation<&nbsp;Node>*&nbsp;impl_ptr&nbsp;=&nbsp;NULL,<br>		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SchemaValidator<&nbsp;Node>*&nbsp;tor_ptr&nbsp;=&nbsp;NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::DOMParser::parseSchVal' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>src_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>no_mod</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>new_domimpl</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>tor_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(DocumentRef)</b></tt> document tree</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Parses and validates the document. Sets the validator if
+	the corresponding parameter is not NULL.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::DOMParser::setValidator">setValidator</a></h2>
+
+<table summary="Function 'Parser::DOMParser::setValidator' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setValidator</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#DOMParser">DOMParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set the validator for this parser</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;setValidator(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SchemaValidator<&nbsp;Node>*&nbsp;tor_ptr)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::DOMParser::setValidator' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>tor_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets thevalidator for all validations except
+        when another one is given in parseSchVal<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::SetWarnDuplicateEntity">SetWarnDuplicateEntity</a></h2>
+
+<table summary="Function 'Parser::GParser::SetWarnDuplicateEntity' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>SetWarnDuplicateEntity</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Specifies if multiple entity declarations result in a warning</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setWarnDuplicateEntity(&nbsp;boolean&nbsp;par_bool);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::SetWarnDuplicateEntity' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par_bool</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> TRUE if multiple entity declarations cause a warning</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Specifies if entities that are declared more than once will
+	cause warnings to be issued<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getBaseURI">getBaseURI</a></h2>
+
+<table summary="Function 'Parser::GParser::getBaseURI' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getBaseURI</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns the base URI for the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;oratext*&nbsp;getBaseURI()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> current document's base URI [<i>or NULL</i>]</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns the base URI for the document. Usually only documents
+	loaded from a URI will automatically have a base URI.
+	Documents loaded from other sources (stdin, buffer, etc) will
+	not naturally have a base URI, but a base URI may have been set
+	for them using setBaseURI, for the purposes of resolving relative
+	URIs in inclusion.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getDiscardWhitespaces">getDiscardWhitespaces</a></h2>
+
+<table summary="Function 'Parser::GParser::getDiscardWhitespaces' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getDiscardWhitespaces</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Checks if whitespaces between elements are discarded</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;boolean&nbsp;getDiscardWhitespaces()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE if whitespace between elements are discarded</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Checks if formatting whitespaces between elements, such as
+	newlines and indentation in input documents are discarded.
+	By default, all input characters are preserved.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getExpandCharRefs">getExpandCharRefs</a></h2>
+
+<table summary="Function 'Parser::GParser::getExpandCharRefs' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getExpandCharRefs</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Checks if character references are expanded</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;boolean&nbsp;getExpandCharRefs()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE if character references are expanded</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Checkss if character references are expanded in the DOM data.
+	By default, character references are replaced by the character
+	they represent. However, when a document is saved those
+	characters entities do not reappear. To ensure they remain
+	through load and save, they should not be expanded.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getSchemaLocation">getSchemaLocation</a></h2>
+
+<table summary="Function 'Parser::GParser::getSchemaLocation' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getSchemaLocation</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get schema location for this document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;oratext*&nbsp;getSchemaLocation()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext*)</b></tt> schema location</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Gets schema location for this document. It is used to figure
+        out the optimal layout when loading documents into a database<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getStopOnWarning">getStopOnWarning</a></h2>
+
+<table summary="Function 'Parser::GParser::getStopOnWarning' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getStopOnWarning</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get if document processing stops on warnings</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;boolean&nbsp;getStopOnWarning()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE if document processing stops on warnings</tr>
+<tr><th scope=row><i>Description</i>
+<td>        When TRUE is returned, warnings are treated the same as errors
+	and cause parsing, validation, etc, to stop immediately.
+	By default, warnings are issued but the processing continues.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::getWarnDuplicateEntity">getWarnDuplicateEntity</a></h2>
+
+<table summary="Function 'Parser::GParser::getWarnDuplicateEntity' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getWarnDuplicateEntity</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get if multiple entity declarations cause a warning</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;boolean&nbsp;getWarnDuplicateEntity()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(boolean)</b></tt> TRUE if multiple entity declarations cause a warning</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get if entities which are declared more than once will
+        cause warnings to be issued<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::setBaseURI">setBaseURI</a></h2>
+
+<table summary="Function 'Parser::GParser::setBaseURI' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setBaseURI</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Sets the base URI for the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setBaseURI(&nbsp;oratext*&nbsp;par);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::setBaseURI' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> base URI</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets the base URI for the document. Usually only documents
+	that were loaded from a URI will automatically have a base URI.
+	Documents loaded from other sources (stdin, buffer, etc) will
+	not naturally have a base URI, but a base URI may have been set
+	for them using setBaseURI, for the purposes of resolving relative
+	URIs in inclusion.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::setDiscardWhitespaces">setDiscardWhitespaces</a></h2>
+
+<table summary="Function 'Parser::GParser::setDiscardWhitespaces' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setDiscardWhitespaces</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Sets if formatting whitespaces should be discarded</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setDiscardWhitespaces(&nbsp;boolean&nbsp;par_bool);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::setDiscardWhitespaces' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par_bool</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> TRUE if whitespaces should be discarded</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets if formatting whitespaces between elements (newlines
+        and indentation) in input documents are discarded. By default,
+        ALL input characters are preserved.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::setExpandCharRefs">setExpandCharRefs</a></h2>
+
+<table summary="Function 'Parser::GParser::setExpandCharRefs' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setExpandCharRefs</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get if character references are expanded</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setExpandCharRefs(&nbsp;boolean&nbsp;par_bool);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::setExpandCharRefs' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par_bool</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> TRUE if character references should be expanded</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets if character references should be expanded in the DOM data.
+	Ordinarily, character references are replaced by the character
+	they represent. However, when a document is saved those
+	characters entities do not reappear. To ensure they remain
+	through load and save is to not expand them.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::setSchemaLocation">setSchemaLocation</a></h2>
+
+<table summary="Function 'Parser::GParser::setSchemaLocation' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setSchemaLocation</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set schema location for this document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setSchemaLocation(&nbsp;oratext*&nbsp;par);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::setSchemaLocation' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> schema location</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets schema location for this document. It is used to figure
+        out the optimal layout when loading documents into a database<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::GParser::setStopOnWarning">setStopOnWarning</a></h2>
+
+<table summary="Function 'Parser::GParser::setStopOnWarning' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setStopOnWarning</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#GParser">GParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Sets if document processing stops on warnings</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;void&nbsp;setStopOnWarning(&nbsp;boolean&nbsp;par_bool);</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::GParser::setStopOnWarning' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>par_bool</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> TRUE if document processing should stop on warnings</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        When TRUE is set, warnings are treated the same as errors
+	and cause parsing, validation, etc, to stop immediately.
+	By default, warnings are issued but the processing continues.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::ParserException::getCode">getCode</a></h2>
+
+<table summary="Function 'Parser::ParserException::getCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#ParserException">ParserException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;unsigned&nbsp;getCode()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(unsigned)</b></tt> numeric error code (0 on success)</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::ParserException::getMesLang">getMesLang</a></h2>
+
+<table summary="Function 'Parser::ParserException::getMesLang' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMesLang</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#ParserException">ParserException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMesLang()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext*)</b></tt> Current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::ParserException::getMessage">getMessage</a></h2>
+
+<table summary="Function 'Parser::ParserException::getMessage' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMessage</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#ParserException">ParserException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error message</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMessage()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> Error message</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::ParserException::getParserCode">getParserCode</a></h2>
+
+<table summary="Function 'Parser::ParserException::getParserCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getParserCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#ParserException">ParserException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get parser exception code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;ParserExceptionCode&nbsp;getParserCode()&nbsp;const&nbsp;=&nbsp;0;<br>};</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(ParserExceptionCode)</b></tt> exception code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype
+	for implementation defined member functions returning parser
+	and validator exception codes, defined in ParserExceptionCode,
+	of the exceptional situations during execution<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::CDATA">CDATA</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::CDATA' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>CDATA</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of CDATA</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;CDATA(&nbsp;oratext*&nbsp;data,&nbsp;ub4&nbsp;size)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::CDATA' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to CDATA</td></tr>
+<tr><td scope=row><tt>size</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> size of CDATA</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event handles CDATA, as distinct from Text. The data
+        will be in the data encoding, and the returned length is in
+        characters, not bytes. This is an Oracle extension.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::XMLDecl">XMLDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::XMLDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XMLDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of an XML declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;XMLDecl(&nbsp;oratext*&nbsp;version,<br>			&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;is_encoding,&nbsp;sword&nbsp;standalone)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::XMLDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>version</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> version string from XMLDecl</td></tr>
+<tr><td scope=row><tt>is_encoding</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> encoding was specified?</td></tr>
+<tr><td scope=row><tt>standalone</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> value of standalone-document flag</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an XML declaration (XMLDecl). The startDocument
+        event is always first; this event will be the second event.
+	The encoding flag says whether an encoding was specified. For
+	the standalone flag, -1 will be returned if it was not specified,
+	otherwise 0 for FALSE, 1 for TRUE. This member function is an
+	Oracle extension.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::attributeDecl">attributeDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::attributeDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>attributeDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of attribute's declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;attributeDecl(&nbsp;oratext*&nbsp;attr_name,<br>				oratext&nbsp;*name,&nbsp;oratext&nbsp;*content)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::attributeDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>elem_name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element that attribute is declared for</td></tr>
+<tr><td scope=row><tt>attr_name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> attribute's name</td></tr>
+<tr><td scope=row><tt>content</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> body of attribute declaration</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an attribute declaration in the DTD. It is
+	an Oracle extension; not in SAX standard<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::characters">characters</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::characters' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>characters</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of character data</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;characters(&nbsp;oratext*&nbsp;ch,&nbsp;ub4&nbsp;size)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::characters' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ch</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to data</td></tr>
+<tr><td scope=row><tt>size</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> length of data</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks character data<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::comment">comment</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::comment' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>comment</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of a comment</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;comment(&nbsp;oratext*&nbsp;data)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::comment' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> comment's data</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks a comment in the XML document. The comment's
+	data will be in the data encoding. It is an Oracle extension,
+	not in SAX standard.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::elementDecl">elementDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::elementDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>elementDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of element's declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;elementDecl(&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*content)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::elementDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's name</td></tr>
+<tr><td scope=row><tt>content</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's content model</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an element declaration in the DTD. It is
+	an Oracle extension; not in SAX standard<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::endDocument">endDocument</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::endDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>endDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of the end of the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;endDocument()&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::endElement">endElement</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::endElement' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>endElement</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of element's end</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;endElement(&nbsp;oratext*&nbsp;name)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::endElement' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of element</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the end of an element. The name is the
+        tagName of the element (which may be a QName for namespace-aware
+        elements) and is in the data encoding.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::notationDecl">notationDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::notationDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>notationDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of a notation declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;notationDecl(&nbsp;oratext*&nbsp;name,<br>			&nbsp;&nbsp;&nbsp;&nbsp;oratext*&nbsp;public_id,&nbsp;oratext*&nbsp;system_id)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::notationDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's name</td></tr>
+<tr><td scope=row><tt>public_iD</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's public ID</td></tr>
+<tr><td scope=row><tt>system_iD</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's system ID</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        The even marks the declaration of a notation in the DTD.  The
+        notation's name, public ID, and system ID will all be in the
+        data encoding.  Both IDs are optional and may be NULL.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::parsedEntityDecl">parsedEntityDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::parsedEntityDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parsedEntityDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of a parsed entity declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;parsedEntityDecl(&nbsp;oratext*&nbsp;name,&nbsp;oratext*&nbsp;value,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext*&nbsp;public_id,&nbsp;oratext*&nbsp;system_id,&nbsp;boolean&nbsp;general)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::parsedEntityDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's name</td></tr>
+<tr><td scope=row><tt>value</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's value if internal</td></tr>
+<tr><td scope=row><tt>public_id</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's public ID</td></tr>
+<tr><td scope=row><tt>system_id</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's system ID</td></tr>
+<tr><td scope=row><tt>is_general</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> is general entity?  FALSE if parameter entity</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Marks a parsed entity declaration in the DTD. The parsed entity's
+        name, public ID, system ID, and notation name will all be in the
+        data encoding. This is an Oracle extension.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::processingInstruction">processingInstruction</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::processingInstruction' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>processingInstruction</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of a processing instruction</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;processingInstruction(&nbsp;oratext*&nbsp;target,<br>					oratext*&nbsp;data)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::processingInstruction' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>target</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> PI's target</td></tr>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> PI's data</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks a processing instruction.  The PI's target and
+        data will be in the data encoding. There is always a target, but
+        the data may be NULL.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::startDocument">startDocument</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::startDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>startDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of the start of the document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;startDocument()&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::startElement">startElement</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::startElement' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>startElement</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of element's start</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;startElement(&nbsp;oratext*&nbsp;name,<br>				&nbsp;NodeListRef<&nbsp;Node>*&nbsp;attrs_ptr)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::startElement' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of element</td></tr>
+<tr><td scope=row><tt>attrs_ref</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> list of element's attributes</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the start of an element.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::startElementNS">startElementNS</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::startElementNS' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>startElementNS</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive namespace aware notification of element's start</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;startElementNS(&nbsp;oratext*&nbsp;qname,&nbsp;oratext*&nbsp;local,<br>				&nbsp;&nbsp;&nbsp;oratext*&nbsp;ns_URI,<br>				&nbsp;&nbsp;&nbsp;NodeListRef<&nbsp;Node>*&nbsp;attrs_ptr)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::startElementNS' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>qname</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's qualified name</td></tr>
+<tr><td scope=row><tt>local</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's namespace local name</td></tr>
+<tr><td scope=row><tt>ns_URI</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's namespace URI</td></tr>
+<tr><td scope=row><tt>attrs_ref</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> NodeList of element's attributes</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the start of an element. Note this is the new
+        SAX 2 namespace-aware version. The element's QName, local name,
+	and namespace URI will be in the data encoding, as are all the
+	attribute parts.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::unparsedEntityDecl">unparsedEntityDecl</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::unparsedEntityDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>unparsedEntityDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of a unparsed entity declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;unparsedEntityDecl(&nbsp;oratext*&nbsp;name,<br>		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext*&nbsp;public_id,&nbsp;oratext*&nbsp;system_id,<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext*&nbsp;notation_name)&nbsp;=&nbsp;0;<br>};</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::unparsedEntityDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's name</td></tr>
+<tr><td scope=row><tt>public_id</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's public ID</td></tr>
+<tr><td scope=row><tt>system_id</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's system ID</td></tr>
+<tr><td scope=row><tt>notation_name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's notation name</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        </tr>
+<tr><th scope=row><i>Description</i>
+<td>        Marks an unparsed entity declaration in the DTD. The unparsed
+        entity's name, public ID, system ID, and notation name will all
+	be in the data encoding.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXHandler::whitespace">whitespace</a></h2>
+
+<table summary="Function 'Parser::SAXHandler::whitespace' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>whitespace</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXHandler">SAXHandler</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receive notification of whitespace characters</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;whitespace(&nbsp;oratext*&nbsp;data,&nbsp;ub4&nbsp;size)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXHandler::whitespace' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to data</td></tr>
+<tr><td scope=row><tt>size</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> length of data</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks ignorable whitespace data such as newlines,
+	and indentation between lines.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXParser::getContext">getContext</a></h2>
+
+<table summary="Function 'Parser::SAXParser::getContext' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getContext</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXParser">SAXParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Returns parser's XML context (allocation and encodings)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;Context*&nbsp;getContext()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(Context*)</b></tt> pointer to parser's context</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Each parser object is allocated and executed in a particular
+	Oracle XML context. This member function returns a pointer
+	to this context.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXParser::getParserId">getParserId</a></h2>
+
+<table summary="Function 'Parser::SAXParser::getParserId' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getParserId</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXParser">SAXParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;SAXParserIdType&nbsp;getParserId()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(SAXParserIdType)</b></tt> Parser Id</tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXParser::parse">parse</a></h2>
+
+<table summary="Function 'Parser::SAXParser::parse' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parse</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXParser">SAXParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;parse(&nbsp;InputSource*&nbsp;src_ptr,<br>			&nbsp;&nbsp;boolean&nbsp;DTDvalidate&nbsp;=&nbsp;FALSE,<br>			&nbsp;&nbsp;SAXHandlerRoot*&nbsp;hdlr_ptr&nbsp;=&nbsp;NULL)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXParser::parse' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>src_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>DTDvalidate</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>hdlr_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXParser::parseDTD">parseDTD</a></h2>
+
+<table summary="Function 'Parser::SAXParser::parseDTD' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>parseDTD</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXParser">SAXParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;parseDTD(&nbsp;InputSource*&nbsp;src_ptr,<br>			&nbsp;&nbsp;&nbsp;SAXHandlerRoot*&nbsp;hdlr_ptr&nbsp;=&nbsp;NULL)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXParser::parseDTD' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>src_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+<tr><td scope=row><tt>hdlr_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SAXParser::setSAXHandler">setSAXHandler</a></h2>
+
+<table summary="Function 'Parser::SAXParser::setSAXHandler' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>setSAXHandler</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAXParser">SAXParser</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Set SAX handler</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;setSAXHandler(&nbsp;SAXHandlerRoot*&nbsp;hdlr_ptr)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SAXParser::setSAXHandler' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>hdlr_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> SAX handler pointer</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Sets SAX handler for all parser invokations except when
+	another SAX handler is specified in the parser call.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::getSchemaList">getSchemaList</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::getSchemaList' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getSchemaList</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;ub4&nbsp;getSchemaList(&nbsp;oratext&nbsp;**list)&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::getSchemaList' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>list</tt></td>
+<td>&nbsp;<b>(I/O)</b>&nbsp;</td>
+<td> address of a pointer buffer</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(ub4)</b></tt> list size and list of loaded schemas (I/O parameter)</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Return only the size of loaded schema list documents if "list"
+	is NULL. If "list" is NOT NULL, a list of URL pointers is
+	returned in the user-provided pointer buffer.  Note that its
+	user's responsibility to provide a buffer with big enough size.  <p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::getValidatorId">getValidatorId</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::getValidatorId' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getValidatorId</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get validator identifier</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;SchValidatorIdType&nbsp;getValidatorId()&nbsp;const&nbsp;=&nbsp;0;<br>};</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::getValidatorId' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>(none)</tt></td>
+<td>&nbsp;<b>()</b>&nbsp;</td>
+<td></td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(SchValidatorIdType)</b></tt> validator identifier</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Get the validator identifier corresponding to the implementation
+	of this validator object<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::loadSchema">loadSchema</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::loadSchema' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>loadSchema</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Load up a schema document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;loadSchema(&nbsp;oratext*&nbsp;schema_URI)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::loadSchema' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>schema_URI</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> URL of schema document [<i>compiler encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Load up a schema document to be used in the next validation
+	session. Throws an exception in the case of an error.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::unloadSchema">unloadSchema</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::unloadSchema' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>unloadSchema</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Unload a schema document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;unloadSchema(&nbsp;oratext*&nbsp;schema_URI)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::unloadSchema' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>schema_URI</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> URL of schema document [<i>compiler encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        Unload a schema document and all its descendants (included or
+	imported nestedly from the validator. All previously
+	loaded schema documents will remain loaded until they are
+	unloaded. To unload all loaded schema documents, set
+	schema_URI to be NULL. Throws an exception in the case of
+	an error.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::validate">validate</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::validate' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>validate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Validate an element node against loaded schema(s)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;validate(&nbsp;ElementRef<&nbsp;Node>&&nbsp;elem_ref)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::validate' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>elem_ref</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> an element node in "doc" to be validated</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        void</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Validates an element node against loaded schema(s).  The set of
+	Schemas used in the current session consists of all schema
+	documents specified through loadSchema() and provided as hint(s)
+	through schemaLocation or noNamespaceSchemaLocation in the
+	instance document. After the invokation of this routine, all
+	loaded schema documents remain loaded and can be queried by
+	getSchemaList.  However, they will remain inactive. In the
+	next validation session, inactive schema documents can be
+	activated by specifying them via loadSchema or providing
+        them as hint(s) via schemaLocation or noNamespaceSchemaLocation
+	in the new instance document.  To unload a schema document and
+	all its descendants (documents included or imported nestedly),
+	use unloadSchema. Throws an exception in the case of an error.<p>
+</tr>
+</table>
+
+<h2 align=center><a name="Parser::SchemaValidator::validate_1">validate</a></h2>
+
+<table summary="Function 'Parser::SchemaValidator::validate_1' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>validate</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SchemaValidator">SchemaValidator</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Validate an element node against loaded schema(s)</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;void&nbsp;validate(&nbsp;InputSource*&nbsp;isrc_ptr)<br>	throw&nbsp;(ParserException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'Parser::SchemaValidator::validate_1' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>isrc_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> input document</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        void</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Validates a document against loaded schema(s).  The set of
+	Schemas used in the current session consists of all schema
+	documents specified through loadSchema() and provided as hint(s)
+	through schemaLocation or noNamespaceSchemaLocation in the
+	instance document. After the invokation of this routine, all
+	loaded schema documents remain loaded and can be queried by
+	getSchemaList.  However, they will remain inactive. In the
+	next validation session, inactive schema documents can be
+	activated by specifying them via loadSchema or providing
+        them as hint(s) via schemaLocation or noNamespaceSchemaLocation
+	in the new instance document.  To unload a schema document and
+	all its descendants (documents included or imported nestedly),
+	use unloadSchema. Throws an exception in the case of an error.<p>
+</tr>
+</table>
+</body>
+</html>

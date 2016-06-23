@@ -1,0 +1,836 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>SAX APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package SAX</h1></center>
+
+    SAX is a standard interface for event-based XML parsing, developed
+    collaboratively by the members of the XML-DEV mailing list.<p>    To use SAX, an xmlsaxcb structure is initialized with function
+    pointers and passed to one of the XmlLoadSax calls.  A pointer to a
+    user-defined context structure is also provided, and will be passed
+    to each SAX function.<p>
+
+<br><hr noshade size=1><center><h2><a name="SAX">Interface SAX</a></h2></center>
+	   <center><h3>Function Index</h3>
+<table summary="Interface 'SAX' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XmlSaxAttributeDecl"><b>XmlSaxAttributeDecl</b></a></td>
+	       <td>Receives SAX notification of an attribute's declaration.  Oracle</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxCDATA"><b>XmlSaxCDATA</b></a></td>
+	       <td>Receives SAX notification of CDATA.  Oracle extension, not in SAX</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxCharacters"><b>XmlSaxCharacters</b></a></td>
+	       <td>Receives SAX notification of character data</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxComment"><b>XmlSaxComment</b></a></td>
+	       <td>Receives SAX notification of a comment</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxElementDecl"><b>XmlSaxElementDecl</b></a></td>
+	       <td>Receives SAX notification of an element's declaration.  Oracle</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxEndDocument"><b>XmlSaxEndDocument</b></a></td>
+	       <td>Receives SAX end-of-document notification</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxEndElement"><b>XmlSaxEndElement</b></a></td>
+	       <td>Receives SAX end-of-element notification</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxNotationDecl"><b>XmlSaxNotationDecl</b></a></td>
+	       <td>Receives SAX notification of a notation declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxPI"><b>XmlSaxPI</b></a></td>
+	       <td>Receives SAX notification of a processing instruction</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxParsedEntityDecl"><b>XmlSaxParsedEntityDecl</b></a></td>
+	       <td>Receives SAX notification of a parsed entity declaration.  Oracle</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxStartDocument"><b>XmlSaxStartDocument</b></a></td>
+	       <td>Receives SAX start-of document notification</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxStartElement"><b>XmlSaxStartElement</b></a></td>
+	       <td>Receives SAX start-of-element notification</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxStartElementNS"><b>XmlSaxStartElementNS</b></a></td>
+	       <td>Receives SAX namespace-aware start-of-element notification</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxUnparsedEntityDecl"><b>XmlSaxUnparsedEntityDecl</b></a></td>
+	       <td>Receives SAX notification of a unparsed entity declaration</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxWhitespace"><b>XmlSaxWhitespace</b></a></td>
+	       <td>Receives SAX notification of ignorable (whitespace) data</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XmlSaxXmlDecl"><b>XmlSaxXmlDecl</b></a></td>
+	       <td>Receives SAX notification of an XML declaration.  Oracle extension,</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XmlSaxAttributeDecl">XmlSaxAttributeDecl</a></h2>
+
+<table summary="Function 'XmlSaxAttributeDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxAttributeDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of an attribute's declaration.  Oracle</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxAttributeDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*elem,&nbsp;oratext&nbsp;*attr,&nbsp;oratext&nbsp;*body)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxAttributeDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>elem</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element that attribute is declared for [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>attr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> attribute's name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>body</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> body of attribute declaration [<i>data encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an element declaration in the DTD.  The element's
+        name and content will be in the data encoding.  Note that an
+        attribute may be declared before the element it belongs to!<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;!DOCTYPE&nbsp;foo&nbsp;[&nbsp;&lt;!ATTLIST&nbsp;a&nbsp;id&nbsp;ID&nbsp;#IMPLIED&gt;&nbsp;]&gt;<br>
+...<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxAttributeDecl(elem="a",&nbsp;name="id",&nbsp;body="ID&nbsp;#IMPLIED")<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxAttributeDecl"><tt>XmlSaxAttributeDecl</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxCDATA">XmlSaxCDATA</a></h2>
+
+<table summary="Function 'XmlSaxCDATA' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxCDATA</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of CDATA.  Oracle extension, not in SAX</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxCDATA(void&nbsp;*ctx,&nbsp;oratext&nbsp;*ch,&nbsp;size_t&nbsp;len)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxCDATA' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>ch</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to CDATA [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>len</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> length of CDATA [<i>in characters</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event handles CDATA, as distinct from Text.  If no XmlSaxCDATA
+        callback is provided, the Text callback will be invoked.  The data
+        will be in the data encoding, and the returned length is in
+        characters, not bytes.  See also XmlSaxWhitespace, which receiving
+        notification about ignorable (whitespace formatting) character data.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;doc&gt;&lt;![CDATA&nbsp;[&nbsp;stuff]]&gt;&lt;/doc&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxCDATA(ch="&nbsp;stuff",&nbsp;len=6)<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxWhitespace"><tt>XmlSaxWhitespace</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxCharacters">XmlSaxCharacters</a></h2>
+
+<table summary="Function 'XmlSaxCharacters' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxCharacters</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.characters()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of character data</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxCharacters(void&nbsp;*ctx,&nbsp;oratext&nbsp;*ch,&nbsp;size_t&nbsp;len)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxCharacters' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>ch</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to data [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>len</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> length of data [<i>in characters</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks character data, either Text or CDATA.  If an
+        XmlSaxCDATA callback is provided, then CDATA will be send to that
+        instead; with no XmlSaxCDATA callback, both Text and CDATA go to
+        the XmlSaxCharacters callback.  The data will be in the data
+        encoding, and the returned length is in characters, not bytes.
+        See also XmlSaxWhitespace, which receiving notification about
+        ignorable (whitespace formatting) character data.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top&gt;junk&lt;/top&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxCharacters(ch="junk",&nbsp;len=4)<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxWhitespace"><tt>XmlSaxWhitespace</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxComment">XmlSaxComment</a></h2>
+
+<table summary="Function 'XmlSaxComment' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxComment</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of a comment</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxComment(void&nbsp;*ctx,&nbsp;oratext&nbsp;*data)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxComment' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> comment's data [<i>data encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks a comment in the XML document.  The comment's data
+        will be in the data encoding.  Oracle extension, not in SAX standard.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;!--Just&nbsp;a&nbsp;comment--&gt;<br>
+&lt;foo/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxComment(data="Just&nbsp;a&nbsp;comment")<br>
+...</tt></tr>
+
+</table>
+
+<h2 align=center><a name="XmlSaxElementDecl">XmlSaxElementDecl</a></h2>
+
+<table summary="Function 'XmlSaxElementDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxElementDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of an element's declaration.  Oracle</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxElementDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*content)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxElementDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's name</td></tr>
+<tr><td scope=row><tt>content</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's context model</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an element declaration in the DTD.  The element's
+        name and content will be in the data encoding.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;!DOCTYPE&nbsp;foo&nbsp;[&nbsp;&lt;!ELEMENT&nbsp;e&nbsp;(#PCDATA)&gt;&nbsp;]&gt;<br>
+...<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxElementDecl(name="e",&nbsp;content="(#PCDATA)")<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxAttributeDecl"><tt>XmlSaxAttributeDecl</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxEndDocument">XmlSaxEndDocument</a></h2>
+
+<table summary="Function 'XmlSaxEndDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxEndDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.endDocument()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX end-of-document notification</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxEndDocument(void&nbsp;*ctx)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxEndDocument' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        The last SAX event, called once per document, indicating the
+        end of the document.  Matching event is XmlSaxStartDocument.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxEndDocument()</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxStartDocument"><tt>XmlSaxStartDocument</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxEndElement">XmlSaxEndElement</a></h2>
+
+<table summary="Function 'XmlSaxEndElement' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxEndElement</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 1: DocumentHandler.endElement()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX end-of-element notification</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxEndElement(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxEndElement' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of ending element [<i>data encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the close of an element; it matches the
+        XmlSaxStartElement or XmlSaxStartElementNS events.  The name is the
+        tagName of the element (which may be a QName for namespace-aware
+        elements) and is in the data encoding.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxStartElement(name="top",&nbsp;attrs=NULL)<br>
+XmlSaxEndElement(name="top")<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxEndElement"><tt>XmlSaxEndElement</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxNotationDecl">XmlSaxNotationDecl</a></h2>
+
+<table summary="Function 'XmlSaxNotationDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxNotationDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 1: DTDHandler.notationDecl()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of a notation declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxNotationDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*pubId,&nbsp;oratext&nbsp;*sysId)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxNotationDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>publicID</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's public ID [<i>data encoding</i>] or NULL</td></tr>
+<tr><td scope=row><tt>systemID</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> notation's system ID [<i>data encoding</i>] or NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        The even marks the declaration of a notation in the DTD.  The
+        notation's name, public ID, and system ID will all be in the
+        data encoding.  Both IDs are optional and may be NULL.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;!DOCTYPE&nbsp;foo&nbsp;[&nbsp;&lt;!NOTATION&nbsp;foo&nbsp;PUBLIC&nbsp;"["&nbsp;"null.ent"&gt;&nbsp;]&gt;<br>
+...<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxNotationDecl(name="foo",&nbsp;publicID="[",&nbsp;systemID="null.ent")<br>
+	...</tt></tr>
+
+</table>
+
+<h2 align=center><a name="XmlSaxPI">XmlSaxPI</a></h2>
+
+<table summary="Function 'XmlSaxPI' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxPI</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.processingInstruction()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of a processing instruction</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxPI(void&nbsp;*ctx,&nbsp;oratext&nbsp;*target,&nbsp;oratext&nbsp;*data)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxPI' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>target</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> PI's target [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>data</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> PI's data [<i>data encoding</i>] or NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks a processing instruction.  The PI's target and
+        data will be in the data encoding.  There is always a target, but
+        the data may be NULL.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;?keywords&nbsp;sax&nbsp;example?&gt;<br>
+&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxPI(target="keywords",&nbsp;data="sax&nbsp;example")<br>
+...</tt></tr>
+
+</table>
+
+<h2 align=center><a name="XmlSaxParsedEntityDecl">XmlSaxParsedEntityDecl</a></h2>
+
+<table summary="Function 'XmlSaxParsedEntityDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxParsedEntityDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of a parsed entity declaration.  Oracle</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxParsedEntityDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*value,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*pubId,&nbsp;oratext&nbsp;*sysId,&nbsp;boolean&nbsp;general)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxParsedEntityDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>value</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's value if internal [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>pubId</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's public ID [<i>data encoding</i>] or NULL</td></tr>
+<tr><td scope=row><tt>sysId</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's system ID [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>general</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> general entity?  FALSE if parameter entity</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Marks an parsed entity declaration in the DTD.  The parsed entity's
+        name, public ID, system ID, and notation name will all be in the
+        data encoding.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;?xml&nbsp;version="1.0"?&gt;<br>
+&lt;!DOCTYPE&nbsp;foo&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ENTITY&nbsp;e1&nbsp;"foobar"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ENTITY&nbsp;e2&nbsp;SYSTEM&nbsp;"nop.ent"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ENTITY&nbsp;%&nbsp;e3&nbsp;"parameter_entity_value"&gt;<br>
+]&gt;<br>
+...<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxXmlDecl(version="1.0",&nbsp;encoding=NULL)<br>
+XmlSaxParsedEntityDecl(name="e1",&nbsp;value="foobar",&nbsp;pubID=NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sysID=NULL,&nbsp;general=TRUE)<br>
+XmlSaxParsedEntityDecl(name="e2",&nbsp;value=NULL,&nbsp;pubID=NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sysID="nop.ent",&nbsp;general=TRUE)<br>
+XmlSaxParsedEntityDecl(name="32",&nbsp;value="parameter_entity_value",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pubID=NULL,&nbsp;sysID=NULL,&nbsp;general=FALSE)<br>
+	...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxUnparsedEntityDecl"><tt>XmlSaxUnparsedEntityDecl</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxStartDocument">XmlSaxStartDocument</a></h2>
+
+<table summary="Function 'XmlSaxStartDocument' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxStartDocument</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.startDocument()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX start-of document notification</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxStartDocument(void&nbsp;*ctx)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxStartDocument' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        The first SAX event, called once per document, indicating the
+        start of the document.  Matching event is XmlSaxEndDocument.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxStartDocument()<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxEndDocument"><tt>XmlSaxEndDocument</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxStartElement">XmlSaxStartElement</a></h2>
+
+<table summary="Function 'XmlSaxStartElement' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxStartElement</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 1: DocumentHandler.startElement()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX start-of-element notification</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxStartElement(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;xmlnodelist&nbsp;*attrs)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxStartElement' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> name of element [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>attrs</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> NamedNodeMap of element's attributes, or NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the start of an element.  Note this is the original
+        SAX 1 non-namespace-aware version; XmlSaxStartElementNS is the SAX 2
+        namespace-aware version.  If both are registered, only the NS version
+        will be called.  The element's name will be in the data encoding,
+        as are all the attribute parts.  See the functions in the NamedNodeMap
+        interface for operating on the attributes map.  The matching function
+        is XmlSaxEndElement (there is no XmlSaxEndElementNS).<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxStartElement(name="top",&nbsp;attrs=NULL)<br>
+XmlSaxEndElement(name="top")<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxEndElement"><tt>XmlSaxEndElement</tt></a>, <a href="Package-DOM.html#XmlDomGetNodeMapLength"><tt>XmlDomGetNodeMapLength</tt></a>, <a href="Package-DOM.html#XmlDomGetNamedItem"><tt>XmlDomGetNamedItem</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxStartElementNS">XmlSaxStartElementNS</a></h2>
+
+<table summary="Function 'XmlSaxStartElementNS' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxStartElementNS</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.startElement()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX namespace-aware start-of-element notification</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxStartElementNS(void&nbsp;*ctx,&nbsp;oratext&nbsp;*qname,&nbsp;oratext&nbsp;*local,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*nsp,&nbsp;xmlnodelist&nbsp;*attrs)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxStartElementNS' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>qname</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's qualified name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>local</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's namespace local name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>nsp</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> element's namespace URI [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>attrs</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> NodeList of element's attributes, or NULL</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks the start of an element.  Note this is the new
+        SAX 2 namespace-aware version; XmlSaxStartElement is the SAX 1
+        non-namespace-aware version.  If both are registered, only the NS
+        version will be called.  The element's QName, local name, and
+        namespace URI will be in the data encoding, as are all the attribute
+        parts.  See the functions in the NamedNodeMap interface for
+        operating on the attributes map.  The matching function is
+        XmlSaxEndElement (there is no XmlSaxEndElementNS).<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;foo:top&nbsp;xmlns:foo="/foo/bar"/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxStartElement(qname="foo:top",&nbsp;local="top",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nsp="/foo/bar",&nbsp;attrs=NULL)<br>
+XmlSaxEndElement(name="foo:top")<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxStartElement"><tt>XmlSaxStartElement</tt></a>, <a href="Package-SAX.html#XmlSaxEndElement"><tt>XmlSaxEndElement</tt></a>, <a href="Package-DOM.html#XmlDomGetNodeMapLength"><tt>XmlDomGetNodeMapLength</tt></a>, <a href="Package-DOM.html#XmlDomGetNamedItem"><tt>XmlDomGetNamedItem</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxUnparsedEntityDecl">XmlSaxUnparsedEntityDecl</a></h2>
+
+<table summary="Function 'XmlSaxUnparsedEntityDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxUnparsedEntityDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 1: DTDHandler.unparsedEntityDecl()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of a unparsed entity declaration</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxUnparsedEntityDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*name,&nbsp;oratext&nbsp;*pubId,&nbsp;oratext&nbsp;*sysId,&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*note)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxUnparsedEntityDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>name</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's name [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>pubId</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's public ID [<i>data encoding</i>] or NULL</td></tr>
+<tr><td scope=row><tt>sysId</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's system ID [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>note</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> entity's notation name [<i>data encoding</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Marks an unparsed entity declaration in the DTD, see
+        XmlSaxParsedEntityDecl for the parsed entity version.  The unparsed
+        entity's name, public ID, system ID, and notation name will all be
+        in the data encoding.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;!DOCTYPE&nbsp;foo&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ENTITY&nbsp;e&nbsp;PUBLIC&nbsp;"p-p-pub-id"&nbsp;'entity.dat'&nbsp;NDATA&nbsp;endayta&gt;<br>
+]&gt;<br>
+...<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxUnparsedEntityDecl(name="e",&nbsp;publicID="p-p-pub-id",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;systemID="entity.dat",&nbsp;notationName="endayta")</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxParsedEntityDecl"><tt>XmlSaxParsedEntityDecl</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxWhitespace">XmlSaxWhitespace</a></h2>
+
+<table summary="Function 'XmlSaxWhitespace' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxWhitespace</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a>; SAX 2: ContentHandler.ignorableWhitespace()</tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of ignorable (whitespace) data</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxWhitespace(void&nbsp;*ctx,&nbsp;oratext&nbsp;*ch,&nbsp;size_t&nbsp;len)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxWhitespace' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>ch</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> pointer to data [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>len</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> length of data [<i>in characters</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks ignorable whitespace data such as newlines, and
+        indentation between lines.  The matching function is XmlSaxCharacters,
+        which receives notification of normal character data.  The data
+        is in the data encoding, and the returned length is in characters,
+        not bytes.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;top&gt;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;sub&gt;junk&lt;/sub&gt;<br>
+	&lt;/top&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+...<br>
+XmlSaxStartElement(name="top",&nbsp;attrs=NULL)<br>
+XmlSaxWhitespace(ch="\n&nbsp;&nbsp;&nbsp;&nbsp;",&nbsp;len=5)<br>
+XmlSaxStartElement(name="sub",&nbsp;attrs=NULL)<br>
+...</tt></tr>
+
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-SAX.html#XmlSaxCharacters"><tt>XmlSaxCharacters</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XmlSaxXmlDecl">XmlSaxXmlDecl</a></h2>
+
+<table summary="Function 'XmlSaxXmlDecl' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XmlSaxXmlDecl</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#SAX">SAX</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Receives SAX notification of an XML declaration.  Oracle extension,</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>xmlerr&nbsp;XmlSaxXmlDecl(void&nbsp;*ctx,&nbsp;oratext&nbsp;*version,&nbsp;boolean&nbsp;encoding,&nbsp;sword&nbsp;standalone)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XmlSaxXmlDecl' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>ctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user's SAX context [<i>see XmlLoadSax functions</i>]</td></tr>
+<tr><td scope=row><tt>version</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> version string from XMLDecl [<i>data encoding</i>]</td></tr>
+<tr><td scope=row><tt>encoding</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> encoding was specified?</td></tr>
+<tr><td scope=row><tt>standalone</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> value of standalone-document flag [<i>< 0 not specified</i>]</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> error code, XMLERR_OK [<i>0</i>] for success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This event marks an XML declaration (XMLDecl).  The XmlSaxStartDocument
+        event is always first; if this callback is registered and an XMLDecl
+        exists, it will be the second event.  The encoding flag says whether
+        an encoding was specified.  Since the document's own encoding
+        specification may be overridden (or wrong), and the input will be
+        converted to the data encoding anyway, the actual encoding specified
+        in the document is not provided.  For the standalone flag, -1 will be
+        returned if it was not specified, otherwise 0 for FALSE, 1 for TRUE.<p>
+</tr>
+<tr><th scope=row><i>Example</i>
+<td><tt>&lt;?xml&nbsp;version="1.0"?&gt;<br>
+&lt;top/&gt;<br>
+&nbsp;&nbsp;--SAX&nbsp;Parse--&gt;<br>
+XmlSaxXmlDecl(version="1.0",&nbsp;encoding=FALSE)<br>
+...</tt></tr>
+
+</table>
+</body>
+</html>

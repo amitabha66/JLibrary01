@@ -1,0 +1,67 @@
+<AQXmlDocument xmlns="http://www.oracle.com/AQXmlDocument"
+	       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xsi:schemaLocation="http://www.oracle.com/AQXmlDocument aq.xsd">
+
+    <client_operation opcode="SEND">
+        <txid> sdasdfdsf </txid>
+    </client_operation>
+
+    <producer_options delivery_mode="PERSISTENT">
+        <destination lookup_type="NORMAL"> queue1 </destination>
+        <priority>23</priority>
+        <recipient_list>
+            <recipient> abc </recipient>
+            <recipient lookup_type="LDAP"> abc </recipient>
+        </recipient_list>
+    </producer_options>
+
+    <message_set>
+        <message_count>1</message_count>
+        <message>
+            <message_number>1</message_number>
+            <message_header>
+                <correlation>XML_40_NEW_TEST</correlation>
+                <delay>10</delay>
+                <sender_id>scott::home::0</sender_id>
+            </message_header>
+            <message_payload>
+                <jms_map_message>
+                    <oracle_jms_properties>
+                        <reply_to>oracle::redwoodshores::100</reply_to>
+                        <userid>scott</userid>
+                        <appid>AQProduct</appid>
+                        <groupid>AQ</groupid>
+                    </oracle_jms_properties>
+                    <user_properties>
+                        <property property_type="STRING">
+                            <name>country</name>
+                            <value>USA</value>
+                        </property>
+                        <property property_type="STRING">
+                            <name>State</name>
+                            <value>california</value>
+                        </property>
+                    </user_properties>
+                    <map_data>
+                        <item item_type="STRING">
+                            <name>Car</name>
+                            <value>Toyota</value>
+                        </item>
+                        <item item_type="STRING">
+                            <name>Color</name>
+                            <value>Blue</value>
+                        </item>
+                        <item item_type="STRING">
+                            <name>Shape</name>
+                            <value>Circle</value>
+                        </item>
+                        <item item_type="NUMBER">
+                            <name>Price</name>
+                            <value>20000</value>
+                        </item>
+                    </map_data>
+                </jms_map_message>
+            </message_payload>
+        </message>
+    </message_set>
+</AQXmlDocument>

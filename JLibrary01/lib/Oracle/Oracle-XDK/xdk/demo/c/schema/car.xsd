@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+    targetNamespace = "http://www.CarDealers.com/" 
+    elementFormDefault="unqualified">
+
+<element name="Car">
+  <complexType>
+   <sequence>
+    <element name="Model">
+      <simpleType>
+        <restriction  base="string">
+            <enumeration value = "Ford"/>
+            <enumeration value = "Saab"/>
+            <enumeration value = "Audi"/>
+        </restriction>
+      </simpleType>
+    </element>
+
+    <element name="Make">
+      <simpleType>
+        <restriction  base="string">
+          <minLength value = "1"/>
+          <maxLength value = "30"/>
+        </restriction>
+      </simpleType>
+    </element>
+
+    <element name="Year">
+       <complexType >
+         <simpleContent>
+           <extension base="string">
+              <attribute name="PreviouslyOwned" type="string" use="required"/>
+              <attribute name="YearsOwned" type="integer" use="optional"/>
+           </extension>
+         </simpleContent>
+       </complexType>
+    </element>
+
+    <element name="OwnerName" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+    <element name="Condition">
+       <complexType>
+          <simpleContent>
+             <extension base="string">
+               <attribute name="Automatic">
+                 <simpleType>
+                   <restriction  base="string">
+                     <enumeration value = "Yes"/>
+                     <enumeration value = "No"/>
+                   </restriction>
+                 </simpleType>
+               </attribute>
+             </extension>
+          </simpleContent>
+       </complexType>
+    </element>
+
+    <element name="Mileage">
+      <simpleType>
+        <restriction  base="integer">
+          <minInclusive value="0"/>
+          <maxInclusive value="20000"/>
+        </restriction>
+      </simpleType>
+    </element>
+   </sequence>
+   <attribute name="RequestDate" type="date"/>
+  </complexType>
+ </element>
+</schema>

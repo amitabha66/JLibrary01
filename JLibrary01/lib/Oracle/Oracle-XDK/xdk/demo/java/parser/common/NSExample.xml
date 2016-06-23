@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE doc [
+<!ELEMENT doc (child*)>
+<!ATTLIST doc xmlns:nsprefix CDATA #IMPLIED>
+<!ATTLIST doc xmlns CDATA #IMPLIED>
+<!ATTLIST doc nsprefix:a1 CDATA #IMPLIED>
+<!ELEMENT child (#PCDATA)>
+]>
+<doc nsprefix:a1 = "v1" xmlns="http://www.w3c.org" xmlns:nsprefix="http://www.oracle.com">
+<child>
+This element inherits the default Namespace of doc.
+</child>
+</doc>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<PurchaseOrder xmlns = "http://generated/sample8/"
+           xmlns:io = "http://generated/sample8-1/"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://generated/sample8/ sample8.xsd">
+
+ <shipTo>
+   <name>Alfred Hitchcock</name>
+   <street>Old Francisco Road</street>
+   <city>Casablanca City</city>
+   <state>Casablanca</state>
+   <country>Algeria</country>
+   <zip>190290</zip> 
+ </shipTo>
+
+ <billTo>
+   <io:name>A and B Music Company</io:name>
+   <io:street>Casablanca Avenue </io:street>
+   <io:city>Los Angeles City </io:city>
+   <io:state>CA</io:state>
+   <io:zip>95134</io:zip>
+ </billTo>
+
+</PurchaseOrder>
+

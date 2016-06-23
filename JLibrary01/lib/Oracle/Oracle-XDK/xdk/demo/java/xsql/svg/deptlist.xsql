@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="deptlist.xsl"?>
+<!-- 
+ | smuench 08/24/02 - Switch to hr schema
+ +-->
+<xsql:query connection="hr" xmlns:xsql="urn:oracle-xsql">
+
+       SELECT DISTINCT d.department_id as h_deptno, department_name as "Department_Name"
+         FROM departments d, employees e
+         WHERE d.department_id = e.department_id
+        ORDER BY d.department_name 
+
+</xsql:query>
+

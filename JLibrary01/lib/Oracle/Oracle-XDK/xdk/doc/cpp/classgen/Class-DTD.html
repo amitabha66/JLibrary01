@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class generated</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Class-XMLClassGenerator.html">Previous Class</a>]</pre>
+<hr>
+<h1>Class: <i>generated</i></h1>
+
+A <i>generated</i> class is produced for each element defined in the DTD,
+with the same name as the element.<p>
+
+If an element (or attribute) name cannot be used directly as a C++
+identifier, it is mapped to a valid identifier by converting it
+to the compiler character set (ASCII or EBCDIC) and then replacing
+unmappable characters with the two-letter hex for their code points.
+For example, the element name "Curaçao" maps to "Curacao", but
+"kþorn" maps to "kFEorn".  If the remapped name is already used,
+digits are appended to the end to make it unique ("Curacao0", etc).<p>
+
+Note that elements and attributes created by the generated classes
+will have the original names.  The remapping only applies to the
+generated code itself (so that it will be syntactically correct C++),
+not to the XML elements and data which are constructed by them.<p>
+
+Constructors are provided which create an empty element, or make it with an
+initial set of children or data.  Methods are provided to add children or
+data after construction, and to set attributes.<p>
+
+There are two styles of creation: make an empty element, then add the children
+one at a time, or construct the element with initial data or children.  For
+example, given the element declaration<p>
+
+<ul><pre>&lt;!ELEMENT B (#PCDATA | F)*&gt;</pre></ul>
+
+the following constructors will be provided:
+
+<ul><pre>
+B(Document *doc);
+B(Document *doc, String data);
+B(Document *doc, F *theF);
+</pre></ul>
+
+The first constructor just makes an empty element with no children.  The
+second initializes it with PCDATA, and the third with a single child node
+of element F.  An element like B which may contain PCDATA is also given a
+method to add the data post-construction:<p>
+
+<ul><pre>
+void addData(Document *doc, String data);
+</pre></ul>
+
+The following usages are equivalent:<p>
+
+<ul><pre>b = new B("data");</pre></ul>
+and
+<ul><pre>
+b = new B();
+b->addData("data");
+</pre></ul>
+
+Similarly, the following are also equivalent:<p>
+
+<ul><pre>
+f = new F(...);
+b = new B(f);
+</pre></ul>
+and
+<ul><pre>
+f = new F(...);
+b = new B();
+b->addNode(f);
+</pre></ul>
+
+The presense of modifiers '<b>?</b>' (optional), '<b>*</b>' (zero or more),
+and '<b>+</b>' (one or more) is ignored when forming the constructors.  For
+example, for the element<p>
+
+<ul><pre>&lt;!ELEMENT Sample (A* | (B, (C? | (D, E)*)) | F)+&gt;</pre></ul>
+
+the following constructors are made:
+
+<ul><pre>
+Sample(Document *doc);
+Sample(Document *doc, A *theA);
+Sample(Document *doc, B *theB, C *theC);
+Sample(Document *doc, B *theB, D *theD, E *theE);
+Sample(Document *doc, F *theF);
+</pre></ul>
+
+as if the modifiers were not present.  If you cannot make the desired final
+element using one of the forms which take initial children, you must start
+with the empty element and add nodes as needed with <tt>addNode</tt> as
+above.<p>
+
+For each attribute for an element, a method is provided to set its value,
+named set<i>attrname</i>.  For example, for the element declaration<p>
+
+<ul><pre>
+&lt;!ELEMENT D (#PCDATA)&gt;
+&lt;!ATTLIST D foo CDATA #REQUIRED&gt;
+</pre></ul>
+
+the class D will have the method
+
+<ul><pre>
+Attr* setfoo(String value);
+</pre></ul>
+
+<b>Note</b>: The constructed element is not tested for validity as it is
+being made.  The user to explicitly call the XMLParser's <tt>validate</tt>
+method on the final element.<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#constructors"><b><i>constructors</i></b></a></td>
+    <td>Constructors for the class</td>
+  </tr>
+  <tr>
+    <td><a href="#addData"><b>addData</b></a></td>
+    <td>Adds PCDATA to the element</td>
+  </tr>
+  <tr>
+    <td><a href="#addNode"><b>addNode</b></a></td>
+    <td>Adds a node to the element</td>
+  </tr>
+  <tr>
+    <td><a href="#setattr"><b>set<i>attribute</i></b></a></td>
+    <td>Sets one of the element's attributes</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="constructors"><h2><b><i>constructors</i></b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Constructs an element which will belong to the given document.
+	The first form makes the element with no children (use <tt>addData</tt>
+	and <tt>addNode</tt> as appropriate to fill it out).  The second
+	variable form is used to provide initial data or children, the exact
+	choices of which depend on the element definition.  See the example
+	at the beginning of this document.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt><i>class</i>(Document *doc)</tt>
+    <dd> <tt><i>class</i>(Document *doc, ...)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>doc</tt> -- document which the element belongs to
+    <dd><tt>...</tt> -- varying arguments depending on the element definition<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="addData"><hr><h2><b>addData</b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Adds data to the element.  That is, appends to it a PCDATA subnode
+	with the given value.  If multiple addData calls are made, the node
+	will have multiple PCDATA subnodes, which should be normalized when
+	construction is finished.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void addData(Document *doc, String data)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>doc</tt> -- document which the element belongs to
+    <dd><tt>data</tt> -- data to be added<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="addNode"><hr><h2><b>addNode</b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Adds (append) a child node to the element.  No effort is made to
+	validate the resulting element structure at this time; it is the
+	user's responsibility to form the element properly, which may be
+	verified with <tt>XMLParser::validate</tt>.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>void addNode(<i>node</i> the<i>node</i>)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>the <i>node</i></tt> -- node to be added<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> none
+  </dl></dd>
+</dl>
+
+<a name="setattr"><hr><h2><b>set<i>attribute</i></b></h2></a>
+<dl>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Sets the element's attribute with the given value.  One method is
+	provided for each attribute, named after the attribute as
+	<tt>set<i>attribute</i></tt>.<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>Attr* set<i>attribute</i>(String value)</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd><tt>value</tt> -- the attribute's value<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>Attr*</tt> -- the created attribute
+  </dl></dd>
+</dl>
+
+</body>
+</html>

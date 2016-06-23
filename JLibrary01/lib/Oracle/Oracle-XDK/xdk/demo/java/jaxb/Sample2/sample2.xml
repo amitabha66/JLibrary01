@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<AnElementWithInlineSimpleType
+  xmlns = "http://www.oracle.com/sample2/"
+  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation = "http://www.oracle.com/sample2/ sample2.xsd">
+
+  This is a test string
+</AnElementWithInlineSimpleType>

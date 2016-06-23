@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2 style="color:blue">Version History</h2>
+<p style="color:blue"><font color="#000000">2.1.0</font></p>
+<ul>
+  <li>putXML 
+    <ul>
+      <li>fixed bug to guarantee o-lite compatibility</li>
+    </ul>
+  </li>
+  <li>getXML 
+    <ul>
+      <li>support for XML Schema generation</li>
+      <li>support for XML attributes</li>
+      <li>SAX support</li>
+    </ul>
+  </li>
+  <li>common 
+    <ul>
+      <li>added support for XSL parameter setting</li>
+    </ul>
+  </li>
+</ul>
+<p style="color:blue"><font color="#000000">2.0.0</font></p>
+<ul>
+  <li>bug fixes</li>
+  <li>internationalization of error messages</li>
+</ul>
+<p style="color:blue"><font color="#000000">1.2.1</font></p>
+<ul>
+  <li>putXML 
+    <ul>
+      <li>support XSLT processing before attempting insertion</li>
+    </ul>
+  </li>
+  <li>getXML 
+    <ul>
+      <li>support XSLT processing during XML generation</li>
+      <li>add date mask support</li>
+    </ul>
+  </li>
+  <li>common 
+    <ul>
+      <li>fixed some characerset encoding issues</li>
+    </ul>
+  </li>
+</ul>
+<p>1.2.0</p>
+<ul>
+  <li>putXML 
+    <ul>
+      <li>misc bug fixes</li>
+      <li>support for update</li>
+      <li>support for delete</li>
+    </ul>
+  </li>
+  <li>getXML 
+    <ul>
+      <li>misc bug fixes</li>
+    </ul>
+  </li>
+  <li>common 
+    <ul>
+      <li>new context sensitive PL/SQL API -- dbms_xmlquery and DBMS_xmlsave; 
+        xmlgen package is deprecated. </li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p>01222000 -- Jan 22, 2000 </p>
+<ul>
+  <li> putXML</li>
+  <ul>
+    <li> The XML elements don't have to match the relative ordering of their corresponding 
+      db. columns or ADT attributes.</li>
+    <li> Expose&nbsp; insert batch size and the commit batch size for fine performance 
+      tuning</li>
+    <li> Significant performance improvements</li>
+  </ul>
+  <li> getXML</li>
+  <ul>
+    <li> API (java &amp; pl/sql) support for name binds in the SQL query statement</li>
+    <li> API (Java &amp; PL/SQL) support for header insertion into the DTD and 
+      the XML document</li>
+    <li> API (Java &amp; PL/SQL) support for generating the XML meta doc only 
+      (i.e. gen. the DTD only)</li>
+    <li> API (Java &amp; PL/SQL) support for propagating the original exception</li>
+    <li> support for cursors in the SQL query</li>
+    <li> added support for specifying the desired characterset for the generated 
+      doc</li>
+    <li> Performance improvements</li>
+  </ul>
+  <li> common</li>
+  <ul>
+    <li> created a JDK1.2/JDBC2.0 compliant version of the XSU (i.e. XSU12)</li>
+    <li> misc bug fixes</li>
+    <li> the xmlgen PL/SQL package is set to execute with invokers-rights</li>
+  </ul>
+</ul>
+1.1.1.0 
+<ul>
+  <li> Fixed bug in getXML and putXML where two columns with same types failed.</li>
+  <li> Added BFILE support in generation</li>
+  <li> Changed allocation duration to CALL for temp lobs in OracleXMLStore</li>
+  <li> Changed date formatting to accept JDBC date format for putXML</li>
+  <li> Fixed various other minor bugs</li>
+  <li> Close cursor when exceptions are raised (cursor leaks)</li>
+  <li> Ignore nonexistent row/rowset tag checks when root node is passed in</li>
+  <li> Allow file names containing query in getXML (instead of passing in query 
+    strings)</li>
+</ul>
+1.1.0 
+<ul>
+  <li> Added getXML client option for specifying the stylesheet type.</li>
+  <li> Added getXML client option for specifying the row id attribute.</li>
+  <li> Added getXML client option for specifying the row id column.</li>
+  <li> Added support for specifying the collection element id attr.</li>
+  <li> Added the "-conn" parameter to the OracleXML client.</li>
+  <li> Performance tuning in putXML and getXML functionality</li>
+  <li> Bug fix: don't close ResultSet if it is passed in by caller.</li>
+  <li> Improved error messaging dealing with trying to use a closed ResultSet 
+    object.</li>
+  <li> Support for user specified "rowTag" in putXML functionality.</li>
+  <li> Support specification of date mask for putXML functionality.</li>
+  <li> Support non case sensitive tag to database entity matching in putXML functionality.</li>
+  <li> Bug fix: from XML loading of an ADT with a null attribute.</li>
+  <li> Misc bug fixes.</li>
+  <li> Added the history section to the release notes.</li>
+  <li> Added putXML functionality to the included xmlgen PL-SQL package.</li>
+</ul>
+1.0.0 
+<ul>
+  <li> First release</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<HTML>
+<BODY>
+
+<SCRIPT>
+
+  function PostOrder (xmldoc)
+  {
+     var xmlhttp = new ActiveXObject ("Microsoft.XMLHTTP");
+     xmlhttp.open("POST", "insertnewsstory.xsql",false);
+     xmlhttp.send(xmldoc);
+     return xmlhttp.responseXML;
+  }
+
+function submitInfo(){
+ var xmldoc  = new ActiveXObject ("Microsoft.XMLDOM");
+ xmldoc.async = false;
+ xmldoc.loadXML(xmldocText.value);
+ var response = PostOrder(xmldoc);
+ alert(response.documentElement.xml);
+ parent.bottom.location = "newsstorylist.xsql";
+}
+</SCRIPT>
+<b>Type in an XML Document to Post:<b><br>
+<TEXTAREA rows="12" style="width:100%" cols="70" NAME="xmldocText"
+><moreovernews>
+ <article>
+  <url>http://otn.oracle.com/tech/xml</url>
+  <headline_text>Oracle Releases XML Parser</headline_text>
+  <source>Oracle</source>
+ </article>
+</moreovernews></TEXTAREA>
+<P><INPUT TYPE=button Value="Post XML Document" onclick="submitInfo()">
+</BODY>
+</HTML>

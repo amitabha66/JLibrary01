@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head><title>Class CharacterData</title></head>
+<body>
+<pre>[<a href="packages.html">All Packages</a>]  [<a href="Package-dom.html">This Package</a>]  [<a href="Class-CDATASection.html">Previous Class</a>]  [<a href="Class-Comment.html">Next Class</a>]</pre>
+<hr>
+<h1>Class: <i>CharacterData</i></h1>
+
+This class contains methods for accessing and modifying the data associated
+with text nodes.
+<p>
+<hr>
+
+<h2><img src="../../images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<table>
+  <tr>
+    <td><a href="#appendData"><b>appendData</b></a></td>
+    <td>Append a string to this node's data</td>
+  </tr>
+  <tr>
+    <td><a href="#deleteData"><b>deleteData</b></a></td>
+    <td>Remove a substring from this node's data</td>
+  </tr>
+  <tr>
+    <td><a href="#getData"><b>getData</b></a></td>
+    <td>Get data (value) of a text node</td>
+  </tr>
+  <tr>
+    <td><a href="#getLength"><b>getLength</b></a></td>
+    <td>Return length of a text node's data</td>
+  </tr>
+  <tr>
+    <td><a href="#insertData"><b>insertData</b></a></td>
+    <td>Insert a string into this node's data</td>
+  </tr>
+  <tr>
+    <td><a href="#replaceData"><b>replaceData</b></a></td>
+    <td>Replace a substring in this node's data</td>
+  </tr>
+  <tr>
+    <td><a href="#setData"><b>setData</b></a></td>
+    <td>Set data (value) of a text node</td>
+  </tr>
+  <tr>
+    <td><a href="#substringData"><b>substringData</b></a></td>
+    <td>Fetch a substring of this node's data</td>
+  </tr>
+</table>
+<hr>
+<a name="methods"></a>
+<h2><img src="../../images/methods.gif" width=151 height=38 alt="Methods"></h2>
+
+<a name="appendData"></a>
+<h3><b>appendData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Append a string to this text node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void appendData(DOMString arg)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>arg</tt> -- string to append<p>
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="deleteData"><hr></a>
+<h3><b>deleteData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Delete a substring from this text node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void deleteData(unsigned long offset, unsigned long count)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>offset</tt> -- start of substring to remove (0 is first char)
+    <dd><tt>count</tt> -- number of characters to remove<p>
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="getData"><hr></a>
+<h3><b>getData</b></h3>
+<dl>
+<p>
+  <dd><dl>
+    <dt> <b><i>Function:</i></b>
+    <dd> Return the value (data) of a text node<p>
+    <dt> <b><i>Prototype:</i></b>
+    <dd> <tt>DOMString getData()</tt><p>
+    <dt> <b><i>Arguments:</i></b>
+    <dd> None<p>
+    <dt> <b><i>Returns:</i></b>
+    <dd> <tt>DOMString</tt> -- Data for node
+  </dl></dd>
+</dl>
+
+<a name="getLength"><hr></a>
+<h3><b>getLength</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return length of a text node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>size_t getLength()</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> None<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>size_t</tt> -- Length of data<p>
+  </dl></dd>
+</dl>
+
+<a name="insertData"><hr></a>
+<h3><b>insertData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Insert a string into this text node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void insertData(unsigned long offset, DOMString arg)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>offset</tt> -- insertion point (0 means before first char)
+    <dd><tt>arg</tt> -- string to insert<p>
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="replaceData"><hr></a>
+<h3><b>replaceData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Replace a substring in this text node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void replaceData(unsigned long offset, unsigned long count, DOMString arg)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>offset</tt> -- start of substring to replace (0 is first char)
+    <dd><tt>count</tt> -- number of characters to replace
+    <dd><tt>arg</tt> -- replacement substring<p>
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="setData"><hr></a>
+<h3><b>setData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Set data (value) of a text node<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>void setData(DOMString data);</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd><tt>data</tt> -- data for node
+    <dt> <b>Returns:</b>
+    <dd> None<p>
+  </dl></dd>
+</dl>
+
+<a name="substringData"><hr></a>
+<h3><b>substringData</b></h3>
+<dl>
+  <dd><dl>
+    <dt> <b>Function:</b>
+    <dd> Return a substring from this node's data<p>
+    <dt> <b>Prototype:</b>
+    <dd> <tt>substringData(unsigned long offset, unsigned long count)</tt><p>
+    <dt> <b>Arguments:</b>
+    <dd> <tt>offset</tt> -- start of substring (0 is first char)
+    <dd> <tt>count</tt> -- length of substring<p>
+    <dt> <b>Returns:</b>
+    <dd> <tt>String</tt> -- Specified substring<p>
+  </dl></dd>
+</dl>
+
+</body>
+</html>

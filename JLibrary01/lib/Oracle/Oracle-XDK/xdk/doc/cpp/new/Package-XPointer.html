@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>XPointer APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Ctx.html">Ctx</a></b>
+ | <b><a href="Package-Dom.html">Dom</a></b>
+ | <b><a href="Package-IO.html">IO</a></b>
+ | <b><a href="Package-OracleXml.html">OracleXml</a></b>
+ | <b><a href="Package-Parser.html">Parser</a></b>
+ | <b><a href="Package-Tools.html">Tools</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-Xsl.html">Xsl</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package XPointer</h1></center>
+
+    XPointer is the namespace (sub-space of OracleXml) for XPointer
+    processing related types and interfaces.<p>
+<ul>
+    <li><a href="#functions"><b>Member Function Index</b></a>
+    <li><a href="#XPointer_Processor">Interface <b>XPointer_Processor</b></a> (basic XPointer Processsor)
+    <li><a href="#XppException">Interface <b>XppException</b></a> (Exceptions for XPointer processors)
+    <li><a href="#XppLocSet">Interface <b>XppLocSet</b></a> (Location set interface)
+    <li><a href="#XppLocation">Interface <b>XppLocation</b></a> ( interface for XPointer locations)
+</ul>
+
+<hr noshade size=1><center><h2><a name="functions">Member Function Index</a></h2></center>
+<center><table summary="Package 'XPointer' function index" cellspacing=0 cellpadding=0>
+<tr bgcolor="#9090F0"><th scope=col>Interface<th scope=col>Function<th scope=col>Description</tr>
+  <tr>
+    <td><tt><a href="#XPointer_Processor">XPointer_Processor</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XPointer_Processor::getProcessorId">getProcessorId</a></b>&nbsp;</tt></td>
+
+    <td>Get processor's Id</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XPointer_Processor">XPointer_Processor</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XPointer_Processor::process">process</a></b>&nbsp;</tt></td>
+
+    <td>Evaluate XPointer expression against given document</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppException">XppException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppException::getCode">getCode</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppException">XppException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppException::getMesLang">getMesLang</a></b>&nbsp;</tt></td>
+
+    <td>Get current language (encoding) of error messages</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppException">XppException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppException::getMessage">getMessage</a></b>&nbsp;</tt></td>
+
+    <td>Get Oracle XML error message</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppException">XppException</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppException::getXppCode">getXppCode</a></b>&nbsp;</tt></td>
+
+    <td>Get XPointer exception code embedded in the exception </td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppLocSet">XppLocSet</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppLocSet::getItem">getItem</a></b>&nbsp;</tt></td>
+
+    <td>Get item given its index</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppLocSet">XppLocSet</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppLocSet::getSize">getSize</a></b>&nbsp;</tt></td>
+
+    <td>Get location set size</td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppLocation">XppLocation</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppLocation::getLocType">getLocType</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppLocation">XppLocation</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppLocation::getNode">getNode</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt><a href="#XppLocation">XppLocation</a>&nbsp;</tt></td>
+    <td><tt><b><a href="#XPointer::XppLocation::getRange">getRange</a></b>&nbsp;</tt></td>
+
+    <td></td>
+  </tr>
+</table></center>
+
+<br><hr noshade size=1><center><h2><a name="XPointer_Processor">Interface XPointer_Processor</a> (basic XPointer Processsor)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'XPointer_Processor' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XPointer::XPointer_Processor::getProcessorId"><b>getProcessorId</b></a></td>
+	       <td>Get processor's Id</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XPointer_Processor::process"><b>process</b></a></td>
+	       <td>Evaluate XPointer expression against given document</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="XppException">Interface XppException</a> (Exceptions for XPointer processors)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'XppException' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XPointer::XppException::getCode"><b>getCode</b></a></td>
+	       <td>Get Oracle XML error code embedded in the exception </td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppException::getMesLang"><b>getMesLang</b></a></td>
+	       <td>Get current language (encoding) of error messages</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppException::getMessage"><b>getMessage</b></a></td>
+	       <td>Get Oracle XML error message</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppException::getXppCode"><b>getXppCode</b></a></td>
+	       <td>Get XPointer exception code embedded in the exception </td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="XppLocSet">Interface XppLocSet</a> (Location set interface)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'XppLocSet' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XPointer::XppLocSet::getItem"><b>getItem</b></a></td>
+	       <td>Get item given its index</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppLocSet::getSize"><b>getSize</b></a></td>
+	       <td>Get location set size</td>
+	       </tr>
+	   </table></center>
+
+<br><hr noshade size=1><center><h2><a name="XppLocation">Interface XppLocation</a> ( interface for XPointer locations)</h2></center>
+	   <center><h3>Member Function Index</h3>
+<table summary="Interface 'XppLocation' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XPointer::XppLocation::getLocType"><b>getLocType</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppLocation::getNode"><b>getNode</b></a></td>
+	       <td></td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XPointer::XppLocation::getRange"><b>getRange</b></a></td>
+	       <td></td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XPointer::XPointer_Processor::getProcessorId">getProcessorId</a></h2>
+
+<table summary="Function 'XPointer::XPointer_Processor::getProcessorId' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getProcessorId</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XPointer_Processor">XPointer_Processor</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get processor's Id</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;XppPrIdType&nbsp;getProcessorId()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(XppPrIdType)</b></tt> Processor's Id</tr>
+<tr><th scope=row><i>Description</i>
+<td>        
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XPointer_Processor::process">process</a></h2>
+
+<table summary="Function 'XPointer::XPointer_Processor::process' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>process</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XPointer_Processor">XPointer_Processor</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Evaluate XPointer expression against given document</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;XppLocSet<&nbsp;Node>*&nbsp;process&nbsp;(InputSource*&nbsp;isrc_ptr,<br>					&nbsp;&nbsp;&nbsp;&nbsp;oratext*&nbsp;xpp_exp)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;(XppException)&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XPointer::XPointer_Processor::process' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>isrc_ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> instance document to process</td></tr>
+<tr><td scope=row><tt>xpp_exp</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XPointer expression</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(XppLocSet*)</b></tt> XPath object</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Evaluates XPointer expression against given document and
+	returns result XPointer location set object
+        
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppException::getCode">getCode</a></h2>
+
+<table summary="Function 'XPointer::XppException::getCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppException">XppException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;unsigned&nbsp;getCode()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(unsigned)</b></tt> numeric error code (0 on success)</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppException::getMesLang">getMesLang</a></h2>
+
+<table summary="Function 'XPointer::XppException::getMesLang' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMesLang</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppException">XppException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMesLang()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext*)</b></tt> Current language (encoding) of error messages</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppException::getMessage">getMessage</a></h2>
+
+<table summary="Function 'XPointer::XppException::getMessage' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getMessage</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppException">XppException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get Oracle XML error message</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;//&nbsp;virtual&nbsp;oratext*&nbsp;getMessage()&nbsp;const&nbsp;=&nbsp;0;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(oratext *)</b></tt> Error message</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Virtual member function inherited from XMLException<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppException::getXppCode">getXppCode</a></h2>
+
+<table summary="Function 'XPointer::XppException::getXppCode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getXppCode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppException">XppException</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get XPointer exception code embedded in the exception </tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;virtual&nbsp;XppExceptionCode&nbsp;getXppCode()&nbsp;const&nbsp;=&nbsp;0;<br>};</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(XppExceptionCode)</b></tt> exception code</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This is a virtual member function that defines a prototype
+	for implementation defined member functions returning XPointer
+	processor and compiler exception codes, defined in
+	XppExceptionCode, of the exceptional situations during
+	execution<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppLocSet::getItem">getItem</a></h2>
+
+<table summary="Function 'XPointer::XppLocSet::getItem' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getItem</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppLocSet">XppLocSet</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get item given its index</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;XppLocation<&nbsp;Node>*&nbsp;getItem(&nbsp;ub4&nbsp;index)&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(XppLocation*)</b></tt> reference to the item</tr>
+<tr><th scope=row><i>Description</i>
+<td>        Returns a reference to the item<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppLocSet::getSize">getSize</a></h2>
+
+<table summary="Function 'XPointer::XppLocSet::getSize' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getSize</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppLocSet">XppLocSet</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Get location set size</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;ub4&nbsp;getSize()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(ub4)</b></tt> node set size</tr>
+<tr><th scope=row><i>Description</i>
+<td>        The size of the node set<p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppLocation::getLocType">getLocType</a></h2>
+
+<table summary="Function 'XPointer::XppLocation::getLocType' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getLocType</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppLocation">XppLocation</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;XppLocType&nbsp;getLocType()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        </tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppLocation::getNode">getNode</a></h2>
+
+<table summary="Function 'XPointer::XppLocation::getNode' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getNode</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppLocation">XppLocation</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Node*&nbsp;getNode()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        </tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+
+<h2 align=center><a name="XPointer::XppLocation::getRange">getRange</a></h2>
+
+<table summary="Function 'XPointer::XppLocation::getRange' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>getRange</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#XppLocation">XppLocation</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td></tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>&nbsp;&nbsp;Range<&nbsp;Node>*&nbsp;getRange()&nbsp;const;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<tt>void</tt>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        </tr>
+<tr><th scope=row><i>Description</i>
+<td>        <p>
+</tr>
+</table>
+</body>
+</html>

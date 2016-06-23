@@ -1,0 +1,13 @@
+XML C++ DOM sample
+Initializing context
+Initializing Tools Factory
+Creating DOM parser
+Create file source
+Parsing 'class.xml' ...
+Dump the tree using an iterator
+Iteration forward
+Iteration backward
+Dump the tree using a tree walker
+Iteration forward
+Iteration backward
+Finished

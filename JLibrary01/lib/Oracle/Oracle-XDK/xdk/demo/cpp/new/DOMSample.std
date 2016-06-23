@@ -1,0 +1,56 @@
+XML C++ DOM sample
+Initializing context
+Initializing Tools Factory
+Creating DOM parser
+Create file source
+Parsing 'cleo.xml' ...
+Dump the DOM tree
+ACT I
+    SCENE I.  Alexandria. A room in CLEOPATRA's palace.
+    SCENE II.  The same. Another room.
+    SCENE III.  The same. Another room.
+    SCENE IV.  Rome. OCTAVIUS CAESAR's house.
+    SCENE V.  Alexandria. CLEOPATRA's palace.
+ACT II
+    SCENE I.  Messina. POMPEY's house.
+    SCENE II.  Rome. The house of LEPIDUS.
+    SCENE III.  The same. OCTAVIUS CAESAR's house.
+    SCENE IV.  The same. A street.
+    SCENE V.  Alexandria. CLEOPATRA's palace.
+    SCENE VI.  Near Misenum.
+    SCENE VII.  On board POMPEY's galley, off Misenum.
+ACT III
+    SCENE I.  A plain in Syria.
+    SCENE II.  Rome. An ante-chamber in OCTAVIUS CAESAR's house.
+    SCENE III.  Alexandria. CLEOPATRA's palace.
+    SCENE IV.  Athens. A room in MARK ANTONY's house.
+    SCENE V.  The same. Another room.
+    SCENE VI.  Rome. OCTAVIUS CAESAR's house.
+    SCENE VII.  Near Actium. MARK ANTONY's camp.
+    SCENE VIII.  A plain near Actium.
+    SCENE IX.  Another part of the plain.
+    SCENE X.  Another part of the plain.
+    SCENE XI.  Alexandria. CLEOPATRA's palace.
+    SCENE XII.  Egypt. OCTAVIUS CAESAR's camp.
+    SCENE XIII.  Alexandria. CLEOPATRA's palace.
+ACT IV
+    SCENE I.  Before Alexandria. OCTAVIUS CAESAR's camp.
+    SCENE II.  Alexandria. CLEOPATRA's palace.
+    SCENE III.  The same. Before the palace.
+    SCENE IV.  The same. A room in the palace.
+    SCENE V.  Alexandria. MARK ANTONY's camp.
+    SCENE VI.  Alexandria. OCTAVIUS CAESAR's camp.
+    SCENE VII.  Field of battle between the camps.
+    SCENE VIII.  Under the walls of Alexandria.
+    SCENE IX.  OCTAVIUS CAESAR's camp.
+    SCENE X.  Between the two camps.
+    SCENE XI.  Another part of the same.
+    SCENE XII.  Another part of the same.
+    SCENE XIII.  Alexandria. Cleopatra's palace.
+    SCENE XIV.  The same. Another room.
+    SCENE XV.  The same. A monument.
+ACT V
+    SCENE I.  Alexandria. OCTAVIUS CAESAR's camp.
+    SCENE II.  Alexandria. A room in the monument.
+Delete the DOM tree
+Finished

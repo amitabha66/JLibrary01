@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<xsql:query connection="demo" xmlns:xsql="urn:oracle-xsql">
+  SELECT dname,
+         CURSOR( SELECT ename,sal
+                   FROM emp
+                  WHERE emp.deptno = dept.deptno) as employees /* Column Alias */
+    FROM dept
+   WHERE deptno = {@department}
+</xsql:query>

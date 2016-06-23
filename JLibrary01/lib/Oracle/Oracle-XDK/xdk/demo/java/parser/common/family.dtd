@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT family (member*)>
+<!ATTLIST family lastname CDATA #REQUIRED>
+<!ELEMENT member (#PCDATA)>
+<!ATTLIST member memberid ID #REQUIRED>
+<!ATTLIST member dad IDREF #IMPLIED>
+<!ATTLIST member mom IDREF #IMPLIED>

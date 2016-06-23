@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<base xmlns = "http://www.oracle.com/sample5/"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://www.oracle.com/sample5/ sample5.xsd">
+  <a> The element A  </a>
+  <b> The element B </b>
+  <c> 1 </c>
+  <c> 2 </c>
+  <b> The second element B </b>
+  <b> The thid element B </b>
+  <c> 3 </c>
+  <a> The second elemnet A </a>
+</base>
+

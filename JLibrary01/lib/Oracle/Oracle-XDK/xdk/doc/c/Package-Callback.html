@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- WARNING!  THIS IS A GENERATED FILE!!  DO NOT EDIT!!! -->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Callback APIs</title>
+</head>
+<body bgcolor=white>
+<a name="_top_"></a>
+<center><table width="90%"><tr><td align=left>
+<b>Packages: <a href="packages.html">All</a></b>
+ | <b><a href="Package-Callback.html">Callback</a></b>
+ | <b><a href="Package-DOM.html">DOM</a></b>
+ | <b><a href="Package-Range.html">Range</a></b>
+ | <b><a href="Package-SAX.html">SAX</a></b>
+ | <b><a href="Package-Schema.html">Schema</a></b>
+ | <b><a href="Package-Traversal.html">Traversal</a></b>
+ | <b><a href="Package-XML.html">XML</a></b>
+ | <b><a href="Package-XPath.html">XPath</a></b>
+ | <b><a href="Package-XPointer.html">XPointer</a></b>
+ | <b><a href="Package-XSLT.html">XSLT</a></b>
+ | <b><a href="Package-XSLTVM.html">XSLTVM</a></b>
+</td><td align=right><b><a href="Functions.html">Functions</a></b>
+ | <b><a href="Datatypes.html">Datatypes</a></b></td></tr></table>
+</center><hr noshade size=1>
+<center><h1>Package Callback</h1></center>
+
+    This package defines macros which declare functions (or function
+    pointers) for XML callbacks.  Callbacks are used for error-message
+    handling, memory allocation & freeing, and stream operations.<p>
+
+<br><hr noshade size=1><center><h2><a name="Callbacks">Interface Callbacks</a></h2></center>
+	   <center><h3></h3>
+<table summary="Interface 'Callbacks' function index" cellspacing=0 cellpadding=2>
+<tr bgcolor="#9090F0"><th scope=col>Function<th scope=col>Description</tr>
+	       <tr>
+	       <td><a href="#XML_ALLOC_F"><b>XML_ALLOC_F</b></a></td>
+	       <td>Low-level memory allocation</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XML_ERRMSG_F"><b>XML_ERRMSG_F</b></a></td>
+	       <td>Handle error message</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XML_FREE_F"><b>XML_FREE_F</b></a></td>
+	       <td>Low-level memory freer</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XML_STREAM_CLOSE_F"><b>XML_STREAM_CLOSE_F</b></a></td>
+	       <td>User-defined stream close callback</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XML_STREAM_OPEN_F"><b>XML_STREAM_OPEN_F</b></a></td>
+	       <td>User-defined stream open callback</td>
+	       </tr>
+	       <tr>
+	       <td><a href="#XML_STREAM_WRITE_F"><b>XML_STREAM_WRITE_F</b></a></td>
+	       <td>User-defined stream write callback</td>
+	       </tr>
+	   </table></center>
+<hr noshade size=1>
+
+<h2 align=center><a name="XML_ALLOC_F">XML_ALLOC_F</a></h2>
+
+<table summary="Function 'XML_ALLOC_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_ALLOC_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Low-level memory allocation</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_ALLOC_F(func,&nbsp;mctx,&nbsp;size)&nbsp;\<br>void&nbsp;*func(void&nbsp;*mctx,&nbsp;size_t&nbsp;size)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_ALLOC_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>mctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> low-level memory context</td></tr>
+<tr><td scope=row><tt>size</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> number of bytes to allocate</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void *)</b></tt> allocated memory</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the low-level memory alloc
+        function provided by the user.  If no allocator is provided,
+        malloc() is used.  Memory should NOT be zeroed by this func!
+        Matches XML_FREE_F.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Callback.html#XML_FREE_F"><tt>XML_FREE_F</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XML_ERRMSG_F">XML_ERRMSG_F</a></h2>
+
+<table summary="Function 'XML_ERRMSG_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_ERRMSG_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Handle error message</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_ERRMSG_F(func,&nbsp;ectx,&nbsp;msg,&nbsp;err)&nbsp;\<br>void&nbsp;func(void&nbsp;*ectx,&nbsp;oratext&nbsp;*msg,&nbsp;xmlerr&nbsp;err)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_ERRMSG_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>etcx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> error message context</td></tr>
+<tr><td scope=row><tt>msg</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> text of error message</td></tr>
+<tr><td scope=row><tt>err</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> numeric error code</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the error message handling
+        function.  If no error message callback is provided at XML
+        initialization time, errors will be printed to stderr.  If
+        a handler is provided, it will be invoked instead of printing
+        to stderr.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-XML.html#XmlCreate"><tt>XmlCreate</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XML_FREE_F">XML_FREE_F</a></h2>
+
+<table summary="Function 'XML_FREE_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_FREE_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>Low-level memory freer</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_FREE_F(func,&nbsp;mctx,&nbsp;ptr)&nbsp;\<br>void&nbsp;func(void&nbsp;*mctx,&nbsp;void&nbsp;*ptr)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_FREE_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>mctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> low-level memory context</td></tr>
+<tr><td scope=row><tt>ptr</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> memory to be freed</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the low-level memory free
+        function provided by the user.  If no allocator is provided,
+        free() is used.  Matches XML_ALLOC_F.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Callback.html#XML_FREE_F"><tt>XML_FREE_F</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XML_STREAM_CLOSE_F">XML_STREAM_CLOSE_F</a></h2>
+
+<table summary="Function 'XML_STREAM_CLOSE_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_STREAM_CLOSE_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>User-defined stream close callback</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_STREAM_CLOSE_F(func,&nbsp;xctx,&nbsp;sctx)&nbsp;\<br>void&nbsp;func(xmlctx&nbsp;*xctx,&nbsp;void&nbsp;*sctx)&nbsp;</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_STREAM_CLOSE_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user-defined stream context</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(void)</b></tt></tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the close function callback,
+        called to close an open source and free its resources.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Callback.html#XML_STREAM_OPEN_F"><tt>XML_STREAM_OPEN_F</tt></a>, <a href="Package-Callback.html#XML_STREAM_WRITE_F"><tt>XML_STREAM_WRITE_F</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XML_STREAM_OPEN_F">XML_STREAM_OPEN_F</a></h2>
+
+<table summary="Function 'XML_STREAM_OPEN_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_STREAM_OPEN_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>User-defined stream open callback</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_STREAM_OPEN_F(func,&nbsp;xctx,&nbsp;sctx,&nbsp;path,&nbsp;parts,&nbsp;length)&nbsp;\<br>xmlerr&nbsp;func(xmlctx&nbsp;*xctx,&nbsp;void&nbsp;*sctx,&nbsp;oratext&nbsp;*path,&nbsp;\<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;*parts,&nbsp;ubig_ora&nbsp;*length)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_STREAM_OPEN_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  XML context</td></tr>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  user-defined stream context</td></tr>
+<tr><td scope=row><tt>path</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  full path of the URI to be opened</td></tr>
+<tr><td scope=row><tt>parts</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td>  URI broken down into components (opaque pointer)</td></tr>
+<tr><td scope=row><tt>length</tt></td>
+<td>&nbsp;<b>(OUT)</b>&nbsp;</td>
+<td> total length of input data if known, 0 if not known</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, 0 on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the open function callback, which
+        is called once to open the input source.  This function should return
+        XMLERR_OK on success.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Callback.html#XML_STREAM_CLOSE_F"><tt>XML_STREAM_CLOSE_F</tt></a>, <a href="Package-Callback.html#XML_STREAM_WRITE_F"><tt>XML_STREAM_WRITE_F</tt></a></td></tr>
+</table>
+
+<h2 align=center><a name="XML_STREAM_WRITE_F">XML_STREAM_WRITE_F</a></h2>
+
+<table summary="Function 'XML_STREAM_WRITE_F' details" border cellpadding=2 cellspacing=1 bgcolor="#EEEEEE" width="100%">
+<tr><th scope=row width="10%"><i>Name</i>
+<td><tt><b>XML_STREAM_WRITE_F</b></tt></tr>
+<tr><th scope=row><i>Interface</i>
+<td><a href="#Callbacks">Callbacks</a></tr>
+
+<tr><th scope=row><i>Purpose</i>
+<td>User-defined stream write callback</tr>
+<tr><th scope=row><i>Prototype</i>
+<td><tt><b>#define&nbsp;XML_STREAM_WRITE_F(func,&nbsp;xctx,&nbsp;sctx,&nbsp;path,&nbsp;src,&nbsp;size)&nbsp;\<br>xmlerr&nbsp;func(xmlctx&nbsp;*xctx,&nbsp;void&nbsp;*sctx,&nbsp;oratext&nbsp;*path,&nbsp;\<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oratext&nbsp;*src,&nbsp;size_t&nbsp;size)</b></tt></tr>
+<tr><th scope=row><i>Arguments</i><td>
+<table summary="Function 'XML_STREAM_WRITE_F' arguments" cellspacing=0 cellpadding=0>
+<tr><td scope=row><tt>xctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> XML context</td></tr>
+<tr><td scope=row><tt>sctx</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> user-defined stream context</td></tr>
+<tr><td scope=row><tt>path</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> full URI of the open source (for error messages)</td></tr>
+<tr><td scope=row><tt>src</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> source buffer to read data from</td></tr>
+<tr><td scope=row><tt>size</tt></td>
+<td>&nbsp;<b>(IN)</b>&nbsp;</td>
+<td> size of source in bytes</td></tr>
+</table>
+</td></tr>
+<tr><th scope=row><i>Returns</i>
+<td>        <tt><b>(xmlerr)</b></tt> numeric error code, 0 on success</tr>
+<tr><th scope=row><i>Description</i>
+<td>        This macro defines a prototype for the write function callback,
+        called to write data to a user-defined stream.<p>
+</tr>
+<tr><th scope=row><i>See Also</i><td>
+<a href="Package-Callback.html#XML_STREAM_OPEN_F"><tt>XML_STREAM_OPEN_F</tt></a>, <a href="Package-Callback.html#XML_STREAM_CLOSE_F"><tt>XML_STREAM_CLOSE_F</tt></a></td></tr>
+</table>
+</body>
+</html>

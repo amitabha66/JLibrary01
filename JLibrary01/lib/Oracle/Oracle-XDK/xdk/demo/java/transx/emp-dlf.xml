@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<table name="emp">
+   <lookup-key/>
+   <columns>
+      <column name="HIREDATE" type="string"/>
+      <column name="ENAME" type="string"/>
+      <column name="SAL" type="number"/>
+      <column name="COMM" type="number"/>
+      <column name="MGR" type="number"/>
+      <column name="EMPNO" type="number"/>
+      <column name="DEPTNO" type="number"/>
+      <column name="JOB" type="string"/>
+   </columns>
+   <dataset>
+      <row>
+         <col name="EMPNO">7369</col>
+         <col name="ENAME">SMITH</col>
+         <col name="JOB">CLERK</col>
+         <col name="MGR">7902</col>
+         <col name="HIREDATE">1980-12-17T12:00:00</col>
+         <col name="SAL">800</col>
+         <col name="DEPTNO">20</col>
+      </row>
+      <row>
+         <col name="EMPNO">7499</col>
+         <col name="ENAME">ALLEN</col>
+         <col name="JOB">SALESMAN</col>
+         <col name="MGR">7698</col>
+         <col name="HIREDATE">1981-02-20T12:00:00</col>
+         <col name="SAL">1600</col>
+         <col name="COMM">300</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7521</col>
+         <col name="ENAME">WARD</col>
+         <col name="JOB">SALESMAN</col>
+         <col name="MGR">7698</col>
+         <col name="HIREDATE">1981-02-22T12:00:00</col>
+         <col name="SAL">1250</col>
+         <col name="COMM">500</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7566</col>
+         <col name="ENAME">JONES</col>
+         <col name="JOB">MANAGER</col>
+         <col name="MGR">7839</col>
+         <col name="HIREDATE">1981-04-02T12:00:00</col>
+         <col name="SAL">2975</col>
+         <col name="DEPTNO">20</col>
+      </row>
+      <row>
+         <col name="EMPNO">7654</col>
+         <col name="ENAME">MARTIN</col>
+         <col name="JOB">SALESMAN</col>
+         <col name="MGR">7698</col>
+         <col name="HIREDATE">1981-09-28T12:00:00</col>
+         <col name="SAL">1250</col>
+         <col name="COMM">1400</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7698</col>
+         <col name="ENAME">BLAKE</col>
+         <col name="JOB">MANAGER</col>
+         <col name="MGR">7839</col>
+         <col name="HIREDATE">1981-05-01T12:00:00</col>
+         <col name="SAL">2850</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7782</col>
+         <col name="ENAME">CLARK</col>
+         <col name="JOB">MANAGER</col>
+         <col name="MGR">7839</col>
+         <col name="HIREDATE">1981-06-09T12:00:00</col>
+         <col name="SAL">2450</col>
+         <col name="DEPTNO">10</col>
+      </row>
+      <row>
+         <col name="EMPNO">7788</col>
+         <col name="ENAME">SCOTT</col>
+         <col name="JOB">ANALYST</col>
+         <col name="MGR">7566</col>
+         <col name="HIREDATE">1987-04-19T12:00:00</col>
+         <col name="SAL">3000</col>
+         <col name="DEPTNO">20</col>
+      </row>
+      <row>
+         <col name="EMPNO">7839</col>
+         <col name="ENAME">KING</col>
+         <col name="JOB">PRESIDENT</col>
+         <col name="HIREDATE">1981-11-17T12:00:00</col>
+         <col name="SAL">5000</col>
+         <col name="DEPTNO">10</col>
+      </row>
+      <row>
+         <col name="EMPNO">7844</col>
+         <col name="ENAME">TURNER</col>
+         <col name="JOB">SALESMAN</col>
+         <col name="MGR">7698</col>
+         <col name="HIREDATE">1981-09-08T12:00:00</col>
+         <col name="SAL">1500</col>
+         <col name="COMM">0</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7876</col>
+         <col name="ENAME">ADAMS</col>
+         <col name="JOB">CLERK</col>
+         <col name="MGR">7788</col>
+         <col name="HIREDATE">1987-05-23T12:00:00</col>
+         <col name="SAL">1100</col>
+         <col name="DEPTNO">20</col>
+      </row>
+      <row>
+         <col name="EMPNO">7900</col>
+         <col name="ENAME">JAMES</col>
+         <col name="JOB">CLERK</col>
+         <col name="MGR">7698</col>
+         <col name="HIREDATE">1981-12-03T12:00:00</col>
+         <col name="SAL">950</col>
+         <col name="DEPTNO">30</col>
+      </row>
+      <row>
+         <col name="EMPNO">7902</col>
+         <col name="ENAME">FORD</col>
+         <col name="JOB">ANALYST</col>
+         <col name="MGR">7566</col>
+         <col name="HIREDATE">1981-12-03T12:00:00</col>
+         <col name="SAL">3000</col>
+         <col name="DEPTNO">20</col>
+      </row>
+      <row>
+         <col name="EMPNO">7934</col>
+         <col name="ENAME">MILLER</col>
+         <col name="JOB">CLERK</col>
+         <col name="MGR">7782</col>
+         <col name="HIREDATE">1982-01-23T12:00:00</col>
+         <col name="SAL">1300</col>
+         <col name="DEPTNO">10</col>
+      </row>
+   </dataset>
+</table>

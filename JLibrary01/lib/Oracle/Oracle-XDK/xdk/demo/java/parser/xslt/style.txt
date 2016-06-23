@@ -1,0 +1,30 @@
+<?xml version="1.0"?> 
+
+<!-- stylesheet for basic HTML output -->
+<xsl1:stylesheet version="1.0" xmlns:xsl1="http://www.w3.org/1999/XSL/Transform">
+  <xsl1:attribute-set name="set1">
+    <xsl1:attribute name="text-decoration">underline</xsl1:attribute>
+  </xsl1:attribute-set>
+  
+  <xsl1:attribute-set name="normal">
+    <xsl1:attribute name="color">black</xsl1:attribute>
+    <xsl1:attribute name="font-weight">normal</xsl1:attribute>
+    <xsl1:attribute name="font-style">normal</xsl1:attribute>
+    <xsl1:attribute name="font-size">14pt</xsl1:attribute>
+    <xsl1:attribute name="text-decoration">none</xsl1:attribute>
+  </xsl1:attribute-set>
+
+  <!-- Root template - start processing here -->
+  <xsl1:template match="/">
+    <HTML>
+      <HEAD>
+        <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <META http-equiv="Expires" content="0"/>
+      </HEAD>
+      <BODY>
+		    <xsl1:apply-templates/>
+      </BODY>
+    </HTML>
+  </xsl1:template>
+
+</xsl1:stylesheet>
